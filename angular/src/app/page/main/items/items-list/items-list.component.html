@@ -1,0 +1,10 @@
+<div class="items-list" *ngIf="items.length">
+    <ul>
+        <li *ngFor="let item of items">
+			
+			<mb-card-item-list *ngIf="isCard(item)" [card]="item"></mb-card-item-list>
+			<mb-expansion-item-list *ngIf="isExpansion(item)" [expansion]="item"></mb-expansion-item-list>
+
+		</li>
+    </ul>
+</div>

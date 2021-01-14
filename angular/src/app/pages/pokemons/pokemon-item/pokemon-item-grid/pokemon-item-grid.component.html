@@ -1,0 +1,44 @@
+<a
+	class="item-grid-pokemon"
+	[routerLink]="pokemonVariant.route ? pokemonVariant.route : []">
+
+	<figure class="pokemon-image-wrapper {{pokemonVariant.types[0]}}">
+
+		<div class="pokemon-number">
+			#{{pokemonVariant.pokemon.national_dex_number}}
+		</div>
+
+		<img
+			class="pokemon-image"
+			*ngIf="getSprite(pokemonVariant)"
+			src="{{getSprite(pokemonVariant)}}" />
+
+		<div
+			class="pokemon-image-placeholder"
+			*ngIf="getSprite(pokemonVariant).length == 0">
+			<fa-icon icon="question"></fa-icon>
+		</div>
+
+		<img
+			class="pokeball"
+			src="/assets/pokeball.png" />
+
+		<div
+			class="pokemon-types"
+			*ngIf="pokemonVariant.types">
+			<div
+				*ngFor="let type of pokemonVariant.types">
+				<mb-type-tag [type]="type"></mb-type-tag>
+			</div>
+		</div>
+	</figure>
+
+	<figcaption class="pokemon-info">
+		<div>
+			<div class="pokemon-name">
+				{{pokemonVariant.name}}
+			</div>
+		</div>
+	</figcaption>
+
+</a>

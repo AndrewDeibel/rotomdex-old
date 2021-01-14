@@ -1,0 +1,99 @@
+// Typography
+//@import url('https://fonts.googleapis.com/css2?family=Source+Serif+Pro:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap');
+$font-family: 'Source Sans Pro', sans-serif;
+$font-size: 16px;
+$font-color: rgba(black, .6);
+$heading-font-family: 'Source Sans Pro', serif;
+$heading-font-size: initial; // TODO: replace with real value
+$heading-font-color: rgba(black, .6);
+
+// Colors
+$white: white;
+$grey: grey;
+$black: black;
+$red: rgb(180, 61, 61);
+$orange: #F68603;
+$yellow: #F1C500;
+$green: rgb(58, 156, 58);
+$teal: #1BA083;
+$blue: #55a0da;
+$purple: #8936b7;
+$pink: #D11A58;
+
+$primary-color: $blue;
+$secondary-color: #a8b7c2;
+
+$header-height: 56px;
+$header-bg: linear-gradient(#cf493a, #be3b2c);
+$menu-bg: #323232;
+$header-color: white;
+$main-bg: none;
+$panel-bg: white;
+$footer-bg: $header-bg;
+
+$success: $green;
+$info: $blue;
+$warning: $yellow;
+$error: $red;
+
+// Spacing
+$spacing: 8px;
+
+// Borders
+$border-radius: 999px;
+$border-radius-small: 6px;
+$border-radius-card: #{4.8%/4%};
+
+// Borders
+$border-color: rgba(black, .1);
+$border: 1px solid $border-color;
+
+// Shadows
+$shadow: 0 2px 4px rgba(black, .4);
+$shadow-inset: inset 0 0 2px rgba(black, .1);
+
+$shadow-focus: 0 0 0 4px rgba($primary-color, .6);
+$shadow-focus-inset: inset 0 2px 4px rgba(black, .2);
+
+$text-shadow: 0 1px 4px rgba(black, .6);
+$text-shadow-focus: 0 1px 4px rgba(black, .8);
+$text-shadow-inset: 0 1px 1px rgba(white, .6);
+
+$shadow-success: 0 0 0 3px rgba($success, .2);
+$shadow-info: 0 0 0 3px rgba($info, .2);
+$shadow-warning: 0 0 0 3px rgba($warning, .2);
+$shadow-error: 0 0 0 3px rgba($error, .2);
+
+// Transition
+$transition-base: ease .2s;
+$transition:
+    $transition-base color,
+    $transition-base border,
+    $transition-base background-color,
+    $transition-base box-shadow,
+    $transition-base transform,
+    $transition-base max-width,
+    $transition-base opacity,
+	$transition-base margin,
+	$transition-base fill,
+	$transition-base top,
+	$transition-base left,
+	$transition-base right,
+	$transition-base bottom;
+
+// Screen
+$max: 1080px;
+$min: 320px;
+$screen: 320px;
+$screen-xsmall: $screen * 1;
+$screen-small: $screen * 2;
+$screen-medium: $screen * 3;
+$screen-large: $screen * 4;
+$screen-xlarge: $screen * 5;
+
+// Misc
+$sides: "top", "right", "bottom", "left";
+
+// Project
+$card-ratio: 1.4;

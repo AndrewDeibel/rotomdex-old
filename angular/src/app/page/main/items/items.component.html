@@ -1,0 +1,42 @@
+<div
+	[class.bg]="items.showHeader"
+	class="relative small-square"
+	*ngIf="items">
+
+	<!-- Header -->
+	<mb-items-header
+		*ngIf="items.showHeader"
+		[itemsHeader]="items.header">
+	</mb-items-header>
+
+	<!-- Filter -->
+	<mb-items-filter
+		*ngIf="items.showFilters"
+		[itemsFilter]="items.filter"
+		(outputGetItems)="_outputGetItems()"
+		(outputDisplayModeChanged)="displayModeChanged($event)">
+	</mb-items-filter>
+
+	<!-- Empty -->
+	<div *ngIf="showEmpty()" class="empty">
+		<fa-icon icon="archive"></fa-icon>
+		<p>{{items.noResults}}</p>
+		<mb-button *ngIf="items.buttonNoResults" [button]="items.buttonNoResults"></mb-button>
+	</div>
+
+	<!-- Groups -->
+	<mb-items-groups
+		*ngIf="showGroups()"
+		[groups]="items.itemGroups"
+		[itemClasses]="items.itemClasses"
+		[itemDisplayType]="items.itemDisplayType">
+	</mb-items-groups>
+
+	<!-- Footer -->
+	<mb-items-footer
+		*ngIf="items.itemGroups.length && items.showFooter"
+		[itemsFooter]="items.footer"
+		(outputGetItems)="_outputGetItems()">
+	</mb-items-footer>
+
+</div>

@@ -1,0 +1,24 @@
+<a
+	class="card-grid"
+	[routerLink]="card.route ? card.route : []">
+
+	<figure
+		class="card-image"
+		*ngIf="card.image">
+
+		<div class="image-wrapper">
+			<img src="{{card.image}}" />
+		</div>
+
+		<aside class="card-information">
+			<div class="card-number">
+				{{getCardNumber()}}
+			</div>
+			<div class="card-name">
+				{{card.name}}
+			</div>
+		</aside>
+
+	</figure>
+
+</a>

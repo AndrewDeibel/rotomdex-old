@@ -1,0 +1,122 @@
+@import "settings",
+		"scaffold/typography";
+
+.card-detail {
+    display: flex;
+    flex-wrap: wrap;
+	position: relative;
+	align-items: flex-start;
+	padding: $spacing;
+    > * {
+        @media (max-width: $screen-medium) {
+            width: 100%;
+        }
+	}
+
+    .card-image {
+		z-index: 2;
+		position: relative;
+		display: flex;
+		justify-content: center;
+		flex-direction: column;
+		padding: $spacing;
+
+		.card-image-inner {
+			margin: 0 auto;
+			position: relative;
+			> mb-menu {
+				position: absolute;
+				left: $spacing;
+				bottom: $spacing;
+			}
+		}
+		
+		img {
+			border-radius: $border-radius-card;
+		}
+        .img-card-image {
+			max-width: 300px;
+			cursor: zoom-in;
+            box-shadow: $shadow;
+			display: block;
+			transition: $transition;
+			opacity: 1;
+            &.active {
+                opacity: 0;
+            }
+            @media (max-width: $screen-medium) {
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
+        .img-card-image-hover {
+            position: absolute;
+            top: -$spacing;
+            left: -$spacing;
+            pointer-events: none;
+			max-width: none;
+            box-shadow: $shadow;
+            z-index: 10;
+            margin: $spacing;
+            transition: $transition;
+            opacity: 0;
+            max-width: 300px;
+			max-height: calc(100vh - 132px - 8px);
+			background: $panel-bg;
+            @media (max-width: $screen-medium) {
+                left: 50%;
+                transform: translateX(-50%);
+                margin-left: auto;
+                margin-right: auto;
+            }
+            &.active {
+				pointer-events: all;
+                opacity: 1;
+				max-width: 100vw;
+				cursor: zoom-out;
+            }
+            @media (max-height: $screen-small + 40px) {
+                display: none !important;
+            }
+        }
+    }
+    .card-information-wrapper {
+        flex: 1;
+		position: relative;
+		z-index: 1;
+		display: flex;
+		padding: $spacing;
+        @media(max-width: $screen-medium) {
+            justify-content: center;
+        }
+        .card-information-inner {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: $spacing;
+            pointer-events: none;
+            z-index: 1;
+			opacity: .2;
+			
+			@media (max-width: $screen-small) {
+				margin: 0;
+			}
+        }
+        .card-information {
+            z-index: 1;
+            position: relative;
+			flex: 1;
+		}
+		.card-price {
+			color: $green;
+			font-size: 32px;
+		}
+    }
+	.symbol {
+		vertical-align: middle;
+		display: inline-block;
+		filter: drop-shadow(0 1px 1px rgba(black, .8));
+	}
+}

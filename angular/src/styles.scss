@@ -1,0 +1,24 @@
+// Styles
+@import
+    // Settings
+    "styles/settings",
+    
+    // Thirdparty
+    "styles/thirdparty/animate",
+	"styles/thirdparty/ckeditor",
+	"styles/thirdparty/color-picker",
+
+    // Scaffold
+    "styles/scaffold/reset",
+	"styles/scaffold/base",
+	"styles/scaffold/icons",
+    "styles/scaffold/typography",
+    "styles/scaffold/spacing",
+	"styles/scaffold/flex",
+	"styles/scaffold/input",
+	"styles/scaffold/border",
+	"styles/scaffold/page",
+
+	// Project
+	"styles/project/pokemon",
+	"styles/project/card";

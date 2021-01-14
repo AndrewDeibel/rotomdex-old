@@ -1,0 +1,93 @@
+@import "settings",
+		"project/pokemon";
+
+.hero {
+	position: relative;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+	@each $type, $color in $poke-types {
+		&.#{$type} {
+			background: linear-gradient(
+				to right,
+				darken($color, 20%),
+				darken(mix($color, black, 90%), 20%)
+			);
+		}
+	}
+	.pokemon-types {
+		padding: $spacing;
+		padding-bottom: $spacing * 4;
+		display: flex;
+		justify-content: center;
+		z-index: 2;
+		position: relative;
+	}
+	.art {
+		margin: 0 auto;
+		filter: drop-shadow($shadow);
+		position: relative;
+		z-index: 2;
+	}
+	.pokeball {
+		position: absolute;
+		right: -80px;
+		top: 50%;
+		transform: translateY(-50%);
+		width: 800px;
+		opacity: .15;
+		z-index: 1;
+	}
+	.prev-pokemon, .next-pokemon {
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		background: $menu-bg;
+		padding: $spacing * 3;
+		color: white;
+		box-shadow: $shadow;
+		z-index: 2;
+	}
+	.prev-pokemon {
+		left: 0;
+		border-top-right-radius: $border-radius;
+		border-bottom-right-radius: $border-radius;
+	}
+	.next-pokemon {
+		right: 0;
+		border-top-left-radius: $border-radius;
+		border-bottom-left-radius: $border-radius;
+	}
+}
+
+.pokemon-info {
+	padding: $spacing ($spacing * 2);
+	background: $menu-bg;
+	color: white;
+	h1 {
+		color: white;
+		line-height: 1;
+	}
+}
+
+.dex-number {
+	font-size: 60%;
+	opacity: .75;
+	text-transform: capitalize;
+}
+
+.pokemon-sprites {
+	position: absolute;
+	left: 80px;
+	top: 50%;
+	transform: translateY(-50%);
+	filter: drop-shadow($shadow);
+}
+
+.pokemon-region {
+	text-transform: capitalize;
+}
+
+.pokemon-generation {
+	text-transform: capitalize;
+}

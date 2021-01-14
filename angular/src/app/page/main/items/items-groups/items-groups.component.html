@@ -1,0 +1,29 @@
+<!-- List/Grid -->
+<div
+	[class.item-groups]="groups.length > 1"
+	*ngIf="groups && groups.length">
+	<div
+		*ngFor="let group of groups"
+		class="item-group">
+		<div class="item-group-inner">		
+			<div class="max">
+
+				<h2 *ngIf="group.name">{{group.name}}</h2>
+
+				<!-- List -->
+				<mb-items-list
+					*ngIf="showList(group)"
+					[items]="group.items">
+				</mb-items-list>
+
+				<!-- Grid -->
+				<mb-items-grid
+					*ngIf="showGrid(group)"
+					[itemClasses]="itemClasses"
+					[items]="group.items">
+				</mb-items-grid>
+				
+			</div>
+		</div>
+	</div>
+</div>

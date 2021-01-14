@@ -1,0 +1,72 @@
+@import "settings";
+
+#header {
+    height: $header-height;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+	background: $header-bg;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: 10;
+	padding: $spacing ($spacing * 2);
+	border-bottom: $border;
+	box-shadow: $shadow;
+	
+    .logo {
+        display: flex;
+        align-items: center;
+		cursor: pointer;
+		border-radius: $border-radius;
+		position: relative;
+		height: 100%;
+		color: $header-color;
+        img {
+            display: block;
+            border-radius: $border-radius;
+            overflow: hidden;
+            height: 40px;
+            &.logo-image-small {
+                display: none;
+			}
+        }
+        span {
+            //padding: 0 ($spacing);
+            font-size: 24px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            @media(max-width: $screen-medium) {
+                font-size: 16px;
+            }
+            @media(max-width: $screen-small) {
+                display: none;
+            }
+        }
+	}
+	
+	a {
+		color: $header-color;
+	}
+
+    .max {
+        position: relative;
+        height: $header-height;
+        z-index: 4;
+		display: flex;
+		align-items: center;
+		flex: 1;
+    }
+}
+
+@media (max-width: $screen-medium) {
+	#menu .menu.tabs {
+		> ul > li {
+			flex: 1;
+		}
+	}
+	mb-search {
+		width: 100%;
+	}
+}

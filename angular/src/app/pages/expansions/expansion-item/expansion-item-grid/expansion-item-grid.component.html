@@ -1,0 +1,29 @@
+<a
+	class="item-grid-expansion"
+	[routerLink]="expansion.route ? expansion.route : []">
+
+	<figure class="expansion-logo">
+		<img src="{{expansion.logo}}" />
+	</figure>
+
+	<figcaption class="expansion-info">
+		<div class="flex padded flex-center">
+			<div>
+				<img class="symbol" src="{{expansion.symbol}}" />
+			</div>
+			<div>
+				<div class="expansion-name">
+					{{expansion.name}}
+				</div>
+				<span class="subheading expansion-release-date">
+					{{expansion.release_date | date}}
+				</span>
+				-
+				<span class="subheading expansion-total-cards">
+					{{expansion.total_cards}} Cards
+				</span>
+			</div>
+		</div>
+	</figcaption>
+
+</a>

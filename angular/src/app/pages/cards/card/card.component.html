@@ -1,0 +1,79 @@
+<div class="max">
+	<!-- Card -->
+	<article class="card-detail flex z-2" *ngIf="card">
+
+		<!-- Card image -->
+		<figure class="card-image">
+			<div class="card-image-inner">
+				<img
+					src="{{card.image}}"
+					class="img-card-image"
+					[class.active]="cardImageHover"
+					(click)="cardImageHover = !cardImageHover" />
+				<img
+					src="{{card.image_high_res}}"
+					class="img-card-image-hover"
+					[class.active]="cardImageHover"
+					(click)="cardImageHover = !cardImageHover" />
+			</div>
+		</figure>
+
+		<!-- Card information -->
+		<aside class="card-information-wrapper">
+			<div class="card-information-inner"></div>
+			<div class="card-information">
+				<h1>{{card.name}}</h1>
+
+				<div class="border-top padding-top">
+					<div class="padding-top">
+						<div class="flex padded vertical">
+							<div class="card-rarity flex" *ngIf="tagRarity">
+								<mb-tag [tag]="tagRarity"></mb-tag>
+							</div>
+							<div class="card-expansion">
+								<a [routerLink]="card.expansion.route">
+									{{card.expansion.name}}
+								</a>
+							</div>
+							<div class="card-number">
+								{{card.number}}
+							</div>
+							<div class="card-artist">
+								<div class="subheading">Illustrated by</div>
+								{{card.artist}}
+							</div>
+							<div class="card-price">
+								{{card.price | currency}}
+							</div>
+							<div>
+								<mb-button [button]="{text: 'Buy on TCGPlayer', icon: 'external-link', classes: 'secondary'}"></mb-button>
+							</div>
+							<div>
+								<mb-button [button]="{text: 'Buy on eBay', icon: 'external-link', classes: 'secondary'}"></mb-button>
+							</div>
+						</div>
+					</div>
+				</div>
+			
+			</div>
+		</aside>
+		
+	</article>
+
+	<div class="flex vertical padding relative z-1">
+		<div class="padding">
+			<mb-cards
+				*ngIf="relatedCards"
+				[cards]="relatedCards"
+				(outputGetCards)="getCards()">
+			</mb-cards>
+		</div>
+		<div class="padding">
+			<mb-cards
+				*ngIf="expansionCards"
+				[cards]="expansionCards"
+				(outputGetCards)="getCards()">
+			</mb-cards>
+		</div>
+	</div>
+</div>

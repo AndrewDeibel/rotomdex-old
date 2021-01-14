@@ -1,0 +1,10 @@
+@import "settings";
+
+.logo {
+	h1 {
+		font-family: $font-family;
+		text-transform: uppercase;
+		letter-spacing: 2px;
+		font-weight: normal;
+	}
+}

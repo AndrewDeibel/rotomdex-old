@@ -1,0 +1,8 @@
+@import "settings";
+
+.alert {
+	padding: $spacing ($spacing * 2);
+	border: $border;
+	border-radius: $border-radius;
+	background: rgba($grey, .5);
+}

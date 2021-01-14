@@ -1,0 +1,21 @@
+<a
+	class="item"
+	[routerLink]="card.route ? card.route : []"
+>
+	<figure class="card-image {{!card.image ? 'placeholder' : ''}}" *ngIf="card.image">
+		<div class="image-wrapper">
+			<img src="{{card.image}}" />
+		</div>
+		<div *ngIf="false" class="zoom-image-wrapper">
+			<img src="{{card.image}}" />
+		</div>
+	</figure>
+	<aside class="card-information">
+		<div class="card-name">
+			{{card.name}}
+		</div>
+		<div class="card-price" *ngIf="card.price">
+			<span class="price">{{card.price | currency}}</span>
+		</div>
+	</aside>
+</a>

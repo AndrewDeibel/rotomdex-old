@@ -1,0 +1,42 @@
+@import "settings",
+		"project/pokemon";
+
+.type-tag {
+	@each $type, $color in $poke-types {
+		&.#{$type} {
+			display: flex;
+			vertical-align: middle;
+			border-radius: $border-radius-small;
+			background: $color;
+			overflow: hidden;
+			margin-right: $spacing / 2;
+			box-shadow: $shadow;
+			img {
+				width: 16px;
+				padding: $spacing / 2;
+				padding-right: 0;
+			}
+			span {
+				display: block;
+				padding: ($spacing / 2) $spacing;
+				padding-left: $spacing * 2;
+				color: white;
+				font-size: 10px;
+				text-transform: uppercase;
+				background: darken($color, 45%);
+				position: relative;
+				overflow: hidden;
+				&:before {
+					content: '';
+					width: 12px;
+					height: 140%;
+					background: $color;
+					position: absolute;
+					left: -4px;
+					top: -6px;
+					transform: rotate(30deg);
+				}
+			}
+		}
+	}
+}
