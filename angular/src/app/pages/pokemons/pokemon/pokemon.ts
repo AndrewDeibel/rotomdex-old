@@ -1,5 +1,12 @@
 import { Select, SelectOption, SelectOptionGroup } from "@app/controls";
 
+export class EvolutionChain {
+	id: number;
+	name: string;
+	national_dex_number: number;
+	sprite: string;
+}
+
 export class Pokemon {
 	id: number;
 	name: string;
@@ -20,6 +27,7 @@ export class Pokemon {
 	types: string[] = [];
 	height: number;
 	weight: number;
+	evolution_chain: EvolutionChain[] = [];
 
 	route: string;
 
@@ -79,6 +87,7 @@ export class PokemonSprites {
 	default?: string;
 	official?: string;
 	shiny?: string;
+	icon?: string;
 	
 	constructor(init?:Partial<PokemonSprites>) {
 		Object.assign(this, init);

@@ -50,7 +50,7 @@ export class ExpansionComponent implements OnInit {
 				}));
 				this.cards.items.header.symbol = expansion.symbol;
 				this.cards.items.header.title = expansion.name;
-				this.cards.items.header.subtitle = `${expansion.total_cards} Cards`;
+				this.cards.items.header.subtitle = `${expansion.total_cards} Cards - ${this.datePipe.transform(expansion.release_date)}`;
 				this.cards.items.footer.pageSize = expansion.total_cards;
 			}
 		});

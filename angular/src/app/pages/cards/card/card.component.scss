@@ -108,6 +108,17 @@
             z-index: 1;
             position: relative;
 			flex: 1;
+
+			.card-types {
+				display: flex;
+			}
+			.card-hp {
+				font-weight: bold;
+				font-size: 32px;
+				span {
+					font-size: 35%;
+				}
+			}
 		}
 		.card-price {
 			color: $green;

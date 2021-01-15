@@ -3,6 +3,7 @@ import { Menu, MenuItem } from '@app/controls/menu';
 import { Icons } from './models/icons';
 import { AuthenticationService } from './services/auth.service';
 import { LoaderService } from './controls';
+import { NavigationEnd, Router } from '@angular/router';
 
 @Component({
 	selector: 'app-root',
@@ -19,6 +20,7 @@ export class AppComponent implements OnInit {
 
 	constructor(
 		private cdRef: ChangeDetectorRef,
+		private router: Router,
 		private authenticationService: AuthenticationService,
 		private loaderService: LoaderService) { }
 
@@ -31,6 +33,14 @@ export class AppComponent implements OnInit {
 				this.cdRef.detectChanges();
 			}
 		});
+
+		// Scroll to top
+		this.router.events.subscribe(event => {
+			if (!(event instanceof NavigationEnd)) {
+				return;
+			}
+			this.scrollToTop();
+		})
 
 		// Theme
 		let body = document.getElementsByTagName('body')[0];
@@ -76,5 +86,9 @@ export class AppComponent implements OnInit {
 			// 	}
 			// }),
 		);
+	}
+
+	scrollToTop() {
+		window.scrollTo(0, 0);
 	}
 }

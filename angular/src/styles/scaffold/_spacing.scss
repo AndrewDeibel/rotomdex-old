@@ -29,7 +29,7 @@
 	.margin-#{$side} {
 		margin-#{$side}: $spacing;
 	}
-	.margin-#{$side} {
+	.margin-#{$side}-none {
 		margin-#{$side}: 0 !important;
 	}
 

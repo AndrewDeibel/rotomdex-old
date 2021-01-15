@@ -43,7 +43,7 @@
 // Sizes
 .box {
 	flex: 1 0 0;
-    min-width: 0;
+	//min-width: 0; not sure why needed, collided with medium-12 setting width: 100%
 }
 .box-0 {
 	flex: 0 !important;

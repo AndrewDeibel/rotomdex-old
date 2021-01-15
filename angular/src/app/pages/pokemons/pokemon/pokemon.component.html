@@ -17,6 +17,21 @@
 					</div>
 				</div>
 			</div>
+			<div
+				*ngIf="pokemonVariant.pokemon.evolution_chain.length > 1"
+				class="pokemon-evolution-chain">
+				<div class="flex padded-2">
+					<div
+						class="pokemon-evolution-wrapper"
+						*ngFor="let evolution of pokemonVariant.pokemon.evolution_chain">
+						<div class="pokemon-evolution">
+							<div class="evolution-name">{{evolution.name}}</div>
+							<img [src]="evolution.sprite" />
+							<fa-icon icon="arrow-right"></fa-icon>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 		<div class="pokemon-info">
 			<div class="max">

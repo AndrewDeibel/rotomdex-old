@@ -22,7 +22,22 @@
 		<aside class="card-information-wrapper">
 			<div class="card-information-inner"></div>
 			<div class="card-information">
-				<h1>{{card.name}}</h1>
+
+				<div class="card-name-types flex flex-center flex-wrap padded margin-bottom">
+					<div class="card-name medium-12 box">
+						<h1>{{card.name}}</h1>
+					</div>
+					<div class="medium-12 flex padded flex-center">
+						<div class="card-hp">
+							<span>HP</span>{{card.hp}}
+						</div>
+						<div class="card-types">
+							<div *ngFor="let type of card.types">
+								<mb-type-tag [type]="type"></mb-type-tag>
+							</div>
+						</div>
+					</div>
+				</div>
 
 				<div class="border-top padding-top">
 					<div class="padding-top">

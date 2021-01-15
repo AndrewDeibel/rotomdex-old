@@ -33,7 +33,7 @@ export class ExpansionsComponent implements OnInit {
 
 		this.setupControls();
 
-		// Get data
+		// Response get data
 		this.expansionsService.allExpansionsObservable().subscribe(res => {
 			if (res) {
 				this.loaderService.hide();

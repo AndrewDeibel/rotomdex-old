@@ -36,7 +36,6 @@ export class ItemsFooterComponent implements OnInit {
 			change: value => {
 				this.itemsFooter.page = +value;
 				this.outputGetItems.emit();
-				this.scrollToTop();
 			}
 		});
 
@@ -48,7 +47,6 @@ export class ItemsFooterComponent implements OnInit {
 				this.itemsFooter.page = 1;
 				this.itemsFooter.textboxPage.value = this.itemsFooter.page.toString();
 				this.outputGetItems.emit();
-				this.scrollToTop();
 			}
 		});
 
@@ -58,7 +56,6 @@ export class ItemsFooterComponent implements OnInit {
 				this.itemsFooter.page--;
 				this.itemsFooter.textboxPage.value = this.itemsFooter.page.toString();
 				this.outputGetItems.emit();
-				this.scrollToTop();
 			}
 		});
 
@@ -68,7 +65,6 @@ export class ItemsFooterComponent implements OnInit {
 				this.itemsFooter.page++;
 				this.itemsFooter.textboxPage.value = this.itemsFooter.page.toString();
 				this.outputGetItems.emit();
-				this.scrollToTop();
 			}
 		});
 	}
@@ -110,10 +106,6 @@ export class ItemsFooterComponent implements OnInit {
 		this.itemsFooter.textboxPage.type = "number";
 		this.itemsFooter.textboxPage.min = 1;
 		this.itemsFooter.textboxPage.width = 64;
-	}
-
-	scrollToTop() {
-		window.scrollTo(0, 0);
 	}
 
 	isPrevDisabled() {

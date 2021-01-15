@@ -11,6 +11,7 @@ import { LoaderService, Tag } from '@app/controls';
 import { CardsService } from '../../../services/cards.service';
 import { ItemGroup, Items } from '@app/page/main';
 import { ExpansionService } from '@app/services/expansion.service';
+import { PokemonService } from '@app/pages/pokemons';
 
 @Component({
     selector: 'mb-card',
@@ -33,6 +34,7 @@ export class CardComponent implements OnInit {
 		private cardsService: CardsService,
 		private route: ActivatedRoute,
 		private expansionService: ExpansionService,
+		private pokemonService: PokemonService,
 		private authenticationService: AuthenticationService) {}
 
     ngOnInit(): void {
@@ -113,13 +115,17 @@ export class CardComponent implements OnInit {
 	}
 
 	getRelatedCards() {
-		this.loaderService.show();
-		this.cardsService.allCards({
-			page: 1,
-			page_size: 6,
-			language_id: 1,
-			sort_by: "name"
-		});
+		// if (this.card) {
+		// 	this.loaderService.show();
+		// 	this.pokemonService.getPokemonVariantCards({
+		// 		page: this.relatedCards.footer.page,
+		// 		page_size: this.relatedCards.footer.pageSize,
+		// 		query: this.relatedCards.filter.query,
+		// 		slug: this.card.pokemon.slug,
+		// 		sort_by: this.relatedCards.filter.sortBy,
+		// 		sort_direction: this.relatedCards.filter.sortDirection
+		// 	});
+		// }
 	}
 
 }
