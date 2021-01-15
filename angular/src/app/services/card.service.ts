@@ -5,6 +5,7 @@ import { BehaviorSubject } from "rxjs";
 import { environment } from "src/environments/environment";
 import { CardFactory } from "../pages/cards/cards.factory";
 import { Card } from "../pages/cards/card/card";
+import { CacheGlobal } from "./cache/globalCache";
 
 @Injectable({ providedIn: 'root' })
 export class CardService {
@@ -18,9 +19,16 @@ export class CardService {
 		return this.cardSubject.asObservable();
 	}
 	getCard(code: string) {
-		this.http.get<APIResponse>(environment.api + "card/" + code).subscribe(res => {
-			this.cardSubject.next(new Card(res.data));
-		});
+		if (CacheGlobal.card[code]) {
+			this.cardSubject.next(CacheGlobal.card[code]);
+		}
+		else {
+			this.http.get<APIResponse>(environment.api + "card/" + code).subscribe(res => {
+				var card = new Card(res.data);
+				CacheGlobal.card[code] = card;
+				this.cardSubject.next(card);
+			});
+		}
 	}
 
 }

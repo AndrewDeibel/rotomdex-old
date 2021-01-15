@@ -25,6 +25,7 @@
 	box-shadow: $shadow-inset;
 	transition: $transition;
 	max-width: 100%;
+	cursor: text; 
 	&:focus {
 		border-color: $primary-color;
 		box-shadow: $shadow-focus, $shadow-focus-inset;

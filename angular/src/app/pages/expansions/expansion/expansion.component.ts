@@ -9,6 +9,7 @@ import { DatePipe } from '@angular/common';
 import { Title } from '@angular/platform-browser';
 import { LoaderService } from '@app/controls';
 import { ItemGroup } from '@app/page/main';
+import { AppSettings } from '@app/app';
 
 @AutoUnsubscribe()
 @Component({
@@ -20,8 +21,6 @@ export class ExpansionComponent implements OnInit {
 
 	@ViewChild(CardsComponent) cardsComponent: CardsComponent;
 
-	code: string;
-	expansion: Expansion;
 	cards: Cards;
 
     constructor(
@@ -32,21 +31,30 @@ export class ExpansionComponent implements OnInit {
         private route: ActivatedRoute) { }
 
 	ngOnDestroy() { }
-    ngOnInit(): void {
+    ngOnInit() { 
+		this.buildControls();
+		this.subExpansion();
+		this.handleParams();
+	}
 
-		// Init cards
-		this.cards = new Cards({ getCardsOnInit: false });
-		this.cards.items.filter.sortBy = "price";
-		this.cards.items.filter.selectSortBy.value = "price";
-		this.cards.items.showFooter = false;
+	handleParams() {
+		this.route.params.subscribe(params => {
+			this.getExpansion(params["code"]);
+		});
+	}
+	
+	getExpansion(code) {
+		this.loaderService.show();
+		this.expansionService.getExpansion(code);
+	}
 
-		// Response from expansion request
+	subExpansion() {
 		this.expansionService.expansionObservable().subscribe(expansion => {
 			if (expansion) {
 				this.loaderService.hide();
-				this.expansion = expansion;
+				this.titleService.setTitle(AppSettings.titlePrefix + expansion.name);
 				this.cards.items.itemGroups.push(new ItemGroup({
-					items: this.expansion.cards
+					items: expansion.cards
 				}));
 				this.cards.items.header.symbol = expansion.symbol;
 				this.cards.items.header.title = expansion.name;
@@ -54,16 +62,15 @@ export class ExpansionComponent implements OnInit {
 				this.cards.items.footer.pageSize = expansion.total_cards;
 			}
 		});
-		
-		// Get id from route
-		this.route.params.subscribe(params => {
-			this.code = params["code"];
+	}
 
-			// Request expansion
-			this.loaderService.show();
-			this.expansionService.getExpansion(this.code);
-
-		});
+	buildControls() {
+		// Cards
+		// TODO: change to items component? No need to reuse cards component...
+		this.cards = new Cards({ getCardsOnInit: false });
+		this.cards.items.filter.sortBy = "price";
+		this.cards.items.filter.selectSortBy.value = "price";
+		this.cards.items.showFooter = false;
 	}
 
 }

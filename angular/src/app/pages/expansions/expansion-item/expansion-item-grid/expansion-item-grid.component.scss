@@ -6,12 +6,6 @@
 	width: 100%;
 }
 
-.symbol {
-	width: 30px;
-	height: 30px;
-	padding: 2px;
-}
-
 .item-grid-expansion {
 	flex: 1;
 	display: flex;
@@ -19,7 +13,6 @@
 	align-items: center;
 	border-radius: $border-radius-small;
 	width: 100%;
-	border: $border;
 	transition: $transition;
 	overflow: hidden;
 	&:hover {
@@ -32,7 +25,8 @@
 		height: 160px;
 		width: 100%;
 		position: relative;
-		img {
+		background: rgba($grey, .2);
+		img:not(.symbol) {
 			padding: $spacing * 4;
 			position: absolute;
 			top: 50%;
@@ -40,6 +34,12 @@
 			transform: translate(-50%, -50%);
 			max-height: 80%;
 			max-width: 100%;
+		}
+
+		.symbol {
+			width: 24px;
+			height: 24px;
+			margin: $spacing;
 		}
 	}
 	.expansion-name {
@@ -53,5 +53,7 @@
 		width: 100%;
 		padding: $spacing;
 		line-height: 1;
+		background: $menu-bg;
+		color: white;
 	}
 }

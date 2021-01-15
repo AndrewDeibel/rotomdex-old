@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { LoaderService } from '@app/controls';
 import { ItemGroup, Items } from '@app/page/main';
 import { Card, Cards } from '@app/pages/cards';
@@ -22,6 +22,7 @@ export class PokemonComponent implements OnInit {
 		private pokemonService: PokemonService,
 		private loaderService: LoaderService,
 		private route: ActivatedRoute,
+		private router: Router,
 	) { }
 
 	ngOnInit() {
@@ -31,6 +32,8 @@ export class PokemonComponent implements OnInit {
 		this.items.showHeader = false;
 		SetSortByPokemon(this.items.filter.selectSortBy);
 		this.items.filter.sortBy = this.items.filter.selectSortBy.value;
+		this.items.footer.pageSize = 24;
+		this.items.footer.selectPageSize.value = this.items.footer.pageSize.toString();
 
 		this.loaderService.show();
 
@@ -63,14 +66,6 @@ export class PokemonComponent implements OnInit {
 			this.pokemonService.getPokemonVariant(this.slug);
 		});
 
-	}
-
-	prevPokemon() {
-
-	}
-
-	nextPokemon() {
-		
 	}
 
 	getCards() {

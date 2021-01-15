@@ -24,9 +24,6 @@ input {
 *:focus, *:active {
 	outline: 0 !important;
 }
-.hover {
-    background: rgba(black, .05);
-}
 .focus {
     border-color: $primary-color!important;
     box-shadow: $shadow-focus !important;

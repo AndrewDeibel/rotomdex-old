@@ -69,6 +69,8 @@ export class PokemonVariant {
 	height: number;
 	weight: number;
 	types: string[] = [];
+	previous_pokemon: string;
+	next_pokemon: string;
 
 	route: string;
 

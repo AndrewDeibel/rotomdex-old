@@ -29,6 +29,8 @@ export class PokemonsComponent implements OnInit {
 		this.items.filter.textboxSearch.placeholder = "Search Pokémon...";
 		SetSortByPokemon(this.items.filter.selectSortBy);
 		this.items.filter.sortBy = this.items.filter.selectSortBy.value;
+		this.items.footer.pageSize = 24;
+		this.items.footer.selectPageSize.value = this.items.footer.pageSize.toString();
 		
 		this.titleService.setTitle(AppSettings.titlePrefix + 'Pokemon');
 

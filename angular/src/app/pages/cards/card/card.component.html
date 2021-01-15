@@ -51,7 +51,7 @@
 								</a>
 							</div>
 							<div class="card-number">
-								{{card.number}}
+								{{card.number}}/{{card.expansion.total_cards ? card.expansion.total_cards : '?'}}
 							</div>
 							<div class="card-artist">
 								<div class="subheading">Illustrated by</div>
@@ -61,16 +61,37 @@
 								{{card.price | currency}}
 							</div>
 							<div *ngIf="card.pokemon" class="flex">
-								<a [routerLink]="card.pokemon.route" class="card-pokemon">
-									<img
-										*ngIf="card.is_shiny"
-										[src]="card.pokemon.variant.sprites.shiny" />
-									<img
-										*ngIf="!card.is_shiny"
-										[src]="card.pokemon.variant.sprites.default" />
-									<span class="pokemon-name">
-										{{card.pokemon.name}}
-									</span>
+								<a
+									[routerLink]="card.pokemon.variant.route"
+									class="card-pokemon hover round {{card.pokemon.variant.types[0]}}">
+									<div class="flex flex-center">
+										<div class="image-wrapper">
+											<img
+												class="shadow"
+												*ngIf="card.is_shiny"
+												[src]="card.pokemon.variant.sprites.shiny" />
+											<img
+												class="shadow"
+												*ngIf="!card.is_shiny"
+												[src]="card.pokemon.variant.sprites.default" />
+											<img
+												class="pokeball"
+												src="/assets/pokeball.png" />
+										</div>
+										<div class="padding-right-2 pokemon-name-number">
+											<div class="flex vertical">
+												<div class="pokemon-name bold">
+													{{card.pokemon.name}}
+												</div>
+												<div class="pokemon-number subheading opacity-5">
+													#{{card.pokemon.national_dex_number}} -
+													<span class="pokemon.region">
+														{{card.pokemon.generation ? card.pokemon.generation.region : 'Kanto'}}
+													</span>
+												</div>
+											</div>
+										</div>
+									</div>
 								</a>
 							</div>
 							<div>
@@ -88,15 +109,15 @@
 		
 	</article>
 
-	<div class="flex vertical padding relative z-1">
-		<div class="padding">
+	<div class="flex vertical relative z-1">
+		<div>
 			<mb-items
 				[items]="relatedCards"
 				(outputGetItems)="getRelatedCards()"
 				(outputDisplayModeChanged)="getRelatedCards()">
 			</mb-items>
 		</div>
-		<div class="padding">
+		<div>
 			<mb-items
 				[items]="expansionCards"
 				(outputGetItems)="getExpansionCards()"

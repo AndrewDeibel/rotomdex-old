@@ -83,10 +83,6 @@ export class CardComponent implements OnInit {
 				this.expansionCards.showFilters = false;
 				this.expansionCards.showFooter = false;
 				this.expansionCards.itemClasses = "width-2 medium-3 small-4";
-				// Exclude the card we are viewing
-				expansion.cards = expansion.cards.filter(card => {
-					return card.id !== this.card.id;
-				});
 				this.expansionCards.itemGroups = [
 					new ItemGroup({
 						items: expansion.cards

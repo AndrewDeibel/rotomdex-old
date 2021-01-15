@@ -28,6 +28,8 @@
 		filter: drop-shadow($shadow);
 		position: relative;
 		z-index: 2;
+		padding: $spacing;
+		width: 400px;
 	}
 	.pokeball {
 		position: absolute;
@@ -35,7 +37,7 @@
 		top: 50%;
 		transform: translateY(-50%);
 		width: 800px;
-		opacity: .15;
+		opacity: .1;
 		z-index: 1;
 	}
 	.prev-pokemon, .next-pokemon {
@@ -68,6 +70,11 @@
 		color: white;
 		line-height: 1;
 	}
+	mb-tag {
+		display: block;
+		box-shadow: $shadow;
+		border-radius: $border-radius;
+	}
 }
 
 .dex-number {
@@ -96,7 +103,7 @@
 	border-radius: $border-radius-small;
 	border-bottom-left-radius: 0;
 	border-bottom-right-radius: 0;
-	background: rgba(black, .2);
+	//background: rgba($menu-bg, .5);
 	z-index: 2;
 	padding: $spacing;
 	position: relative;
@@ -124,5 +131,6 @@
 		display: flex;
 		flex-direction: column;
 		align-items: center;
+		color: white;
 	}
 }

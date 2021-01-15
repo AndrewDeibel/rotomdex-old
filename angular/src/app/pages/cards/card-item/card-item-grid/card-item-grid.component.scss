@@ -4,20 +4,13 @@
 	width: 100%;
 }
 
-.card-grid, .deck-grid {
-	flex-direction: column;
-    display: flex;
-    //padding: $spacing;
-    align-items: center;
-    position: relative;
+.card-grid {
+	display: block;
     transition: $transition;
-	cursor: pointer;
-	border-radius: $border-radius-card;
-	overflow: hidden;
+	border-radius: $border-radius-small;
 	flex: 1 0 0;
-	background: $menu-bg;
-	box-shadow: $shadow;
-	//overflow: hidden;
+	background: linear-gradient(white 50%, $menu-bg 51%);
+	cursor: pointer;
     &:active {
 		border-color: $primary-color!important;
 		box-shadow: $shadow-focus !important;
@@ -29,18 +22,11 @@
     .card-image {
 		width: 100%;
         position: relative;
-		overflow: hidden;
-		box-shadow: $shadow;
-		border-radius: $border-radius-card;
-		border-top-left-radius: 0;
-		border-top-right-radius: 0;
         .image-wrapper {
 			width: 100%;
 			box-shadow: $shadow;
 			overflow: hidden;
 			border-radius: $border-radius-card;
-			border-top-left-radius: 0;
-			border-top-right-radius: 0;
 			img {
 				display: block;
 				width: 100%;
@@ -55,7 +41,8 @@
     .card-information {
 		width: 100%;
 		padding: ($spacing / 2) $spacing $spacing $spacing;
-		//position: absolute;
+		border-bottom-left-radius: $border-radius-small;
+		border-bottom-right-radius: $border-radius-small;
 		bottom: 0;
 		background: rgba($menu-bg, .9);
 		display: flex;
@@ -66,10 +53,6 @@
 			white-space: nowrap;
 			text-overflow: ellipsis;
 			overflow: hidden;
-		}
-		.card-number {
-			font-size: 10px;
-			font-weight: bold;
 		}
     }
 }

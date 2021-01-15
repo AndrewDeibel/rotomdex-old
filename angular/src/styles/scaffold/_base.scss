@@ -27,7 +27,13 @@ body {
 
 // Shadow
 .shadow {
-    box-shadow: $shadow;
+	box-shadow: $shadow;
+}
+img {
+	&.shadow {
+		box-shadow: none;
+		filter: drop-shadow($shadow);
+	}
 }
 
 // Z index
@@ -86,5 +92,19 @@ body {
 	+ *:not([class^="texture-"]) {
 		position: relative;
 		z-index: 2;
+	}
+}
+
+@for $i from 1 through 10 {
+	.opacity-#{$i} {
+		opacity: $i / 10;
+	}
+}
+
+.hover {
+	transition: $transition;
+	&:hover {
+		border-color: $primary-color;
+		box-shadow: $shadow-focus;
 	}
 }

@@ -5,6 +5,7 @@ import { Expansion } from "@app/pages";
 import { CardFactory } from "@app/pages/cards/cards.factory";
 import { BehaviorSubject } from "rxjs";
 import { environment } from "src/environments/environment";
+import { CacheGlobal } from "./cache/globalCache";
 import { CardResults } from "./cards.service";
 
 export interface SearchExpansionCardsParams {
@@ -31,9 +32,16 @@ export class ExpansionService {
 		return this.expansionSubject.asObservable()
 	}
 	getExpansion(code: string) {
-		this.http.get<APIResponse>(environment.api + "expansion/" + code).subscribe(res => {
-			this.expansionSubject.next(new Expansion(res.data))
-		});
+		if (CacheGlobal.expansion[code]) {
+			this.expansionSubject.next(CacheGlobal.expansion[code]);
+		}
+		else {
+			this.http.get<APIResponse>(environment.api + "expansion/" + code).subscribe(res => {
+				var expansion = new Expansion(res.data);
+				CacheGlobal.expansion[code] = expansion;
+				this.expansionSubject.next(expansion);
+			});
+		}
 	}
 
 	// Search expansions cards

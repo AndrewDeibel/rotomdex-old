@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Items, } from '@app/page/main';
 import { ExpansionsService } from '../../services/expansions.service';
-import { SelectOptionGroup, SelectOption } from '@app/controls/select';
 import { Title } from '@angular/platform-browser';
 import { LoaderService } from '@app/controls';
 import { AppSettings } from '@app/app';
@@ -23,42 +22,43 @@ export class ExpansionsComponent implements OnInit {
 
 	ngOnInit() {
 
-		// Init
-		this.items = new Items();
-		this.items.showHeader = false;
-		this.items.itemClasses = "width-3 medium-4 small-6";
-		this.items.header.title = "Expansions",
-		
 		this.titleService.setTitle(AppSettings.titlePrefix + 'Expansions');
-
 		this.setupControls();
+		this.subAllExpansions();
+	}
 
-		// Response get data
-		this.expansionsService.allExpansionsObservable().subscribe(res => {
-			if (res) {
+	subAllExpansions() {
+		this.expansionsService.allExpansionsObservable().subscribe(series => {
+			if (series) {
 				this.loaderService.hide();
-				this.items.footer.totalPages = res.total_pages;
 				this.items.itemGroups = [];
-				let count = 0;
-				res.series.forEach(_series => {
+				let expansionCount = 0;
+				series.forEach(_series => {
 					this.items.itemGroups.push({
 						items: _series.expansions,
 						name: _series.name
 					});
-					count += _series.expansions.length;
+					expansionCount += _series.expansions.length;
 				});
-				this.items.header.subtitle = `total: ${count}`;
+				this.items.header.subtitle = `total: ${expansionCount}`;
 			}
 		});
 	}
 
 	setupControls() {
 
-		// Search
+		// Items
+		this.items = new Items();
+		this.items.showHeader = false;
+		this.items.showFooter = false;
+		this.items.itemClasses = "width-3 medium-4 small-6";
+		this.items.header.title = "Expansions",
 		this.items.filter.textboxSearch.placeholder = "Search expansions...";
 
 		// Sort by
-		SetSortByExpansions(this.items.filter.selectSortBy);
+		SetSortByExpansions(this.items.filter);
+		this.items.filter.sortDirection = "desc";
+		this.items.filter.selectSortDirection.value = this.items.filter.sortDirection;
 
 		// Page size
 		this.items.footer.pageSize = 100;
@@ -67,7 +67,9 @@ export class ExpansionsComponent implements OnInit {
 	getItems() {
 		this.loaderService.show();
 		this.expansionsService.getExpansions({
-			sort_direction: this.items.filter.selectSortBy.value
+			query: this.items.filter.query,
+			sort_by: this.items.filter.sortBy,
+			sort_direction: this.items.filter.sortDirection
 		});
 	}
 

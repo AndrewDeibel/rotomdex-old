@@ -1,22 +1,22 @@
 <div *ngIf="pokemonVariant" class="pokemon-details">
 	<div class="flex vertical">
 		<div class="flex justify-center hero {{pokemonVariant.types[0]}}">
-			<a class="prev-pokemon" (click)="prevPokemon()">
+			<a class="prev-pokemon" [routerLink]="'/pokemon/' + pokemonVariant.previous_pokemon">
 				<fa-icon icon="arrow-left"></fa-icon>
 			</a>
-			<a class="next-pokemon" (click)="nextPokemon()">
+			<a class="next-pokemon" [routerLink]="'/pokemon/' + pokemonVariant.next_pokemon">
 				<fa-icon icon="arrow-right"></fa-icon>
 			</a>
 			<img class="art" src="{{pokemonVariant.sprites.official}}" />
 			<img class="pokeball" src="/assets/pokeball.png" />
-			<div class="pokemon-sprites">
+			<!-- <div class="pokemon-sprites">
 				<div class="max">
 					<div class="flex vertical">
 						<img src="{{pokemonVariant.sprites.default}}" />
 						<img src="{{pokemonVariant.sprites.shiny}}" />
 					</div>
 				</div>
-			</div>
+			</div> -->
 			<div
 				*ngIf="pokemonVariant.pokemon.evolution_chain.length > 1"
 				class="pokemon-evolution-chain">
@@ -24,11 +24,11 @@
 					<div
 						class="pokemon-evolution-wrapper"
 						*ngFor="let evolution of pokemonVariant.pokemon.evolution_chain">
-						<div class="pokemon-evolution">
-							<div class="evolution-name">{{evolution.name}}</div>
+						<a class="pokemon-evolution" [routerLink]="'/pokemon/' + evolution.slug">
 							<img [src]="evolution.sprite" />
+							<div class="evolution-name">{{evolution.name}}</div>
 							<fa-icon icon="arrow-right"></fa-icon>
-						</div>
+						</a>
 					</div>
 				</div>
 			</div>
@@ -42,15 +42,16 @@
 								{{pokemonVariant.name}}
 								<span class="dex-number">
 									#{{pokemonVariant.pokemon.national_dex_number}}
+									-
+									<span class="pokemon-region">
+										{{pokemonVariant.pokemon.generation.region}}
+									</span>
 								</span>
 							</h1>
 						</div>
 					</div>
 					<div class="flex padded">
 						<div class="dex-tags">
-							<span class="pokemon-region">
-								{{pokemonVariant.pokemon.generation.region}}
-							</span>
 						</div>
 						<div class="pokemon-types">
 							<div class="flex padded-small">

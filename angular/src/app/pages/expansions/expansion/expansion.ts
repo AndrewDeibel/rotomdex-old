@@ -1,4 +1,5 @@
 import { Select, SelectOption, SelectOptionGroup } from '@app/controls';
+import { ItemsFilter } from '@app/page/main';
 import { Card } from '@app/pages/cards';
 
 export class Expansion {
@@ -51,8 +52,8 @@ export class Series {
     }
 }
 
-export function SetSortByExpansions(select: Select) {
-	select.optionGroups[0] = new SelectOptionGroup({
+export function SetSortByExpansions(itemFilter: ItemsFilter) {
+	itemFilter.selectSortBy.optionGroups[0] = new SelectOptionGroup({
 		label: "Sort By",
 		options: [
 			new SelectOption({
@@ -61,5 +62,6 @@ export function SetSortByExpansions(select: Select) {
 			}),
 		]
 	});
-	select.value = "expansion.release_date";
+	itemFilter.selectSortBy.value = "expansion.release_date";
+	itemFilter.sortBy = itemFilter.selectSortBy.value;
 }
