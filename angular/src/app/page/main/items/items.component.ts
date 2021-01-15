@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Items } from './items';
 import { ItemDisplayType } from './items-filter';
 import { Title } from '@angular/platform-browser';
+import { AppSettings } from '@app/app';
 
 @Component({
 	selector: 'mb-items',
@@ -26,7 +27,7 @@ export class ItemsComponent implements OnInit {
 	ngOnInit() {
 		
 		if (this.items.header.title) {
-			this.titleService.setTitle(`Mana Binder: ${this.items.header.title}`);
+			this.titleService.setTitle(AppSettings.titlePrefix + this.items.header.title);
 		}
 		
 		// Get query params

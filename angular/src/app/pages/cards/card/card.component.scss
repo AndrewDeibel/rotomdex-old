@@ -120,3 +120,23 @@
 		filter: drop-shadow(0 1px 1px rgba(black, .8));
 	}
 }
+
+.card-pokemon {
+	display: flex;
+	padding: $spacing;
+	border: $border;
+	border-radius: $border-radius-small;
+	align-items: center;
+	transition: $transition;
+	img {
+		width: 48px;
+		height: 48px;
+	}
+	.pokemon-name {
+		padding: $spacing;
+	}
+	&:hover {
+		border-color: $primary-color;
+		box-shadow: $shadow-focus;
+	}
+}

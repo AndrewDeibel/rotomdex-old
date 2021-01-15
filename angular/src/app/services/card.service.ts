@@ -3,8 +3,8 @@ import { Injectable } from "@angular/core";
 import { APIResponse } from "@app/models";
 import { BehaviorSubject } from "rxjs";
 import { environment } from "src/environments/environment";
-import { CardFactory } from "../cards.factory";
-import { Card } from "./card";
+import { CardFactory } from "../pages/cards/cards.factory";
+import { Card } from "../pages/cards/card/card";
 
 @Injectable({ providedIn: 'root' })
 export class CardService {

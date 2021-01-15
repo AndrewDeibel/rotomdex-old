@@ -4,7 +4,7 @@ import { LoaderService } from '@app/controls';
 import { ItemGroup, Items } from '@app/page/main';
 import { Card, Cards } from '@app/pages/cards';
 import { SetSortByPokemon, PokemonVariant } from './pokemon';
-import { PokemonService } from './pokemon.service';
+import { PokemonService } from '../../../services/pokemon.service';
 
 @Component({
 	selector: 'mb-pokemon',

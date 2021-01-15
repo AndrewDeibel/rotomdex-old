@@ -1,3 +1,3 @@
 export * from './pokemon';
 export * from './pokemon.component';
-export * from './pokemon.service';
+export * from '../../../services/pokemon.service';

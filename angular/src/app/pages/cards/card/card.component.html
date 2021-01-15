@@ -42,8 +42,21 @@
 								<div class="subheading">Illustrated by</div>
 								{{card.artist}}
 							</div>
-							<div class="card-price">
+							<div class="card-price" *ngIf="card.price">
 								{{card.price | currency}}
+							</div>
+							<div *ngIf="card.pokemon" class="flex">
+								<a [routerLink]="card.pokemon.route" class="card-pokemon">
+									<img
+										*ngIf="card.is_shiny"
+										[src]="card.pokemon.variant.sprites.shiny" />
+									<img
+										*ngIf="!card.is_shiny"
+										[src]="card.pokemon.variant.sprites.default" />
+									<span class="pokemon-name">
+										{{card.pokemon.name}}
+									</span>
+								</a>
 							</div>
 							<div>
 								<mb-button [button]="{text: 'Buy on TCGPlayer', icon: 'external-link', classes: 'secondary'}"></mb-button>
@@ -62,18 +75,18 @@
 
 	<div class="flex vertical padding relative z-1">
 		<div class="padding">
-			<mb-cards
-				*ngIf="relatedCards"
-				[cards]="relatedCards"
-				(outputGetCards)="getCards()">
-			</mb-cards>
+			<mb-items
+				[items]="relatedCards"
+				(outputGetItems)="getRelatedCards()"
+				(outputDisplayModeChanged)="getRelatedCards()">
+			</mb-items>
 		</div>
 		<div class="padding">
-			<mb-cards
-				*ngIf="expansionCards"
-				[cards]="expansionCards"
-				(outputGetCards)="getCards()">
-			</mb-cards>
+			<mb-items
+				[items]="expansionCards"
+				(outputGetItems)="getExpansionCards()"
+				(outputDisplayModeChanged)="getExpansionCards()">
+			</mb-items>
 		</div>
 	</div>
 </div>

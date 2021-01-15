@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ExpansionsService } from '@app/pages/expansions/expansions.service';
+import { ExpansionService } from '@app/services/expansion.service';
 import { Expansion } from './expansion';
 import { Cards } from '@app/pages/cards/cards';
 import { AutoUnsubscribe } from "ngx-auto-unsubscribe";
@@ -28,7 +28,7 @@ export class ExpansionComponent implements OnInit {
 		private loaderService: LoaderService,
 		private titleService: Title,
 		private datePipe: DatePipe,
-        private expansionsService: ExpansionsService,
+        private expansionService: ExpansionService,
         private route: ActivatedRoute) { }
 
 	ngOnDestroy() { }
@@ -41,7 +41,7 @@ export class ExpansionComponent implements OnInit {
 		this.cards.items.showFooter = false;
 
 		// Response from expansion request
-		this.expansionsService.expansionObservable().subscribe(expansion => {
+		this.expansionService.expansionObservable().subscribe(expansion => {
 			if (expansion) {
 				this.loaderService.hide();
 				this.expansion = expansion;
@@ -61,7 +61,7 @@ export class ExpansionComponent implements OnInit {
 
 			// Request expansion
 			this.loaderService.show();
-			this.expansionsService.getExpansion(this.code);
+			this.expansionService.getExpansion(this.code);
 
 		});
 	}

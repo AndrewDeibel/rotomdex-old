@@ -2,7 +2,7 @@ import { HttpInterceptor, HttpRequest, HttpHandler, HttpErrorResponse, HttpEvent
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
-import { AuthenticationService } from '@app/pages/auth/auth.service';
+import { AuthenticationService } from '@app/services/auth.service';
 import { NotificationsService, Notification } from '@app/controls/notifications';
 import { AlertType } from '@app/controls/alert/alert';
 

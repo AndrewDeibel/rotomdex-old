@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewEncapsulation, Version } from '@angular/core';
 import { WebcamImage, WebcamInitError, WebcamUtil } from 'ngx-webcam';
 import { Subject, Observable, Subscription } from 'rxjs';
-import { ScannerService, ScanType } from '@app/pages/scanner/scanner.service';
+import { ScannerService, ScanType } from '@app/services/scanner.service';
 import { Router } from '@angular/router';
 import { Card } from '@app/pages/cards/card';
 import { Checkbox,  } from '@app/controls/checkbox';
@@ -13,6 +13,7 @@ import { Icons } from '@app/models/icons';
 import { Title } from '@angular/platform-browser';
 import { AlertType, Alert } from '@app/controls/alert/alert';
 import { LoaderService } from '@app/controls';
+import { AppSettings } from '@app/app';
 
 @AutoUnsubscribe()
 @Component({
@@ -138,7 +139,7 @@ export class ScannerComponent implements OnInit {
 
 		this.loadSoundEffect();
 
-		this.titleService.setTitle('Mana Binder: Scanner');
+		this.titleService.setTitle(AppSettings.titlePrefix + 'Scanner');
 
 		this.checkboxBatchMode = new Checkbox({
 			checked: false,

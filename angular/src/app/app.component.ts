@@ -1,7 +1,7 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Menu, MenuItem } from '@app/controls/menu';
 import { Icons } from './models/icons';
-import { AuthenticationService } from './pages/auth/auth.service';
+import { AuthenticationService } from './services/auth.service';
 import { LoaderService } from './controls';
 
 @Component({
@@ -11,7 +11,6 @@ import { LoaderService } from './controls';
 })
 
 export class AppComponent implements OnInit {
-	title = 'mana-binder';
 	menu: Menu = new Menu();
 	theme: string = "dark";
 	showMenu: boolean = true;

@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Items, } from '@app/page/main';
-import { ExpansionsService } from './expansions.service';
+import { ExpansionsService } from '../../services/expansions.service';
 import { SelectOptionGroup, SelectOption } from '@app/controls/select';
 import { Title } from '@angular/platform-browser';
 import { LoaderService } from '@app/controls';
+import { AppSettings } from '@app/app';
+import { SetSortByExpansions } from './expansion/expansion';
 
 @Component({
 	selector: 'mb-expansions',
@@ -24,11 +26,10 @@ export class ExpansionsComponent implements OnInit {
 		// Init
 		this.items = new Items();
 		this.items.showHeader = false;
-		this.items.filter.showSort = false;
 		this.items.itemClasses = "width-3 medium-4 small-6";
 		this.items.header.title = "Expansions",
 		
-		this.titleService.setTitle(`Rotom Dex: Expansions`);
+		this.titleService.setTitle(AppSettings.titlePrefix + 'Expansions');
 
 		this.setupControls();
 
@@ -57,29 +58,7 @@ export class ExpansionsComponent implements OnInit {
 		this.items.filter.textboxSearch.placeholder = "Search expansions...";
 
 		// Sort by
-		this.items.filter.selectSortBy.optionGroups = [
-			new SelectOptionGroup({
-				label: "Sort By",
-				options: [
-					new SelectOption({
-						text: "Release Date",
-						value: "release_date",
-						selected: true,
-					}),
-					new SelectOption({
-						text: "Name",
-						value: "name"
-					}),
-					new SelectOption({
-						text: "Total Cards",
-						value: "total_cards"
-					})
-				]
-			})
-		];
-		this.items.filter.showListDisplayMode = false;
-		this.items.filter.sortBy = "release_date";
-		this.items.filter.selectSortBy.value = "release_date";
+		SetSortByExpansions(this.items.filter.selectSortBy);
 
 		// Page size
 		this.items.footer.pageSize = 100;
@@ -87,7 +66,9 @@ export class ExpansionsComponent implements OnInit {
 
 	getItems() {
 		this.loaderService.show();
-		this.expansionsService.getExpansions();
+		this.expansionsService.getExpansions({
+			sort_direction: this.items.filter.selectSortBy.value
+		});
 	}
 
 }

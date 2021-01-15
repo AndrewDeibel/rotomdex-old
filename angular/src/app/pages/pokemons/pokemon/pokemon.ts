@@ -15,6 +15,7 @@ export class Pokemon {
 	image: string;
 	slug: string;
 	variants: PokemonVariant[] = [];
+	variant: PokemonVariant;
 	sprites: PokemonSprites;
 	types: string[] = [];
 	height: number;
@@ -34,6 +35,9 @@ export class Pokemon {
 			init.variants.forEach(variant => {
 				this.variants.push(new PokemonVariant(variant));
 			});
+		}
+		if (init.variant) {
+			this.variant = new PokemonVariant(this.variant);
 		}
 	}
 }
@@ -65,6 +69,9 @@ export class PokemonVariant {
 		
 		// Route
 		this.route = `/pokemon/${this.slug}`;
+
+		// Init sprites
+		this.sprites = new PokemonSprites(init.sprites);
 	}
 }
 

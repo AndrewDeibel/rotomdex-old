@@ -1,9 +1,9 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { SearchService } from '@app/page/header/search/search.service';
+import { SearchService } from '@app/services/search.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Card } from '@app/pages/cards/card';
 import { Menu, MenuItem } from '@app/controls/menu';
-import { SearchCardsParams, CardsService } from '@app/pages/cards/cards.service';
+import { SearchCardsParams, CardsService } from '@app/services/cards.service';
 
 @Component({
 	selector: 'mb-search',

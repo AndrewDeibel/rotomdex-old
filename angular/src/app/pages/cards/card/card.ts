@@ -60,6 +60,11 @@ export class Card {
 		if (init.expansion) {
 			this.expansion = new Expansion(init.expansion);
 		}
+
+		// Initalize pokemon
+		if (init.pokemon) {
+			this.pokemon = new Pokemon(init.pokemon);
+		}
 	}
 }
 

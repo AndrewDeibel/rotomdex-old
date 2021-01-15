@@ -4,7 +4,7 @@ import { APIResponse } from "@app/models";
 import { Card } from "@app/pages/cards";
 import { BehaviorSubject } from "rxjs";
 import { environment } from "src/environments/environment";
-import { Pokemon, PokemonVariant } from "./pokemon";
+import { Pokemon, PokemonVariant } from "../pages/pokemons/pokemon/pokemon";
 
 // Get pokemon interfaces
 export interface GetPokemonVariantCards {

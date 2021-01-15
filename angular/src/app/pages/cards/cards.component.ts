@@ -1,18 +1,19 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Menu, MenuItem } from '@app/controls/menu';
-import { SearchService } from '@app/page/header/search/search.service';
+import { SearchService } from '@app/services/search.service';
 import { Card } from '@app/pages/cards/card';
 import { Cards } from './cards';
-import { CardsService, CardResults } from './cards.service';
+import { CardsService, CardResults } from '../../services/cards.service';
 import { ActivatedRoute } from '@angular/router';
 import { ItemDisplayType } from '@app/page/main/items/items-filter/items-filter';
 import { Icons } from '@app/models/icons';
 import { Title } from '@angular/platform-browser';
-import { AuthenticationService } from '../auth/auth.service';
+import { AuthenticationService } from '../../services/auth.service';
 import "@app/extensions/string.extensions";
 import { LoaderService } from '@app/controls';
 import { ItemGroup } from '@app/page/main';
 import { SetSortByCards } from './card/card';
+import { AppSettings } from '@app/app';
 
 @Component({
     selector: 'mb-cards',
@@ -51,7 +52,6 @@ export class CardsComponent implements OnInit {
 
     ngOnInit(): void {
 
-		this.cards.items.showHeader = false;
 		SetSortByCards(this.cards.items.filter.selectSortBy);
 		this.cards.items.filter.sortBy = this.cards.items.filter.selectSortBy.value;
 
@@ -94,7 +94,7 @@ export class CardsComponent implements OnInit {
 			this.cards.items.footer.totalPages = res.total_pages;
 			this.cards.totalCards = res.total_results;
 			this.cards.items.header.subtitle = `cards: ${res.total_results}`;
-			this.titleService.setTitle(`Mana Binder: ${this.cards.items.header.title}`);
+			this.titleService.setTitle(AppSettings.titlePrefix + this.cards.items.header.title);
 		}
 	}
 

@@ -3,7 +3,7 @@ import { Injectable } from "@angular/core";
 import { APIResponse } from "@app/models";
 import { BehaviorSubject } from "rxjs";
 import { environment } from "src/environments/environment";
-import { Pokemon, PokemonVariant } from "./pokemon/pokemon";
+import { Pokemon, PokemonVariant } from "../pages/pokemons/pokemon/pokemon";
 
 // Get pokemons interfaces
 export interface GetPokemons {

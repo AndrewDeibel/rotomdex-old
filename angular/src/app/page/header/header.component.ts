@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { User } from '@app/models/user';
 import { Menu, MenuItem } from '@app/controls/menu';
-import { AuthenticationService } from '@app/pages/auth/auth.service';
+import { AuthenticationService } from '@app/services/auth.service';
 import { Icons } from '@app/models/icons';
 
 @Component({

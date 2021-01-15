@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Textbox } from '@app/controls/textbox/textbox';
 import { Button, ButtonType } from '@app/controls/button';
 import { Menu, MenuItem } from '@app/controls/menu';
-import { AuthenticationService } from '@app/pages/auth/auth.service';
+import { AuthenticationService } from '@app/services/auth.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { first } from 'rxjs/operators';
 import { Icons } from '@app/models/icons';

@@ -3,14 +3,14 @@ import { Size } from '@app/models/size';
 import { Menu, MenuItem } from '@app/controls/menu';
 import { Card } from './card';
 import { ActivatedRoute } from '@angular/router';
-import { CardService } from './card.service';
-import { AuthenticationService } from '@app/pages/auth/auth.service';
+import { CardService } from '../../../services/card.service';
+import { AuthenticationService } from '@app/services/auth.service';
 import "@app/extensions/string.extensions";
 import { Icons } from '@app/models/icons';
 import { LoaderService, Tag } from '@app/controls';
-import { CardsService } from '../cards.service';
-import { Cards } from '../cards';
+import { CardsService } from '../../../services/cards.service';
 import { ItemGroup, Items } from '@app/page/main';
+import { ExpansionService } from '@app/services/expansion.service';
 
 @Component({
     selector: 'mb-card',
@@ -22,8 +22,8 @@ import { ItemGroup, Items } from '@app/page/main';
 export class CardComponent implements OnInit {
 
 	@Input() card: Card;
-	relatedCards: Cards = new Cards();
-	expansionCards: Cards = new Cards();
+	relatedCards: Items = new Items();
+	expansionCards: Items = new Items();
 	cardImageHover: boolean = false;
 	tagRarity: Tag;
 
@@ -32,6 +32,7 @@ export class CardComponent implements OnInit {
 		private cardService: CardService,
 		private cardsService: CardsService,
 		private route: ActivatedRoute,
+		private expansionService: ExpansionService,
 		private authenticationService: AuthenticationService) {}
 
     ngOnInit(): void {
@@ -49,6 +50,8 @@ export class CardComponent implements OnInit {
 						classes: this.card.rarity.toLowerCase().replace(' ', '-')
 					});
 				}
+				this.getRelatedCards();
+				this.getExpansionCards();
 			}
 		});
 
@@ -57,29 +60,40 @@ export class CardComponent implements OnInit {
 			if (res) {
 				this.loaderService.hide();
 
-				this.relatedCards.items.header.title = "Related";
-				this.relatedCards.items.showFilters = false;
-				this.relatedCards.items.showFooter = false;
-				this.relatedCards.items.itemClasses = "width-2 medium-3 small-4";
-				this.relatedCards.items.itemGroups = [
-					new ItemGroup({
-						items: res.cards
-					})
-				];
-
-				this.expansionCards.items.header.title = "More Darkness Ablaze";
-				this.expansionCards.items.showFilters = false;
-				this.expansionCards.items.showFooter = false;
-				this.expansionCards.items.itemClasses = "width-2 medium-3 small-4";
-				this.expansionCards.items.itemGroups = [
+				this.relatedCards.header.title = "Related";
+				this.relatedCards.showFilters = false;
+				this.relatedCards.showFooter = false;
+				this.relatedCards.itemClasses = "width-2 medium-3 small-4";
+				this.relatedCards.itemGroups = [
 					new ItemGroup({
 						items: res.cards
 					})
 				];
 			}
 		});
+
+		// Response get expansion cards
+		this.expansionService.expansionObservable().subscribe(expansion => {
+			if (expansion) {
+				this.loaderService.hide();
+
+				this.expansionCards.header.title = "More " + expansion.name;
+				this.expansionCards.showFilters = false;
+				this.expansionCards.showFooter = false;
+				this.expansionCards.itemClasses = "width-2 medium-3 small-4";
+				// Exclude the card we are viewing
+				expansion.cards = expansion.cards.filter(card => {
+					return card.id !== this.card.id;
+				});
+				this.expansionCards.itemGroups = [
+					new ItemGroup({
+						items: expansion.cards
+					})
+				];
+			}
+		});
+
 		this.handleRoute();
-		this.getCards();
 	}
 	
 	handleRoute() {
@@ -91,7 +105,14 @@ export class CardComponent implements OnInit {
 		});
 	}
 
-	getCards() {
+	getExpansionCards() {
+		if (this.card) {
+			this.loaderService.show();
+			this.expansionService.getExpansion(this.card.expansion.code);
+		}
+	}
+
+	getRelatedCards() {
 		this.loaderService.show();
 		this.cardsService.allCards({
 			page: 1,

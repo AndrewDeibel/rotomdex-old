@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Card } from '@app/pages/cards/card';
-import { ScannerService } from '@app/pages/scanner/scanner.service';
+import { ScannerService } from '@app/services/scanner.service';
 import { Cards } from '@app/pages/cards/cards';
 import { MenuItem, Menu } from '@app/controls/menu';
 import { Textbox } from '@app/controls/textbox';
@@ -11,7 +11,7 @@ import { CardsService } from '@app/pages/cards';
 import { ItemsHeader, ItemsFooter, ItemsFilter, ItemGroup } from '@app/page/main';
 import { Items } from '@app/page/main/items/items';
 import { Icons } from '@app/models/icons';
-import { AuthenticationService } from '@app/pages/auth/auth.service';
+import { AuthenticationService } from '@app/services/auth.service';
 import { ScannerList } from './scanner-list';
 
 @AutoUnsubscribe()

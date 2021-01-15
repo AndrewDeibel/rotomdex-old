@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
+import { AppSettings } from '@app/app';
 import { LoaderService, SelectOption, SelectOptionGroup } from '@app/controls';
 import { ItemGroup, Items } from '@app/page/main';
 import { SetSortByPokemon, PokemonVariant } from './pokemon/pokemon';
-import { PokemonsService } from './pokemons.service';
+import { PokemonsService } from '../../services/pokemons.service';
 
 @Component({
 	selector: 'mb-pokemons',
@@ -29,7 +30,7 @@ export class PokemonsComponent implements OnInit {
 		SetSortByPokemon(this.items.filter.selectSortBy);
 		this.items.filter.sortBy = this.items.filter.selectSortBy.value;
 		
-		this.titleService.setTitle(`Rotom Dex: Pokemon`);
+		this.titleService.setTitle(AppSettings.titlePrefix + 'Pokemon');
 
 		// Get data
 		this.pokemonService.getPokemonVariantsObservable().subscribe(res => {
