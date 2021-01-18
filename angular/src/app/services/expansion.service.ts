@@ -1,20 +1,23 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { APIResponse } from "@app/models";
+import { APIGetPaged, APIResponse } from "@app/models";
 import { Expansion } from "@app/pages";
-import { CardFactory } from "@app/pages/cards/cards.factory";
+import { CardFactory } from "@app/services/factory/card.factory";
 import { BehaviorSubject } from "rxjs";
 import { environment } from "src/environments/environment";
-import { CacheGlobal } from "./cache/globalCache";
 import { CardResults } from "./cards.service";
 
-export interface SearchExpansionCardsParams {
+export class GetExpansion extends APIGetPaged {
+	code: string;
+
+	constructor(init?:Partial<GetExpansion>) {
+		super();
+		Object.assign(this, init);
+	}
+}
+
+export interface GetExpansionCards extends APIGetPaged {
 	expansion_id: number;
-    page: number;
-    page_size: number;
-    sort_by: string;
-    sort_direction: string;
-    query: string;
 }
 
 @Injectable({
@@ -23,25 +26,23 @@ export interface SearchExpansionCardsParams {
 
 export class ExpansionService {
 
-	constructor(private http: HttpClient) {}
+	constructor(
+		private http: HttpClient) {}
 
 	// Get expansion
-    private expansionSubject = new BehaviorSubject<Expansion>(null);
-	expansionObservable() {
-		this.expansionSubject = new BehaviorSubject<Expansion>(null);
-		return this.expansionSubject.asObservable()
+    private getExpansionSubject = new BehaviorSubject<Expansion>(null);
+	getExpansionObservable() {
+		this.getExpansionSubject = new BehaviorSubject<Expansion>(null);
+		return this.getExpansionSubject.asObservable()
 	}
-	getExpansion(code: string) {
-		if (CacheGlobal.expansion[code]) {
-			this.expansionSubject.next(CacheGlobal.expansion[code]);
-		}
-		else {
-			this.http.get<APIResponse>(environment.api + "expansion/" + code).subscribe(res => {
-				var expansion = new Expansion(res.data);
-				CacheGlobal.expansion[code] = expansion;
-				this.expansionSubject.next(expansion);
-			});
-		}
+	getExpansion(params: GetExpansion) {
+		var url = params.buildUrl("expansion/" + params.code);
+
+		// Don't cache paged data
+		this.http.get<APIResponse>(url).subscribe(res => {
+			var expansion = new Expansion(res.data);
+			this.getExpansionSubject.next(expansion);
+		});
 	}
 
 	// Search expansions cards
@@ -50,7 +51,7 @@ export class ExpansionService {
 		this.searchExpansionCardsSubject = new BehaviorSubject<CardResults>(null);
 		return this.searchExpansionCardsSubject.asObservable()
 	}
-    searchExpansionCards(params: SearchExpansionCardsParams) {
+    searchExpansionCards(params: GetExpansionCards) {
         // this.http.post<APIResponse>(environment.api + "expansion/cards", params).subscribe(res => {
 		// 	let cards: Card[] = [];
 		// 	res.data.cards.forEach(card => {

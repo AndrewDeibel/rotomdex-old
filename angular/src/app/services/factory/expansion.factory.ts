@@ -1,4 +1,4 @@
-import { Expansion, Series } from "./expansion/expansion";
+import { Expansion, Series } from "../../pages/expansions/expansion/expansion";
 
 export class ExpansionFactory {
 	expansions = [

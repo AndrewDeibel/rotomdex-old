@@ -3,7 +3,7 @@ import { Injectable } from "@angular/core";
 import { APIResponse } from "@app/models";
 import { BehaviorSubject } from "rxjs";
 import { environment } from "src/environments/environment";
-import { CardFactory } from "../pages/cards/cards.factory";
+import { CardFactory } from "./factory/card.factory";
 import { Card } from "../pages/cards/card/card";
 import { CacheGlobal } from "./cache/globalCache";
 

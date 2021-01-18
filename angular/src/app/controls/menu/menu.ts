@@ -19,6 +19,7 @@ export class Menu {
 	clearActiveClickOutside: boolean = true;
 	textboxSearch: Textbox;
 	search: boolean;
+	dark: boolean;
 
     constructor(init?:Partial<Menu>) {
 		Object.assign(this, init);

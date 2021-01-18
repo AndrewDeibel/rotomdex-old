@@ -1,113 +1,117 @@
-<div class="max">
-	<!-- Card -->
-	<article class="card-detail flex z-2" *ngIf="card">
+<div *ngIf="card">
 
-		<!-- Card image -->
-		<figure class="card-image">
-			<div class="card-image-inner">
-				<img
-					src="{{card.image}}"
-					class="img-card-image"
-					[class.active]="cardImageHover"
-					(click)="cardImageHover = !cardImageHover" />
-				<img
-					src="{{card.image_high_res}}"
-					class="img-card-image-hover"
-					[class.active]="cardImageHover"
-					(click)="cardImageHover = !cardImageHover" />
-			</div>
-		</figure>
-
-		<!-- Card information -->
-		<aside class="card-information-wrapper">
-			<div class="card-information-inner"></div>
-			<div class="card-information">
-
-				<div class="card-name-types flex flex-center flex-wrap padded margin-bottom">
-					<div class="card-name medium-12 box">
-						<h1>{{card.name}}</h1>
+	<!-- Card header -->
+	<aside class="card-header padding">
+		<div class="max">
+			<div class="flex flex-center flex-wrap padded">
+				<div class="card-name box">
+					<h2>{{card.name}}</h2>
+				</div>
+				<div class="flex padded flex-center">
+					<div class="card-hp">
+						<span>HP</span>{{card.hp}}
 					</div>
-					<div class="medium-12 flex padded flex-center">
-						<div class="card-hp">
-							<span>HP</span>{{card.hp}}
-						</div>
-						<div class="card-types">
-							<div *ngFor="let type of card.types">
-								<mb-type-tag [type]="type"></mb-type-tag>
-							</div>
+					<div class="card-types">
+						<div *ngFor="let type of card.types">
+							<mb-type-tag [type]="type"></mb-type-tag>
 						</div>
 					</div>
 				</div>
+			</div>
+		</div>
+	</aside>
 
-				<div class="border-top padding-top">
-					<div class="padding-top">
-						<div class="flex padded vertical">
-							<div class="card-rarity flex" *ngIf="tagRarity">
-								<mb-tag [tag]="tagRarity"></mb-tag>
-							</div>
-							<div class="card-expansion">
-								<a [routerLink]="card.expansion.route">
-									{{card.expansion.name}}
-								</a>
-							</div>
-							<div class="card-number">
-								{{card.number}}/{{card.expansion.total_cards ? card.expansion.total_cards : '?'}}
-							</div>
-							<div class="card-artist">
-								<div class="subheading">Illustrated by</div>
+	<div class="max">
+		
+		<!-- Card -->
+		<article class="card-detail flex z-2" *ngIf="card">
+
+			<!-- Card image -->
+			<figure class="card-image relative z-2">
+				<div class="card-image-inner">
+					<img
+						src="{{card.image}}"
+						class="img-card-image"
+						[class.active]="cardImageHover"
+						(click)="cardImageHover = !cardImageHover" />
+					<img
+						src="{{card.image_high_res}}"
+						class="img-card-image-hover"
+						[class.active]="cardImageHover"
+						(click)="cardImageHover = !cardImageHover" />
+				</div>
+			</figure>
+
+			<div class="relative z-1">
+				<div class="padding">
+					<div class="flex padded vertical">
+						<div class="card-rarity flex" *ngIf="tagRarity">
+							<mb-tag [tag]="tagRarity"></mb-tag>
+						</div>
+						<div class="card-expansion">
+							<a [routerLink]="card.expansion.route">
+								<img *ngIf="card.expansion.name !== 'Base'" src="{{card.expansion.symbol}}" />
+								{{card.expansion.name}}
+							</a>
+						</div>
+						<div class="card-number">
+							{{card.number}}/{{card.expansion.total_cards ? card.expansion.total_cards : '?'}}
+						</div>
+						<div class="card-artist">
+							<div class="subheading">Illustrated by</div>
+							<a [routerLink]="card.artist">
 								{{card.artist}}
-							</div>
-							<div class="card-price" *ngIf="card.price">
-								{{card.price | currency}}
-							</div>
-							<div *ngIf="card.pokemon" class="flex">
-								<a
-									[routerLink]="card.pokemon.variant.route"
-									class="card-pokemon hover round {{card.pokemon.variant.types[0]}}">
-									<div class="flex flex-center">
-										<div class="image-wrapper">
-											<img
-												class="shadow"
-												*ngIf="card.is_shiny"
-												[src]="card.pokemon.variant.sprites.shiny" />
-											<img
-												class="shadow"
-												*ngIf="!card.is_shiny"
-												[src]="card.pokemon.variant.sprites.default" />
-											<img
-												class="pokeball"
-												src="/assets/pokeball.png" />
-										</div>
-										<div class="padding-right-2 pokemon-name-number">
-											<div class="flex vertical">
-												<div class="pokemon-name bold">
-													{{card.pokemon.name}}
-												</div>
-												<div class="pokemon-number subheading opacity-5">
-													#{{card.pokemon.national_dex_number}} -
-													<span class="pokemon.region">
-														{{card.pokemon.generation ? card.pokemon.generation.region : 'Kanto'}}
-													</span>
-												</div>
+							</a>
+						</div>
+						<div class="card-price" *ngIf="card.price">
+							{{card.price | currency}}
+						</div>
+						<div *ngIf="card.pokemon" class="flex">
+							<a
+								[routerLink]="card.pokemon.variant.route"
+								class="card-pokemon hover round {{card.pokemon.variant.types[0]}}">
+								<div class="flex flex-center">
+									<div class="image-wrapper">
+										<img
+											class="shadow"
+											*ngIf="card.is_shiny"
+											[src]="card.pokemon.variant.sprites.shiny" />
+										<img
+											class="shadow"
+											*ngIf="!card.is_shiny"
+											[src]="card.pokemon.variant.sprites.default" />
+										<img
+											class="pokeball"
+											src="/assets/pokeball.png" />
+									</div>
+									<div class="padding-right-2 pokemon-name-number">
+										<div class="flex vertical">
+											<div class="pokemon-name bold">
+												{{card.pokemon.name}}
+											</div>
+											<div class="pokemon-number subheading opacity-5">
+												#{{card.pokemon.national_dex_number}} -
+												<span class="pokemon.region">
+													{{card.pokemon.generation ? card.pokemon.generation.region : 'Kanto'}}
+												</span>
 											</div>
 										</div>
 									</div>
-								</a>
-							</div>
-							<div>
-								<mb-button [button]="{text: 'Buy on TCGPlayer', icon: 'external-link', classes: 'secondary'}"></mb-button>
-							</div>
-							<div>
-								<mb-button [button]="{text: 'Buy on eBay', icon: 'external-link', classes: 'secondary'}"></mb-button>
-							</div>
+								</div>
+							</a>
+						</div>
+						<div>
+							<mb-button [button]="{text: 'Buy on TCGPlayer', icon: 'external-link', classes: 'secondary'}"></mb-button>
+						</div>
+						<div>
+							<mb-button [button]="{text: 'Buy on eBay', icon: 'external-link', classes: 'secondary'}"></mb-button>
 						</div>
 					</div>
 				</div>
-			
 			</div>
-		</aside>
-		
-	</article>
+			
+		</article>
+	</div>
 
 	<div class="flex vertical relative z-1">
 		<div>
@@ -125,4 +129,5 @@
 			</mb-items>
 		</div>
 	</div>
+
 </div>

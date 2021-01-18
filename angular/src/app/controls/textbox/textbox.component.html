@@ -1,5 +1,11 @@
-<div class="textbox-wrapper">
-	<label *ngIf="textbox.label" class="label">{{textbox.label}}</label>
+<div class="textbox-wrapper {{textbox.wrapperClasses}}"
+	[class.dark]="textbox.dark">
+
+	<label
+		*ngIf="textbox.label"
+		class="label">
+			{{textbox.label}}
+	</label>
 	
 	<!-- Not color picker -->
 	<input

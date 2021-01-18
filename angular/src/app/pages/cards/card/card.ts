@@ -1,6 +1,7 @@
 import { Select, SelectOption, SelectOptionGroup } from '@app/controls';
 import { Menu } from '@app/controls/menu';
 import "@app/extensions/string.extensions";
+import { ItemsFilter } from '@app/layout';
 import { Icons } from '@app/models';
 import { Expansion } from '@app/pages/expansions';
 import { Pokemon } from '@app/pages/pokemons/pokemon/pokemon';
@@ -88,13 +89,13 @@ export class CardCount {
 	}
 }
 
-export function SetSortByCards(select: Select) {
-	select.optionGroups[0] = new SelectOptionGroup({
+export function SetSortByCards(itemFilter: ItemsFilter) {
+	itemFilter.selectSortBy.optionGroups[0] = new SelectOptionGroup({
 		label: "Sort By",
 		options: [
 			new SelectOption({
 				text: "Number",
-				value: "card.order"
+				value: "card.number"
 			}),
 			new SelectOption({
 				text: "Name",
@@ -114,5 +115,6 @@ export function SetSortByCards(select: Select) {
 			})
 		]
 	});
-	select.value = "card.order";
+	itemFilter.selectSortBy.value = "card.order";
+	itemFilter.sortBy = itemFilter.selectSortBy.value;
 };

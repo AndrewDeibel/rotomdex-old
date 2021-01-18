@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '@app/../environments/environment';
 import { APIResponse } from '@app/models';
 import { Card } from '@app/pages/cards/card/card';
-import { CardFactory } from '../pages/cards/cards.factory';
+import { CardFactory } from './factory/card.factory';
 
 export interface GetAllCardsParams {
     page: number;

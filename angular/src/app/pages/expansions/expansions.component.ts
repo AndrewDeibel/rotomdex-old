@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Items, } from '@app/page/main';
+import { Items, } from '@app/layout/main';
 import { ExpansionsService } from '../../services/expansions.service';
 import { Title } from '@angular/platform-browser';
 import { LoaderService } from '@app/controls';
@@ -41,6 +41,13 @@ export class ExpansionsComponent implements OnInit {
 					expansionCount += _series.expansions.length;
 				});
 				this.items.header.subtitle = `total: ${expansionCount}`;
+				this.items.filter.dark = true;
+				this.items.filter.textboxSearch.classes = "color-white";
+				this.items.filter.textboxSearch.wrapperClasses = "color-white";
+				this.items.filter.textboxSearch.dark = true;
+				this.items.filter.selectSortBy.dark = true;
+				this.items.filter.selectSortDirection.dark = true;
+				this.items.filter.menuDisplayMode.dark = true;
 			}
 		});
 	}
@@ -54,6 +61,7 @@ export class ExpansionsComponent implements OnInit {
 		this.items.itemClasses = "width-3 medium-4 small-6";
 		this.items.header.title = "Expansions",
 		this.items.filter.textboxSearch.placeholder = "Search expansions...";
+		
 
 		// Sort by
 		SetSortByExpansions(this.items.filter);

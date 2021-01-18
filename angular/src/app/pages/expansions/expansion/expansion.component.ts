@@ -1,15 +1,16 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ExpansionService } from '@app/services/expansion.service';
-import { Expansion } from './expansion';
+import { ExpansionService, GetExpansion } from '@app/services/expansion.service';
+import { Expansion, SetSortByExpansion } from './expansion';
 import { Cards } from '@app/pages/cards/cards';
 import { AutoUnsubscribe } from "ngx-auto-unsubscribe";
-import { CardGroup, CardsComponent } from '@app/pages/cards';
+import { CardGroup, CardsComponent, SetSortByCards } from '@app/pages/cards';
 import { DatePipe } from '@angular/common';
 import { Title } from '@angular/platform-browser';
-import { LoaderService } from '@app/controls';
-import { ItemGroup } from '@app/page/main';
+import { LoaderService, Menu, MenuItem } from '@app/controls';
+import { ItemGroup, Items } from '@app/layout/main';
 import { AppSettings } from '@app/app';
+import { Icons } from '@app/models';
 
 @AutoUnsubscribe()
 @Component({
@@ -20,8 +21,7 @@ import { AppSettings } from '@app/app';
 export class ExpansionComponent implements OnInit {
 
 	@ViewChild(CardsComponent) cardsComponent: CardsComponent;
-
-	cards: Cards;
+	items: Items = new Items();
 
     constructor(
 		private loaderService: LoaderService,
@@ -32,9 +32,48 @@ export class ExpansionComponent implements OnInit {
 
 	ngOnDestroy() { }
     ngOnInit() { 
-		this.buildControls();
 		this.subExpansion();
+		this.setupControls();
 		this.handleParams();
+		SetSortByExpansion(this.items.filter);
+	}
+
+	subExpansion() {
+		this.expansionService.getExpansionObservable().subscribe(expansion => {
+			if (expansion) {
+				this.loaderService.hide();
+				this.titleService.setTitle(AppSettings.titlePrefix + expansion.name);
+				this.items.itemGroups.push(new ItemGroup({
+					items: expansion.cards
+				}));
+				this.items.header.symbol = expansion.symbol;
+				this.items.header.title = expansion.name;
+				this.items.header.subtitle = `${expansion.total_cards} Cards - ${this.datePipe.transform(expansion.release_date)}`;
+				this.items.footer.pageSize = expansion.total_cards;
+				this.items.header.dark = true;
+				this.items.filter.dark = true;
+				this.items.filter.textboxSearch.classes = "color-white";
+				this.items.filter.textboxSearch.wrapperClasses = "color-white";
+				this.items.filter.textboxSearch.dark = true;
+				this.items.filter.selectSortBy.dark = true;
+				this.items.filter.selectSortDirection.dark = true;
+				this.items.filter.menuDisplayMode.dark = true;
+				this.items.header.menu = new Menu({
+					round: true,
+					classes: "border",
+					dark: true,
+					items: [
+						new MenuItem({
+							icon: Icons.bars
+						})
+					]
+				})
+			}
+		});
+	}
+
+	setupControls() {
+		SetSortByCards(this.items.filter);
 	}
 
 	handleParams() {
@@ -42,35 +81,17 @@ export class ExpansionComponent implements OnInit {
 			this.getExpansion(params["code"]);
 		});
 	}
-	
+
 	getExpansion(code) {
 		this.loaderService.show();
-		this.expansionService.getExpansion(code);
-	}
-
-	subExpansion() {
-		this.expansionService.expansionObservable().subscribe(expansion => {
-			if (expansion) {
-				this.loaderService.hide();
-				this.titleService.setTitle(AppSettings.titlePrefix + expansion.name);
-				this.cards.items.itemGroups.push(new ItemGroup({
-					items: expansion.cards
-				}));
-				this.cards.items.header.symbol = expansion.symbol;
-				this.cards.items.header.title = expansion.name;
-				this.cards.items.header.subtitle = `${expansion.total_cards} Cards - ${this.datePipe.transform(expansion.release_date)}`;
-				this.cards.items.footer.pageSize = expansion.total_cards;
-			}
-		});
-	}
-
-	buildControls() {
-		// Cards
-		// TODO: change to items component? No need to reuse cards component...
-		this.cards = new Cards({ getCardsOnInit: false });
-		this.cards.items.filter.sortBy = "price";
-		this.cards.items.filter.selectSortBy.value = "price";
-		this.cards.items.showFooter = false;
+		this.expansionService.getExpansion(new GetExpansion({
+			code: code,
+			page: this.items.footer.page,
+			page_size: this.items.footer.pageSize,
+			query: this.items.filter.query,
+			sort_by: this.items.filter.sortBy,
+			sort_direction: this.items.filter.sortDirection
+		}));
 	}
 
 }

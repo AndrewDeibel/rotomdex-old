@@ -74,7 +74,7 @@ import {
 	ItemsGridComponent,
 	ItemsListComponent,
 	ItemsGroupsComponent,
-} from './page';
+} from './layout';
 
 // Helpers
 import {
@@ -201,7 +201,8 @@ import {
 	faThunderstorm,
 	faNewspaper,
 	faSparkles,
-	faQuestion
+	faQuestion,
+	faBars
 } from '@fortawesome/pro-duotone-svg-icons';
 import { CardItemListComponent } from './pages/cards/card-item/card-item-list/card-item-list.component';
 
@@ -432,7 +433,8 @@ export class AppModule {
 			faThunderstorm,
 			faNewspaper,
 			faSparkles,
-			faQuestion
+			faQuestion,
+			faBars
 		);
 		faConfig.defaultPrefix = "fad";
 	}

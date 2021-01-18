@@ -1,4 +1,4 @@
-import { Card } from "./card/card"
+import { Card } from "../../pages/cards/card/card"
 
 export class CardFactory {
 	cards = [

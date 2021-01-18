@@ -4,6 +4,7 @@ export class Select {
 	options: SelectOption[] = [];
 	optionGroups: SelectOptionGroup[] = [];
 	classes: string;
+	dark: boolean;
 	change: (value: string) => void;
 	_change: (value: string) => void;
 

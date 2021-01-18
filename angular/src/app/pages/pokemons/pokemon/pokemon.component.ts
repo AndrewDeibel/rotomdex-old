@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LoaderService } from '@app/controls';
-import { ItemGroup, Items } from '@app/page/main';
+import { ItemGroup, Items } from '@app/layout/main';
 import { Card, Cards } from '@app/pages/cards';
 import { SetSortByPokemon, PokemonVariant } from './pokemon';
 import { PokemonService } from '../../../services/pokemon.service';

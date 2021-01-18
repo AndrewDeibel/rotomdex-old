@@ -5,13 +5,13 @@ import { Card } from '@app/pages/cards/card';
 import { Cards } from './cards';
 import { CardsService, CardResults } from '../../services/cards.service';
 import { ActivatedRoute } from '@angular/router';
-import { ItemDisplayType } from '@app/page/main/items/items-filter/items-filter';
+import { ItemDisplayType } from '@app/layout/main/items/items-filter/items-filter';
 import { Icons } from '@app/models/icons';
 import { Title } from '@angular/platform-browser';
 import { AuthenticationService } from '../../services/auth.service';
 import "@app/extensions/string.extensions";
 import { LoaderService } from '@app/controls';
-import { ItemGroup } from '@app/page/main';
+import { ItemGroup } from '@app/layout/main';
 import { SetSortByCards } from './card/card';
 import { AppSettings } from '@app/app';
 
@@ -52,7 +52,7 @@ export class CardsComponent implements OnInit {
 
     ngOnInit(): void {
 
-		SetSortByCards(this.cards.items.filter.selectSortBy);
+		SetSortByCards(this.cards.items.filter);
 		this.cards.items.filter.sortBy = this.cards.items.filter.selectSortBy.value;
 
 		// Query
@@ -93,6 +93,13 @@ export class CardsComponent implements OnInit {
 
 			this.cards.items.footer.totalPages = res.total_pages;
 			this.cards.totalCards = res.total_results;
+			this.cards.items.filter.dark = true;
+			this.cards.items.filter.textboxSearch.classes = "color-white";
+			this.cards.items.filter.textboxSearch.wrapperClasses = "color-white";
+			this.cards.items.filter.textboxSearch.dark = true;
+			this.cards.items.filter.selectSortBy.dark = true;
+			this.cards.items.filter.selectSortDirection.dark = true;
+			this.cards.items.filter.menuDisplayMode.dark = true;
 			this.cards.items.header.subtitle = `cards: ${res.total_results}`;
 			this.titleService.setTitle(AppSettings.titlePrefix + this.cards.items.header.title);
 		}
@@ -156,7 +163,7 @@ export class CardsComponent implements OnInit {
 			});
 		}
 		else {
-			this.cards.items.header.title = "All Cards";
+			this.cards.items.showHeader = false;
 			this.cardsService.allCards({
 				page: this.cards.items.footer.page,
 				page_size: this.cards.items.footer.pageSize,

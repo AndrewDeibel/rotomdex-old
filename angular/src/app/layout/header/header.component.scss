@@ -15,6 +15,13 @@
 	border-bottom: $border;
 	box-shadow: $shadow;
 	
+	&.transparent:not(.scrolled) {
+		background: none;
+		box-shadow: none;
+		border-bottom: none;
+		text-shadow: $text-shadow;
+	}
+	
     .logo {
         display: flex;
         align-items: center;
@@ -23,6 +30,8 @@
 		position: relative;
 		height: 100%;
 		color: $header-color;
+		//padding: 0 $spacing;
+		margin-right: $spacing * 2;
         img {
             display: block;
             border-radius: $border-radius;

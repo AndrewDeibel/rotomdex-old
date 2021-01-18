@@ -1,7 +1,8 @@
 <nav *ngIf="menu"
 	(clickOutside)="clickOutside()"
+	[class.dark]="menu.dark"
 	class="menu
-		{{menu.round ? menu.round : ''}}
+		{{menu.round ? 'round' : ''}}
 		{{menu.size ? menu.size : ''}}
 		{{menu.classes ? menu.classes : ''}}
 		{{menu.horizontal ? 'horizontal' : ''}}

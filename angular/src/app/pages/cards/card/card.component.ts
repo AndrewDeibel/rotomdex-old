@@ -9,8 +9,8 @@ import "@app/extensions/string.extensions";
 import { Icons } from '@app/models/icons';
 import { LoaderService, Tag } from '@app/controls';
 import { CardsService } from '../../../services/cards.service';
-import { ItemGroup, Items } from '@app/page/main';
-import { ExpansionService } from '@app/services/expansion.service';
+import { ItemGroup, Items } from '@app/layout/main';
+import { ExpansionService, GetExpansion } from '@app/services/expansion.service';
 import { PokemonService } from '@app/pages/pokemons';
 
 @Component({
@@ -59,11 +59,13 @@ export class CardComponent implements OnInit {
 
 		// Response get related cards
 		this.cardsService.allCardsObservable().subscribe(res => {
+			this.relatedCards.header.title = "Related Cards";
+			this.relatedCards.filter.textboxSearch.placeholder = "Search related cards...";
+			this.relatedCards.noResults = "No related cards found";
+			this.relatedCards.showFilters = false;
 			if (res) {
 				this.loaderService.hide();
 
-				this.relatedCards.header.title = "Related";
-				this.relatedCards.showFilters = false;
 				this.relatedCards.showFooter = false;
 				this.relatedCards.itemClasses = "width-2 medium-3 small-4";
 				this.relatedCards.itemGroups = [
@@ -75,7 +77,7 @@ export class CardComponent implements OnInit {
 		});
 
 		// Response get expansion cards
-		this.expansionService.expansionObservable().subscribe(expansion => {
+		this.expansionService.getExpansionObservable().subscribe(expansion => {
 			if (expansion) {
 				this.loaderService.hide();
 
@@ -106,7 +108,14 @@ export class CardComponent implements OnInit {
 	getExpansionCards() {
 		if (this.card) {
 			this.loaderService.show();
-			this.expansionService.getExpansion(this.card.expansion.code);
+			this.expansionService.getExpansion(new GetExpansion({
+				code: this.card.expansion.code,
+				page: this.expansionCards.footer.page,
+				page_size: this.expansionCards.footer.pageSize,
+				query: this.expansionCards.filter.query,
+				sort_by: this.expansionCards.filter.sortBy,
+				sort_direction: this.expansionCards.filter.sortDirection
+			}));
 		}
 	}
 

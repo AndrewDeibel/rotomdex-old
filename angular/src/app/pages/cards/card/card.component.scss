@@ -2,6 +2,25 @@
 		"scaffold/typography",
 		"project/pokemon";
 
+.card-header {
+	background: $menu-bg;
+	color: white;
+	padding: $spacing ($spacing * 2);
+	h2 {
+		color: white;
+	}
+	.card-types {
+		display: flex;
+	}
+	.card-hp {
+		font-weight: bold;
+		font-size: 32px;
+		span {
+			font-size: 35%;
+		}
+	}
+}
+
 .card-detail {
     display: flex;
     flex-wrap: wrap;
@@ -9,7 +28,7 @@
 	align-items: flex-start;
 	padding: $spacing;
     > * {
-        @media (max-width: $screen-medium) {
+        @media (max-width: $screen-small) {
             width: 100%;
         }
 	}
@@ -18,12 +37,11 @@
 		z-index: 2;
 		position: relative;
 		display: flex;
-		justify-content: center;
-		flex-direction: column;
+		//justify-content: center;
+		//flex-direction: column;
 		padding: $spacing;
 
 		.card-image-inner {
-			margin: 0 auto;
 			position: relative;
 			> mb-menu {
 				position: absolute;
@@ -113,17 +131,6 @@
             z-index: 1;
             position: relative;
 			flex: 1;
-
-			.card-types {
-				display: flex;
-			}
-			.card-hp {
-				font-weight: bold;
-				font-size: 32px;
-				span {
-					font-size: 35%;
-				}
-			}
 		}
 		.card-price {
 			color: $green;
@@ -181,12 +188,24 @@
 
 	.pokeball {
 		position: absolute;
-		right: -8px;
+		right: -7px;
 		top: 50%;
 		transform: translateY(-50%);
 		width: 64px;
 		opacity: .2;
 		z-index: 1;
 		max-width: none;
+	}
+}
+.card-expansion {
+	display: flex;
+	img {
+		width: 16px;
+		height: 16px;
+		margin-right: $spacing / 2;
+	}
+	a {
+		display: flex;
+		align-items: center;
 	}
 }

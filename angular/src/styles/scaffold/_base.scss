@@ -1,6 +1,5 @@
 // Body
 body {
-    padding-top: $header-height;
     min-width: $min;
 	height: 100vh;
     display: flex;
@@ -66,6 +65,11 @@ img {
 }
 .error {
 	background: $error !important;
+}
+
+// Color
+.color-white {
+	color: white !important;
 }
 
 // Gradient

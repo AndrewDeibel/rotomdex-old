@@ -12,23 +12,32 @@
 		background: $primary-color;
 		color: white;
 	}
-	&.banned {
-		background: $red;
-		color: white;
-	}
-	&.not_legal {
-		background: rgb(black, .2);
-	}
-	&.legal {
-		background: $green;
-		color: white;
-	}
-	&.restricted {
-		background: $primary-color;
-		color: white;
-	}
 	&.transparent {
 		background: transparent;
 		color: inherit;
+	}
+
+	$common: grey;
+	$uncommon: white;
+	$rare-non-holo: #119100;
+	$rare-holo: #004180;
+	$rare-ultra: #5D1E89;
+	$rare-secret: #bb6005;
+
+	$rarity: (
+		'common': $common,
+		'uncommon': $uncommon,
+		'rare': $rare-non-holo,
+		'rare-holo': $rare-holo,
+		'rare-ultra': $rare-ultra,
+		'rare-secret': $rare-secret
+	);
+
+	@each $rarity-name, $rarity-color in $rarity {
+		&.#{$rarity-name} {
+			background: $rarity-color;
+			color: lighten($rarity-color, 50%);
+			box-shadow: 0 0 8px 4px rgba(lighten($rarity-color, 10%), .5);
+		}
 	}
 }

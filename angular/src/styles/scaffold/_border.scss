@@ -4,6 +4,9 @@
 .border {
 	border: $border;
 }
+.dark {
+	border-color: $border-color-dark;
+}
 .border-primary {
 	border: 1px solid rgba($primary-color, .4);
 }

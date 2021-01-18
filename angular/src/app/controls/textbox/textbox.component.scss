@@ -14,6 +14,11 @@
 		right: 16px;
 		cursor: pointer;
 	}
+	&.dark {
+		.textbox {
+			border: $border-dark;
+		}
+	}
 }
 .textbox {
     border-radius: $border-radius;
@@ -22,10 +27,10 @@
 	text-overflow: ellipsis;
     height: 40px;
 	border: $border;
-	box-shadow: $shadow-inset;
 	transition: $transition;
 	max-width: 100%;
 	cursor: text; 
+	background: rgba($panel-bg, .05);
 	&:focus {
 		border-color: $primary-color;
 		box-shadow: $shadow-focus, $shadow-focus-inset;

@@ -1,4 +1,4 @@
 export * from './size';
-export * from './api-response';
+export * from './api';
 export * from './user';
 export * from './icons';

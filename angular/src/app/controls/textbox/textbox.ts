@@ -11,10 +11,12 @@ export class Textbox {
 	placeholder?: string;
 	width: number;
 	classes: string;
+	wrapperClasses: string;
 	disabled: boolean;
 	clearable: boolean;
 	colorPicker: boolean;
 	autoComplete: boolean;
+	dark: boolean;
 
 	keydownEnter:(value: string) => void;
 	_keydownEnter:(value: string) => void;

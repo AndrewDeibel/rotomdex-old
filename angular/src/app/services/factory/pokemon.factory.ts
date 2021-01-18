@@ -1,4 +1,4 @@
-import { Pokemon } from "./pokemon";
+import { Pokemon } from "../../pages/pokemons/pokemon";
 export class PokemonFactory {
 	pokemon = [
 		{

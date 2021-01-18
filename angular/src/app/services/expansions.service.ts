@@ -6,8 +6,8 @@ import { APIResponse } from '@app/models';
 import { Expansion, Series } from '@app/pages/expansions/expansion/expansion';
 import { Card } from '@app/pages/cards/card/card';
 import { CardResults } from './cards.service';
-import { ExpansionFactory, SeriesFactory } from '../pages/expansions/expansions.factory';
-import { CardFactory } from '../pages/cards/cards.factory';
+import { ExpansionFactory, SeriesFactory } from './factory/expansion.factory';
+import { CardFactory } from './factory/card.factory';
 import { CacheGlobal } from './cache/globalCache';
 
 export interface GetExpansions {

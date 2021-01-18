@@ -4,18 +4,31 @@
 	position: relative;
 	padding: $spacing * 2;
 	display: flex;
+	&.dark {
+		background: $menu-bg;
+		color: white;
+		border-bottom-color: $border-color-dark;
+		.subheading {
+			opacity: .5;
+		}
+		h2 {
+			color: white;
+		}
+	}
 	fa-icon {
 		width: 64px;
 		height: 64px;
 		padding: $spacing * 2;
 	}
 	.symbol-wrapper {
-		width: 64px;
-		height: 64px;
+		width: 40px;
+		height: 40px;
 		padding: $spacing;
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
+		border-radius: $border-radius;
+		background: rgba(white, .2);
 		img {
 			width: 100%;
 			max-height: 100%;
@@ -30,7 +43,6 @@
 	}
 	.title {
 		margin: 0;
-		text-shadow: $text-shadow-inset;
 	}
 	.price {
 		color: $green;

@@ -20,10 +20,11 @@ export class ItemsFilter {
 	showSimpleDisplayMode: boolean = false;
 	showVisualDisplayMode: boolean = false;
 	showSort: boolean = true;
+	dark: boolean;
 
 	// Controls
 	textboxSearch: Textbox;
-	selectSortBy: Select;q
+	selectSortBy: Select;
 	selectSortDirection: Select;
 	menuDisplayMode: Menu;
 	menuItemGridDisplayMode: MenuItem = new MenuItem();

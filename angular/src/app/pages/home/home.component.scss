@@ -6,5 +6,29 @@
 		text-transform: uppercase;
 		letter-spacing: 2px;
 		font-weight: normal;
+		color: white;
+	}
+}
+
+.hero {
+	height: 75vh;
+	max-height: 600px;
+	background-size: cover;
+	padding-top: $header-height;
+	color: white;
+	position: relative;
+	.hero-content {
+		z-index: 2;
+		position: relative;
+		filter: drop-shadow($shadow);
+	}
+	.hero-overlay {
+		z-index: 1;
+		position: absolute;
+		left: 0;
+		right: 0;
+		top: 0;
+		bottom: 0;
+		background: linear-gradient(rgba(black, .5), rgba(black, .25));
 	}
 }

@@ -22,7 +22,10 @@ const routes: Routes = [
 	// Home
 	{
 		path: '',
-		component: HomeComponent
+		component: HomeComponent,
+		data: {
+			transparentHeader: true
+		}
 	},
 
 	// Cards

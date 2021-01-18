@@ -2,6 +2,7 @@
 
 .select {
 	position: relative;
+	color: $primary-color;
 	fa-icon {
 		position: absolute;
 		top: 50%;
@@ -9,21 +10,28 @@
 		right: $spacing;
 		pointer-events: none;
 	}
+	&.dark {
+		select {
+			border: $border-dark;
+		}
+	}
 }
 select {
-	border: $border;
 	height: 40px;
-	padding: $spacing ($spacing * 2);
 	padding-right: 24px;
 	appearance: none;
+	border: $border;
+	padding: $spacing ($spacing * 2);
 	border-radius: $border-radius;
 	transition: $transition;
 	width: 100%;
-	box-shadow: $shadow-inset;
-	background: white;
 	font-size: $font-size;
-	color: $font-color;
+	color: $primary-color;
 	outline: 0 !important;
+	background: rgba($panel-bg, .05);
+	option, optgroup {
+		color: $font-color;
+	}
 	&:focus {
 		box-shadow: $shadow-focus, $shadow-focus-inset;
 		outline: 0 !important;

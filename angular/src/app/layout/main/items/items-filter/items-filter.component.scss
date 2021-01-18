@@ -2,6 +2,9 @@
 
 #cards-filters {
 	padding: $spacing ($spacing * 2);
+	&.dark {
+		background: $menu-bg;
+	}
 }
 .col-display {
 	mb-menu {

@@ -1,4 +1,4 @@
-import { Items } from '@app/page/main/items/items';
+import { Items } from '@app/layout/main/items/items';
 
 export class Cards {
 	items: Items = new Items();

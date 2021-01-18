@@ -9,6 +9,9 @@
 			overflow: hidden;
 		}
 	}
+	&.dark {
+		border-color: $border-color-dark;
+	}
 	a {
 		display: flex;
 		flex-wrap: nowrap;

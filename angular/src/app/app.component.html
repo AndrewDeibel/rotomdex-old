@@ -1,11 +1,6 @@
-<mb-header></mb-header>
+<mb-header [transparent]="transparentHeader"></mb-header>
 <mb-notifications></mb-notifications>
-<div class="z-3" id="menu" *ngIf="showMenu">
-	<div class="max">
-		<mb-menu [menu]="menu"></mb-menu>
-	</div>
-</div>
-<main id="main">
+<main id="main" [class.padding-top-none]="transparentHeader">
 	<router-outlet></router-outlet>
 </main>
 <mb-footer></mb-footer>

@@ -111,4 +111,5 @@ export enum Icons {
 	tools = "tools",
 	toolbox = "toolbox",
 	thunderstorm = "thunderstorm",
+	bars = "bars",
 }

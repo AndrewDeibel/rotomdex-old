@@ -1,14 +1,20 @@
-<header id="header">
+<header
+	id="header"
+	[class.transparent]="transparent"
+	[class.scrolled]="scrolled">
 	<div class="max">
 		<div class="flex box padded">
-			<div class="flex width-3">
+			<div>
 				<a class="logo" routerLink="">
 					<span><b>Rotom</b>dex</span>
 				</a>
 			</div>
-			<div class="flex justify-center box width-6">
-				<mb-search></mb-search>
+			<div>
+				<mb-menu [menu]="menu"></mb-menu>
 			</div>
+			<!-- <div class="flex justify-center box width-6">
+				<mb-search></mb-search>
+			</div> -->
 			<div *ngIf="signedIn" class="profile flex justify-end width-3" mb-profile></div>
 			<div *ngIf="!signedIn" class="login flex justify-end width-3">
 				<!-- <mb-menu [menu]="menuLogin"></mb-menu> -->
