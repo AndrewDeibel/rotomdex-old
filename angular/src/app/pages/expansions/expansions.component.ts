@@ -41,13 +41,6 @@ export class ExpansionsComponent implements OnInit {
 					expansionCount += _series.expansions.length;
 				});
 				this.items.header.subtitle = `total: ${expansionCount}`;
-				this.items.filter.dark = true;
-				this.items.filter.textboxSearch.classes = "color-white";
-				this.items.filter.textboxSearch.wrapperClasses = "color-white";
-				this.items.filter.textboxSearch.dark = true;
-				this.items.filter.selectSortBy.dark = true;
-				this.items.filter.selectSortDirection.dark = true;
-				this.items.filter.menuDisplayMode.dark = true;
 			}
 		});
 	}

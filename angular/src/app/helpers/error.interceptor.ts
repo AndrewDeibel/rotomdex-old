@@ -5,13 +5,15 @@ import { Injectable } from '@angular/core';
 import { AuthenticationService } from '@app/services/auth.service';
 import { NotificationsService, Notification } from '@app/controls/notifications';
 import { AlertType } from '@app/controls/alert/alert';
+import { LoaderService } from '@app/controls';
 
 @Injectable({ providedIn: 'root' })
 export class ErrorIntercept implements HttpInterceptor {
 
 	constructor(
 		private authenticationService: AuthenticationService,
-		private notificationService: NotificationsService) {}
+		private notificationService: NotificationsService,
+		private loaderService: LoaderService) {}
 	
     intercept(
         request: HttpRequest<any>,
@@ -63,6 +65,8 @@ export class ErrorIntercept implements HttpInterceptor {
 								message: message
 							})])
 					}
+
+					this.loaderService.hide();
 
                     return throwError(message);
                 })

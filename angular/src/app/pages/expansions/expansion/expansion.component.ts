@@ -50,14 +50,6 @@ export class ExpansionComponent implements OnInit {
 				this.items.header.title = expansion.name;
 				this.items.header.subtitle = `${expansion.total_cards} Cards - ${this.datePipe.transform(expansion.release_date)}`;
 				this.items.footer.pageSize = expansion.total_cards;
-				this.items.header.dark = true;
-				this.items.filter.dark = true;
-				this.items.filter.textboxSearch.classes = "color-white";
-				this.items.filter.textboxSearch.wrapperClasses = "color-white";
-				this.items.filter.textboxSearch.dark = true;
-				this.items.filter.selectSortBy.dark = true;
-				this.items.filter.selectSortDirection.dark = true;
-				this.items.filter.menuDisplayMode.dark = true;
 				this.items.header.menu = new Menu({
 					round: true,
 					classes: "border",

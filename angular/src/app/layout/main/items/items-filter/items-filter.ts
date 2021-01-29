@@ -20,7 +20,6 @@ export class ItemsFilter {
 	showSimpleDisplayMode: boolean = false;
 	showVisualDisplayMode: boolean = false;
 	showSort: boolean = true;
-	dark: boolean;
 
 	// Controls
 	textboxSearch: Textbox;

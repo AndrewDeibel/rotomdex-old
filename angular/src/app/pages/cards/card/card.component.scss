@@ -3,12 +3,6 @@
 		"project/pokemon";
 
 .card-header {
-	background: $menu-bg;
-	color: white;
-	padding: $spacing ($spacing * 2);
-	h2 {
-		color: white;
-	}
 	.card-types {
 		display: flex;
 	}
@@ -26,7 +20,7 @@
     flex-wrap: wrap;
 	position: relative;
 	align-items: flex-start;
-	padding: $spacing;
+	padding: $spacing * 2;
     > * {
         @media (max-width: $screen-small) {
             width: 100%;
@@ -39,7 +33,6 @@
 		display: flex;
 		//justify-content: center;
 		//flex-direction: column;
-		padding: $spacing;
 
 		.card-image-inner {
 			position: relative;
@@ -78,7 +71,7 @@
             left: -$spacing;
             pointer-events: none;
 			max-width: none;
-            box-shadow: $shadow;
+            box-shadow: $shadow-large;
             z-index: 10;
             margin: $spacing;
             transition: $transition;

@@ -1,7 +1,7 @@
 @import "settings",
 		"scaffold/typography";
 
-.item-list-set {
+.item-list-expansion {
     display: flex;
     padding: $spacing;
     align-items: center;
@@ -16,10 +16,10 @@
 		box-shadow: $shadow-focus !important;
 		outline: 0 !important;
     }
-    .set-symbol {
+    .expansion-symbol {
         position: relative;
-		width: 48px;
-		height: 48px;
+		width: 40px;
+		height: 40px;
 		overflow: hidden;
 		border-radius: 4px;
 		padding: 4px;
@@ -29,10 +29,6 @@
 			top: 50%;
 			left: 50%;
 			transform: translate(-50%, -50%);
-
-			// Contrast was not consistent from scryfall
-			filter: contrast(999%);
-			opacity: .8;
 		}
 	}
 	.set-release-date, .set-total-cards {

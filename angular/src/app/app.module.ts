@@ -58,6 +58,7 @@ import {
 	ExpansionItemListComponent,
 	PokemonsComponent,
 	PokemonItemGridComponent,
+	PokmeonItemListComponent,
 	PokemonComponent
 } from './pages';
 
@@ -270,6 +271,7 @@ import { CardItemListComponent } from './pages/cards/card-item/card-item-list/ca
 		// Pokemon
 		PokemonsComponent,
 		PokemonItemGridComponent,
+		PokmeonItemListComponent,
 		PokemonComponent,
 		// Social
 		ProfileComponent,

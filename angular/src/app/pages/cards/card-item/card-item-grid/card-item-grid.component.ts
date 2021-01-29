@@ -12,6 +12,7 @@ import { Card } from '../../card/card';
 export class CardItemGridComponent implements OnInit {
 
 	@Input() card: Card;
+	imageLoading: boolean = true;
 
 	constructor() { }
 
@@ -26,5 +27,9 @@ export class CardItemGridComponent implements OnInit {
 		else {
 			return this.card.number;
 		}
+	}
+
+	onLoad() {
+		this.imageLoading = false;
 	}
 }

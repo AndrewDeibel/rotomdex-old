@@ -52,6 +52,12 @@ export class CardComponent implements OnInit {
 						classes: this.card.rarity.toLowerCase().replace(' ', '-')
 					});
 				}
+				if (this.card.expansion.name.toLowerCase().includes("promo")) {
+					this.tagRarity = new Tag({
+						text: "Promo",
+						classes: "promo"
+					});
+				}
 				this.getRelatedCards();
 				this.getExpansionCards();
 			}
@@ -60,13 +66,12 @@ export class CardComponent implements OnInit {
 		// Response get related cards
 		this.cardsService.allCardsObservable().subscribe(res => {
 			this.relatedCards.header.title = "Related Cards";
-			this.relatedCards.filter.textboxSearch.placeholder = "Search related cards...";
 			this.relatedCards.noResults = "No related cards found";
 			this.relatedCards.showFilters = false;
+			this.relatedCards.showFooter = false;
 			if (res) {
 				this.loaderService.hide();
 
-				this.relatedCards.showFooter = false;
 				this.relatedCards.itemClasses = "width-2 medium-3 small-4";
 				this.relatedCards.itemGroups = [
 					new ItemGroup({
@@ -82,6 +87,7 @@ export class CardComponent implements OnInit {
 				this.loaderService.hide();
 
 				this.expansionCards.header.title = "More " + expansion.name;
+				this.expansionCards.noResults = "No " + expansion.name + " cards found";
 				this.expansionCards.showFilters = false;
 				this.expansionCards.showFooter = false;
 				this.expansionCards.itemClasses = "width-2 medium-3 small-4";

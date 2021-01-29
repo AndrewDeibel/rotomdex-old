@@ -27,9 +27,21 @@
 			box-shadow: $shadow;
 			overflow: hidden;
 			border-radius: $border-radius-card;
+			position: relative;
+			&:before {
+				content: '';
+				width: 100%;
+				display: block;
+				padding-bottom: 100% * $card-ratio;
+				background: darken(white, 50%);
+				border-radius: $border-radius-card;
+			}
 			img {
 				display: block;
 				width: 100%;
+				position: absolute;
+				top: 0;
+				left: 0;
 			}
 		}
 		> mb-menu {

@@ -15,7 +15,6 @@ export class ItemsHeader {
 	menu: Menu;
 	button: Button;
 	toggle: Toggle;
-	dark: boolean;
 
 	_this: any;
 	getItems: (_this: any) => void;

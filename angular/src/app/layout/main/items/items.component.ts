@@ -81,6 +81,7 @@ export class ItemsComponent implements OnInit {
 	displayModeChanged(itemDisplayType: ItemDisplayType) {
 		this.items.itemDisplayType = itemDisplayType;
 		this.outputDisplayModeChanged.emit(itemDisplayType);
+		this.updateQueryParams();
 	}
 
 	_outputGetItems() {

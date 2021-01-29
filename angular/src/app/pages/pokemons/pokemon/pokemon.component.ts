@@ -27,13 +27,7 @@ export class PokemonComponent implements OnInit {
 
 	ngOnInit() {
 
-		// Init
-		this.items = new Items();
-		this.items.showHeader = false;
-		SetSortByPokemon(this.items.filter.selectSortBy);
-		this.items.filter.sortBy = this.items.filter.selectSortBy.value;
-		this.items.footer.pageSize = 24;
-		this.items.footer.selectPageSize.value = this.items.footer.pageSize.toString();
+		this.setupControls();
 
 		this.loaderService.show();
 
@@ -42,6 +36,7 @@ export class PokemonComponent implements OnInit {
 			if (pokemonVariant) {
 				this.loaderService.hide();
 				this.pokemonVariant = pokemonVariant;
+				this.items.noResults = "No " + this.pokemonVariant.name + " cards found";
 				this.getCards();
 			}
 		});
@@ -52,11 +47,16 @@ export class PokemonComponent implements OnInit {
 				this.loaderService.hide();
 				this.items.footer.totalPages = res.total_pages;
 				this.items.filter.textboxSearch.placeholder = `Search ${this.pokemonVariant.name} cards...`;
-				this.items.itemGroups = [
-					new ItemGroup({
-						items: res.cards
-					})
-				];
+				if (res.cards.length) {
+					this.items.itemGroups = [
+						new ItemGroup({
+							items: res.cards
+						})
+					];
+				}
+				else {
+					this.items.itemGroups = [];
+				}
 			}
 		});
 
@@ -65,6 +65,18 @@ export class PokemonComponent implements OnInit {
 			this.slug = params["slug"];
 			this.pokemonService.getPokemonVariant(this.slug);
 		});
+
+	}
+
+	setupControls() {
+
+		// Init
+		this.items = new Items();
+		this.items.showHeader = false;
+		SetSortByPokemon(this.items.filter.selectSortBy);
+		this.items.filter.sortBy = this.items.filter.selectSortBy.value;
+		this.items.footer.pageSize = 24;
+		this.items.footer.selectPageSize.value = this.items.footer.pageSize.toString();
 
 	}
 

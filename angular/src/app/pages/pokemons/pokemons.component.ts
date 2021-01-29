@@ -39,13 +39,6 @@ export class PokemonsComponent implements OnInit {
 			if (res) {
 				this.loaderService.hide();
 				this.items.footer.totalPages = res.total_pages;
-				this.items.filter.dark = true;
-				this.items.filter.textboxSearch.classes = "color-white";
-				this.items.filter.textboxSearch.wrapperClasses = "color-white";
-				this.items.filter.textboxSearch.dark = true;
-				this.items.filter.selectSortBy.dark = true;
-				this.items.filter.selectSortDirection.dark = true;
-				this.items.filter.menuDisplayMode.dark = true;
 				var group = new ItemGroup();
 				res.pokemon_variants.forEach(pokemon_variant => {
 					group.items.push(new PokemonVariant(pokemon_variant));

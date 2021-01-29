@@ -10,8 +10,13 @@ import { Card } from '../../card/card';
 export class CardItemListComponent implements OnInit {
 
 	@Input() card: Card;
+	imageLoading: boolean = true;
 
 	constructor() { }
 
 	ngOnInit() { }
+
+	onLoad() {
+		//this.imageLoading = false;
+	}
 }

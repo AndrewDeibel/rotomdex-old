@@ -4,21 +4,20 @@
 	[class.scrolled]="scrolled">
 	<div class="max">
 		<div class="flex box padded">
-			<div>
+			<div class="width-3 flex">
+				<mb-menu id="menuBack" [menu]="menuBack"></mb-menu>
+			</div>
+			<div class="width-6 flex justify-center">
 				<a class="logo" routerLink="">
 					<span><b>Rotom</b>dex</span>
 				</a>
 			</div>
-			<div>
-				<mb-menu [menu]="menu"></mb-menu>
-			</div>
-			<!-- <div class="flex justify-center box width-6">
-				<mb-search></mb-search>
-			</div> -->
 			<div *ngIf="signedIn" class="profile flex justify-end width-3" mb-profile></div>
 			<div *ngIf="!signedIn" class="login flex justify-end width-3">
-				<!-- <mb-menu [menu]="menuLogin"></mb-menu> -->
+				<mb-menu id="menuLogin" [menu]="menuLogin"></mb-menu>
 			</div>
 		</div>
 	</div>
 </header>
+
+<mb-menu id="menu" [menu]="menu"></mb-menu>

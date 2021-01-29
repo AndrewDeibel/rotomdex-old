@@ -3,6 +3,7 @@ import { User } from '@app/models/user';
 import { Menu, MenuItem } from '@app/controls/menu';
 import { AuthenticationService } from '@app/services/auth.service';
 import { Icons } from '@app/models/icons';
+import { Location } from '@angular/common';
 
 @Component({
 	selector: 'mb-header',
@@ -14,12 +15,15 @@ import { Icons } from '@app/models/icons';
 export class HeaderComponent implements OnInit {
 	
 	menu: Menu = new Menu();
+	menuBack: Menu = new Menu();
 	user: User;
 	menuLogin: Menu;
 	scrolled: boolean;
 	@Input() transparent: boolean;
 
-	constructor(private authenticationService: AuthenticationService) { }
+	constructor(
+		private authenticationService: AuthenticationService,
+		private location: Location) { }
 
 	ngOnInit(): void {
 		this.menuLogin = new Menu({
@@ -33,6 +37,16 @@ export class HeaderComponent implements OnInit {
 			]
 		});
 
+		this.menuBack.items.push(
+			new MenuItem({
+				icon: Icons.arrowLeft,
+				click: () => {
+					this.location.back();
+				}
+			})
+		);
+
+		//this.menu.round = false;
 		this.menu.clearActiveClickOutside = true;
 		this.menu.horizontal = true;
 		this.menu.items.push(

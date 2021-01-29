@@ -1,9 +1,7 @@
 @import "settings";
 
-$border-pokeball: 4px solid rgb(102, 0, 0);
-
 .overlay {
-	position: fixed;
+	position: absolute;
 	top: 0;
 	left: 0;
 	right: 0;
@@ -18,6 +16,8 @@ $border-pokeball: 4px solid rgb(102, 0, 0);
 		opacity: 1;
 	}
 }
+
+$border-pokeball: 4px solid rgb(102, 0, 0);
 
 .pokeball-wrapper {
 	position: absolute;
