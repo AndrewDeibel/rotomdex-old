@@ -6,7 +6,7 @@ export class ItemsFooter {
 
 	// Values
 	page: number = 1;
-	pageSize: number = 12;
+	pageSize: number = 24;
 	totalPages: number;
 
 	// Controls

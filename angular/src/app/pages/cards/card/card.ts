@@ -46,7 +46,7 @@ export class Card {
 	has_shadowless: boolean;
 	has_reverse_holo: boolean;
 	types: string[] = [];
-	price: number;
+	last_prices: CardLastPrices;
 
 	route: string;
 	tempId: number;
@@ -66,6 +66,25 @@ export class Card {
 		if (init.pokemon) {
 			this.pokemon = new Pokemon(init.pokemon);
 		}
+	}
+}
+
+export class CardLastPrices {
+	card_id: number;
+	condition: string;
+	created_at: Date;
+	direct_price: string;
+	high_price: number;
+	id: number;
+	low_price: number;
+	market_price: number;
+	mid_price: number;
+	source: string;
+	updated_at: Date;
+	variation: string;
+
+    constructor(init?:Partial<CardLastPrices>) {
+		Object.assign(this, init);
 	}
 }
 

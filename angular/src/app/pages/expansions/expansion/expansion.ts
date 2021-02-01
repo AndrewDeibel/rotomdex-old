@@ -1,5 +1,5 @@
 import { Select, SelectOption, SelectOptionGroup } from '@app/controls';
-import { ItemsFilter } from '@app/layout/main';
+import { ItemsFilter, ItemsFooter } from '@app/layout/main';
 import { Card } from '@app/pages/cards';
 
 export class Expansion {
@@ -78,4 +78,8 @@ export function SetSortByExpansion(itemFilter: ItemsFilter) {
 	});
 	itemFilter.selectSortBy.value = "number";
 	itemFilter.sortBy = itemFilter.selectSortBy.value;
+}
+
+export function SetPageSize(itemFooter: ItemsFooter) {
+	itemFooter.selectPageSize.value = itemFooter.pageSize.toString();
 }

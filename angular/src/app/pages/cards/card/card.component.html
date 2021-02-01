@@ -70,10 +70,10 @@
 							<mb-expansion-item-grid [size]="'small'" [expansion]="card.expansion"></mb-expansion-item-grid>
 						</div>
 
-						<div>
+						<div *ngIf="buttonTCGPlayer">
 							<mb-button [button]="buttonTCGPlayer"></mb-button>
 						</div>
-						<div>
+						<div *ngIf="buttonEbay">
 							<mb-button [button]="buttonEbay"></mb-button>
 						</div>
 						

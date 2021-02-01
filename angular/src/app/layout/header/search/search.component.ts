@@ -62,7 +62,6 @@ export class SearchComponent implements OnInit {
 					this.menuCards.items.push(new MenuItem({
 						text: card.name,
 						route: card.route,
-						price: card.price,
 						click: () => {
 							this.menuCardsShow = false;
 						}

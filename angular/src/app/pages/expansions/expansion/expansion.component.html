@@ -1,4 +1,5 @@
 <mb-items
 	*ngIf="items"
-	[items]="items">
+	[items]="items"
+	(outputGetItems)="getExpansionCards()">
 </mb-items>

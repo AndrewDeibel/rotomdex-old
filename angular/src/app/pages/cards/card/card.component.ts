@@ -40,8 +40,6 @@ export class CardComponent implements OnInit {
 		private authenticationService: AuthenticationService) {}
 
     ngOnInit(): void {
-
-		this.setupControls();
 		
 		this.loaderService.show();
 
@@ -64,6 +62,17 @@ export class CardComponent implements OnInit {
 				}
 				this.getRelatedCards();
 				this.getExpansionCards();
+
+				this.buttonTCGPlayer = new Button({
+					text: `Buy on TCGPlayer <span class="money">$${this.card.last_prices.market_price}</span>`,
+					icon: 'external-link',
+					classes: 'secondary'
+				});
+				this.buttonEbay = new Button({
+					text: `Buy on eBay <span class="money">$${this.card.last_prices.market_price}</span>`,
+					icon: 'external-link',
+					classes: 'secondary'
+				});
 			}
 		});
 
@@ -104,19 +113,6 @@ export class CardComponent implements OnInit {
 		});
 
 		this.handleRoute();
-	}
-
-	setupControls() {
-		this.buttonTCGPlayer = new Button({
-			text: 'Buy on TCGPlayer <span class="money">$50</span>',
-			icon: 'external-link',
-			classes: 'secondary'
-		});
-		this.buttonEbay = new Button({
-			text: 'Buy on eBay <span class="money">$50</span>',
-			icon: 'external-link',
-			classes: 'secondary'
-		});
 	}
 	
 	handleRoute() {

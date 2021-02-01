@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ExpansionService, GetExpansion, GetExpansionCards } from '@app/services/expansion.service';
-import { Expansion, SetSortByExpansion } from './expansion';
+import { Expansion, SetPageSize, SetSortByExpansion } from './expansion';
 import { Cards } from '@app/pages/cards/cards';
 import { AutoUnsubscribe } from "ngx-auto-unsubscribe";
 import { CardGroup, CardsComponent, SetSortByCards } from '@app/pages/cards';
@@ -22,6 +22,7 @@ export class ExpansionComponent implements OnInit {
 
 	@ViewChild(CardsComponent) cardsComponent: CardsComponent;
 	items: Items = new Items();
+	code: string;
 
     constructor(
 		private loaderService: LoaderService,
@@ -33,23 +34,20 @@ export class ExpansionComponent implements OnInit {
 	ngOnDestroy() { }
     ngOnInit() { 
 		this.subscribeExpansion();
+		this.subscribeExpansionCards();
 		this.setupControls();
 		this.handleParams();
 		SetSortByExpansion(this.items.filter);
+		SetPageSize(this.items.footer);
 	}
 
 	subscribeExpansion() {
 		this.expansionService.getExpansionObservable().subscribe(expansion => {
 			if (expansion) {
-				this.loaderService.hide();
 				this.titleService.setTitle(AppSettings.titlePrefix + expansion.name);
-				this.items.itemGroups.push(new ItemGroup({
-					items: expansion.cards
-				}));
 				this.items.header.symbol = expansion.symbol;
 				this.items.header.title = expansion.name;
 				this.items.header.subtitle = `${expansion.total_cards} Cards - ${this.datePipe.transform(expansion.release_date)}`;
-				this.items.footer.pageSize = expansion.total_cards;
 				this.items.header.menu = new Menu({
 					round: true,
 					classes: "border",
@@ -60,6 +58,19 @@ export class ExpansionComponent implements OnInit {
 						})
 					]
 				});
+			}
+		});
+	}
+
+	subscribeExpansionCards() {
+		this.expansionService.getExpansionCardsObservable().subscribe(res => {
+			if (res) {
+				this.loaderService.hide();
+				this.items.itemGroups = [];
+				this.items.itemGroups.push(new ItemGroup({
+					items: res.cards
+				}));
+				this.items.footer.totalPages = res.total_pages;
 			}
 		});
 	}
@@ -75,6 +86,7 @@ export class ExpansionComponent implements OnInit {
 	}
 
 	getExpansion(code) {
+		this.code = code;
 		this.loaderService.show();
 		this.expansionService.getExpansion(new GetExpansion({
 			code: code,
@@ -84,8 +96,12 @@ export class ExpansionComponent implements OnInit {
 			sort_by: this.items.filter.sortBy,
 			sort_direction: this.items.filter.sortDirection
 		}));
+		this.getExpansionCards();
+	}
+	getExpansionCards() {
+		this.loaderService.show();
 		this.expansionService.getExpansionCards(new GetExpansionCards({
-			code: code,
+			code: this.code,
 			page: this.items.footer.page,
 			page_size: this.items.footer.pageSize,
 			query: this.items.filter.query,

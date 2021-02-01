@@ -60,15 +60,14 @@ export class ExpansionService {
 		var url = params.buildUrl("expansion/" + params.code + "/cards");
         this.http.get<APIResponse>(url).subscribe(res => {
 			let cards: Card[] = [];
-			res.data.cards.forEach(card => {
+			res.data.forEach(card => {
 				cards.push(new Card(card));
 			});
-			let cardResuls: CardResults = {
+			this.getExpansionCardsSubject.next({
 				cards: cards,
-				total_pages: res.data.total_pages,
-				total_results: res.data.total_results
-			}
-			this.getExpansionCardsSubject.next(cardResuls);
+				total_pages: res.meta.last_page,
+				total_results: res.meta.total
+			});
 		});
 	}
 
