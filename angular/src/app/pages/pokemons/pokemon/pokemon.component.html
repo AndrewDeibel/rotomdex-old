@@ -7,7 +7,18 @@
 			<a class="next-pokemon" [routerLink]="'/pokemon/' + pokemonVariant.next_pokemon">
 				<fa-icon icon="arrow-right"></fa-icon>
 			</a>
-			<img class="art" src="{{pokemonVariant.sprites.official}}" />
+
+			<img
+				*ngIf="pokemonVariant.sprites.official"
+				class="art"
+				src="{{pokemonVariant.sprites.official}}" />
+
+			<div
+				class="pokemon-image-placeholder"
+				*ngIf="!pokemonVariant.sprites.official">
+				<fa-icon icon="question"></fa-icon>
+			</div>
+
 			<img class="pokeball" src="/assets/pokeball.png" />
 			<!-- <div class="pokemon-sprites">
 				<div class="max">

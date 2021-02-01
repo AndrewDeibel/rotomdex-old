@@ -10,6 +10,7 @@ import { Expansion } from '../../expansion/expansion';
 export class ExpansionItemGridComponent implements OnInit {
 
 	@Input() expansion: Expansion;
+	@Input() size: string;
 	
 	constructor() {}
 

@@ -1,5 +1,10 @@
 @import "settings";
 
+:host {
+	position: relative;
+	z-index: 1;
+}
+
 #header {
     height: $header-height;
     position: fixed;
@@ -20,6 +25,23 @@
 		box-shadow: none;
 		border-bottom: none;
 		text-shadow: $text-shadow;
+	}
+
+	&.transparent {
+		+ #menu {
+			background: transparent;
+			color: white;
+			border-bottom: 0;
+			border-radius: $border-radius;
+			margin-left: auto;
+			margin-right: auto;
+			.menu {
+				background: rgb($menu-bg, .9)
+			}
+			a  {
+				color: white;
+			}
+		}
 	}
 	
     .logo {
@@ -75,6 +97,8 @@
 	justify-content: center;
 	margin-top: $header-height;
 	padding: $spacing;
+	z-index: 2;
+	position: relative;
 }
 
 @media (max-width: $screen-medium) {

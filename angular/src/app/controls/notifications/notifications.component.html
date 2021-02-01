@@ -6,12 +6,12 @@
 				class="notification animated fadeInUp
 					{{notification.alertType}}
 					{{notification.hidden ? 'hidden' : ''}}">
-				<div class="flex padded flex-center">
+				<div class="flex padded flex-center flex-nowrap">
 					<div>
 						<fa-icon [icon]="notification.icon"></fa-icon>
 					</div>
-					<div class="box">
-						<div class="notification-message">
+					<div class="box ellipsis">
+						<div class="notification-message" title="{{notification.message}}">
 							<span>{{notification.message}}</span>
 						</div>
 					</div>

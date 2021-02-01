@@ -22,6 +22,13 @@
 							[class.active]="cardImageHover"
 							(click)="cardImageHover = !cardImageHover" />
 					</div>
+
+					<div class="card-artist">
+						<div class="subheading">Illustrated by</div>
+						<a [routerLink]="card.artist">
+							{{card.artist}}
+						</a>
+					</div>
 				</figure>
 
 				<div class="relative z-1">
@@ -49,24 +56,27 @@
 						<div class="card-rarity flex" *ngIf="tagRarity">
 							<mb-tag [tag]="tagRarity"></mb-tag>
 						</div>
+						
 						<div class="card-expansion">
-							<a [routerLink]="card.expansion.route">
+							<!-- <a [routerLink]="card.expansion.route">
 								<img *ngIf="card.expansion.name !== 'Base'" src="{{card.expansion.symbol}}" />
-								{{card.expansion.name}}
-							</a>
+								<div>{{card.expansion.name}}
+
+									<span class="card-number subheading">
+										{{card.number}}/{{card.expansion.total_cards}}
+									</span>
+								</div>
+							</a> -->
+							<mb-expansion-item-grid [size]="'small'" [expansion]="card.expansion"></mb-expansion-item-grid>
 						</div>
-						<div class="card-number">
-							{{card.number}}/{{card.expansion.total_cards ? card.expansion.total_cards : '?'}}
+
+						<div>
+							<mb-button [button]="buttonTCGPlayer"></mb-button>
 						</div>
-						<div class="card-artist">
-							<div class="subheading">Illustrated by</div>
-							<a [routerLink]="card.artist">
-								{{card.artist}}
-							</a>
+						<div>
+							<mb-button [button]="buttonEbay"></mb-button>
 						</div>
-						<div class="card-price" *ngIf="card.price">
-							{{card.price | currency}}
-						</div>
+						
 						<div *ngIf="card.pokemon" class="flex">
 							<a
 								[routerLink]="card.pokemon.variant.route"
@@ -93,19 +103,13 @@
 											<div class="pokemon-number subheading opacity-5">
 												#{{card.pokemon.national_dex_number}} -
 												<span class="pokemon.region">
-													{{card.pokemon.generation ? card.pokemon.generation.region : 'Kanto'}}
+													{{card.pokemon.generation.region}}
 												</span>
 											</div>
 										</div>
 									</div>
 								</div>
 							</a>
-						</div>
-						<div>
-							<mb-button [button]="{text: 'Buy on TCGPlayer', icon: 'external-link', classes: 'secondary'}"></mb-button>
-						</div>
-						<div>
-							<mb-button [button]="{text: 'Buy on eBay', icon: 'external-link', classes: 'secondary'}"></mb-button>
 						</div>
 					</div>
 				</div>

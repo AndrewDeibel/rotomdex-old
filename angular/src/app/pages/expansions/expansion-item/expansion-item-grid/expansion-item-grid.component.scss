@@ -19,6 +19,17 @@
 		border-color: $primary-color;
 		box-shadow: $shadow-focus;
 	}
+
+	&.small {
+		max-width: 180px;
+		.expansion-logo {
+			height: 80px;
+			img:not(.symbol) {
+				padding: $spacing * 2;
+				max-width: 80%;
+			}
+		}
+	}
 	
 	.expansion-logo {
 		display: block;

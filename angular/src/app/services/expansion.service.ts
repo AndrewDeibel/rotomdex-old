@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { APIGetPaged, APIResponse } from "@app/models";
-import { Expansion } from "@app/pages";
+import { Card, Expansion } from "@app/pages";
 import { CardFactory } from "@app/services/factory/card.factory";
 import { BehaviorSubject } from "rxjs";
 import { environment } from "src/environments/environment";
@@ -16,8 +16,13 @@ export class GetExpansion extends APIGetPaged {
 	}
 }
 
-export interface GetExpansionCards extends APIGetPaged {
-	expansion_id: number;
+export class GetExpansionCards extends APIGetPaged {
+	code: string;
+
+	constructor(init?:Partial<GetExpansion>) {
+		super();
+		Object.assign(this, init);
+	}
 }
 
 @Injectable({
@@ -45,32 +50,25 @@ export class ExpansionService {
 		});
 	}
 
-	// Search expansions cards
-    private searchExpansionCardsSubject = new BehaviorSubject<CardResults>(null);
-    searchExpansionsCardsObservable() {
-		this.searchExpansionCardsSubject = new BehaviorSubject<CardResults>(null);
-		return this.searchExpansionCardsSubject.asObservable()
+	// Expansions cards
+    private getExpansionCardsSubject = new BehaviorSubject<CardResults>(null);
+    getExpansionCardsObservable() {
+		this.getExpansionCardsSubject = new BehaviorSubject<CardResults>(null);
+		return this.getExpansionCardsSubject.asObservable()
 	}
-    searchExpansionCards(params: GetExpansionCards) {
-        // this.http.post<APIResponse>(environment.api + "expansion/cards", params).subscribe(res => {
-		// 	let cards: Card[] = [];
-		// 	res.data.cards.forEach(card => {
-		// 		cards.push(new Card(card));
-		// 	});
-		// 	let cardResuls: CardResults = {
-		// 		cards: cards,
-		// 		total_pages: res.data.total_pages,
-		// 		total_results: res.data.total_results
-		// 	}
-		// 	this.searchExpansionCardsSubject.next(cardResuls);
-		// });
-
-		// FAKE DATA
-		let cards = new CardFactory().createCards(10);
-		this.searchExpansionCardsSubject.next({
-			cards: cards,
-			total_pages: 1,
-			total_results: 10
+    getExpansionCards(params: GetExpansionCards) {
+		var url = params.buildUrl("expansion/" + params.code + "/cards");
+        this.http.get<APIResponse>(url).subscribe(res => {
+			let cards: Card[] = [];
+			res.data.cards.forEach(card => {
+				cards.push(new Card(card));
+			});
+			let cardResuls: CardResults = {
+				cards: cards,
+				total_pages: res.data.total_pages,
+				total_results: res.data.total_results
+			}
+			this.getExpansionCardsSubject.next(cardResuls);
 		});
 	}
 

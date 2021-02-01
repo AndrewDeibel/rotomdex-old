@@ -72,10 +72,10 @@ export function SetSortByExpansion(itemFilter: ItemsFilter) {
 		options: [
 			new SelectOption({
 				text: "Number",
-				value: "card.order"
+				value: "number"
 			}),
 		]
 	});
-	itemFilter.selectSortBy.value = "card.order";
+	itemFilter.selectSortBy.value = "number";
 	itemFilter.sortBy = itemFilter.selectSortBy.value;
 }

@@ -23,6 +23,19 @@
 		z-index: 2;
 		position: relative;
 	}
+	.pokemon-image-placeholder {
+		width: 400px;
+		height: 400px;
+		padding: $spacing * 8;
+		display: flex;
+		justify-content: center;
+		z-index: 2;
+		position: relative;
+		margin: auto;
+		fa-icon {
+			width: 100%;
+		}
+	}
 	.art {
 		margin: 0 auto;
 		filter: drop-shadow($shadow);

@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ExpansionService, GetExpansion } from '@app/services/expansion.service';
+import { ExpansionService, GetExpansion, GetExpansionCards } from '@app/services/expansion.service';
 import { Expansion, SetSortByExpansion } from './expansion';
 import { Cards } from '@app/pages/cards/cards';
 import { AutoUnsubscribe } from "ngx-auto-unsubscribe";
@@ -32,13 +32,13 @@ export class ExpansionComponent implements OnInit {
 
 	ngOnDestroy() { }
     ngOnInit() { 
-		this.subExpansion();
+		this.subscribeExpansion();
 		this.setupControls();
 		this.handleParams();
 		SetSortByExpansion(this.items.filter);
 	}
 
-	subExpansion() {
+	subscribeExpansion() {
 		this.expansionService.getExpansionObservable().subscribe(expansion => {
 			if (expansion) {
 				this.loaderService.hide();
@@ -59,7 +59,7 @@ export class ExpansionComponent implements OnInit {
 							icon: Icons.bars
 						})
 					]
-				})
+				});
 			}
 		});
 	}
@@ -77,6 +77,14 @@ export class ExpansionComponent implements OnInit {
 	getExpansion(code) {
 		this.loaderService.show();
 		this.expansionService.getExpansion(new GetExpansion({
+			code: code,
+			page: this.items.footer.page,
+			page_size: this.items.footer.pageSize,
+			query: this.items.filter.query,
+			sort_by: this.items.filter.sortBy,
+			sort_direction: this.items.filter.sortDirection
+		}));
+		this.expansionService.getExpansionCards(new GetExpansionCards({
 			code: code,
 			page: this.items.footer.page,
 			page_size: this.items.footer.pageSize,

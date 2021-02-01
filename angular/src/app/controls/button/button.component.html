@@ -10,8 +10,7 @@
         <fa-icon [icon]="button.icon"></fa-icon>
 	</span>
 	
-    <span class="text" *ngIf="button.text">
-        {{button.text}}
+    <span class="text" *ngIf="button.text" [innerHTML]="button.text">
 	</span>
 	
 </button>

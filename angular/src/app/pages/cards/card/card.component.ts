@@ -7,7 +7,7 @@ import { CardService } from '../../../services/card.service';
 import { AuthenticationService } from '@app/services/auth.service';
 import "@app/extensions/string.extensions";
 import { Icons } from '@app/models/icons';
-import { LoaderService, Tag } from '@app/controls';
+import { Button, LoaderService, Tag } from '@app/controls';
 import { CardsService } from '../../../services/cards.service';
 import { ItemGroup, Items } from '@app/layout/main';
 import { ExpansionService, GetExpansion } from '@app/services/expansion.service';
@@ -27,6 +27,8 @@ export class CardComponent implements OnInit {
 	expansionCards: Items = new Items();
 	cardImageHover: boolean = false;
 	tagRarity: Tag;
+	buttonTCGPlayer: Button;
+	buttonEbay: Button;
 
     constructor(
 		private loaderService: LoaderService,
@@ -38,6 +40,8 @@ export class CardComponent implements OnInit {
 		private authenticationService: AuthenticationService) {}
 
     ngOnInit(): void {
+
+		this.setupControls();
 		
 		this.loaderService.show();
 
@@ -100,6 +104,19 @@ export class CardComponent implements OnInit {
 		});
 
 		this.handleRoute();
+	}
+
+	setupControls() {
+		this.buttonTCGPlayer = new Button({
+			text: 'Buy on TCGPlayer <span class="money">$50</span>',
+			icon: 'external-link',
+			classes: 'secondary'
+		});
+		this.buttonEbay = new Button({
+			text: 'Buy on eBay <span class="money">$50</span>',
+			icon: 'external-link',
+			classes: 'secondary'
+		});
 	}
 	
 	handleRoute() {

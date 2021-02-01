@@ -31,6 +31,7 @@
 		z-index: 2;
 		position: relative;
 		display: flex;
+		flex-direction: column;
 		//justify-content: center;
 		//flex-direction: column;
 
@@ -192,13 +193,29 @@
 }
 .card-expansion {
 	display: flex;
-	img {
-		width: 16px;
-		height: 16px;
-		margin-right: $spacing / 2;
-	}
-	a {
-		display: flex;
-		align-items: center;
-	}
+	// a {
+	// 	border: $border;
+	// 	border-radius: $border-radius-small;
+	// 	padding: $spacing;
+	// 	transition: $transition;
+	// 	&:hover {
+	// 		box-shadow: $shadow-focus;
+	// 	}
+	// }
+	// .card-number {
+	// 	margin-left: $spacing / 2;
+	// 	vertical-align: baseline;
+	// }
+	// img {
+	// 	height: 16px;
+	// 	margin-right: $spacing / 2;
+	// }
+	// a {
+	// 	display: flex;
+	// 	align-items: center;
+	// }
+}
+
+.card-artist {
+	padding-top: $spacing;
 }

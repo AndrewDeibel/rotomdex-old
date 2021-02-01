@@ -95,7 +95,7 @@ export function SetSortByCards(itemFilter: ItemsFilter) {
 		options: [
 			new SelectOption({
 				text: "Number",
-				value: "card.number"
+				value: "number"
 			}),
 			new SelectOption({
 				text: "Name",
@@ -115,6 +115,6 @@ export function SetSortByCards(itemFilter: ItemsFilter) {
 			})
 		]
 	});
-	itemFilter.selectSortBy.value = "card.order";
+	itemFilter.selectSortBy.value = "number";
 	itemFilter.sortBy = itemFilter.selectSortBy.value;
 };
