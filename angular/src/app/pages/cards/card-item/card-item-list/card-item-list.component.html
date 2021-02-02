@@ -2,21 +2,29 @@
 	class="item"
 	[routerLink]="card.route ? card.route : []">
 
-	<figure
+	<div
 		class="card-image {{!card.image ? 'placeholder' : ''}}"
 		*ngIf="card.image">
 
 		<div class="image-wrapper">
-			<mb-loader [active]="imageLoading"></mb-loader>
+			<mb-loader *ngIf="false" [active]="imageLoading"></mb-loader>
 			<img src="{{card.image}}" [hidden]="imageLoading" (load)="onLoad()" />
 		</div>
 
-	</figure>
+	</div>
 
-	<aside class="card-information">
-		<div class="card-name">
-			{{card.name}}
+	<div class="flex padded box flex-center">
+		<div class="card-name width-6">
+			<h6>{{card.name}}</h6>
 		</div>
-	</aside>
+		<div class="card-number width-3">
+			{{getCardNumber()}}
+		</div>
+		<div class="card-price width-3">
+			<div class="money-tag" *ngIf="card.last_prices">
+				${{card.last_prices.market_price}}
+			</div>
+		</div>
+	</div>
 
 </a>

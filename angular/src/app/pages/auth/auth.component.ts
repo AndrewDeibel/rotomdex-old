@@ -54,6 +54,7 @@ export class AuthComponent implements OnInit {
 			classes: "large",
 			horizontal: true,
 			tabs: true,
+			round: false,
 			items: [
 				new MenuItem({
 					icon: Icons.signIn,

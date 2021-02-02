@@ -258,8 +258,8 @@
 		> ul {
 			> li {
                 > a {
-                    border-top-left-radius: $border-radius;
-                    border-top-right-radius: $border-radius;
+                    border-top-left-radius: $border-radius-small;
+                    border-top-right-radius: $border-radius-small;
                     @media (max-width: $screen-medium) {
                         flex-direction: column;
                         align-items: center;

@@ -81,16 +81,10 @@
             max-width: 300px;
 			max-height: calc(100vh - 132px - 8px);
 			background: $panel-bg;
-            @media (max-width: $screen-medium) {
-                left: 50%;
-                transform: translateX(-50%);
-                margin-left: auto;
-                margin-right: auto;
-            }
             &.active {
 				pointer-events: all;
                 opacity: 1;
-				max-width: 100vw;
+				max-width: calc(100vw - #{$spacing * 4});
 				cursor: zoom-out;
             }
             @media (max-height: $screen-small + 40px) {

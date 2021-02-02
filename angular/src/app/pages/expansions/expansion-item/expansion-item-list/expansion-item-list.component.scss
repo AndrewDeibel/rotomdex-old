@@ -31,29 +31,6 @@
 			transform: translate(-50%, -50%);
 		}
 	}
-	.set-release-date, .set-total-cards {
-		color: $font-color;
-	}
-	.set-name {
-		font-size: 18px;
-		margin: 0;
-		color: $primary-color;
-		font-weight: bold;
-		padding-right: $spacing;
-		display: flex;
-		align-items: center; 
-	}
-	@media (max-width: $screen-medium) {
-		flex-direction: column;
-		.set-name {
-			width: 100%;
-		}
-	}
-    @media (max-width: $screen-medium) {
-		.set-name {
-			font-size: 16px;
-		}
-    }
     @for $i from 1 through 50 {
         &:nth-child(#{50 - $i}) {
             z-index: $i;
