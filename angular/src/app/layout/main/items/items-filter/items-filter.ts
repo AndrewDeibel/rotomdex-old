@@ -11,9 +11,6 @@ export enum ItemDisplayType {
 export class ItemsFilter {
 
 	// Values
-	query: string = "";
-	sortBy: string = "";
-	sortDirection: string = "asc";
 	displayMode: ItemDisplayType = ItemDisplayType.grid;
 	showGridDisplayMode: boolean = true;
 	showListDisplayMode: boolean = true;
@@ -36,7 +33,6 @@ export class ItemsFilter {
 
 		// Search
 		this.textboxSearch = new Textbox({
-			value: this.query,
 			icon: Icons.search,
 			placeholder: "Search items...",
 			clearable: true,
@@ -46,24 +42,9 @@ export class ItemsFilter {
 		// Sort by
 		this.selectSortBy = new Select({
 			classes: "square-right",
-			value: this.sortBy,
 			optionGroups: [
 				new SelectOptionGroup({
 					label: "Sort By",
-					options: [
-						new SelectOption({
-							text: "Name",
-							value: "name"
-						}),
-						new SelectOption({
-							text: "Price",
-							value: "price"
-						}),
-						new SelectOption({
-							text: "Release Date",
-							value: "released_at"
-						})
-					]
 				})
 			]
 		});
@@ -71,7 +52,7 @@ export class ItemsFilter {
 		// Sort direction
 		this.selectSortDirection = new Select({
 			classes: "square-left",
-			value: this.sortDirection,
+			value: "asc",
 			optionGroups: [
 				new SelectOptionGroup({
 					label: "Sort Direction",

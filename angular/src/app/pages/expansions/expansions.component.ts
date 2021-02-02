@@ -24,10 +24,10 @@ export class ExpansionsComponent implements OnInit {
 
 		this.titleService.setTitle(AppSettings.titlePrefix + 'Expansions');
 		this.setupControls();
-		this.subAllExpansions();
+		this.subscribeAllExpansions();
 	}
 
-	subAllExpansions() {
+	subscribeAllExpansions() {
 		this.expansionsService.allExpansionsObservable().subscribe(series => {
 			if (series) {
 				this.loaderService.hide();
@@ -58,8 +58,7 @@ export class ExpansionsComponent implements OnInit {
 
 		// Sort by
 		SetSortByExpansions(this.items.filter);
-		this.items.filter.sortDirection = "desc";
-		this.items.filter.selectSortDirection.value = this.items.filter.sortDirection;
+		this.items.filter.selectSortDirection.value = "desc";
 
 		// Page size
 		this.items.footer.pageSize = 100;
@@ -68,9 +67,9 @@ export class ExpansionsComponent implements OnInit {
 	getItems() {
 		this.loaderService.show();
 		this.expansionsService.getExpansions({
-			query: this.items.filter.query,
-			sort_by: this.items.filter.sortBy,
-			sort_direction: this.items.filter.sortDirection
+			query: this.items.filter.textboxSearch.value,
+			sort_by: this.items.filter.selectSortBy.value,
+			sort_direction: this.items.filter.selectSortDirection.value
 		});
 	}
 

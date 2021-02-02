@@ -68,7 +68,6 @@ export class CardsComponent implements OnInit {
 	setupControls() {
 		this.items = new Items();
 		SetSortByCards(this.items.filter);
-		this.items.filter.sortBy = this.items.filter.selectSortBy.value;
 	}
 	
 	getCardsResponse(res: CardResults) {
@@ -127,7 +126,7 @@ export class CardsComponent implements OnInit {
 			this.cardsService.searchCards({
 				page: this.items.footer.page,
 				page_size: this.items.footer.pageSize,
-				query: this.items.filter.query,
+				query: this.items.filter.textboxSearch.value,
 				language_id: 1,
 				sort_by: this.sortByDirection,
 			});

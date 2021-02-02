@@ -35,6 +35,7 @@ export class TextboxComponent implements ControlValueAccessor {
 	@Input() alert: Alert;
 	@Output() keydownEnter: EventEmitter<string> = new EventEmitter();
 	@Output() clickIcon: EventEmitter<string> = new EventEmitter();
+	@Output() clickClear: EventEmitter<string> = new EventEmitter();
 
 	constructor() { }
 
@@ -52,15 +53,18 @@ export class TextboxComponent implements ControlValueAccessor {
 		}
 	}
 
+	_clickClear() {
+		this.textbox.clear();
+		this.clickClear.emit(this.value);
+		if (this.textbox.clickClear) {
+			this.textbox.clickClear();
+		}
+	}
+
 	_change() {
 		if (this.textbox.change) {
 			this.textbox.change(this.value);
 		}
-	}
-
-	clear() {
-		this.textbox.value = "";
-		//textboxEl1.focus();
 	}
 	
 	_colorPickerChange(value: string) {

@@ -135,5 +135,4 @@ export function SetSortByCards(itemFilter: ItemsFilter) {
 		]
 	});
 	itemFilter.selectSortBy.value = "number";
-	itemFilter.sortBy = itemFilter.selectSortBy.value;
 };

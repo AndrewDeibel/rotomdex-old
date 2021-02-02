@@ -11,7 +11,7 @@ $heading-font-color: rgba(black, .6);
 $white: white;
 $grey: grey;
 $black: black;
-$red: rgb(180, 61, 61);
+$red: rgb(201, 35, 35);
 $orange: #F68603;
 $yellow: #F1C500;
 $green: rgb(58, 156, 58);
@@ -24,7 +24,7 @@ $primary-color: $blue;
 $secondary-color: #a8b7c2;
 
 $header-height: 56px;
-$header-bg: linear-gradient(#cf493a, #be3b2c);
+$header-bg: linear-gradient($red, darken($red, 10%));
 $menu-bg: #323232;
 $header-color: white;
 $main-bg: none;
@@ -86,7 +86,7 @@ $transition:
 
 // Screen
 $max: 1080px;
-$min: 320px;
+$min: 400px;
 $screen: 320px;
 $screen-xsmall: $screen * 1;
 $screen-small: $screen * 2;

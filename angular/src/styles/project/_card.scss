@@ -33,3 +33,20 @@
 .money {
 	color: $green;
 }
+
+.money-tag {
+	color: $green;
+	background: white;
+	display: inline-block;
+	padding: 4px 8px;
+	border-radius: $border-radius;
+	font-weight: bold;
+	font-size: 14px;
+}
+.button {
+	.money-tag {
+		margin: -4px 0;
+		margin-right: -6px;
+		margin-left: 4px;
+	}
+}

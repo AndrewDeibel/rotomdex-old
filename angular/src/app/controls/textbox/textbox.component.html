@@ -1,4 +1,6 @@
-<div class="textbox-wrapper {{textbox.wrapperClasses}}"
+<div
+	*ngIf="textbox"
+	class="textbox-wrapper {{textbox.wrapperClasses}}"
 	[class.dark]="textbox.dark">
 
 	<label
@@ -52,7 +54,7 @@
 
 	<!-- Clear -->
 	<fa-icon
-		(click)="clear()"
+		(click)="_clickClear()"
 		*ngIf="textbox.clearable && textbox.value.length"
 		icon="times">
 	</fa-icon>

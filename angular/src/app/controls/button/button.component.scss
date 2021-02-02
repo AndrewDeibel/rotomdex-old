@@ -37,6 +37,7 @@
     }
     &:hover {
 		background: mix(white, $primary-color, 10%);
+		box-shadow: $shadow-focus;
 		&.secondary {
 			background: mix(white, $secondary-color, 10%);
 		}

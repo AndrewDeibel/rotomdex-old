@@ -63,7 +63,6 @@ export function SetSortByExpansions(itemFilter: ItemsFilter) {
 		]
 	});
 	itemFilter.selectSortBy.value = "expansion.release_date";
-	itemFilter.sortBy = itemFilter.selectSortBy.value;
 }
 
 export function SetSortByExpansion(itemFilter: ItemsFilter) {
@@ -77,7 +76,6 @@ export function SetSortByExpansion(itemFilter: ItemsFilter) {
 		]
 	});
 	itemFilter.selectSortBy.value = "number";
-	itemFilter.sortBy = itemFilter.selectSortBy.value;
 }
 
 export function SetPageSize(itemFooter: ItemsFooter) {

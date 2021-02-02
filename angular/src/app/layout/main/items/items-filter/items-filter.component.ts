@@ -29,23 +29,22 @@ export class ItemsFilterComponent implements OnInit {
 
 		// Search
 		this.itemsFilter.textboxSearch.keydownEnter = value => {
-			this.itemsFilter.query = value;
 			this.outputGetItems.emit();
 		}
 		this.itemsFilter.textboxSearch.clickIcon = value => {
-			this.itemsFilter.query = value;
+			this.outputGetItems.emit();
+		}
+		this.itemsFilter.textboxSearch.clickClear = () => {
 			this.outputGetItems.emit();
 		}
 
 		// Sort by
 		this.itemsFilter.selectSortBy.change = value => {
-			this.itemsFilter.sortBy = value;
 			this.outputGetItems.emit();
 		}
 
 		// Sort direction
 		this.itemsFilter.selectSortDirection.change = value => {
-			this.itemsFilter.sortDirection = value;
 			this.outputGetItems.emit();
 		}
 
@@ -55,6 +54,7 @@ export class ItemsFilterComponent implements OnInit {
 			horizontal: true,
 			classes: "round border shadow-light",
 		});
+
 		// Grid
 		if (this.itemsFilter.showGridDisplayMode) {
 			this.itemsFilter.menuItemGridDisplayMode = new MenuItem({
@@ -67,6 +67,7 @@ export class ItemsFilterComponent implements OnInit {
 			});
 			this.itemsFilter.menuDisplayMode.items.push(this.itemsFilter.menuItemGridDisplayMode);
 		}
+		
 		// List
 		if (this.itemsFilter.showListDisplayMode) { 
 			this.itemsFilter.menuItemListDisplayMode = new MenuItem({

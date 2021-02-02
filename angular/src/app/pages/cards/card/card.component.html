@@ -58,21 +58,15 @@
 						</div>
 						
 						<div class="card-expansion">
-							<!-- <a [routerLink]="card.expansion.route">
-								<img *ngIf="card.expansion.name !== 'Base'" src="{{card.expansion.symbol}}" />
-								<div>{{card.expansion.name}}
-
-									<span class="card-number subheading">
-										{{card.number}}/{{card.expansion.total_cards}}
-									</span>
-								</div>
-							</a> -->
 							<mb-expansion-item-grid [size]="'small'" [expansion]="card.expansion"></mb-expansion-item-grid>
 						</div>
 
+						<!-- TCG Player -->
 						<div *ngIf="buttonTCGPlayer">
 							<mb-button [button]="buttonTCGPlayer"></mb-button>
 						</div>
+
+						<!-- Ebay -->
 						<div *ngIf="buttonEbay">
 							<mb-button [button]="buttonEbay"></mb-button>
 						</div>

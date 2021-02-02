@@ -56,7 +56,7 @@ export class ExpansionsService {
 			let _seriesCollection: Series[] = [];
 			
 			// Query
-			if (params.query.length) {
+			if (params.query && params.query.length) {
 				// Filter expansions
 				seriesCollection.forEach(series => {
 					let expansions = series.expansions.filter(expansion => {

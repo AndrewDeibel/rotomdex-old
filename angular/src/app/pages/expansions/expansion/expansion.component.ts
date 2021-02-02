@@ -48,16 +48,6 @@ export class ExpansionComponent implements OnInit {
 				this.items.header.symbol = expansion.symbol;
 				this.items.header.title = expansion.name;
 				this.items.header.subtitle = `${expansion.total_cards} Cards - ${this.datePipe.transform(expansion.release_date)}`;
-				this.items.header.menu = new Menu({
-					round: true,
-					classes: "border",
-					dark: true,
-					items: [
-						new MenuItem({
-							icon: Icons.bars
-						})
-					]
-				});
 			}
 		});
 	}
@@ -92,9 +82,9 @@ export class ExpansionComponent implements OnInit {
 			code: code,
 			page: this.items.footer.page,
 			page_size: this.items.footer.pageSize,
-			query: this.items.filter.query,
-			sort_by: this.items.filter.sortBy,
-			sort_direction: this.items.filter.sortDirection
+			query: this.items.filter.textboxSearch.value,
+			sort_by: this.items.filter.selectSortBy.value,
+			sort_direction: this.items.filter.selectSortDirection.value
 		}));
 		this.getExpansionCards();
 	}
@@ -104,9 +94,9 @@ export class ExpansionComponent implements OnInit {
 			code: this.code,
 			page: this.items.footer.page,
 			page_size: this.items.footer.pageSize,
-			query: this.items.filter.query,
-			sort_by: this.items.filter.sortBy,
-			sort_direction: this.items.filter.sortDirection
+			query: this.items.filter.textboxSearch.value,
+			sort_by: this.items.filter.selectSortBy.value,
+			sort_direction: this.items.filter.selectSortDirection.value
 		}));
 	}
 

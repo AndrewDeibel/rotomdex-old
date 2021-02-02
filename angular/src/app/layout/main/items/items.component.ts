@@ -32,26 +32,31 @@ export class ItemsComponent implements OnInit {
 		
 		// Get query params
 		this.route.queryParams.subscribe(params => {
+
 			if (params["search"]) {
-				this.items.filter.query = params["search"];
+				this.items.filter.textboxSearch.value = params["search"];
 			}
+
 			if (params["sortby"]) {
-				this.items.filter.sortBy = params["sortby"];
-				this.items.filter.selectSortBy.value = this.items.filter.sortBy;
+				this.items.filter.selectSortBy.value = params["sortby"];
 			}
+
 			if (params["sortdirection"]) {
-				this.items.filter.sortDirection = params["sortdirection"];
-				this.items.filter.selectSortDirection.value = this.items.filter.sortDirection;
+				this.items.filter.selectSortDirection.value = params["sortdirection"];
 			}
+
 			if (params["displaymode"]) {
 				this.items.filter.setDisplayMode(ItemDisplayType[params["displaymode"]]);
 			}
+
 			if (params["pagesize"]) {
 				this.items.footer.pageSize = +params["pagesize"];
 			}
+
 			if (params["page"]) {
 				this.items.footer.page = +params["page"];
 			}
+
 		});
 
 		this.outputGetItems.emit();
@@ -62,9 +67,9 @@ export class ItemsComponent implements OnInit {
 			queryParams: {
 				pagesize: this.items.footer.pageSize,
 				page: this.items.footer.page,
-				search: this.items.filter.query.length ? this.items.filter.query : null,
-				sortby: this.items.filter.sortBy,
-				sortdirection: this.items.filter.sortDirection,
+				search: this.items.filter.textboxSearch.value,
+				sortby: this.items.filter.selectSortBy.value,
+				sortdirection: this.items.filter.selectSortDirection.value,
 				displaymode: this.items.filter.displayMode.toLowerCase()
 			}
 		});
@@ -80,6 +85,7 @@ export class ItemsComponent implements OnInit {
 
 	displayModeChanged(itemDisplayType: ItemDisplayType) {
 		this.items.itemDisplayType = itemDisplayType;
+		this.items.filter.displayMode = this.items.itemDisplayType;
 		this.outputDisplayModeChanged.emit(itemDisplayType);
 		this.updateQueryParams();
 	}

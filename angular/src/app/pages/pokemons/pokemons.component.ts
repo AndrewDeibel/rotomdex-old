@@ -28,7 +28,6 @@ export class PokemonsComponent implements OnInit {
 		this.items.showHeader = false;
 		this.items.itemClasses = "width-3 medium-6 small-12";
 		this.items.filter.textboxSearch.placeholder = "Search Pokémon...";
-		this.items.filter.sortBy = this.items.filter.selectSortBy.value;
 		this.items.footer.pageSize = 24;
 		this.items.footer.selectPageSize.value = this.items.footer.pageSize.toString();
 		
@@ -55,9 +54,9 @@ export class PokemonsComponent implements OnInit {
 		this.pokemonService.getPokemonVariants({
 			page: this.items.footer.page,
 			page_size: this.items.footer.pageSize,
-			sort_by: this.items.filter.sortBy,
-			sort_direction: this.items.filter.sortDirection,
-			query: this.items.filter.query
+			sort_by: this.items.filter.selectSortBy.value,
+			sort_direction: this.items.filter.selectSortDirection.value,
+			query: this.items.filter.textboxSearch.value
 		});
 	}
 }

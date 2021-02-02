@@ -1,7 +1,7 @@
 import { Icons } from '@app/models/icons';
 
 export class Textbox {
-    value: string;
+    value: string = "";
 	label: string;
 	type: string = "text";
 	min: number;
@@ -24,6 +24,11 @@ export class Textbox {
 	_clickIcon:(value: string) => void;
 	change:(value: string) => void;
 	_change:(value: string) => void;
+
+	clickClear:() => void;
+	clear = () => {
+		this.value = "";
+	}
 
     public constructor(init?:Partial<Textbox>) {
         Object.assign(this, init);

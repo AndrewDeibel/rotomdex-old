@@ -74,7 +74,6 @@ export class PokemonComponent implements OnInit {
 		this.items = new Items();
 		this.items.showHeader = false;
 		SetSortByPokemon(this.items.filter.selectSortBy);
-		this.items.filter.sortBy = this.items.filter.selectSortBy.value;
 		this.items.footer.pageSize = 24;
 		this.items.footer.selectPageSize.value = this.items.footer.pageSize.toString();
 
@@ -86,9 +85,9 @@ export class PokemonComponent implements OnInit {
 			page: this.items.footer.page,
 			slug: this.slug,
 			page_size: this.items.footer.pageSize,
-			sort_by: this.items.filter.sortBy,
-			sort_direction: this.items.filter.sortDirection,
-			query: this.items.filter.query
+			sort_by: this.items.filter.selectSortBy.value,
+			sort_direction: this.items.filter.selectSortDirection.value,
+			query: this.items.filter.textboxSearch.value
 		});
 	}
 	displayModeChanged() {
