@@ -36,7 +36,7 @@
 		height: 160px;
 		width: 100%;
 		position: relative;
-		background: rgba($grey, .2);
+		background: lighten($grey, 40%);
 		img:not(.symbol) {
 			padding: $spacing * 4;
 			position: absolute;

@@ -1,10 +1,12 @@
-<!-- Welcome -->
+<!-- Hero -->
 <div class="width-12 align-center hero flex vertical justify-center"
 	style="background-image: url('/assets/moltresgalar.jpg')">
 	<div class="max">
 		<div class="padding-8 hero-content">
 			<div class="logo margin-bottom">
-				<h1 class="margin-bottom">Welcome to <b>Rotom</b> Dex</h1>
+				<h1 class="margin-bottom">
+					Welcome to <b>Rotom</b> Dex
+				</h1>
 			</div>
 			<div class="padding-top">
 				<mb-search></mb-search>
@@ -15,16 +17,13 @@
 	<div class="hero-overlay"></div>
 </div>
 
-<div class="padding-x-2 padding-y-8">
+<!-- Under development -->
+<mb-alert [alert]="alert" id="dev-alert"></mb-alert>
+
+<!-- Latest -->
+<div class="section">
 	<div class="max">
 		<div class="flex padded-y-8 padded-x-2">
-
-			<!-- Under development -->
-			<div class="width-12">
-				<div class="flex justify-center">
-					<mb-alert [alert]="alert"></mb-alert>
-				</div>
-			</div>
 	
 			<!-- Release notes -->
 			<div class="width-6 medium-12">
@@ -83,9 +82,73 @@
 </div>
 
 <!-- Expansions -->
-<div class="padding-2">
+<div class="bg-alt section">
 	<div class="max">
-		<h2>Expansions</h2>
+		<div class="flex flex-center padded-8">
+
+			<div class="width-4 small-6">
+				<div id="expansion-logos">
+					<div class="flex padded">
+						<div class="width-6" *ngFor="let expansionLogo of expansionLogos">
+							<img src="{{expansionLogo}}"/>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="width-8 medium-12">
+				<h2>Expansions</h2>
+				<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi error, aperiam qui molestiae ullam quo quos sapiente sint? Culpa, esse! Veniam nesciunt eaque delectus eligendi eveniet. Porro quia maxime eius.</p>
+				<mb-button [button]="expansionButton"></mb-button>
+			</div>
+
+		</div>
 	</div>
 </div>
-<mb-expansions></mb-expansions>
+
+<!-- Cards -->
+<div class="section">
+	<div class="max">
+		<div class="flex flex-center padded-8">
+			
+			<div class="width-6 medium-12">
+				<h2>Cards</h2>
+				<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero voluptate, quisquam ducimus ex natus ratione illo cupiditate iusto rem libero necessitatibus pariatur beatae id similique, tenetur ipsam cum quod eos.</p>
+				<mb-button [button]="cardsButton"></mb-button>
+			</div>
+			<div class="width-6 medium-12">
+				<div id="cards">
+					<div class="flex padded">
+						<div class="width-2 medium-1 small-2" *ngFor="let card of cards">
+							<img class="card" src="{{card}}" />
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>
+
+<!-- Pokemon -->
+<div class="section">
+	<div class="max">
+		<div class="flex flex-center padded-8">
+
+			<div class="width-6 small-12">
+				<div id="expansion-logos">
+					<div class="flex padded">
+						<div class="width-2 small-1" *ngFor="let pokemon of pokemons">
+							<img src="{{pokemon}}"/>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="width-6 small-12">
+				<h2>Pokemon</h2>
+				<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi error, aperiam qui molestiae ullam quo quos sapiente sint? Culpa, esse! Veniam nesciunt eaque delectus eligendi eveniet. Porro quia maxime eius.</p>
+				<mb-button [button]="expansionButton"></mb-button>
+			</div>
+
+		</div>
+	</div>
+</div>

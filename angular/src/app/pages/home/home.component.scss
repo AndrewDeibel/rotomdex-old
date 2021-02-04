@@ -35,3 +35,26 @@
 		background: linear-gradient(rgba(black, .5), rgba(black, .25));
 	}
 }
+
+.card {
+	border-radius: $border-radius-card;
+	overflow: hidden;
+	box-shadow: $shadow;
+	display: block;
+}
+
+.section {
+	padding: $spacing * 8 $spacing * 2;
+	&:not(:last-child) {
+		border-bottom: $border;
+	}
+}
+
+#dev-alert {
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%) translateY(-50%);
+	width: calc(100% - #{$spacing * 4});
+	max-width: 816px;
+	text-align: center;
+}

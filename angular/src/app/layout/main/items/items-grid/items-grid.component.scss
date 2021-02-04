@@ -6,6 +6,8 @@
 	.item-grid {
 		display: flex;
 		width: percentage(1/6);
+		position: relative;
+		transition: $transition;
 		@media (max-width: $screen-medium) {
 			width: percentage(1/4);
 		}
@@ -19,6 +21,10 @@
 			&:nth-child(#{$i}) {
 				z-index: 100 - $i;
 			}
+		}
+		&:hover {
+			z-index: 999;
+			transform: scale(1.1);	
 		}
 	}
 }

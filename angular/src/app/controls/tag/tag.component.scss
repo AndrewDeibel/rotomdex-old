@@ -6,7 +6,7 @@
 	text-transform: uppercase;
 	font-size: 12px;
 	line-height: 1;
-	background: rgba($grey, .2);
+	background: #E6E6E6;
 	border-radius: $border-radius;
 	align-items: center;
 	&.primary {
@@ -33,7 +33,8 @@
 		'rare': $rare-non-holo,
 		'rare-holo': $rare-holo,
 		'rare-ultra': $rare-ultra,
-		'rare-secret': $rare-secret
+		'rare-secret': $rare-secret,
+		'rare-prime': $rare-ultra
 	);
 
 	@each $rarity-name, $rarity-color in $rarity {

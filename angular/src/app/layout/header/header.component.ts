@@ -33,12 +33,14 @@ export class HeaderComponent implements OnInit {
 				new MenuItem({
 					icon: Icons.signIn,
 					route: "signin",
+					text: "Sign In"
 				})
 			]
 		});
 
 		this.menuBack.items.push(
 			new MenuItem({
+				text: "Back",
 				icon: Icons.arrowLeft,
 				click: () => {
 					this.location.back();
