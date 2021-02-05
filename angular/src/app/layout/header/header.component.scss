@@ -36,7 +36,8 @@
 			margin-left: auto;
 			margin-right: auto;
 			.menu {
-				background: rgb($menu-bg, .9)
+				background: $menu-bg;
+				box-shadow: $shadow;
 			}
 			a  {
 				color: white;
