@@ -17,11 +17,19 @@ export class HomeComponent implements OnInit {
 		"https://images.pokemontcg.io/swsh4/logo.png",
 		"https://images.pokemontcg.io/swsh35/logo.png",
 		"https://images.pokemontcg.io/swsh3/logo.png",
-		"https://images.pokemontcg.io/sm8/logo.png",
 		"https://images.pokemontcg.io/sma/logo.png",
 		"https://images.pokemontcg.io/xy12/logo.png",
 		"https://images.pokemontcg.io/neo1/logo.png",
 		"https://images.pokemontcg.io/base5/logo.png",
+		"https://images.pokemontcg.io/sm2/logo.png",
+		"https://images.pokemontcg.io/det1/logo.png",
+		"https://images.pokemontcg.io/bw9/logo.png",
+		"https://images.pokemontcg.io/dp7/logo.png",
+		"https://images.pokemontcg.io/ex7/logo.png",
+		"https://images.pokemontcg.io/sm12/logo.png",
+		"https://images.pokemontcg.io/gym1/logo.png",
+		"https://images.pokemontcg.io/xy7/logo.png",
+		"https://images.pokemontcg.io/pl3/logo.png",
 	];
 	cards: string[] = [
 		"https://images.pokemontcg.io/sm9/170_hires.png", // Latias/ios
@@ -70,14 +78,19 @@ export class HomeComponent implements OnInit {
 		"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/887.png", // Dragapult
 	];
 	expansionButton: Button = new Button({
-		text: "View All",
+		text: "View All Expansions",
 		icon: Icons.externalLink,
 		route: "/expansions"
 	});
 	cardsButton: Button = new Button({
-		text: "View All",
+		text: "View All Cards",
 		icon: Icons.externalLink,
 		route: "/cards"
+	});
+	pokemonButton: Button = new Button({
+		text: "View All Pokémon",
+		icon: Icons.externalLink,
+		route: "/pokemon"
 	});
 
 	constructor() { }

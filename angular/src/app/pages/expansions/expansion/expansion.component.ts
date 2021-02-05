@@ -15,7 +15,8 @@ import { Icons } from '@app/models';
 @AutoUnsubscribe()
 @Component({
     selector: 'mb-expansion',
-	templateUrl: './expansion.component.html'
+	templateUrl: './expansion.component.html',
+	styleUrls: ['./expansion.component.scss']
 })
 
 export class ExpansionComponent implements OnInit {
@@ -45,7 +46,7 @@ export class ExpansionComponent implements OnInit {
 		this.expansionService.getExpansionObservable().subscribe(expansion => {
 			if (expansion) {
 				this.titleService.setTitle(AppSettings.titlePrefix + expansion.name);
-				this.items.header.symbol = expansion.symbol;
+				this.items.header.symbol = expansion.logo;
 				this.items.header.title = expansion.name;
 				this.items.header.subtitle = `${expansion.total_cards} Cards - ${this.datePipe.transform(expansion.release_date)}`;
 			}

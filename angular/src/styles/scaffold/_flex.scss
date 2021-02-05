@@ -71,6 +71,11 @@
 	.medium-flex-start {
 		align-items: flex-start;
 	}
+	@for $i from 1 through 10 {
+		.medium-order-#{$i} {
+			order: $i;
+		}
+	}
 }
 
 // Small widths
@@ -85,5 +90,10 @@
 	}
 	.small-vertical {
 		flex-direction: column;
+	}
+	@for $i from 1 through 10 {
+		.small-order-#{$i} {
+			order: $i;
+		}
 	}
 }

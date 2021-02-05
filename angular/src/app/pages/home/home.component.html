@@ -21,7 +21,7 @@
 <mb-alert [alert]="alert" id="dev-alert"></mb-alert>
 
 <!-- Latest -->
-<div class="section">
+<div class="section section-dark">
 	<div class="max">
 		<div class="flex padded-y-8 padded-x-2">
 	
@@ -86,16 +86,16 @@
 	<div class="max">
 		<div class="flex flex-center padded-8">
 
-			<div class="width-4 small-6">
+			<div class="width-6 small-12 small-order-2">
 				<div id="expansion-logos">
 					<div class="flex padded">
-						<div class="width-6" *ngFor="let expansionLogo of expansionLogos">
+						<div class="width-3 small-2" *ngFor="let expansionLogo of expansionLogos">
 							<img src="{{expansionLogo}}"/>
 						</div>
 					</div>
 				</div>
 			</div>
-			<div class="width-8 medium-12">
+			<div class="width-6 small-12 small-order-1">
 				<h2>Expansions</h2>
 				<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi error, aperiam qui molestiae ullam quo quos sapiente sint? Culpa, esse! Veniam nesciunt eaque delectus eligendi eveniet. Porro quia maxime eius.</p>
 				<mb-button [button]="expansionButton"></mb-button>
@@ -110,15 +110,15 @@
 	<div class="max">
 		<div class="flex flex-center padded-8">
 			
-			<div class="width-6 medium-12">
+			<div class="width-6 small-12">
 				<h2>Cards</h2>
 				<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero voluptate, quisquam ducimus ex natus ratione illo cupiditate iusto rem libero necessitatibus pariatur beatae id similique, tenetur ipsam cum quod eos.</p>
 				<mb-button [button]="cardsButton"></mb-button>
 			</div>
-			<div class="width-6 medium-12">
+			<div class="width-6 small-12">
 				<div id="cards">
 					<div class="flex padded">
-						<div class="width-2 medium-1 small-2" *ngFor="let card of cards">
+						<div class="width-2 small-2" *ngFor="let card of cards">
 							<img class="card" src="{{card}}" />
 						</div>
 					</div>
@@ -134,19 +134,19 @@
 	<div class="max">
 		<div class="flex flex-center padded-8">
 
-			<div class="width-6 small-12">
+			<div class="width-6 small-12 small-order-2">
 				<div id="expansion-logos">
 					<div class="flex padded">
-						<div class="width-2 small-1" *ngFor="let pokemon of pokemons">
+						<div class="width-2 small-2" *ngFor="let pokemon of pokemons">
 							<img src="{{pokemon}}"/>
 						</div>
 					</div>
 				</div>
 			</div>
-			<div class="width-6 small-12">
+			<div class="width-6 small-12 small-order-1">
 				<h2>Pokemon</h2>
 				<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi error, aperiam qui molestiae ullam quo quos sapiente sint? Culpa, esse! Veniam nesciunt eaque delectus eligendi eveniet. Porro quia maxime eius.</p>
-				<mb-button [button]="expansionButton"></mb-button>
+				<mb-button [button]="pokemonButton"></mb-button>
 			</div>
 
 		</div>
