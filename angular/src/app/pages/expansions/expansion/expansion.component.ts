@@ -89,6 +89,7 @@ export class ExpansionComponent implements OnInit {
 		}));
 		this.getExpansionCards();
 	}
+	
 	getExpansionCards() {
 		this.loaderService.show();
 		this.expansionService.getExpansionCards(new GetExpansionCards({

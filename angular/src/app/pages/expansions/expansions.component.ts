@@ -4,7 +4,7 @@ import { ExpansionsService } from '../../services/expansions.service';
 import { Title } from '@angular/platform-browser';
 import { LoaderService } from '@app/controls';
 import { AppSettings } from '@app/app';
-import { SetSortByExpansions } from './expansion/expansion';
+import { Series, SetSortByExpansions } from './expansion/expansion';
 
 @Component({
 	selector: 'mb-expansions',
@@ -13,7 +13,7 @@ import { SetSortByExpansions } from './expansion/expansion';
 
 export class ExpansionsComponent implements OnInit {
 
-	items: Items;
+	items: Items = new Items();
 	
 	constructor(
 		private loaderService: LoaderService,
@@ -22,46 +22,38 @@ export class ExpansionsComponent implements OnInit {
 
 	ngOnInit() {
 
-		this.titleService.setTitle(AppSettings.titlePrefix + 'Expansions');
 		this.setupControls();
-		this.subscribeAllExpansions();
+		this.setupSubscriptions();
 	}
 
-	subscribeAllExpansions() {
+	setupSubscriptions() {
 		this.expansionsService.allExpansionsObservable().subscribe(series => {
-			if (series) {
-				this.loaderService.hide();
-				this.items.itemGroups = [];
-				let expansionCount = 0;
-				series.forEach(_series => {
-					this.items.itemGroups.push({
-						items: _series.expansions,
-						name: _series.name
-					});
-					expansionCount += _series.expansions.length;
-				});
-				this.items.header.subtitle = `total: ${expansionCount}`;
-			}
+			this.reponseGetExpanions(series);
 		});
 	}
 
-	setupControls() {
+	reponseGetExpanions(series: Series[]) {
+		if (series) {
+			this.loaderService.hide();
+			this.items.itemGroups = [];
+			series.forEach(_series => {
+				this.items.itemGroups.push({
+					items: _series.expansions,
+					name: _series.name
+				});
+			});
+		}
+	}
 
-		// Items
-		this.items = new Items();
+	setupControls() {
+		this.titleService.setTitle(AppSettings.titlePrefix + 'Expansions');
 		this.items.showHeader = false;
 		this.items.showFooter = false;
 		this.items.itemClasses = "width-3 medium-4 small-6";
-		this.items.header.title = "Expansions",
 		this.items.filter.textboxSearch.placeholder = "Search expansions...";
-		
-
-		// Sort by
-		SetSortByExpansions(this.items.filter);
 		this.items.filter.selectSortDirection.value = "desc";
-
-		// Page size
 		this.items.footer.pageSize = 100;
+		SetSortByExpansions(this.items.filter);
 	}
 
 	getItems() {

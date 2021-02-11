@@ -10,6 +10,7 @@ import { Pokemon, PokemonVariant } from '../../pokemon/pokemon';
 export class PokemonItemGridComponent implements OnInit {
 
 	@Input() pokemonVariant: PokemonVariant;
+	@Input() size: string;
 	
 	constructor() {}
 

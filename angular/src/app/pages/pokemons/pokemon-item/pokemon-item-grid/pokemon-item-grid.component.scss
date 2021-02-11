@@ -1,5 +1,5 @@
 @import "settings",
-		"project/pokemon";
+		"rotomdex";
 
 :host {
 	width: 100%;
@@ -13,6 +13,22 @@
 	transition: $transition;
 	position: relative;
 	overflow: hidden;
+	&.small {
+		max-width: 180px;
+		.pokemon-image-wrapper {
+			.pokemon-image {
+				margin-top: 0;
+				margin-bottom: 0;
+				height: 80px;
+				width: 80px;
+			}
+		}
+		.pokemon-number {
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+	}
 	&:hover {
 		border-color: $primary-color;
 		box-shadow: $shadow-focus;

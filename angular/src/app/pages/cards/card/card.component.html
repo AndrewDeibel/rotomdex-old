@@ -2,15 +2,15 @@
 
 		
 	<!-- Card -->
-	<article class="card-detail flex z-2" *ngIf="card">
+	<article class="card-detail flex z-2 padding-2 relative" *ngIf="card">
 		
 		<div class="max flex width-12">
 
 			<div class="flex padded-2">
 
 				<!-- Card image -->
-				<figure class="card-image relative z-2">
-					<div class="card-image-inner">
+				<figure class="card-image relative z-2 flex vertical">
+					<div class="card-image-inner relative">
 						<img
 							src="{{card.image}}"
 							class="img-card-image"
@@ -23,7 +23,7 @@
 							(click)="cardImageHover = !cardImageHover" />
 					</div>
 
-					<div class="card-artist">
+					<div class="card-artist padding-top">
 						<div class="subheading">Illustrated by</div>
 						<a [routerLink]="card.artist">
 							{{card.artist}}
@@ -44,7 +44,7 @@
 									<div class="card-hp">
 										<span>HP</span>{{card.hp}}
 									</div>
-									<div class="card-types">
+									<div class="card-types flex">
 										<div *ngFor="let type of card.types">
 											<mb-type-tag [type]="type"></mb-type-tag>
 										</div>
@@ -61,6 +61,12 @@
 							<mb-expansion-item-grid [size]="'small'" [expansion]="card.expansion"></mb-expansion-item-grid>
 						</div>
 
+						<mb-pokemon-item-grid
+							*ngIf="card.pokemon"
+							size="small"
+							[pokemonVariant]="card.pokemon.variant">
+						</mb-pokemon-item-grid>
+
 						<!-- TCG Player -->
 						<div *ngIf="buttonTCGPlayer">
 							<mb-button [button]="buttonTCGPlayer"></mb-button>
@@ -69,41 +75,6 @@
 						<!-- Ebay -->
 						<div *ngIf="buttonEbay">
 							<mb-button [button]="buttonEbay"></mb-button>
-						</div>
-						
-						<div *ngIf="card.pokemon" class="flex">
-							<a
-								[routerLink]="card.pokemon.variant.route"
-								class="card-pokemon hover round {{card.pokemon.variant.types[0]}}">
-								<div class="flex flex-center">
-									<div class="image-wrapper">
-										<img
-											class="shadow"
-											*ngIf="card.is_shiny"
-											[src]="card.pokemon.variant.sprites.shiny" />
-										<img
-											class="shadow"
-											*ngIf="!card.is_shiny"
-											[src]="card.pokemon.variant.sprites.default" />
-										<img
-											class="pokeball"
-											src="/assets/pokeball.png" />
-									</div>
-									<div class="padding-right-2 pokemon-name-number">
-										<div class="flex vertical">
-											<div class="pokemon-name bold">
-												{{card.pokemon.name}}
-											</div>
-											<div class="pokemon-number subheading opacity-5">
-												#{{card.pokemon.national_dex_number}} -
-												<span class="pokemon.region">
-													{{card.pokemon.generation.region}}
-												</span>
-											</div>
-										</div>
-									</div>
-								</div>
-							</a>
 						</div>
 					</div>
 				</div>

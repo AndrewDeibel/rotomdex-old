@@ -11,7 +11,7 @@ import { Button, LoaderService, Tag } from '@app/controls';
 import { CardsService } from '../../../services/cards.service';
 import { ItemGroup, Items } from '@app/layout/main';
 import { ExpansionService, GetExpansion, GetExpansionCards } from '@app/services/expansion.service';
-import { PokemonService } from '@app/pages/pokemons';
+import { GetPokemonVariantCards, PokemonService } from '@app/pages/pokemons';
 
 @Component({
     selector: 'mb-card',
@@ -134,14 +134,14 @@ export class CardComponent implements OnInit {
 	getRelatedCards() {
 		if (this.card) {
 			this.loaderService.show();
-			this.pokemonService.getPokemonVariantCards({
+			this.pokemonService.getPokemonVariantCards(new GetPokemonVariantCards({
 				page: this.relatedCards.footer.page,
 				page_size: this.relatedCards.footer.pageSize,
 				query: this.relatedCards.filter.textboxSearch.value,
 				slug: this.card.pokemon.slug,
 				sort_by: this.relatedCards.filter.selectSortBy.value,
 				sort_direction: this.relatedCards.filter.selectSortDirection.value
-			});
+			}));
 		}
 	}
 

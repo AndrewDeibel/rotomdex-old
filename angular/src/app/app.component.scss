@@ -1,10 +1,27 @@
 @import "settings";
 
+#app {
+    display: flex;
+    flex-direction: column;
+	flex: 1 0 0;
+	z-index: 1;
+	position: relative;
+}
+
 #menu {
+	width: 100%;
+	border-bottom: $border;
 	background: $menu-bg;
 	a {
 		color: white;
 	}
+}
+
+#main {
+    background-color: $main-bg;
+    flex: 1;
+    position: relative;
+	z-index: 1;
 }
 
 .scrollTop {

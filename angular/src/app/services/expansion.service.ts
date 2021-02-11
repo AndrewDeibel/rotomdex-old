@@ -2,14 +2,11 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { APIGetPaged, APIResponse } from "@app/models";
 import { Card, Expansion } from "@app/pages";
-import { CardFactory } from "@app/services/factory/card.factory";
 import { BehaviorSubject } from "rxjs";
-import { environment } from "src/environments/environment";
 import { CardResults } from "./cards.service";
 
 export class GetExpansion extends APIGetPaged {
 	code: string;
-
 	constructor(init?:Partial<GetExpansion>) {
 		super();
 		Object.assign(this, init);
@@ -18,7 +15,6 @@ export class GetExpansion extends APIGetPaged {
 
 export class GetExpansionCards extends APIGetPaged {
 	code: string;
-
 	constructor(init?:Partial<GetExpansion>) {
 		super();
 		Object.assign(this, init);
@@ -42,8 +38,6 @@ export class ExpansionService {
 	}
 	getExpansion(params: GetExpansion) {
 		var url = params.buildUrl("expansion/" + params.code);
-
-		// Don't cache paged data
 		this.http.get<APIResponse>(url).subscribe(res => {
 			var expansion = new Expansion(res.data);
 			this.getExpansionSubject.next(expansion);

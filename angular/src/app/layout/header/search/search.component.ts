@@ -3,7 +3,7 @@ import { SearchService } from '@app/services/search.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Card } from '@app/pages/cards/card';
 import { Menu, MenuItem } from '@app/controls/menu';
-import { SearchCardsParams, CardsService } from '@app/services/cards.service';
+import { CardsService } from '@app/services/cards.service';
 
 @Component({
 	selector: 'mb-search',
@@ -18,13 +18,13 @@ export class SearchComponent implements OnInit {
 	cards: Card[] = [];
 	loading: boolean = false;
 	lastQuery: string = "";
-	paramsSearch: SearchCardsParams = {
-		page: 1,
-		page_size: 10,
-		query: "",
-		language_id: 1,
-		sort_by: "cards",
-	};
+	// paramsSearch: SearchCardsParams = {
+	// 	page: 1,
+	// 	page_size: 10,
+	// 	query: "",
+	// 	language_id: 1,
+	// 	sort_by: "cards",
+	// };
 	menuCards: Menu = new Menu();
 	menuCardsShow: boolean = false;
 
@@ -49,26 +49,26 @@ export class SearchComponent implements OnInit {
 		});
 
 		// Subscribe to autocomplete
-		this.cardsService.autoCompleteCardsObservable().subscribe(_cards => {
-			this.cards = [];
-			this.menuCardsShow = false;
-			this.menuCards.items = [];
-			this.lastQuery = this.query;
-			this.loading = false;
-			if (_cards.length > 0) {
-				this.menuCardsShow = true;
-				this.cards = _cards;
-				this.cards.forEach(card => {
-					this.menuCards.items.push(new MenuItem({
-						text: card.name,
-						route: card.route,
-						click: () => {
-							this.menuCardsShow = false;
-						}
-					}));
-				});
-			}
-		});
+		// this.cardsService.autoCompleteCardsObservable().subscribe(_cards => {
+		// 	this.cards = [];
+		// 	this.menuCardsShow = false;
+		// 	this.menuCards.items = [];
+		// 	this.lastQuery = this.query;
+		// 	this.loading = false;
+		// 	if (_cards.length > 0) {
+		// 		this.menuCardsShow = true;
+		// 		this.cards = _cards;
+		// 		this.cards.forEach(card => {
+		// 			this.menuCards.items.push(new MenuItem({
+		// 				text: card.name,
+		// 				route: card.route,
+		// 				click: () => {
+		// 					this.menuCardsShow = false;
+		// 				}
+		// 			}));
+		// 		});
+		// 	}
+		// });
 	}
 
 	search() {
@@ -87,8 +87,8 @@ export class SearchComponent implements OnInit {
 		// Only autocomplete if query is different than last query
 		if (this.query.trim().toLowerCase() !== this.lastQuery.trim().toLowerCase()) {
 			this.loading = true;
-			this.paramsSearch.query = this.query;
-			this.cardsService.autoCompleteCards(this.paramsSearch);
+			//this.paramsSearch.query = this.query;
+			//this.cardsService.autoCompleteCards(this.paramsSearch);
 		}
 	}
 

@@ -1,5 +1,5 @@
 @import "settings",
-		"project/pokemon";
+		"rotomdex";
 
 .type-tag {
 	@each $type, $color in $poke-types {

@@ -4,7 +4,7 @@ import { AppSettings } from '@app/app';
 import { LoaderService, SelectOption, SelectOptionGroup } from '@app/controls';
 import { ItemGroup, Items } from '@app/layout/main';
 import { SetSortByPokemon, PokemonVariant } from './pokemon/pokemon';
-import { PokemonsService } from '../../services/pokemons.service';
+import { GetPokemonVariants, PokemonsService } from '../../services/pokemons.service';
 
 @Component({
 	selector: 'mb-pokemons',
@@ -13,25 +13,15 @@ import { PokemonsService } from '../../services/pokemons.service';
 
 export class PokemonsComponent implements OnInit {
 
-	items: Items;
+	items: Items = new Items();
 	
 	constructor(
 		private loaderService: LoaderService,
 		private titleService: Title,
 		private pokemonService: PokemonsService) { }
 
-	ngOnInit() { 
-
-		// Init
-		this.items = new Items();
-		SetSortByPokemon(this.items.filter.selectSortBy);
-		this.items.showHeader = false;
-		this.items.itemClasses = "width-3 medium-6 small-12";
-		this.items.filter.textboxSearch.placeholder = "Search Pokémon...";
-		this.items.footer.pageSize = 24;
-		this.items.footer.selectPageSize.value = this.items.footer.pageSize.toString();
-		
-		this.titleService.setTitle(AppSettings.titlePrefix + 'Pokemon');
+	ngOnInit() {
+		this.setupControls();
 
 		// Get data
 		this.pokemonService.getPokemonVariantsObservable().subscribe(res => {
@@ -49,14 +39,24 @@ export class PokemonsComponent implements OnInit {
 		})
 	}
 
-	getItems() {
+	setupControls() {
+		SetSortByPokemon(this.items.filter.selectSortBy);
+		this.titleService.setTitle(AppSettings.titlePrefix + 'Pokemon');
+		this.items.showHeader = false;
+		this.items.itemClasses = "width-3 medium-6 small-12";
+		this.items.filter.textboxSearch.placeholder = "Search Pokémon...";
+		this.items.footer.pageSize = 24;
+		this.items.footer.selectPageSize.value = this.items.footer.pageSize.toString();
+	}
+
+	getPokemonVariants() {
 		this.loaderService.show();
-		this.pokemonService.getPokemonVariants({
+		this.pokemonService.getPokemonVariants(new GetPokemonVariants({
 			page: this.items.footer.page,
 			page_size: this.items.footer.pageSize,
 			sort_by: this.items.filter.selectSortBy.value,
 			sort_direction: this.items.filter.selectSortDirection.value,
 			query: this.items.filter.textboxSearch.value
-		});
+		}));
 	}
 }

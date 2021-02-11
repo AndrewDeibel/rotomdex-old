@@ -1,5 +1,6 @@
 <a
-	class="item-grid-pokemon"
+	*ngIf="pokemonVariant"
+	class="item-grid-pokemon {{size}}"
 	[routerLink]="pokemonVariant.route ? pokemonVariant.route : []">
 
 	<figure class="pokemon-image-wrapper {{pokemonVariant.types[0]}}">

@@ -27,10 +27,11 @@ $header-height: 56px;
 $header-bg: linear-gradient($red, darken($red, 10%));
 $menu-bg: #323232;
 $header-color: white;
-$main-bg: none;
+$main-bg: white;
 $panel-bg: white;
 $footer-bg: $header-bg;
 
+// Alerts
 $success: $green;
 $info: $blue;
 $warning: $yellow;

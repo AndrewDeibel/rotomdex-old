@@ -4,7 +4,7 @@ import { LoaderService } from '@app/controls';
 import { ItemGroup, Items } from '@app/layout/main';
 import { Card, Cards } from '@app/pages/cards';
 import { SetSortByPokemon, PokemonVariant } from './pokemon';
-import { PokemonService } from '../../../services/pokemon.service';
+import { GetPokemonVariantCards, PokemonService } from '../../../services/pokemon.service';
 
 @Component({
 	selector: 'mb-pokemon',
@@ -15,7 +15,7 @@ import { PokemonService } from '../../../services/pokemon.service';
 export class PokemonComponent implements OnInit {
 
 	@Input() pokemonVariant: PokemonVariant;
-	items: Items;
+	items: Items = new Items();
 	slug: string;
 
 	constructor(
@@ -69,28 +69,21 @@ export class PokemonComponent implements OnInit {
 	}
 
 	setupControls() {
-
-		// Init
-		this.items = new Items();
-		this.items.showHeader = false;
 		SetSortByPokemon(this.items.filter.selectSortBy);
+		this.items.showHeader = false;
 		this.items.footer.pageSize = 24;
 		this.items.footer.selectPageSize.value = this.items.footer.pageSize.toString();
-
 	}
 
 	getCards() {
 		this.loaderService.show();
-		this.pokemonService.getPokemonVariantCards({
+		this.pokemonService.getPokemonVariantCards(new GetPokemonVariantCards({
 			page: this.items.footer.page,
 			slug: this.slug,
 			page_size: this.items.footer.pageSize,
 			sort_by: this.items.filter.selectSortBy.value,
 			sort_direction: this.items.filter.selectSortDirection.value,
 			query: this.items.filter.textboxSearch.value
-		});
-	}
-	displayModeChanged() {
-
+		}));
 	}
 }

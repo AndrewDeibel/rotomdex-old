@@ -1,26 +1,18 @@
 @import "settings",
 		"scaffold/typography",
-		"project/pokemon";
+		"rotomdex";
 
-.card-header {
-	.card-types {
-		display: flex;
-	}
-	.card-hp {
-		font-weight: bold;
-		font-size: 32px;
-		span {
-			font-size: 35%;
-		}
+.card-hp {
+	font-weight: bold;
+	font-size: 32px;
+	span {
+		font-size: 35%;
 	}
 }
 
 .card-detail {
-    display: flex;
     flex-wrap: wrap;
-	position: relative;
 	align-items: flex-start;
-	padding: $spacing * 2;
     > * {
         @media (max-width: $screen-small) {
             width: 100%;
@@ -29,23 +21,10 @@
 
     .card-image {
 		z-index: 2;
-		position: relative;
-		display: flex;
-		flex-direction: column;
-
-		.card-image-inner {
-			position: relative;
-			> mb-menu {
-				position: absolute;
-				left: $spacing;
-				bottom: $spacing;
-			}
-		}
-		
 		img {
 			border-radius: $border-radius-card;
 		}
-        .img-card-image {
+		.img-card-image {
 			max-width: 300px;
 			cursor: zoom-in;
             box-shadow: $shadow;
@@ -66,7 +45,7 @@
                 margin-left: auto;
                 margin-right: auto;
             }
-        }
+		}
         .img-card-image-hover {
             position: absolute;
             top: -$spacing;
@@ -92,125 +71,4 @@
             }
         }
     }
-    .card-information-wrapper {
-        flex: 1;
-		position: relative;
-		z-index: 1;
-		display: flex;
-		padding: $spacing;
-        @media(max-width: $screen-medium) {
-            justify-content: center;
-        }
-        .card-information-inner {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            margin: $spacing;
-            pointer-events: none;
-            z-index: 1;
-			opacity: .2;
-			
-			@media (max-width: $screen-small) {
-				margin: 0;
-			}
-        }
-        .card-information {
-            z-index: 1;
-            position: relative;
-			flex: 1;
-		}
-		.card-price {
-			color: $green;
-			font-size: 32px;
-		}
-    }
-	.symbol {
-		vertical-align: middle;
-		display: inline-block;
-		filter: drop-shadow(0 1px 1px rgba(black, .8));
-	}
-}
-
-.card-pokemon {
-	overflow: hidden;
-	@each $type, $color in $poke-types {
-		&.#{$type} {
-			.image-wrapper {
-				border-radius: $border-radius;
-				border-top-right-radius: 0;
-				border-bottom-right-radius: 0;
-				padding: $spacing / 2;
-				padding-left: $spacing;
-				padding-right: 0;
-				position: relative;
-				background: $color;
-				&:before {
-					content: '';
-					width: 32px;
-					height: 140%;
-					background: $color;
-					position: absolute;
-					right: -16px;
-					top: -14px;
-					transform: rotate(30deg);
-				}
-			}
-			.pokemon-name-number {
-				background: darken($color, 35%);
-				height: 60px;
-				padding-left: $spacing * 4;
-				display: flex;
-				flex-direction: column;
-				justify-content: center;
-				color: white;
-			}
-		}
-		img:not(.pokeball) {
-			width: 48px;
-			height: 48px;
-			z-index: 2;
-			position: relative;
-		}
-	}
-
-	.pokeball {
-		position: absolute;
-		right: -7px;
-		top: 50%;
-		transform: translateY(-50%);
-		width: 64px;
-		opacity: .2;
-		z-index: 1;
-		max-width: none;
-	}
-}
-.card-expansion {
-	display: flex;
-	// a {
-	// 	border: $border;
-	// 	border-radius: $border-radius-small;
-	// 	padding: $spacing;
-	// 	transition: $transition;
-	// 	&:hover {
-	// 		box-shadow: $shadow-focus;
-	// 	}
-	// }
-	// .card-number {
-	// 	margin-left: $spacing / 2;
-	// 	vertical-align: baseline;
-	// }
-	// img {
-	// 	height: 16px;
-	// 	margin-right: $spacing / 2;
-	// }
-	// a {
-	// 	display: flex;
-	// 	align-items: center;
-	// }
-}
-
-.card-artist {
-	padding-top: $spacing;
 }

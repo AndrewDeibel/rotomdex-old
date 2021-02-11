@@ -46,6 +46,7 @@ export class Pokemon {
 		}
 		if (init.variant) {
 			this.variant = new PokemonVariant(this.variant);
+			this.variant.pokemon = this;
 		}
 	}
 }

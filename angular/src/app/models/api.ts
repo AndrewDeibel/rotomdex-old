@@ -30,12 +30,39 @@ export class APIGetPaged {
 	
 	buildUrl = (folder: string) => {
 		let query = new HttpParams();
-		query = query.set('page', this.page.toString());
-		query = query.set('page_size', this.page_size.toString());
-		query = query.set('sort_by', this.sort_by);
-		query = query.set('sort_direction', this.sort_direction);
-		let queryString = query.toString();
+
+		// Page
+		if (this.page.toString().length)
+			query = query.set('page', this.page.toString());
+		else
+			query = query.delete('page');
+
+		// Page size
+		if (this.page_size.toString().length)
+			query = query.set('page_size', this.page_size.toString());
+		else
+			query = query.delete('page_size');
+
+		// Sort by
+		if (this.sort_by.toString().length)
+			query = query.set('sort_by', this.sort_by);
+		else
+			query = query.delete('sort_by');
+		
+		// Sort direction
+		if (this.sort_direction.toString().length)
+			query = query.set('sort_direction', this.sort_direction);
+		else
+			query = query.delete('sort_direction');
+
+		// Query
+		if (this.query.length)
+			query = query.set('search', this.query);
+		else
+			query = query.delete('search');
+		
 		// Include ? and query string if provided
+		let queryString = query.toString();
 		this.url = `${environment.api}${folder}${queryString.length ? ('?' + queryString) : ''}`;
 		return this.url;
 	}

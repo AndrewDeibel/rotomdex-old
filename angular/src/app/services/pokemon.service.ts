@@ -1,19 +1,18 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { APIResponse } from "@app/models";
+import { APIGetPaged, APIResponse } from "@app/models";
 import { Card } from "@app/pages/cards";
 import { BehaviorSubject } from "rxjs";
 import { environment } from "src/environments/environment";
 import { Pokemon, PokemonVariant } from "../pages/pokemons/pokemon/pokemon";
 
 // Get pokemon interfaces
-export interface GetPokemonVariantCards {
-	page: number;
-	page_size: number;
-	sort_by: string;
-	sort_direction: string;
-	query: string;
+export class GetPokemonVariantCards extends APIGetPaged {
 	slug: string;
+	constructor(init?:Partial<GetPokemonVariantCards>) {
+		super();
+		Object.assign(this, init);
+	}
 }
 export interface ResPokemonVariantCards {
 	total_results: number;
@@ -60,7 +59,8 @@ export class PokemonService {
 		return this.getPokemonVariantCardsSubject.asObservable();
 	}
 	getPokemonVariantCards(params: GetPokemonVariantCards) {
-		this.http.get<APIResponse>(`${environment.api}pokemon-variants/${params.slug}/cards?page=${params.page}&page_size=${params.page_size}`).subscribe(res => {
+		var url = params.buildUrl(`pokemon-variants/${params.slug}/cards`);
+		this.http.get<APIResponse>(url).subscribe(res => {
 			let cards = [];
 			res.data.forEach(card => {
 				cards.push(new Card(card));
