@@ -53,19 +53,25 @@
 							</div>
 						</div>
 
-						<div class="card-rarity flex" *ngIf="tagRarity">
-							<mb-tag [tag]="tagRarity"></mb-tag>
-						</div>
+						<div class="flex padded">
+							<div>
 						
-						<div class="card-expansion">
-							<mb-expansion-item-grid [size]="'small'" [expansion]="card.expansion"></mb-expansion-item-grid>
-						</div>
+								<!-- Expansion -->
+								<mb-expansion-item-grid
+									size="small"
+									[expansion]="card.expansion">
+								</mb-expansion-item-grid>
+							</div>
+							<div>
 
-						<mb-pokemon-item-grid
-							*ngIf="card.pokemon"
-							size="small"
-							[pokemonVariant]="card.pokemon.variant">
-						</mb-pokemon-item-grid>
+								<!-- Pokemon -->
+								<mb-pokemon-item-grid
+									*ngIf="card.pokemon"
+									size="small"
+									[pokemonVariant]="card.pokemon.variant">
+								</mb-pokemon-item-grid>
+							</div>
+						</div>
 
 						<!-- TCG Player -->
 						<div *ngIf="buttonTCGPlayer">
@@ -76,6 +82,15 @@
 						<div *ngIf="buttonEbay">
 							<mb-button [button]="buttonEbay"></mb-button>
 						</div>
+
+						<!-- Rarity -->
+						<div class="card-rarity flex align-middle padded" *ngIf="tagRarity">
+							<mb-tag [tag]="tagRarity"></mb-tag>
+							<div class="subheading flex vertical justify-center">
+								{{card.getCardNumber()}}
+							</div>
+						</div>
+						
 					</div>
 				</div>
 				
@@ -85,7 +100,7 @@
 		
 	</article>
 
-	<div class="flex vertical relative z-1">
+	<div class="relative z-1">
 		<div>
 			<mb-items
 				[items]="relatedCards"

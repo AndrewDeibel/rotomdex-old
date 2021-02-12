@@ -47,7 +47,12 @@ export class ExpansionComponent implements OnInit {
 			if (expansion) {
 				this.titleService.setTitle(AppSettings.titlePrefix + expansion.name);
 				this.items.header.symbol = expansion.logo;
-				this.items.header.title = expansion.name;
+				if (expansion.series.name === expansion.name) {
+					this.items.header.title = expansion.name;
+				}
+				else {
+					this.items.header.title = expansion.series.name + " - " + expansion.name;
+				}
 				this.items.header.subtitle = `${expansion.total_cards} Cards - ${this.datePipe.transform(expansion.release_date)}`;
 			}
 		});

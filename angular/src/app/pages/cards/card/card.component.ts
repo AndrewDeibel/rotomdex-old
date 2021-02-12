@@ -36,54 +36,78 @@ export class CardComponent implements OnInit {
 		private cardsService: CardsService,
 		private route: ActivatedRoute,
 		private expansionService: ExpansionService,
-		private pokemonService: PokemonService,
-		private authenticationService: AuthenticationService) {}
+		private pokemonService: PokemonService) {}
 
     ngOnInit(): void {
-		
 		this.loaderService.show();
+		this.setupControls();
+		this.setupSubscriptions();
+		this.handleRoute();
+	}
 
+	setupControls() {
 		this.relatedCards.footer.pageSize = 12;
 		this.expansionCards.footer.pageSize = 12;
 		SetSortByCards(this.relatedCards.filter);
 		SetSortByCards(this.expansionCards.filter);
+		this.buttonTCGPlayer = new Button({
+			text: "Buy on TCGPlayer",
+			icon: 'external-link',
+		});
+		this.buttonEbay = new Button({
+			text: "Buy on eBay",
+			icon: 'external-link',
+		});
+		this.relatedCards.header.button = new Button({
+			text: "View More",
+			icon: Icons.externalLink
+		});
+		this.expansionCards.header.button = new Button({
+			text: "View More",
+			icon: Icons.externalLink
+		});
+	}
+
+	setupSubscriptions() {
 
 		// Response get card
 		this.cardService.cardObservable().subscribe(card => {
 			if (card) {
 				this.loaderService.hide();
+
+				// Data
 				this.card = card;
-				if (this.card.rarity) {
-					this.tagRarity = new Tag({
-						text: this.card.rarity,
-						classes: this.card.rarity.toLowerCase().replace(' ', '-')
-					});
-				}
+
+				// Rarity
 				if (this.card.expansion.name.toLowerCase().includes("promo")) {
 					this.tagRarity = new Tag({
 						text: "Promo",
 						classes: "promo"
 					});
 				}
+				else if (this.card.rarity) {
+					this.tagRarity = new Tag({
+						text: this.card.rarity,
+						classes: this.card.rarity.toLowerCase().replace(' ', '-')
+					});
+				}
+
+				// Get related/expansion cards
 				this.getRelatedCards();
 				this.getExpansionCards();
 
-				this.buttonTCGPlayer = new Button({
-					text: "Buy on TCGPlayer",
-					icon: 'external-link',
-				});
+				// Expansion name
+				this.expansionCards.header.title = "More " + this.card.expansion.name + " Cards";
+				this.expansionCards.noResults = "No " + this.card.expansion.name + " cards found";
+				this.expansionCards.header.button.route = this.card.expansion.route;
+
+				// Prices
 				if (this.card.last_prices) {
 					this.buttonTCGPlayer.text = `Buy on TCGPlayer <span class="money-tag">$${this.card.last_prices.market_price}</span>`;
 				}
-				this.buttonEbay = new Button({
-					text: "Buy on eBay",
-					icon: 'external-link',
-				});
 				if (this.card.last_prices) {
 					this.buttonEbay.text = `Buy on eBay <span class="money-tag">$${this.card.last_prices.market_price}</span>`;
 				}
-				this.expansionCards.header.title = "More " + this.card.expansion.name + " Cards";
-				this.expansionCards.noResults = "No " + this.card.expansion.name + " cards found";
 			}
 		});
 
@@ -118,8 +142,6 @@ export class CardComponent implements OnInit {
 				];
 			}
 		});
-
-		this.handleRoute();
 	}
 	
 	handleRoute() {

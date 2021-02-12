@@ -112,4 +112,9 @@ export enum Icons {
 	toolbox = "toolbox",
 	thunderstorm = "thunderstorm",
 	bars = "bars",
+	house = "house",
+	copy = "copy",
+	expandArrows = "expand-arrows-alt",
+	otter = "otter",
+	dotCircle = "dot-circle"
 }

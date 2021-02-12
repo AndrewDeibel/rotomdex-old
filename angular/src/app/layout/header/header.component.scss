@@ -5,6 +5,10 @@
 	z-index: 1;
 }
 
+.menu-wrapper {
+	padding-top: $header-height;
+}
+
 #header {
     height: $header-height;
     position: fixed;
@@ -28,7 +32,7 @@
 	}
 
 	&.transparent {
-		+ #menu {
+		+ .menu-wrapper #menu {
 			background: transparent;
 			color: white;
 			border-bottom: 0;
@@ -54,7 +58,6 @@
 		height: 100%;
 		color: $header-color;
 		padding: 0 $spacing * 2;
-		margin-right: $spacing * 2;
         img {
             display: block;
             border-radius: $border-radius;
@@ -89,7 +92,6 @@
 	background: $menu-bg;
 	display: flex;
 	justify-content: center;
-	margin-top: $header-height;
 	padding: $spacing;
 	z-index: 2;
 	position: relative;

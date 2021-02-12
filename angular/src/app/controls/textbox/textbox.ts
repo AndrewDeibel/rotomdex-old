@@ -4,6 +4,7 @@ export class Textbox {
     value: string = "";
 	label: string;
 	type: string = "text";
+	valid: boolean;
 	min: number;
 	max: number;
 	integer: boolean;

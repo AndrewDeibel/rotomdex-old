@@ -1,91 +1,89 @@
 <div *ngIf="pokemonVariant" class="pokemon-details">
-	<div class="flex vertical">
-		<div class="flex justify-center hero {{pokemonVariant.types[0]}}">
-			<a class="prev-pokemon" [routerLink]="'/pokemon/' + pokemonVariant.previous_pokemon">
-				<fa-icon icon="arrow-left"></fa-icon>
-			</a>
-			<a class="next-pokemon" [routerLink]="'/pokemon/' + pokemonVariant.next_pokemon">
-				<fa-icon icon="arrow-right"></fa-icon>
-			</a>
+	<div class="flex justify-center hero {{pokemonVariant.types[0]}}">
+		<a class="prev-pokemon" [routerLink]="'/pokemon/' + pokemonVariant.previous_pokemon">
+			<fa-icon icon="arrow-left"></fa-icon>
+		</a>
+		<a class="next-pokemon" [routerLink]="'/pokemon/' + pokemonVariant.next_pokemon">
+			<fa-icon icon="arrow-right"></fa-icon>
+		</a>
 
-			<img
-				*ngIf="pokemonVariant.sprites.official"
-				class="art"
-				src="{{pokemonVariant.sprites.official}}" />
+		<img
+			*ngIf="pokemonVariant.sprites.official"
+			class="art"
+			src="{{pokemonVariant.sprites.official}}" />
 
-			<div
-				class="pokemon-image-placeholder"
-				*ngIf="!pokemonVariant.sprites.official">
-				<fa-icon icon="question"></fa-icon>
-			</div>
+		<div
+			class="pokemon-image-placeholder"
+			*ngIf="!pokemonVariant.sprites.official">
+			<fa-icon icon="question"></fa-icon>
+		</div>
 
-			<img class="pokeball" src="/assets/pokeball.png" />
-			<!-- <div class="pokemon-sprites">
-				<div class="max">
-					<div class="flex vertical">
-						<img src="{{pokemonVariant.sprites.default}}" />
-						<img src="{{pokemonVariant.sprites.shiny}}" />
-					</div>
+		<img class="pokeball" src="/assets/pokeball.png" />
+		<!-- <div class="pokemon-sprites">
+			<div class="max">
+				<div class="flex vertical">
+					<img src="{{pokemonVariant.sprites.default}}" />
+					<img src="{{pokemonVariant.sprites.shiny}}" />
 				</div>
-			</div> -->
-			<div
-				*ngIf="pokemonVariant.pokemon.evolution_chain.length > 1"
-				class="pokemon-evolution-chain">
-				<div class="flex padded-2">
-					<div
-						class="pokemon-evolution-wrapper"
-						*ngFor="let evolution of pokemonVariant.pokemon.evolution_chain">
-						<a class="pokemon-evolution" [routerLink]="'/pokemon/' + evolution.slug">
-							<img [src]="evolution.sprite" />
-							<div class="evolution-name">{{evolution.name}}</div>
-							<fa-icon icon="arrow-right"></fa-icon>
-						</a>
-					</div>
+			</div>
+		</div> -->
+		<div
+			*ngIf="pokemonVariant.pokemon.evolution_chain.length > 1"
+			class="pokemon-evolution-chain">
+			<div class="flex padded-2">
+				<div
+					class="pokemon-evolution-wrapper"
+					*ngFor="let evolution of pokemonVariant.pokemon.evolution_chain">
+					<a class="pokemon-evolution" [routerLink]="'/pokemon/' + evolution.slug">
+						<img [src]="evolution.sprite" />
+						<div class="evolution-name">{{evolution.name}}</div>
+						<fa-icon icon="arrow-right"></fa-icon>
+					</a>
 				</div>
 			</div>
 		</div>
-		<div class="pokemon-info">
-			<div class="max">
-				<div class="flex padded flex-center medium-flex-start medium-vertical">
-					<div class="box flex flex-center padded">
-						<div>
-							<h1>
-								{{pokemonVariant.name}}
-								<span class="dex-number">
-									#{{pokemonVariant.pokemon.national_dex_number}}
-									-
-									<span class="pokemon-region">
-										{{pokemonVariant.pokemon.generation.region}}
-									</span>
+	</div>
+	<div class="pokemon-info">
+		<div class="max">
+			<div class="flex padded flex-center medium-flex-start medium-vertical">
+				<div class="box flex flex-center padded">
+					<div>
+						<h1>
+							{{pokemonVariant.name}}
+							<span class="dex-number">
+								#{{pokemonVariant.pokemon.national_dex_number}}
+								-
+								<span class="pokemon-region">
+									{{pokemonVariant.pokemon.generation.region}}
 								</span>
-							</h1>
-						</div>
+							</span>
+						</h1>
 					</div>
-					<div class="flex padded">
-						<div class="pokemon-types">
-							<div class="flex padded-small">
-								<div *ngFor="let type of pokemonVariant.types">
-									<mb-type-tag [type]="type"></mb-type-tag>
-								</div>
+				</div>
+				<div class="flex padded">
+					<div class="pokemon-types">
+						<div class="flex padded-small">
+							<div *ngFor="let type of pokemonVariant.types">
+								<mb-type-tag [type]="type"></mb-type-tag>
 							</div>
 						</div>
-						<div class="pokemon-height">
-							<mb-tag [tag]="{text: ((pokemonVariant.height/10) + ' m')}"></mb-tag>
-						</div>
-						<div class="pokemon-weight">
-							<mb-tag [tag]="{text: ((pokemonVariant.weight/10) + ' kg')}"></mb-tag>
-						</div>
+					</div>
+					<div class="pokemon-height">
+						<mb-tag [tag]="{text: ((pokemonVariant.height/10) + ' m')}"></mb-tag>
+					</div>
+					<div class="pokemon-weight">
+						<mb-tag [tag]="{text: ((pokemonVariant.weight/10) + ' kg')}"></mb-tag>
 					</div>
 				</div>
 			</div>
 		</div>
-		<div>
-			<div class="pokemon-cards">
-				<mb-items
-					[items]="items"
-					(outputGetItems)="getCards()">
-				</mb-items>
-			</div>
+	</div>
+	<div>
+		<div class="pokemon-cards">
+			<mb-items
+				[items]="items"
+				(outputGetItems)="getCards()">
+			</mb-items>
 		</div>
 	</div>
 </div>

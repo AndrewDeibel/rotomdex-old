@@ -33,6 +33,7 @@ export class ItemsFooterComponent implements OnInit {
 		// Page
 		this.itemsFooter.textboxPage = new Textbox({
 			value: this.itemsFooter.page.toString(),
+			max: this.itemsFooter.totalPages,
 			change: value => {
 				this.itemsFooter.page = +value;
 				this.outputGetItems.emit();

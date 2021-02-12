@@ -51,6 +51,17 @@ export class Card {
 	route: string;
 	tempId: number;
 
+	getCardNumber(): string {
+		// IS number
+		if (!isNaN(+this.number)) {
+			return `#${this.number}`;
+		}
+		// NOT number
+		else {
+			return this.number;
+		}
+	}
+
     constructor(init?:Partial<Card>) {
 		Object.assign(this, init);
 

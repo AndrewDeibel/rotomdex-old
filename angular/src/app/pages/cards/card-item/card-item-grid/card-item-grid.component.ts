@@ -18,17 +18,6 @@ export class CardItemGridComponent implements OnInit {
 
 	ngOnInit() { }
 
-	getCardNumber(): string {
-		// IS number
-		if (!isNaN(+this.card.number)) {
-			return `#${this.card.number}`;
-		}
-		// NOT number
-		else {
-			return this.card.number;
-		}
-	}
-
 	onLoad() {
 		this.imageLoading = false;
 	}

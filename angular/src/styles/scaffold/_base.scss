@@ -123,3 +123,15 @@ body {
 		box-shadow: $shadow-focus;
 	}
 }
+.hover-zoom {
+	transition: $transition;
+	&:hover {
+		transform: scale(1.1);
+	}
+}
+.hover-zoom-large {
+	transition: $transition;
+	&:hover {
+		transform: scale(1.4);
+	}
+}

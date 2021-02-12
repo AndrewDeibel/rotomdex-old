@@ -203,8 +203,14 @@ import {
 	faNewspaper,
 	faSparkles,
 	faQuestion,
-	faBars
+	faBars,
+	faHouse,
+	faCopy,
+	faExpandArrowsAlt,
+	faOtter,
+	faDotCircle
 } from '@fortawesome/pro-duotone-svg-icons';
+import { faPatreon } from '@fortawesome/free-brands-svg-icons';
 import { CardItemListComponent } from './pages/cards/card-item/card-item-list/card-item-list.component';
 
 
@@ -436,7 +442,12 @@ export class AppModule {
 			faNewspaper,
 			faSparkles,
 			faQuestion,
-			faBars
+			faBars,
+			faHouse,
+			faCopy,
+			faExpandArrowsAlt,
+			faOtter,
+			faDotCircle
 		);
 		faConfig.defaultPrefix = "fad";
 	}

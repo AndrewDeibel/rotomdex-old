@@ -24,6 +24,7 @@ export class TextboxComponent implements ControlValueAccessor {
 	registerOnChange(fn) { this.onChange = fn }
 	registerOnTouched(fn) { this.onTouched = fn }
 	writeValue(_value) { this.value = _value; }
+	previousValue: string;
 	get value() { return this.textbox.value; }
 	set value(_value) {
 		this.textbox.value = _value;
@@ -37,7 +38,7 @@ export class TextboxComponent implements ControlValueAccessor {
 	@Output() clickIcon: EventEmitter<string> = new EventEmitter();
 	@Output() clickClear: EventEmitter<string> = new EventEmitter();
 
-	constructor() { }
+	constructor() {}
 
 	_keydownEnter() {
 		this.keydownEnter.emit(this.value);
@@ -60,11 +61,61 @@ export class TextboxComponent implements ControlValueAccessor {
 			this.textbox.clickClear();
 		}
 	}
+	
+	_setPreviousValue() {
+		this.value = this.previousValue;
+	}
+
+	_validate() {
+		this.textbox.valid = true;
+
+		// If max, check it
+		if (this.textbox.max) {
+			let num = Number(this.value);
+
+			// Not a number
+			if (isNaN(num)) {
+				this.textbox.valid = false;
+			}
+
+			// No large
+			if (num > this.textbox.max) {
+				this.textbox.valid = false;
+			}
+		}
+
+		// If min, check it
+		if (this.textbox.min) {
+			let num = Number(this.value);
+
+			// Not a number
+			if (isNaN(num)) {
+				this.textbox.valid = false;
+			}
+
+			// No large
+			if (num < this.textbox.min) {
+				this.textbox.valid = false;
+			}
+		}
+
+		return this.textbox.valid;
+	}
 
 	_change() {
-		if (this.textbox.change) {
-			this.textbox.change(this.value);
+
+		// If valid
+		if (this._validate()) {
+			if (this.textbox.change) {
+				this.textbox.change(this.value);
+			}
 		}
+		else {
+			this._setPreviousValue();
+		}
+
+		// Set previous value after change
+		this.previousValue = this.value;
 	}
 	
 	_colorPickerChange(value: string) {

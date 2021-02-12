@@ -1,11 +1,16 @@
 @import "settings",
 		"rotomdex";
 
+:host {
+	display: block;
+}
+
 .hero {
 	position: relative;
 	overflow: hidden;
 	display: flex;
 	flex-direction: column;
+	height: 548px;
 	@each $type, $color in $poke-types {
 		&.#{$type} {
 			background: linear-gradient(

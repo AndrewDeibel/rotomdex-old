@@ -53,6 +53,7 @@ export class HeaderComponent implements OnInit {
 		this.menu.horizontal = true;
 		this.menu.items.push(
 			new MenuItem({
+				icon: Icons.expandArrows,
 				text: "Expansions",
 				route: "expansions",
 				click: () => {
@@ -60,6 +61,7 @@ export class HeaderComponent implements OnInit {
 				},
 			}),
 			new MenuItem({
+				icon: Icons.copy,
 				text: "Cards",
 				route: "cards",
 				click: () => {
@@ -67,6 +69,7 @@ export class HeaderComponent implements OnInit {
 				},
 			}),
 			new MenuItem({
+				icon: Icons.dotCircle,
 				text: "Pokémon",
 				route: "pokemon",
 				click: () => {

@@ -15,18 +15,28 @@
 	overflow: hidden;
 	&.small {
 		max-width: 180px;
+		min-width: 140px;
 		.pokemon-image-wrapper {
 			.pokemon-image {
 				margin-top: 0;
 				margin-bottom: 0;
 				height: 80px;
 				width: 80px;
+				padding: $spacing;
 			}
 		}
 		.pokemon-number {
 			position: absolute;
 			top: 0;
 			left: 0;
+		}
+		.pokemon-types {
+			display: none !important;
+		}
+		.pokemon-image-placeholder {
+			padding: 0 !important;
+			height: 32px !important;
+			width: 32px !important;
 		}
 	}
 	&:hover {
@@ -102,11 +112,11 @@
 		align-items: center;
 		background: $menu-bg;
 		width: 100%;
+		color: white;
 		.pokemon-name {
 			display: block;
 			position: relative;
 			flex: 1;
-			color: white;
 			font-weight: normal;
 		}
 	}

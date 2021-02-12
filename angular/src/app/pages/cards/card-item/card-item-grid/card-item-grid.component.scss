@@ -44,6 +44,12 @@
 				left: 50%;
 				transform: translate(-50%, -50%);
 			}
+			.money-tag {
+				position: absolute;
+				bottom: 0;
+				right: 0;
+				margin: $spacing;
+			}
 		}
 		> mb-menu {
 			position: absolute;
@@ -62,10 +68,10 @@
 		flex-direction: column;
 		color: white;
 		line-height: 1;
-        .card-name {
-			white-space: nowrap;
-			text-overflow: ellipsis;
-			overflow: hidden;
+		.card-name {
+			// Fix ellipsis overflow
+			padding-bottom: 4px;
+			margin-bottom: -4px;
 		}
     }
 }

@@ -9,23 +9,17 @@
 		<div class="image-wrapper">
 			<mb-loader [active]="imageLoading"></mb-loader>
 			<img src="{{card.image}}" [hidden]="imageLoading" (load)="onLoad()" />
+			<div class="money-tag" *ngIf="card.last_prices">
+				{{card.last_prices.market_price | currency}}
+			</div>
 		</div>
 
-		<div class="card-information">
-			<div class="flex flex-end">
-				<div class="box ellipsis">
-					<div class="card-number subheading">
-						{{getCardNumber()}}
-					</div>
-					<div class="card-name">
-						{{card.name}}
-					</div>
-				</div>
-				<div>
-					<div class="money-tag" *ngIf="card.last_prices">
-						${{card.last_prices.market_price}}
-					</div>
-				</div>
+		<div class="card-information ellipsis">
+			<div class="card-number subheading">
+				{{card.getCardNumber()}}
+			</div>
+			<div class="card-name ellipsis">
+				{{card.name}}
 			</div>
 		</div>
 
