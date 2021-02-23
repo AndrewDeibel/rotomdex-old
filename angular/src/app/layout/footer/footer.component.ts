@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Menu, MenuItem } from '@app/controls';
-import { Icons } from '@app/models';
+import { Icons, Symbols } from '@app/models';
 
 @Component({
 	selector: 'mb-footer',
@@ -23,36 +23,40 @@ export class FooterComponent implements OnInit {
 					text: "Home",
 				}),
 				new MenuItem({
-					icon: Icons.expandArrows,
+					icon: Icons.box,
 					text: "Expansions",
 					route: "/expansions"
 				}),
 				new MenuItem({
-					icon: Icons.copy,
+					symbol: Symbols.cards,
 					text: "Cards",
 					route: "/cards"
 				}),
 				new MenuItem({
-					icon: Icons.dotCircle,
+					symbol: Symbols.pokeball,
 					text: "Pokemon",
 					route: "/pokemon"
-				})
+				}),
 			]
 		});
 		this.menuCenter = new Menu({
 			items: [
 				new MenuItem({
 					text: "Patreon",
+					symbol: Symbols.patreon,
 				}),
 				new MenuItem({
 					text: "YouTube",
+					symbol: Symbols.youtube,
 				}),
 				new MenuItem({
-					text: "Twitter"
+					text: "Twitter",
+					symbol: Symbols.twitter,
 				}),
 				new MenuItem({
-					text: "Facebook"
-				})
+					text: "Facebook",
+					symbol: Symbols.facebook
+				}),
 			]
 		});
 	}

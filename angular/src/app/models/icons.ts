@@ -1,3 +1,12 @@
+export enum Symbols {
+	cards = "assets/symbols/cards.svg",
+	pokeball = "assets/symbols/pokeball.svg",
+	facebook = "assets/symbols/facebook.svg",
+	patreon = "assets/symbols/patreon.svg",
+	twitter = "assets/symbols/twitter.svg",
+	youtube = "assets/symbols/youtube.svg",
+}
+
 export enum Icons {
 	search = "search",
 	list = "list",
@@ -116,5 +125,6 @@ export enum Icons {
 	copy = "copy",
 	expandArrows = "expand-arrows-alt",
 	otter = "otter",
-	dotCircle = "dot-circle"
+	dotCircle = "dot-circle",
+	box = "box"
 }

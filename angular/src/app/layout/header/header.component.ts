@@ -2,7 +2,7 @@ import { Component, HostListener, Input, OnInit, ViewEncapsulation } from '@angu
 import { User } from '@app/models/user';
 import { Menu, MenuItem } from '@app/controls/menu';
 import { AuthenticationService } from '@app/services/auth.service';
-import { Icons } from '@app/models/icons';
+import { Icons, Symbols } from '@app/models/icons';
 import { Location } from '@angular/common';
 
 @Component({
@@ -53,7 +53,7 @@ export class HeaderComponent implements OnInit {
 		this.menu.horizontal = true;
 		this.menu.items.push(
 			new MenuItem({
-				icon: Icons.expandArrows,
+				icon: Icons.box,
 				text: "Expansions",
 				route: "expansions",
 				click: () => {
@@ -61,7 +61,7 @@ export class HeaderComponent implements OnInit {
 				},
 			}),
 			new MenuItem({
-				icon: Icons.copy,
+				symbol: Symbols.cards,
 				text: "Cards",
 				route: "cards",
 				click: () => {
@@ -69,7 +69,7 @@ export class HeaderComponent implements OnInit {
 				},
 			}),
 			new MenuItem({
-				icon: Icons.dotCircle,
+				symbol: Symbols.pokeball,
 				text: "Pokémon",
 				route: "pokemon",
 				click: () => {

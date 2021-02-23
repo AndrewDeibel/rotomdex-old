@@ -39,6 +39,10 @@
 			border-radius: $border-radius;
 			margin-left: auto;
 			margin-right: auto;
+	
+			.symbol {
+				filter: invert(100%) !important;
+			}
 			.menu {
 				background: $menu-bg;
 				box-shadow: $shadow;
@@ -95,6 +99,10 @@
 	padding: $spacing;
 	z-index: 2;
 	position: relative;
+
+	.symbol {
+		filter: contrast(0) sepia(100%) hue-rotate(164deg) brightness(1) saturate(2);
+	}
 }
 
 @media (max-width: $screen-medium) {

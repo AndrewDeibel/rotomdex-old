@@ -3,6 +3,14 @@
 :host {
     position: relative;
 	z-index: 3;
+	&::ng-deep {
+		.symbol {
+			filter: none !important;
+			img {
+				filter: contrast(0) sepia(100%) hue-rotate(164deg) brightness(1) saturate(2) !important;
+			}
+		}
+	}
 }
 #footer {
 	padding: $spacing * 4 $spacing * 2 0;

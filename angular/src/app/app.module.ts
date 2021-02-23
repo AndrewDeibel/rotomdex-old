@@ -447,7 +447,8 @@ export class AppModule {
 			faCopy,
 			faExpandArrowsAlt,
 			faOtter,
-			faDotCircle
+			faDotCircle,
+			faBox,
 		);
 		faConfig.defaultPrefix = "fad";
 	}
