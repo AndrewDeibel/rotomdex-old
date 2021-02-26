@@ -3,6 +3,7 @@ import { ItemsFooter } from './items-footer/items-footer';
 import { ItemsFilter, ItemDisplayType } from './items-filter/items-filter';
 import { Button } from '@app/controls/button/button';
 import { ItemGroup } from './items-groups/item-group';
+import { Icons } from '@app/models';
 
 export class Items {
 	showHeader: boolean = true;
@@ -22,6 +23,8 @@ export class Items {
 
 	buttonNoResults: Button;
 	noResults: string = "No items found";
+	noResultsIcon: string = Icons.archive;
+	noResultsImage: string;
 
     constructor(init?:Partial<Items>) {
 		Object.assign(this, init);

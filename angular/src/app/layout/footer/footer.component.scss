@@ -15,8 +15,8 @@
 #footer {
 	padding: $spacing * 4 $spacing * 2 0;
 	border-top: $border;
-    background-color: $footer-bg;
-    color: rgba(black, .8);
+    background: $footer-bg;
+    color: rgba(white, .25);
 
     .max {
         z-index: 5;

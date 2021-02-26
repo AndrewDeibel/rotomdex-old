@@ -29,7 +29,7 @@ $menu-bg: #323232;
 $header-color: white;
 $main-bg: white;
 $panel-bg: white;
-$footer-bg: $header-bg;
+$footer-bg: $menu-bg;
 
 // Alerts
 $success: $green;
@@ -55,6 +55,7 @@ $border-dark: 1px solid $border-color-dark;
 $shadow: 0 2px 4px rgba(black, .4);
 $shadow-inset: inset 0 0 2px rgba(black, .1);
 $shadow-large: 0 4px 12px rgba(black, .4);
+$shadow-sheen: inset 0 0 0 1px rgba(white, .2);
 
 $shadow-focus: 0 0 0 4px rgba($primary-color, .6);
 $shadow-focus-inset: inset 0 2px 4px rgba(black, .2);

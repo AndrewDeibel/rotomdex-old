@@ -19,7 +19,6 @@
 	color: white;
 	position: relative;
 	margin-top: - ($header-height + 57px);
-	z-index: -1;
 	.hero-content {
 		z-index: 2;
 		position: relative;
@@ -32,6 +31,7 @@
 		right: 0;
 		top: 0;
 		bottom: 0;
+		pointer-events: none;
 		background: linear-gradient(rgba(black, .9) 0%, rgba(black, .25) 50%);
 	}
 }
@@ -65,4 +65,5 @@
 	width: calc(100% - #{$spacing * 4});
 	max-width: 816px;
 	text-align: center;
+	z-index: 2;
 }

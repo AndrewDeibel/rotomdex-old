@@ -2,51 +2,46 @@
 
 		
 	<!-- Card -->
-	<article class="card-detail flex z-2 padding-2 relative" *ngIf="card">
+	<article class="card-detail flex z-2 padding-2 relative flex-wrap flex-start" *ngIf="card">
 		
 		<div class="max flex width-12">
 
-			<div class="flex padded-2">
+			<div class="flex padded-2 box">
 
 				<!-- Card image -->
 				<figure class="card-image relative z-2 flex vertical">
 					<div class="card-image-inner relative">
 						<img
 							src="{{card.image}}"
-							class="img-card-image"
+							class="img-card-image border-radius-card shadow transition"
 							[class.active]="cardImageHover"
 							(click)="cardImageHover = !cardImageHover" />
 						<img
 							src="{{card.image_high_res}}"
-							class="img-card-image-hover"
+							class="img-card-image-hover border-radius-card shadow-large transition"
 							[class.active]="cardImageHover"
 							(click)="cardImageHover = !cardImageHover" />
 					</div>
-
-					<div class="card-artist padding-top">
-						<div class="subheading">Illustrated by</div>
-						<a [routerLink]="card.artist">
-							{{card.artist}}
-						</a>
-					</div>
 				</figure>
 
-				<div class="relative z-1">
+				<div class="relative z-1 small-12">
 					<div class="flex padded vertical">
 
 						<!-- Card header -->
 						<div class="card-header">
 							<div class="flex flex-center flex-wrap padded">
-								<div class="card-name box">
+								<div class="card-name">
 									<h2>{{card.name}}</h2>
 								</div>
 								<div class="flex padded flex-center" *ngIf="card.hp">
-									<div class="card-hp">
-										<span>HP</span>{{card.hp}}
+									<div class="card-hp bold h2">
+										<span class="subheading">HP</span>{{card.hp}}
 									</div>
-									<div class="card-types flex">
+									<div class="card-energies flex padded">
 										<div *ngFor="let type of card.types">
-											<mb-type-tag [type]="type"></mb-type-tag>
+											<div class="card-energy">
+												<img [src]="getTypeImage(type)">
+											</div>
 										</div>
 									</div>
 								</div>
@@ -55,14 +50,6 @@
 
 						<div class="flex padded">
 							<div>
-						
-								<!-- Expansion -->
-								<mb-expansion-item-grid
-									size="small"
-									[expansion]="card.expansion">
-								</mb-expansion-item-grid>
-							</div>
-							<div>
 
 								<!-- Pokemon -->
 								<mb-pokemon-item-grid
@@ -70,6 +57,14 @@
 									size="small"
 									[pokemonVariant]="card.pokemon.variant">
 								</mb-pokemon-item-grid>
+							</div>
+							<div>
+						
+								<!-- Expansion -->
+								<mb-expansion-item-grid
+									size="small"
+									[expansion]="card.expansion">
+								</mb-expansion-item-grid>
 							</div>
 						</div>
 
@@ -83,12 +78,22 @@
 							<mb-button [button]="buttonEbay"></mb-button>
 						</div>
 
-						<!-- Rarity -->
 						<div class="card-rarity flex align-middle padded" *ngIf="tagRarity">
+
+							<!-- Rarity -->
 							<mb-tag [tag]="tagRarity"></mb-tag>
+
+							<!-- Number -->
 							<div class="subheading flex vertical justify-center">
 								{{card.getCardNumber()}}
 							</div>
+						</div>
+
+						<div class="card-artist">
+							<div class="subheading">Illustrated by</div>
+							<a [routerLink]="card.artist">
+								{{card.artist}}
+							</a>
 						</div>
 						
 					</div>

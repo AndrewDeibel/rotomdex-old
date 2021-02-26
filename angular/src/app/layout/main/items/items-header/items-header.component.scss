@@ -4,17 +4,6 @@
 	position: relative;
 	padding: $spacing * 2;
 	display: flex;
-	&.dark {
-		background: $menu-bg;
-		color: white;
-		border-bottom-color: $border-color-dark;
-		.subheading {
-			opacity: .5;
-		}
-		h2 {
-			color: white;
-		}
-	}
 	fa-icon {
 		width: 64px;
 		height: 64px;
@@ -34,9 +23,6 @@
 			max-height: 100%;
 		}
 	}
-	[class^="texture"] {
-		opacity: .5;
-	}
 	.title {
 		margin: 0;
 	}
@@ -48,7 +34,6 @@
 		margin-top: 6px;
 	}
 	@media (max-width: $screen-small) {
-		padding-right: $spacing;
 		border-top-left-radius: 0;
 		border-top-right-radius: 0;
 		[class^="texture"] {

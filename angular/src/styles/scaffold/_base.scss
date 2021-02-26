@@ -80,6 +80,9 @@ body {
 	.color-#{$color-name} {
 		color: #{color-value} !important;
 	}
+	.bg-#{$color-name} {
+		background-color: #{$color-value} !important;
+	}
 }
 
 // Gradient
@@ -134,4 +137,8 @@ body {
 	&:hover {
 		transform: scale(1.4);
 	}
+}
+
+.transition {
+	transition: $transition;
 }

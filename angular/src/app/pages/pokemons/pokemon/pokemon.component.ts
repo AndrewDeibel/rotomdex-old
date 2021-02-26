@@ -5,6 +5,8 @@ import { ItemGroup, Items } from '@app/layout/main';
 import { Card, Cards } from '@app/pages/cards';
 import { SetSortByPokemon, PokemonVariant } from './pokemon';
 import { GetPokemonVariantCards, PokemonService } from '../../../services/pokemon.service';
+import { Title } from '@angular/platform-browser';
+import { AppSettings } from '@app/app';
 
 @Component({
 	selector: 'mb-pokemon',
@@ -19,6 +21,7 @@ export class PokemonComponent implements OnInit {
 	slug: string;
 
 	constructor(
+		private titleService: Title,
 		private pokemonService: PokemonService,
 		private loaderService: LoaderService,
 		private route: ActivatedRoute,
@@ -34,6 +37,7 @@ export class PokemonComponent implements OnInit {
 		// Response get pokemon
 		this.pokemonService.getPokemonVariantObservable().subscribe(pokemonVariant => {
 			if (pokemonVariant) {
+				this.titleService.setTitle(AppSettings.titlePrefix + pokemonVariant.pokemon.name);
 				this.loaderService.hide();
 				this.pokemonVariant = pokemonVariant;
 				this.items.noResults = "No " + this.pokemonVariant.name + " cards found";

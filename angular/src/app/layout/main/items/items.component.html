@@ -19,9 +19,18 @@
 
 	<!-- Empty -->
 	<div *ngIf="showEmpty()" class="empty">
-		<fa-icon icon="archive"></fa-icon>
+		<fa-icon
+			*ngIf="!items.noResultsImage"
+			[icon]="items.noResultsIcon">
+		</fa-icon>
+		<img
+			*ngIf="items.noResultsImage"
+			[src]="items.noResultsImage" />
 		<p>{{items.noResults}}</p>
-		<mb-button *ngIf="items.buttonNoResults" [button]="items.buttonNoResults"></mb-button>
+		<mb-button
+			*ngIf="items.buttonNoResults"
+			[button]="items.buttonNoResults">
+		</mb-button>
 	</div>
 
 	<!-- Groups -->

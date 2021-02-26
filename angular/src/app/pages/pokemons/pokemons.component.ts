@@ -5,6 +5,7 @@ import { LoaderService, SelectOption, SelectOptionGroup } from '@app/controls';
 import { ItemGroup, Items } from '@app/layout/main';
 import { SetSortByPokemon, PokemonVariant } from './pokemon/pokemon';
 import { GetPokemonVariants, PokemonsService } from '../../services/pokemons.service';
+import { Symbols } from '@app/models';
 
 @Component({
 	selector: 'mb-pokemons',
@@ -41,9 +42,11 @@ export class PokemonsComponent implements OnInit {
 
 	setupControls() {
 		SetSortByPokemon(this.items.filter.selectSortBy);
+		this.items.noResultsImage = Symbols.pokeball;
+		this.items.noResults = "No Pokémon found"
 		this.titleService.setTitle(AppSettings.titlePrefix + 'Pokemon');
 		this.items.showHeader = false;
-		this.items.itemClasses = "width-3 medium-6 small-12";
+		this.items.itemClasses = "width-3 medium-4 small-6";
 		this.items.filter.textboxSearch.placeholder = "Search Pokémon...";
 		this.items.footer.pageSize = 24;
 		this.items.footer.selectPageSize.value = this.items.footer.pageSize.toString();

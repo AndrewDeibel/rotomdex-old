@@ -13,6 +13,16 @@
 	transition: $transition;
 	position: relative;
 	overflow: hidden;
+	&:after {
+		content: '';
+		border-radius: $border-radius-small;
+		width: 100%;
+		height: 100%;
+		box-shadow: $shadow-sheen;
+		z-index: 10;
+		position: absolute;
+		border: $border;
+	}
 	&.small {
 		max-width: 180px;
 		min-width: 140px;
@@ -24,11 +34,6 @@
 				width: 80px;
 				padding: $spacing;
 			}
-		}
-		.pokemon-number {
-			position: absolute;
-			top: 0;
-			left: 0;
 		}
 		.pokemon-types {
 			display: none !important;
@@ -42,6 +47,9 @@
 	&:hover {
 		border-color: $primary-color;
 		box-shadow: $shadow-focus;
+		&:after {
+			border-color: $primary-color;
+		}
 	}
 	.pokemon-image-wrapper {
 		display: block;
@@ -52,25 +60,17 @@
 		justify-content: center;
 		overflow: hidden;
 		position: relative;
-		.pokemon-image {
+		.pokemon-image, .pokemon-image-placeholder {
 			filter: drop-shadow($shadow);
 			margin: auto;
 			z-index: 2;
 			position: relative;
-			margin-top: $spacing * 3;
-			margin-bottom: $spacing * 3;
+			margin-top: $spacing * 2;
+			margin-bottom: $spacing * 2;
 			height: 96px;
 			width: 96px;
 		}
 		.pokemon-image-placeholder {
-			height: 96px;
-			width: 96px;
-			filter: drop-shadow($shadow);
-			margin: auto;
-			z-index: 2;
-			position: relative;
-			margin-top: $spacing * 3;
-			margin-bottom: $spacing * 3;
 			color: white;
 			padding: $spacing * 2;
 			fa-icon {
@@ -88,6 +88,9 @@
 			font-weight: bold;
 			font-size: 14px;
 			text-shadow: $text-shadow;
+			position: absolute;
+			top: 0;
+			left: 0;
 		}
 
 		.pokeball {

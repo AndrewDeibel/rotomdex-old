@@ -23,12 +23,26 @@
 	padding: $spacing ($spacing * 2);
 	border-bottom: $border;
 	box-shadow: $shadow;
+	&:before {
+		content: '';
+		background: $header-bg;
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		transition: $transition;
+		opacity: 1;
+	}
 	
 	&.transparent:not(.scrolled) {
 		background: none;
 		box-shadow: none;
 		border-bottom: none;
 		text-shadow: $text-shadow;
+		&:before {
+			opacity: 0;
+		}
 	}
 
 	&.transparent {

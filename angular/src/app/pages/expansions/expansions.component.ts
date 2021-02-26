@@ -5,6 +5,7 @@ import { Title } from '@angular/platform-browser';
 import { LoaderService } from '@app/controls';
 import { AppSettings } from '@app/app';
 import { Series, SetSortByExpansions } from './expansion/expansion';
+import { Icons } from '@app/models';
 
 @Component({
 	selector: 'mb-expansions',
@@ -21,7 +22,6 @@ export class ExpansionsComponent implements OnInit {
 		private expansionsService: ExpansionsService) { }
 
 	ngOnInit() {
-
 		this.setupControls();
 		this.setupSubscriptions();
 	}
@@ -46,11 +46,13 @@ export class ExpansionsComponent implements OnInit {
 	}
 
 	setupControls() {
+		this.items.noResults = "No expansions found";
+		this.items.noResultsIcon = Icons.box;
 		this.titleService.setTitle(AppSettings.titlePrefix + 'Expansions');
 		this.items.showHeader = false;
 		this.items.showFooter = false;
 		this.items.itemClasses = "width-3 medium-4 small-6";
-		this.items.filter.textboxSearch.placeholder = "Search expansions...";
+		this.items.filter.textboxSearch.placeholder = "Search Expansions...";
 		this.items.filter.selectSortDirection.value = "desc";
 		this.items.footer.pageSize = 100;
 		SetSortByExpansions(this.items.filter);

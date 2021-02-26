@@ -6,12 +6,14 @@ import { ActivatedRoute } from '@angular/router';
 import { CardService } from '../../../services/card.service';
 import { AuthenticationService } from '@app/services/auth.service';
 import "@app/extensions/string.extensions";
-import { Icons } from '@app/models/icons';
+import { Icons, Symbols } from '@app/models/icons';
 import { Button, LoaderService, Tag } from '@app/controls';
 import { CardsService } from '../../../services/cards.service';
 import { ItemGroup, Items } from '@app/layout/main';
 import { ExpansionService, GetExpansion, GetExpansionCards } from '@app/services/expansion.service';
 import { GetPokemonVariantCards, PokemonService } from '@app/pages/pokemons';
+import { Title } from '@angular/platform-browser';
+import { AppSettings } from '@app/app';
 
 @Component({
     selector: 'mb-card',
@@ -31,6 +33,7 @@ export class CardComponent implements OnInit {
 	buttonEbay: Button;
 
     constructor(
+		private titleService: Title,
 		private loaderService: LoaderService,
 		private cardService: CardService,
 		private cardsService: CardsService,
@@ -45,11 +48,40 @@ export class CardComponent implements OnInit {
 		this.handleRoute();
 	}
 
+	resetControls() {
+		this.card =	null;
+	}
+
 	setupControls() {
+		this.resetControls();
+
+		// Related cards
 		this.relatedCards.footer.pageSize = 12;
-		this.expansionCards.footer.pageSize = 12;
+		this.relatedCards.noResultsImage = Symbols.cards;
+		this.relatedCards.header.title = "Related Cards";
+		this.relatedCards.noResults = "No related cards found";
+		this.relatedCards.itemClasses = "width-2 medium-3 small-6";
+		this.relatedCards.showFilters = false;
+		this.relatedCards.showFooter = false;
 		SetSortByCards(this.relatedCards.filter);
+		this.relatedCards.header.button = new Button({
+			text: "View More",
+			icon: Icons.externalLink
+		});
+
+		// Expansion cards
+		this.expansionCards.footer.pageSize = 12;
+		this.expansionCards.noResultsImage = Symbols.cards;
+		this.expansionCards.itemClasses = "width-2 medium-3 small-6";
+		this.expansionCards.showFilters = false;
+		this.expansionCards.showFooter = false;
 		SetSortByCards(this.expansionCards.filter);
+		this.expansionCards.header.button = new Button({
+			text: "View More",
+			icon: Icons.externalLink
+		});
+
+		// Buttons
 		this.buttonTCGPlayer = new Button({
 			text: "Buy on TCGPlayer",
 			icon: 'external-link',
@@ -58,14 +90,10 @@ export class CardComponent implements OnInit {
 			text: "Buy on eBay",
 			icon: 'external-link',
 		});
-		this.relatedCards.header.button = new Button({
-			text: "View More",
-			icon: Icons.externalLink
-		});
-		this.expansionCards.header.button = new Button({
-			text: "View More",
-			icon: Icons.externalLink
-		});
+	}
+
+	getTypeImage(type: string) {
+		return `/assets/symbols/${type.toLowerCase()}.svg`;
 	}
 
 	setupSubscriptions() {
@@ -74,6 +102,7 @@ export class CardComponent implements OnInit {
 		this.cardService.cardObservable().subscribe(card => {
 			if (card) {
 				this.loaderService.hide();
+				this.titleService.setTitle(AppSettings.titlePrefix + card.name);
 
 				// Data
 				this.card = card;
@@ -113,11 +142,6 @@ export class CardComponent implements OnInit {
 
 		// Response get related cards
 		this.cardsService.allCardsObservable().subscribe(res => {
-			this.relatedCards.header.title = "Related Cards";
-			this.relatedCards.noResults = "No related cards found";
-			this.relatedCards.itemClasses = "width-2 medium-3 small-6";
-			this.relatedCards.showFilters = false;
-			this.relatedCards.showFooter = false;
 			if (res) {
 				this.loaderService.hide();
 				this.relatedCards.itemGroups = [
@@ -130,9 +154,6 @@ export class CardComponent implements OnInit {
 
 		// Response get expansion cards
 		this.expansionService.getExpansionCardsObservable().subscribe(res => {
-			this.expansionCards.itemClasses = "width-2 medium-3 small-6";
-			this.expansionCards.showFilters = false;
-			this.expansionCards.showFooter = false;
 			if (res) {
 				this.loaderService.hide();
 				this.expansionCards.itemGroups = [

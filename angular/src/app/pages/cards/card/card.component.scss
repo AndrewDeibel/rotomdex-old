@@ -2,34 +2,13 @@
 		"scaffold/typography",
 		"rotomdex";
 
-.card-hp {
-	font-weight: bold;
-	font-size: 32px;
-	span {
-		font-size: 35%;
-	}
-}
-
 .card-detail {
-    flex-wrap: wrap;
-	align-items: flex-start;
-    > * {
-        @media (max-width: $screen-small) {
-            width: 100%;
-        }
-	}
-
     .card-image {
 		z-index: 2;
-		img {
-			border-radius: $border-radius-card;
-		}
 		.img-card-image {
 			max-width: 300px;
 			cursor: zoom-in;
-            box-shadow: $shadow;
 			display: block;
-			transition: $transition;
 			opacity: 1;
             &.active {
                 opacity: 0;
@@ -52,10 +31,8 @@
             left: -$spacing;
             pointer-events: none;
 			max-width: none;
-            box-shadow: $shadow-large;
             z-index: 10;
             margin: $spacing;
-            transition: $transition;
             opacity: 0;
             max-width: 300px;
 			max-height: calc(100vh - 132px - 8px);
@@ -75,4 +52,16 @@
 .type-tag {
 	margin-right: 0 !important;
 	margin-left: $spacing / 2 !important;
+}
+.card-energies {
+	.card-energy {
+		margin-top: 1px;
+	}
+	img {
+		width: 23px;
+		height: 23px;
+		display: block;
+		border-radius: 50%;
+		box-shadow: $shadow;
+	}
 }

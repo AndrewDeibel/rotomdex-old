@@ -11,6 +11,7 @@ import { ItemGroup, Items } from '@app/layout/main';
 import { SetSortByCards } from './card/card';
 import { AppSettings } from '@app/app';
 import "@app/extensions/string.extensions";
+import { Symbols } from '@app/models';
 
 @Component({
     selector: 'mb-cards',
@@ -51,10 +52,12 @@ export class CardsComponent implements OnInit {
 	}
 
 	setupControls() {
+		this.items.noResults = "No cards found";
+		this.items.noResultsImage = Symbols.cards;
 		this.titleService.setTitle(AppSettings.titlePrefix + 'All Cards');
 		this.items.showHeader = false;
-		this.items.filter.textboxSearch.placeholder = "Search cards...";
-		this.items.filter.selectSortDirection.value = "desc";
+		this.items.filter.textboxSearch.placeholder = "Search Cards...";
+		this.items.filter.selectSortDirection.value = "asc";
 		SetSortByCards(this.items.filter);
 	}
 

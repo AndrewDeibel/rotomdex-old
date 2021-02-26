@@ -15,9 +15,23 @@
 	width: 100%;
 	transition: $transition;
 	overflow: hidden;
+	position: relative;
+	&:after {
+		content: '';
+		border-radius: $border-radius-small;
+		width: 100%;
+		height: 100%;
+		box-shadow: $shadow-sheen;
+		z-index: 10;
+		position: absolute;
+		border: $border;
+	}
 	&:hover {
 		border-color: $primary-color;
 		box-shadow: $shadow-focus;
+		&:after {
+			border-color: $primary-color;
+		}
 	}
 
 	&.small {

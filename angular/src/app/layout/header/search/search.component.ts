@@ -4,6 +4,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Card } from '@app/pages/cards/card';
 import { Menu, MenuItem } from '@app/controls/menu';
 import { CardsService } from '@app/services/cards.service';
+import { Textbox } from '@app/controls';
+import { Icons } from '@app/models';
 
 @Component({
 	selector: 'mb-search',
@@ -15,18 +17,7 @@ import { CardsService } from '@app/services/cards.service';
 export class SearchComponent implements OnInit {
 
 	query: string = "";
-	cards: Card[] = [];
-	loading: boolean = false;
-	lastQuery: string = "";
-	// paramsSearch: SearchCardsParams = {
-	// 	page: 1,
-	// 	page_size: 10,
-	// 	query: "",
-	// 	language_id: 1,
-	// 	sort_by: "cards",
-	// };
-	menuCards: Menu = new Menu();
-	menuCardsShow: boolean = false;
+	textbox: Textbox;
 
 	constructor(
 		private searchService: SearchService,
@@ -43,32 +34,19 @@ export class SearchComponent implements OnInit {
 			}
 		});
 
-		// Initalize menu
-		this.menuCards = new Menu({
-			classes: "round-bottom borders menuSearchResults",
+		this.textbox = new Textbox({
+			placeholder: "Search Cards...",
+			icon: Icons.search,
+			classes: "bg-white",
+			keydownEnter: value => {
+				this.query = value;
+				this.search();
+			},
+			clickIcon: value => {
+				this.query = value;
+				this.search();
+			}
 		});
-
-		// Subscribe to autocomplete
-		// this.cardsService.autoCompleteCardsObservable().subscribe(_cards => {
-		// 	this.cards = [];
-		// 	this.menuCardsShow = false;
-		// 	this.menuCards.items = [];
-		// 	this.lastQuery = this.query;
-		// 	this.loading = false;
-		// 	if (_cards.length > 0) {
-		// 		this.menuCardsShow = true;
-		// 		this.cards = _cards;
-		// 		this.cards.forEach(card => {
-		// 			this.menuCards.items.push(new MenuItem({
-		// 				text: card.name,
-		// 				route: card.route,
-		// 				click: () => {
-		// 					this.menuCardsShow = false;
-		// 				}
-		// 			}));
-		// 		});
-		// 	}
-		// });
 	}
 
 	search() {
@@ -76,57 +54,12 @@ export class SearchComponent implements OnInit {
 			queryParams: {
 				search: this.query
 			}
-		})
-		//this.router.navigateByUrl('/cards');
-		this.searchService.setSearch(this.query);
-		this.menuCardsShow = false;
-	}
-
-	autocomplete() {
-		this.menuCardsShow = true;
-		// Only autocomplete if query is different than last query
-		if (this.query.trim().toLowerCase() !== this.lastQuery.trim().toLowerCase()) {
-			this.loading = true;
-			//this.paramsSearch.query = this.query;
-			//this.cardsService.autoCompleteCards(this.paramsSearch);
-		}
-	}
-
-	keyupTimeout: any;
-	keyup(event: KeyboardEvent) {
-		clearInterval(this.keyupTimeout);
-
-		// Don't trigger auto complete when enter key pressed
-		if (event.key !== "Enter") {
-			if (this.query.length >= 3) {
-				this.keyupTimeout = setTimeout(() => {
-					this.autocomplete();
-				}, 400);
-			}
-			else {
-				this.menuCardsShow = false;
-			}
-		}
-		else {
-			this.menuCardsShow = false;
-		}
+		});
 	}
 
 	clear(textboxEl: HTMLElement) {
 		this.query = "";
-		this.menuCardsShow = false;
-		this.cards = [];
 		// Set focus
 		textboxEl.focus();
-	}
-
-	clickOutside() {
-		this.menuCardsShow = false;
-	}
-
-	click() {
-		if (this.cards && this.cards.length) {
-			this.menuCardsShow = true;
-		}
 	}
 }

@@ -53,6 +53,12 @@
 	.width-#{$i} {
 		width: percentage($i/12) !important;
 	}
+	.max-#{$i} {
+		max-width: percentage($i/12) !important;
+	}
+}
+.min-0 {
+	min-width: 0;
 }
 
 // Medium widths

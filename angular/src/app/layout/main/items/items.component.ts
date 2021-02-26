@@ -20,15 +20,10 @@ export class ItemsComponent implements OnInit {
 	@Output() outputDisplayModeChanged: EventEmitter<ItemDisplayType> = new EventEmitter;
 
 	constructor(
-		private titleService: Title,
 		private route: ActivatedRoute,
 		private router: Router) { }
 
 	ngOnInit() {
-		
-		if (this.items.header.title) {
-			this.titleService.setTitle(AppSettings.titlePrefix + this.items.header.title);
-		}
 		
 		// Get query params
 		this.route.queryParams.subscribe(params => {
