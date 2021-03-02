@@ -89,17 +89,18 @@
 	h1 {
 		line-height: 1;
 	}
-	mb-tag {
-		display: block;
-		box-shadow: $shadow;
-		border-radius: $border-radius;
-	}
 }
 
 .dex-number {
 	font-size: 60%;
 	opacity: .75;
 	text-transform: capitalize;
+}
+
+.pokemon-dex {
+	@media (max-width: $screen-medium) {
+		width: 100%;
+	}
 }
 
 .pokemon-sprites {

@@ -38,6 +38,7 @@ import {
 	ToggleComponent,
 	ProgressBarComponent,
 	TypeTagComponent,
+	DialogComponent,
 } from './controls';
 
 // Pages
@@ -208,7 +209,8 @@ import {
 	faCopy,
 	faExpandArrowsAlt,
 	faOtter,
-	faDotCircle
+	faDotCircle,
+	faInfoCircle
 } from '@fortawesome/pro-duotone-svg-icons';
 import { faPatreon } from '@fortawesome/free-brands-svg-icons';
 import { CardItemListComponent } from './pages/cards/card-item/card-item-list/card-item-list.component';
@@ -251,6 +253,7 @@ import { CardItemListComponent } from './pages/cards/card-item/card-item-list/ca
 		AlertComponent,
 		ProgressBarComponent,
 		TypeTagComponent,
+		DialogComponent,
 
 		// Pages
 		// ====================
@@ -449,6 +452,8 @@ export class AppModule {
 			faOtter,
 			faDotCircle,
 			faBox,
+			faAlignLeft,
+			faInfoCircle,
 		);
 		faConfig.defaultPrefix = "fad";
 	}

@@ -18,6 +18,7 @@ export class Pokemon {
 	is_mythical: boolean;
 	color: string;
 	shape: string;
+	flavor_texts: string;
 	evolves_from_pokemon: number;
 	image: string;
 	slug: string;

@@ -8,6 +8,7 @@ export enum ButtonType {
 export class Button {
     text: string;
     icon: string;
+	symbol: string;
     href: string;
 	route: string;
     disabled: boolean;

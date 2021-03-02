@@ -1,12 +1,14 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { LoaderService } from '@app/controls';
+import { Button, DialogService, LoaderService } from '@app/controls';
 import { ItemGroup, Items } from '@app/layout/main';
 import { Card, Cards } from '@app/pages/cards';
 import { SetSortByPokemon, PokemonVariant } from './pokemon';
 import { GetPokemonVariantCards, PokemonService } from '../../../services/pokemon.service';
 import { Title } from '@angular/platform-browser';
 import { AppSettings } from '@app/app';
+import { Icons, Symbols } from '@app/models';
+import { Dialog } from '@app/controls/dialog/dialog';
 
 @Component({
 	selector: 'mb-pokemon',
@@ -19,6 +21,8 @@ export class PokemonComponent implements OnInit {
 	@Input() pokemonVariant: PokemonVariant;
 	items: Items = new Items();
 	slug: string;
+	buttonDex: Button;
+	dialogDex: Dialog;
 
 	constructor(
 		private titleService: Title,
@@ -26,6 +30,7 @@ export class PokemonComponent implements OnInit {
 		private loaderService: LoaderService,
 		private route: ActivatedRoute,
 		private router: Router,
+		private dialogService: DialogService,
 	) { }
 
 	ngOnInit() {
@@ -42,6 +47,19 @@ export class PokemonComponent implements OnInit {
 				this.pokemonVariant = pokemonVariant;
 				this.items.noResults = "No " + this.pokemonVariant.name + " cards found";
 				this.getCards();
+				
+				// Dex button
+				this.buttonDex = new Button({
+					symbol: Symbols.pokeball,
+					text: "Pokédex",
+					click: () => {
+						this.dialogService.createDialog(new Dialog({
+							title: "Pokédex Entry",
+							component: this.dialogDex,
+							text: this.pokemonVariant.pokemon.flavor_texts
+						}));
+					}
+				});
 			}
 		});
 
@@ -73,6 +91,7 @@ export class PokemonComponent implements OnInit {
 	}
 
 	setupControls() {
+		
 		SetSortByPokemon(this.items.filter.selectSortBy);
 		this.items.showHeader = false;
 		this.items.footer.pageSize = 24;

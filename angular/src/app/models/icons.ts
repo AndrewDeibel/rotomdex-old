@@ -126,5 +126,7 @@ export enum Icons {
 	expandArrows = "expand-arrows-alt",
 	otter = "otter",
 	dotCircle = "dot-circle",
-	box = "box"
+	box = "box",
+	alignLeft = "align-left",
+	infoCircle = "info-circle",
 }

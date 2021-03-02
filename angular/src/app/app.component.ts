@@ -4,6 +4,8 @@ import { Icons } from './models/icons';
 import { AuthenticationService } from './services/auth.service';
 import { LoaderService } from './controls';
 import { ActivatedRoute, NavigationEnd, Router, RoutesRecognized } from '@angular/router';
+import { Dialog } from './controls/dialog/dialog';
+import { DialogService } from './controls/dialog/dialog.service';
 
 @Component({
 	selector: 'app-root',
@@ -15,6 +17,7 @@ export class AppComponent implements OnInit {
 	theme: string = "dark";
 	showMenu: boolean = true;
 	loading: boolean;
+	dialog: Dialog;
 	menuItemTools: MenuItem;
 	transparentHeader: boolean;
 
@@ -23,7 +26,8 @@ export class AppComponent implements OnInit {
 		private router: Router,
 		private activatedRoute: ActivatedRoute,
 		private authenticationService: AuthenticationService,
-		private loaderService: LoaderService) { }
+		private loaderService: LoaderService,
+		private dialogService: DialogService) { }
 
 	ngOnInit() {
 
@@ -32,6 +36,13 @@ export class AppComponent implements OnInit {
 			if (this.loading != loading) {
 				this.loading = loading;
 				this.cdRef.detectChanges();
+			}
+		});
+
+		// Dialog
+		this.dialogService.dialog.asObservable().subscribe((dialog: Dialog) => {
+			if (dialog) {
+				this.dialog = dialog;
 			}
 		});
 

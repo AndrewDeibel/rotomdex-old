@@ -13,3 +13,4 @@ export * from './textarea';
 export * from './textbox';
 export * from './toggle';
 export * from './type-tag';
+export * from './dialog';

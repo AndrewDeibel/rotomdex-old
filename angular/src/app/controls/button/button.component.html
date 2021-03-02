@@ -9,6 +9,10 @@
     <span class="icon" *ngIf="button.icon">
         <fa-icon [icon]="button.icon"></fa-icon>
 	</span>
+
+	<span class="symbol" *ngIf="button.symbol">
+		<img [src]="button.symbol" />
+	</span>
 	
     <span class="text" *ngIf="button.text" [innerHTML]="button.text">
 	</span>
