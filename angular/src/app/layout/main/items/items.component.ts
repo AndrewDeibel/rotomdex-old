@@ -41,7 +41,8 @@ export class ItemsComponent implements OnInit {
 			}
 
 			if (params["displaymode"]) {
-				this.items.filter.setDisplayMode(ItemDisplayType[params["displaymode"]]);
+				this.items.itemDisplayType = ItemDisplayType[params["displaymode"]];
+				this.items.filter.setDisplayMode(this.items.itemDisplayType);
 			}
 
 			if (params["pagesize"]) {

@@ -73,6 +73,7 @@ export class ItemsFilter {
 
 
 	setDisplayMode(type: ItemDisplayType) {
+		this.displayMode = type;
 		this.menuItemGridDisplayMode.active = false;
 		this.menuItemListDisplayMode.active = false;
 		this.menuItemSimpleDisplayMode.active = false;
