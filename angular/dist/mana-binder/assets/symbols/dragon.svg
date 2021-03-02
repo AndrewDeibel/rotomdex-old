@@ -3,11 +3,11 @@
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
 <style type="text/css">
-	.st0{fill:#A78B31;}
+	.st0{fill:#BAA05A;}
 </style>
 <g>
 	<circle class="st0" cx="50" cy="50" r="50"/>
-	<path id="dragon" d="M41.91,35.49l5.37,24.69c0,0-24.91-15.75-14.3-29.27S65.27,28,65.27,28C43.25,10.13,15.88,17.39,15.88,42.08
-		s28.15,40.1,43.01,40.1S80,70.01,80,70.01L41.91,35.49z M54.42,61.3l-1.11-5.47l8.71,8.04L54.42,61.3z"/>
+	<path id="dragon" d="M41.9,35.5l5.4,24.7c0,0-24.9-15.8-14.3-29.3S65.3,28,65.3,28c-22-17.9-49.4-10.6-49.4,14.1s28.1,40.1,43,40.1
+		S80,70,80,70L41.9,35.5z M54.4,61.3l-1.1-5.5l8.7,8L54.4,61.3z"/>
 </g>
 </svg>

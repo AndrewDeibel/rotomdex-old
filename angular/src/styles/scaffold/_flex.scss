@@ -56,6 +56,9 @@
 	.max-#{$i} {
 		max-width: percentage($i/12) !important;
 	}
+	.min-#{$i} {
+		min-width: percentage($i/12) !important;
+	}
 }
 .min-0 {
 	min-width: 0;
@@ -66,6 +69,9 @@
 	@for $i from 1 through 12 {
 		.medium-#{$i} {
 			width: percentage($i/12) !important;
+		}
+		.medium-min-#{$i} {
+			min-width: percentage($i/12) !important;
 		}
 	}
 	.medium-box {
@@ -89,6 +95,9 @@
 	@for $i from 1 through 12 {
 		.small-#{$i} {
 			width: percentage($i/12) !important;
+		}
+		.small-min-#{$i} {
+			min-width: percentage($i/12) !important;
 		}
 	}
 	.small-box {

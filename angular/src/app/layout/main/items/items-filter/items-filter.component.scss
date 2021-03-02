@@ -1,34 +1,7 @@
 @import "settings";
 
-#cards-filters {
-	padding: $spacing ($spacing * 2);
-	&.dark {
-		background: $menu-bg;
-	}
-}
-.col-display {
-	mb-menu {
-		ul {
-			li {
-				a {
-					.text {
-						display: none;
-					}
-				}
-			}
-		}
-	}
-}
 @media (max-width: $screen-small) {
-	.col-search {
-		width: 100%;
-		min-width: calc(100% - #{$spacing});
-		> div {
-			max-width: 100% !important;
-		}
-	}
 	.col-display {
-		width: 100%;
 		> div {
 			width: 100%;
 			display: block;
@@ -44,7 +17,6 @@
 						justify-content: center;
 						.text {
 							flex: initial !important;
-							display: block;
 						}
 					}
 				}
@@ -52,14 +24,11 @@
 		}
 	}
 	.col-sort {
-		width: 100%;
 		.col-sort-by {
-			width: 50%;
 			position: relative;
 			z-index: 1;
 		}
 		.col-sort-direction {
-			width: 50%;
 			position: relative;
 			z-index: 1;
 		}

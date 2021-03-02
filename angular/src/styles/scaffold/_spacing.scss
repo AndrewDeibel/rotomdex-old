@@ -2,6 +2,14 @@
 .padding {
     padding: $spacing;
 }
+.padding-x {
+	padding-left: $spacing;
+	padding-right: $spacing;
+}
+.padding-y {
+	padding-top: $spacing;
+	padding-bottom: $spacing;
+}
 
 // Sizes
 @for $i from 1 through 10 {
@@ -55,6 +63,15 @@
 .margin {
     margin: $spacing;
 }
+.margin-x {
+	margin-left: $spacing;
+	margin-right: $spacing;
+}
+.margin-y {
+	margin-top: $spacing;
+	margin-bottom: $spacing;
+}
+
 @for $i from 1 through 10 {
 	.margin-#{$i} {
 		margin: $spacing * $i;
