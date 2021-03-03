@@ -35,7 +35,22 @@
 						<h2>Release Notes</h2>
 					</div>
 				</div>
-				<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, at consectetur optio deserunt repellendus dolorum quisquam provident maxime enim modi! Voluptatibus quam laudantium enim nostrum cumque ducimus voluptatum hic omnis.</p>
+				<div class="padding-y-2">
+					<div class="flex padded">
+						<div *ngFor="let releaseNote of releaseNotes" class="width-12">
+							<div class="padding-bottom">
+								<h5>{{releaseNote.title}}</h5>
+								<div class="ellipsis" [innerHtml]="releaseNote.content"></div>
+								<div class="subheading">
+									v{{releaseNote.version}} - {{releaseNote.date | date}}
+								</div>
+							</div>
+							<a (click)="createDialogReleaseNote(releaseNote)">
+								Details...
+							</a>
+						</div>
+					</div>
+				</div>
 			</div>
 			
 			<!-- Newest expansions -->
@@ -48,7 +63,19 @@
 						<h2>Newest Expansions</h2>
 					</div>
 				</div>
-				<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Itaque, ad dolorum voluptates commodi, accusantium quod delectus earum quis eius modi voluptatibus totam veniam. Id in quod repellat. In, architecto sequi?</p>
+				<div class="padding-y-2">
+					<div class="flex padded">
+						<div *ngFor="let expansion of expanions" class="width-6">
+							<div>{{expansion.name}}</div>
+							<div class="subheading">
+								{{expansion.release_date}}
+							</div>
+							<a [routerLink]="expansion.route">
+								Details..
+							</a>
+						</div>
+					</div>
+				</div>
 			</div>
 	
 			<!-- Increasing price -->

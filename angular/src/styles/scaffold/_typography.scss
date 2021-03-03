@@ -24,7 +24,7 @@ $heading-divisor: 4;
 }
 
 // Links
-a {
+a, .link {
     cursor: pointer;
     text-decoration: none;
 	color: $primary-color;

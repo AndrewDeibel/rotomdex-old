@@ -4,7 +4,7 @@ export class Dialog {
 	title: string;
 	buttons: Button[] = [];
 	component: any;
-	text: string;
+	content: string;
 	open: boolean;
 	autoOpen: boolean = true;
 	close = () => {

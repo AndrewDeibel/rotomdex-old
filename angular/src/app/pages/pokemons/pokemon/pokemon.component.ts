@@ -53,10 +53,10 @@ export class PokemonComponent implements OnInit {
 					symbol: Symbols.pokeball,
 					text: "Pokédex",
 					click: () => {
-						this.dialogService.createDialog(new Dialog({
+						this.dialogService.setDialog(new Dialog({
 							title: "Pokédex Entry",
 							component: this.dialogDex,
-							text: this.pokemonVariant.pokemon.flavor_texts
+							content: this.pokemonVariant.pokemon.flavor_texts
 						}));
 					}
 				});

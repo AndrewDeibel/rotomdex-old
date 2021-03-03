@@ -11,7 +11,7 @@ export class DialogService {
 	dialog: BehaviorSubject<Dialog> = new BehaviorSubject(null);
 	constructor() {}
 
-	createDialog(dialog: Dialog) {
+	setDialog(dialog: Dialog) {
 		this.dialog.next(dialog);
 	}
 

@@ -1,7 +1,11 @@
+import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { version } from '@app/../../package.json';
-import { Alert, AlertType, Button } from '@app/controls';
+import { Alert, AlertType, Button, Dialog, DialogService } from '@app/controls';
 import { Icons } from '@app/models';
+import { ExpansionsService } from '@app/services/expansions.service';
+import { ReleaseNote, ReleaseNotesServices } from '@app/services/release-notes.services';
+import { Expansion } from '../expansions';
 
 @Component({
 	selector: 'mb-home',
@@ -93,13 +97,47 @@ export class HomeComponent implements OnInit {
 		route: "/pokemon"
 	});
 
-	constructor() { }
+	releaseNotes: ReleaseNote[] = [];
+	expanions: Expansion[] = [];
+
+	constructor(
+		private datePipe: DatePipe,
+		private expansionsService: ExpansionsService,
+		private releaseNotesService: ReleaseNotesServices,
+		private dialogService: DialogService) { }
 	
 	ngOnInit(): void {
 		this.alert = new Alert({
 			type: AlertType.warning,
 			message: "<b>Under Development:</b> Please note that Rotom Dex is still under development, you should expect to find some issues."
 		});
+
+		// Release notes
+		this.releaseNotesService.getReleaseNotesObservable().subscribe(releaseNotes => {
+			this.releaseNotes = releaseNotes;
+		});
+		this.releaseNotesService.getReleaseNotes();
+
+		// Expansions
+		this.expansionsService.allExpansionsObservable().subscribe(series => {
+			if (series && series.length) {
+				this.expanions = series[0].expansions;
+			}
+		});
+		this.expansionsService.getExpansions({
+			query: "",
+			sort_by: "expansion.release_date",
+			sort_direction: "desc"
+		});
+	}
+
+	createDialogReleaseNote(releaseNote: ReleaseNote) {
+		this.dialogService.setDialog(new Dialog({
+			title: releaseNote.title,
+			content: `
+				<p>${releaseNote.content}</p>
+				<div class="subheading">v${releaseNote.version} - ${this.datePipe.transform(releaseNote.date)}</div>`,
+		}));
 	}
 
 }
