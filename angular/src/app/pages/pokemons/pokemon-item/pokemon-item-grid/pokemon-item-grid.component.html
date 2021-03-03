@@ -27,7 +27,7 @@
 		<div
 			class="pokemon-types"
 			*ngIf="pokemonVariant.types">
-			<div class="flex padded">
+			<div class="flex padded-small">
 				<div *ngFor="let type of pokemonVariant.types">
 					<mb-type-tag [type]="type"></mb-type-tag>
 				</div>

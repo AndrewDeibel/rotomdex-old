@@ -40,28 +40,28 @@ const routes: Routes = [
 	},
 
 	// Scanner
-	{
-		path: 'scanner',
-		component: ScannerComponent
-	},
-	{
-		path: 'scanner/lists',
-		component: ScannerListsComponent
-	},
-	{
-		path: 'scanner/lists/:id',
-		component: ScannerListComponent
-	},
+	// {
+	// 	path: 'scanner',
+	// 	component: ScannerComponent
+	// },
+	// {
+	// 	path: 'scanner/lists',
+	// 	component: ScannerListsComponent
+	// },
+	// {
+	// 	path: 'scanner/lists/:id',
+	// 	component: ScannerListComponent
+	// },
 
 	// Auth
-	{
-		path: 'signin',
-		component: AuthComponent
-	},
-	{
-		path: 'signup',
-		component: AuthComponent
-	},
+	// {
+	// 	path: 'signin',
+	// 	component: AuthComponent
+	// },
+	// {
+	// 	path: 'signup',
+	// 	component: AuthComponent
+	// },
 
 	// Expansions
 	{

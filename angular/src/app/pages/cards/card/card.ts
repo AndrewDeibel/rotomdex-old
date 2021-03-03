@@ -129,19 +129,19 @@ export function SetSortByCards(itemFilter: ItemsFilter) {
 			}),
 			new SelectOption({
 				text: "Name",
-				value: "card.name"
+				value: "name"
 			}),
 			new SelectOption({
 				text: "Price",
-				value: "card.price"
+				value: "price"
 			}),
 			new SelectOption({
 				text: "Release Date",
-				value: "card.release_date"
+				value: "release_date"
 			}),
 			new SelectOption({
 				text: "Rarity",
-				value: "card.rarity"
+				value: "rarity"
 			})
 		]
 	});
