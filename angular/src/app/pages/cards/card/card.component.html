@@ -38,8 +38,10 @@
 									</div>
 									<div class="card-energies flex padded">
 										<div *ngFor="let type of card.types">
-											<div class="card-energy">
-												<img [src]="getTypeImage(type)">
+											<div class="card-energy {{type.toLowerCase()}}">
+												<div class="card-energy-inner">
+													<img [src]="getTypeImage(type)">
+												</div>
 											</div>
 										</div>
 									</div>

@@ -111,13 +111,13 @@ export class CardComponent implements OnInit {
 				if (this.card.expansion.name.toLowerCase().includes("promo")) {
 					this.tagRarity = new Tag({
 						text: "Promo",
-						classes: "promo"
+						classes: "promo card-rarity"
 					});
 				}
 				else if (this.card.rarity) {
 					this.tagRarity = new Tag({
 						text: this.card.rarity,
-						classes: this.card.rarity.toLowerCase().replace(' ', '-')
+						classes: "card-rarity " + this.card.rarity.toLowerCase().replace(' ', '-')
 					});
 				}
 

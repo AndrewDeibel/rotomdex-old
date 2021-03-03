@@ -2,6 +2,11 @@
 		"rotomdex";
 
 .type-tag {
+	transition: $transition;
+	cursor: pointer;
+	&:hover {
+		box-shadow: $shadow-focus;
+	}
 	@each $type, $color in $poke-types {
 		&.#{$type} {
 			display: flex;

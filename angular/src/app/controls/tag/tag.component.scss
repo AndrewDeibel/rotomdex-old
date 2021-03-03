@@ -20,6 +20,14 @@
 		color: inherit;
 	}
 
+	&.card-rarity {
+		transition: $transition;
+		cursor: pointer;
+		&:hover {
+			box-shadow: $shadow-sheen, $shadow-focus;
+		}
+	}
+
 	$promo: black;
 	$common: grey;
 	$uncommon: darken(white, 10%);

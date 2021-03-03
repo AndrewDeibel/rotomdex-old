@@ -73,7 +73,26 @@
 }
 .card-energies {
 	.card-energy {
+		width: 24px;
+		height: 24px;
 		margin-top: 1px;
+		border-radius: 50%;
+		border: $border;
+		transition: $transition;
+		cursor: pointer;
+		&:hover {
+			box-shadow: $shadow-focus, $shadow-sheen;
+			border-color: $primary-color;
+		}
+		.card-energy-inner {
+			border-radius: 50%;
+			box-shadow: $shadow-sheen;
+		}
+		@each $type, $color in $poke-types {
+			&.#{$type} {
+				background: $color;
+			}
+		}
 	}
 	img {
 		width: 23px;
