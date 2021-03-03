@@ -12,7 +12,7 @@
 			.img-card-image-hover {
 				pointer-events: all;
                 opacity: 1;
-				max-width: calc(100vw - #{$spacing * 4});
+				max-width: calc(100vw - #{$spacing * 6});
 				cursor: zoom-out;
 			}
 			.card-image-inner {

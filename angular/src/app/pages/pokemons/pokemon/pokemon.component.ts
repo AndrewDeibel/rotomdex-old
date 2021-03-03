@@ -96,6 +96,7 @@ export class PokemonComponent implements OnInit {
 		this.items.showHeader = false;
 		this.items.footer.pageSize = 24;
 		this.items.footer.selectPageSize.value = this.items.footer.pageSize.toString();
+		this.items.noResultsImage = Symbols.cards;
 	}
 
 	getCards() {
