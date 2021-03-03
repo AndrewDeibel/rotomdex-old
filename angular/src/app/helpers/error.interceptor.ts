@@ -66,7 +66,7 @@ export class ErrorIntercept implements HttpInterceptor {
 							})])
 					}
 
-					this.loaderService.hide();
+					this.loaderService.clear();
 
                     return throwError(message);
                 })

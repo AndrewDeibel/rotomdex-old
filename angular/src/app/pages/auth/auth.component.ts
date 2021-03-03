@@ -96,7 +96,7 @@ export class AuthComponent implements OnInit {
 			return;
 		}
 
-		this.loaderService.show();
+		this.loaderService.addItemLoading("login")
 		this.authenticationService.login(this.form.controls.usernameControl.value, this.form.controls.passwordControl.value)
 			.pipe(first())
 			.subscribe(
@@ -104,7 +104,7 @@ export class AuthComponent implements OnInit {
 					this.router.navigateByUrl(this.returnUrl);
 				},
 				error => {
-					this.loaderService.hide();
+					this.loaderService.clearItemLoading("login");
 				}
 			)
 	}

@@ -1,5 +1,5 @@
-<div class="overlay pointer" [class.open]="dialog.open" (click)="dialog.close()">
-	<div class="dialog" (click)="$event.stopPropagation()">
+<div class="overlay pointer" [class.open]="dialog && dialog.open" (click)="dialog.close()">
+	<div *ngIf="dialog" class="dialog" (click)="$event.stopPropagation()">
 		<div class="dialog-header">
 			<div class="flex padded flex-center">
 				<div class="box min-0 ellipsis">

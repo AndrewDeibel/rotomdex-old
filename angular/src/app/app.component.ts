@@ -16,7 +16,7 @@ import { DialogService } from './controls/dialog/dialog.service';
 export class AppComponent implements OnInit {
 	theme: string = "dark";
 	showMenu: boolean = true;
-	loading: boolean;
+	loading: boolean = false;
 	dialog: Dialog;
 	menuItemTools: MenuItem;
 	transparentHeader: boolean;

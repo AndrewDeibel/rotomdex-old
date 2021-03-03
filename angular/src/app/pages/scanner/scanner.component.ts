@@ -257,7 +257,7 @@ export class ScannerComponent implements OnInit {
 	setupScannerService() {
 		if (!this.scannerServiceSubscription) {
 			this.scannerServiceSubscription = this.scannerService.getScanCardObservable().subscribe((card: Card) => {
-				this.loaderService.hide();
+				this.loaderService.clearItemLoading("scanning");
 				this.searching = false;
 				if (card) {
 					if (this.scanning) {
@@ -293,7 +293,7 @@ export class ScannerComponent implements OnInit {
 	setupMultipleScannerService() {
 		if (!this.scannerMultipleServiceSubscription) {
 			this.scannerMultipleServiceSubscription = this.scannerService.getScanCardsObservable().subscribe((cards: Card[]) => {
-				this.loaderService.hide();
+				this.loaderService.clearItemLoading("scanning");
 				this.searching = false;
 				if (cards && cards.length > 0) {
 					this.addMatches(cards);
@@ -438,7 +438,7 @@ export class ScannerComponent implements OnInit {
 	runScan() {
 		if (!this.searching) {
 			if (this.scannerMode != ScanType.scan) {
-				this.loaderService.show();
+				this.loaderService.addItemLoading("scanning");
 			}
 			if (this.trigger) {
 				this.trigger.next();

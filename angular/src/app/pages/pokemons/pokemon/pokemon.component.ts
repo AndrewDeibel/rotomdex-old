@@ -37,13 +37,11 @@ export class PokemonComponent implements OnInit {
 
 		this.setupControls();
 
-		this.loaderService.show();
-
 		// Response get pokemon
 		this.pokemonService.getPokemonVariantObservable().subscribe(pokemonVariant => {
 			if (pokemonVariant) {
 				this.titleService.setTitle(AppSettings.titlePrefix + pokemonVariant.pokemon.name);
-				this.loaderService.hide();
+				this.loaderService.clearItemLoading("getPokemon");
 				this.pokemonVariant = pokemonVariant;
 				this.items.noResults = "No " + this.pokemonVariant.name + " cards found";
 				this.getCards();
@@ -66,7 +64,7 @@ export class PokemonComponent implements OnInit {
 		// Response get pokemon cards
 		this.pokemonService.getPokemonVariantCardsObservable().subscribe(res => {
 			if (res) {
-				this.loaderService.hide();
+				this.loaderService.clearItemLoading("getPokemonCards");
 				this.items.footer.totalPages = res.total_pages;
 				this.items.filter.textboxSearch.placeholder = `Search ${this.pokemonVariant.name} cards...`;
 				if (res.cards.length) {
@@ -85,6 +83,8 @@ export class PokemonComponent implements OnInit {
 		// Request get pokemon
 		this.route.params.subscribe(params => {
 			this.slug = params["slug"];
+
+			this.loaderService.addItemLoading("getPokemon");
 			this.pokemonService.getPokemonVariant(this.slug);
 		});
 
@@ -100,7 +100,7 @@ export class PokemonComponent implements OnInit {
 	}
 
 	getCards() {
-		this.loaderService.show();
+		this.loaderService.addItemLoading("getPokemonCards");
 		this.pokemonService.getPokemonVariantCards(new GetPokemonVariantCards({
 			page: this.items.footer.page,
 			slug: this.slug,

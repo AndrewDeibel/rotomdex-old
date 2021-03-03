@@ -34,7 +34,7 @@ export class ExpansionsComponent implements OnInit {
 
 	reponseGetExpanions(series: Series[]) {
 		if (series) {
-			this.loaderService.hide();
+			this.loaderService.clearItemLoading("getExpansions");
 			this.items.itemGroups = [];
 			series.forEach(_series => {
 				this.items.itemGroups.push({
@@ -59,7 +59,7 @@ export class ExpansionsComponent implements OnInit {
 	}
 
 	getItems() {
-		this.loaderService.show();
+		this.loaderService.addItemLoading("getExpansions");
 		this.expansionsService.getExpansions({
 			query: this.items.filter.textboxSearch.value,
 			sort_by: this.items.filter.selectSortBy.value,

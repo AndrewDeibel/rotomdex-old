@@ -42,7 +42,6 @@ export class CardComponent implements OnInit {
 		private pokemonService: PokemonService) {}
 
     ngOnInit(): void {
-		this.loaderService.show();
 		this.setupControls();
 		this.setupSubscriptions();
 		this.handleRoute();
@@ -101,7 +100,7 @@ export class CardComponent implements OnInit {
 		// Response get card
 		this.cardService.cardObservable().subscribe(card => {
 			if (card) {
-				this.loaderService.hide();
+				this.loaderService.clearItemLoading("getCard");
 				this.titleService.setTitle(AppSettings.titlePrefix + card.name);
 
 				// Data
@@ -143,7 +142,7 @@ export class CardComponent implements OnInit {
 		// Response get related cards
 		this.cardsService.allCardsObservable().subscribe(res => {
 			if (res) {
-				this.loaderService.hide();
+				this.loaderService.clearItemLoading("getRelatedCards");
 				this.relatedCards.itemGroups = [
 					new ItemGroup({
 						items: res.cards
@@ -155,7 +154,7 @@ export class CardComponent implements OnInit {
 		// Response get expansion cards
 		this.expansionService.getExpansionCardsObservable().subscribe(res => {
 			if (res) {
-				this.loaderService.hide();
+				this.loaderService.clearItemLoading("getExpansionCards");
 				this.expansionCards.itemGroups = [
 					new ItemGroup({
 						items: res.cards
@@ -168,29 +167,29 @@ export class CardComponent implements OnInit {
 	handleRoute() {
 		// ID param
 		this.route.params.subscribe(params => {
-			this.loaderService.show();
 			// Request card
+			this.loaderService.addItemLoading("getCard");
 			this.cardService.getCard(params["slug"]);
 		});
 	}
 
 	getRelatedCards() {
 		if (this.card) {
-			this.loaderService.show();
-			this.pokemonService.getPokemonVariantCards(new GetPokemonVariantCards({
-				page: this.relatedCards.footer.page,
-				page_size: this.relatedCards.footer.pageSize,
-				query: this.relatedCards.filter.textboxSearch.value,
-				slug: this.card.pokemon.slug,
-				sort_by: this.relatedCards.filter.selectSortBy.value,
-				sort_direction: this.relatedCards.filter.selectSortDirection.value
-			}));
+			// this.loaderService.addItemLoading("getRelatedCards");
+			// this.pokemonService.getPokemonVariantCards(new GetPokemonVariantCards({
+			// 	page: this.relatedCards.footer.page,
+			// 	page_size: this.relatedCards.footer.pageSize,
+			// 	query: this.relatedCards.filter.textboxSearch.value,
+			// 	slug: this.card.pokemon.slug,
+			// 	sort_by: this.relatedCards.filter.selectSortBy.value,
+			// 	sort_direction: this.relatedCards.filter.selectSortDirection.value
+			// }));
 		}
 	}
 
 	getExpansionCards() {
 		if (this.card) {
-			this.loaderService.show();
+			this.loaderService.addItemLoading("getExpansionCards");
 			this.expansionService.getExpansionCards(new GetExpansionCards({
 				code: this.card.expansion.code,
 				page: this.expansionCards.footer.page,

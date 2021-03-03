@@ -70,7 +70,7 @@ export class SignUpComponent implements OnInit {
 			return;
 		}
 
-		this.loaderService.show();
+		this.loaderService.addItemLoading("register");
 		this.authenticationService.register(
 			this.form.controls.emailControl.value,
 			this.form.controls.usernameControl.value,
@@ -82,7 +82,7 @@ export class SignUpComponent implements OnInit {
 					this.router.navigateByUrl(this.returnUrl);
 				},
 				error => {
-					this.loaderService.hide();
+					this.loaderService.clearItemLoading("register");
 				}
 			)
 	}

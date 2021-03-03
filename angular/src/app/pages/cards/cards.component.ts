@@ -41,7 +41,7 @@ export class CardsComponent implements OnInit {
 	
 	getCardsResponse(res: CardResults) {
 		if (res) {
-			this.loaderService.hide();
+			this.loaderService.clearItemLoading("getCards");
 			this.items.footer.totalPages = res.total_pages;
 			this.items.itemGroups = [
 				new ItemGroup({
@@ -62,7 +62,7 @@ export class CardsComponent implements OnInit {
 	}
 
     getCards() {
-       	this.loaderService.show();
+       	this.loaderService.addItemLoading("getCards");
 		this.items.showHeader = false;
 		this.cardsService.getCards(new GetCards({
 			page: this.items.footer.page,

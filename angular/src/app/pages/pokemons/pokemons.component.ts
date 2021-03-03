@@ -27,7 +27,7 @@ export class PokemonsComponent implements OnInit {
 		// Get data
 		this.pokemonService.getPokemonVariantsObservable().subscribe(res => {
 			if (res) {
-				this.loaderService.hide();
+				this.loaderService.clearItemLoading("getPokemon");
 				this.items.footer.totalPages = res.total_pages;
 				var group = new ItemGroup();
 				res.pokemon_variants.forEach(pokemon_variant => {
@@ -53,7 +53,7 @@ export class PokemonsComponent implements OnInit {
 	}
 
 	getPokemonVariants() {
-		this.loaderService.show();
+		this.loaderService.addItemLoading("getPokemon");
 		this.pokemonService.getPokemonVariants(new GetPokemonVariants({
 			page: this.items.footer.page,
 			page_size: this.items.footer.pageSize,
