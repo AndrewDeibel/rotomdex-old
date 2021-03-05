@@ -8,10 +8,8 @@
 			<div class="flex box padded-2 flex-center flex-nowrap">
 
 				<!-- Symbol -->
-				<div *ngIf="itemsHeader.symbol">
-					<div class="symbol-wrapper">
-						<img class="symbol {{itemsHeader.symbolRarity}}" src="{{itemsHeader.symbol}}" />
-					</div>
+				<div class="symbol-wrapper" *ngIf="itemsHeader.symbol">
+					<img class="symbol {{itemsHeader.symbolRarity}}" src="{{itemsHeader.symbol}}" />
 				</div>
 
 				<!-- Icon -->

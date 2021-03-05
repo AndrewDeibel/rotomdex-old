@@ -12,12 +12,15 @@
 	.symbol-wrapper {
 		width: auto;
 		height: 56px;
-		padding: $spacing;
+		max-width: 200px;
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
 		border-radius: $border-radius;
 		background: rgba(white, .2);
+		@media (max-width: $screen-small) {
+			max-width: 128px;
+		}
 		img {
 			max-width: 100%;
 			max-height: 100%;
