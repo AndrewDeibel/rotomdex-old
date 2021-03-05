@@ -9,12 +9,6 @@
 			.img-card-image {
 				opacity: 0;
 			}
-			.img-card-image-hover {
-				pointer-events: all;
-                opacity: 1;
-				max-width: calc(100vw - #{$spacing * 6});
-				cursor: zoom-out;
-			}
 			.card-image-inner {
 				&:after {
 					display: none;
@@ -54,21 +48,6 @@
 				left: 0;
 			}
 		}
-        .img-card-image-hover {
-            position: absolute;
-            top: 0;
-			left: 0;
-            pointer-events: none;
-			max-width: none;
-            z-index: 10;
-            opacity: 0;
-            max-width: 300px;
-			max-height: calc(100vh - 132px - 8px);
-			background: $panel-bg;
-            @media (max-height: $screen-small + 40px) {
-                display: none !important;
-            }
-        }
     }
 }
 .card-energies {

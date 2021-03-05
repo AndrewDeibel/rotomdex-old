@@ -6,10 +6,14 @@
 	left: 50%;
 	transform: translate(-50%, -50%);
 	min-width: 200px;
+	display: flex;
+	flex-direction: column;
 	background: white;
 	box-shadow: $shadow-large;
 	border-radius: $border-radius-small;
 	max-width: calc(100% - #{$spacing * 4});
+	max-height: calc(100% - #{$spacing * 4});
+	overflow: hidden;
 	@media (max-width: $screen-small) {
 		width: calc(100% - #{$spacing * 4});
 	}
@@ -33,6 +37,8 @@
 	}
 	.dialog-content {
 		padding: $spacing * 2;
+		flex: 1;
+		overflow-y: auto;
 	}
 	.dialog-footer {
 

@@ -7,7 +7,7 @@ import { CardService } from '../../../services/card.service';
 import { AuthenticationService } from '@app/services/auth.service';
 import "@app/extensions/string.extensions";
 import { Icons, Symbols } from '@app/models/icons';
-import { Button, LoaderService, Tag } from '@app/controls';
+import { Button, Dialog, DialogService, LoaderService, Tag } from '@app/controls';
 import { CardsService } from '../../../services/cards.service';
 import { ItemGroup, Items } from '@app/layout/main';
 import { ExpansionService, GetExpansion, GetExpansionCards } from '@app/services/expansion.service';
@@ -39,6 +39,7 @@ export class CardComponent implements OnInit {
 		private cardsService: CardsService,
 		private route: ActivatedRoute,
 		private expansionService: ExpansionService,
+		private dialogService: DialogService,
 		private pokemonService: PokemonService) {}
 
     ngOnInit(): void {
@@ -93,6 +94,13 @@ export class CardComponent implements OnInit {
 
 	getTypeImage(type: string) {
 		return `/assets/symbols/${type.toLowerCase()}.svg`;
+	}
+
+	createDialogCardImage() {
+		this.dialogService.setDialog(new Dialog({
+			title: this.card.name,
+			content: `<img src="${this.card.image_high_res}" />`,
+		}));
 	}
 
 	setupSubscriptions() {

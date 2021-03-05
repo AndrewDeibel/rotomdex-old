@@ -15,11 +15,7 @@
 						<img
 							src="{{card.image}}"
 							class="img-card-image border-radius-card shadow transition"
-							(click)="cardImageHover = !cardImageHover" />
-						<img
-							src="{{card.image_high_res}}"
-							class="img-card-image-hover border-radius-card shadow-large transition"
-							(click)="cardImageHover = !cardImageHover" />
+							(click)="createDialogCardImage()" />
 					</div>
 				</figure>
 
