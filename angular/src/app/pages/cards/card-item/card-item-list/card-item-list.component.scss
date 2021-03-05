@@ -2,10 +2,6 @@
 		"scaffold/typography";
 
 .item {
-    display: flex;
-    padding: $spacing;
-    align-items: center;
-    position: relative;
     transition: $transition;
     cursor: pointer;
     &:hover {
@@ -17,53 +13,8 @@
 		outline: 0 !important;
     }
     .card-image {
-        position: relative;
-        .image-wrapper {
-            overflow: hidden;
-            border-radius: 4px;
-            position: relative;
-			box-shadow: $shadow-sheen;
-			border: $border;
-            img {
-				max-height: 48px;
-				display: block;
-            }
-        }
         &.placeholder img {
             transform: translate(-50%, -50%) scale(1.4);    
-        }
-        padding-right: $spacing;
-        .zoom-image-wrapper {
-            position: absolute;
-            top: 0;
-            left: 0;
-            opacity: 0;
-            pointer-events: none;
-            box-shadow: $shadow;
-            transition: $transition;
-            z-index: 99;
-            overflow: hidden;
-            border-radius: 4%;
-            img {
-                height: 48px;
-                max-width: none;
-                display: block;
-            }
-        }
-        &:hover {
-            .zoom-image-wrapper {
-                opacity: 1;
-                img {
-                    height: 400px;
-                }
-            }
-        }
-    }
-    @media (max-width: $screen-medium) {
-        .card-information {
-            .card-name {
-                font-size: 16px;
-            }
         }
     }
     @for $i from 1 through 50 {

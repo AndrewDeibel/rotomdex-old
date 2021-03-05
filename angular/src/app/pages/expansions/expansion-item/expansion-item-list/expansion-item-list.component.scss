@@ -1,11 +1,7 @@
 @import "settings",
 		"scaffold/typography";
 
-.item-list-expansion {
-    display: flex;
-    padding: $spacing;
-    align-items: center;
-    position: relative;
+.item {
     transition: $transition;
     cursor: pointer;
     &:hover {

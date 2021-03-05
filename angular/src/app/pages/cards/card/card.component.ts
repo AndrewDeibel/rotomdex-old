@@ -98,8 +98,8 @@ export class CardComponent implements OnInit {
 
 	createDialogCardImage() {
 		this.dialogService.setDialog(new Dialog({
-			title: this.card.name,
-			content: `<img src="${this.card.image_high_res}" />`,
+			title: `${this.card.name} - ${this.card.expansion.name}`,
+			content: `<div class="card-image"><img src="${this.card.image_high_res}" /></div>`,
 		}));
 	}
 

@@ -10,6 +10,7 @@ import { Dialog } from './dialog';
 export class DialogComponent implements OnInit {
 
 	@Input() dialog: Dialog;
+	loading: boolean;
 
 	constructor(private elRef: ElementRef) { }
 

@@ -5,11 +5,14 @@ export class Dialog {
 	buttons: Button[] = [];
 	component: any;
 	content: string;
-	open: boolean;
+	active: boolean;
 	autoOpen: boolean = true;
 	close = () => {
-		this.open = false;
+		this.active = false;
 		if (this.onClose) this.onClose();
+	}
+	open = () => {
+		this.active = true;
 	}
 
 	onOpen: () => void;
@@ -17,6 +20,6 @@ export class Dialog {
 
     public constructor(init?:Partial<Dialog>) {
 		Object.assign(this, init);
-		if (this.autoOpen) this.open = true;
+		if (this.autoOpen) this.open();
 	}
 };

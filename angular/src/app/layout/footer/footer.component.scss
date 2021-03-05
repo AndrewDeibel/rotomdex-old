@@ -13,25 +13,14 @@
 	}
 }
 #footer {
-	padding: $spacing * 4 $spacing * 2 0;
+	padding: $spacing * 4 $spacing * 2;
 	border-top: $border;
     background: $footer-bg;
-    color: rgba(white, .25);
 
     .max {
         z-index: 5;
         position: relative;
     }
-
-	.copyright {
-		font-size: 10px;
-		text-align: center;
-		text-transform: uppercase;
-		letter-spacing: .5px;
-		line-height: 1;
-		padding: $spacing;
-		margin-top: $spacing * 4;
-	}
 	
     .logo {
         display: flex;
@@ -58,4 +47,15 @@
             letter-spacing: 2px;
         }
 	}
+}
+
+.copyright {
+    background: lighten($footer-bg, 5%);
+	font-size: 10px;
+	text-align: center;
+	text-transform: uppercase;
+	letter-spacing: .5px;
+	line-height: 1;
+	padding: $spacing;
+    color: rgba(white, .5);
 }

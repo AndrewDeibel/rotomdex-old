@@ -92,3 +92,27 @@ $poke-types: (
 		margin-left: $spacing;
 	}
 }
+
+.card-image {
+	border-radius: $border-radius-card;
+	overflow: hidden;
+	box-shadow: $shadow;
+	position: relative;
+	img {
+		display: block;
+	}
+	&:after {
+		border: $border;
+		pointer-events: none;
+		content: '';
+		border-radius: $border-radius-card;
+		width: 100%;
+		height: 100%;
+		box-shadow: $shadow-sheen;
+		z-index: 10;
+		position: absolute;
+		border: $border;
+		top: 0;
+		left: 0;
+	}
+}

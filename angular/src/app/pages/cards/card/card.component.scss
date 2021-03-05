@@ -3,7 +3,7 @@
 		"rotomdex";
 
 .card-detail {
-    .card-image {
+    .card-image-wrapper {
 		z-index: 2;
 		&.active {
 			.img-card-image {
@@ -31,22 +31,6 @@
                 margin-left: auto;
                 margin-right: auto;
             }
-		}
-		.card-image-inner {
-			position: relative;
-			&:after {
-				pointer-events: none;
-				content: '';
-				border-radius: $border-radius-card;
-				width: 100%;
-				height: 100%;
-				box-shadow: $shadow-sheen;
-				z-index: 10;
-				position: absolute;
-				border: $border;
-				top: 0;
-				left: 0;
-			}
 		}
     }
 }

@@ -1,28 +1,28 @@
-<a
-	class="item-list-expansion"
-	[routerLink]="expansion.route ? expansion.route : []">
+<div class="padding item">
+	<div
+		class="flex padded flex-center"
+		[routerLink]="expansion.route ? expansion.route : []">
 
-	<div class="flex padded flex-center box">
-		<div>
-			<figure class="expansion-symbol">
-				<img src="{{expansion.symbol}}" />
-			</figure>
-		</div>
-		<div class="box">
-			<figcaption class="expansion-info">
+		<div class="flex padded flex-center box">
+			<div>
+				<div class="expansion-symbol">
+					<img src="{{expansion.symbol}}" />
+				</div>
+			</div>
+			<div class="box">
 				<div class="flex padded flex-center">
-					<span class="width-6 expansion-name">
+					<span class="width-6">
 						{{expansion.name}}
 					</span>
-					<span class="width-3 expansion-release-date subheading">
+					<span class="width-3 subheading">
 						{{expansion.release_date | date}}
 					</span>
-					<span class="width-3 expansion-total-cards subheading">
+					<span class="width-3 subheading">
 						{{expansion.total_cards}} Cards
 					</span>
 				</div>
-			</figcaption>
+			</div>
 		</div>
-	</div>
 
-</a>
+	</div>
+</div>

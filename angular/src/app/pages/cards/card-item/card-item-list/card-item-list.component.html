@@ -1,30 +1,30 @@
-<a
-	class="item"
-	[routerLink]="card.route ? card.route : []">
-
+<div class="padding item">
 	<div
-		class="card-image {{!card.image ? 'placeholder' : ''}}"
-		*ngIf="card.image">
+		class="flex padded flex-center"
+		[routerLink]="card.route ? card.route : []">
 
-		<div class="image-wrapper">
-			<mb-loader *ngIf="false" [active]="imageLoading"></mb-loader>
-			<img src="{{card.image}}" [hidden]="imageLoading" (load)="onLoad()" />
-		</div>
-
-	</div>
-
-	<div class="flex padded box flex-center">
-		<div class="card-name width-6">
-			<h6>{{card.name}}</h6>
-		</div>
-		<div class="card-number width-3">
-			{{getCardNumber()}}
-		</div>
-		<div class="card-price width-3">
-			<div class="money-tag" *ngIf="card.last_prices">
-				${{card.last_prices.market_price}}
+		<div style="max-width: 64px;">
+			<div class="card-image" [class.placeholder]="!card.image">
+				<mb-loader *ngIf="false" [active]="imageLoading"></mb-loader>
+				<img src="{{card.image}}" [hidden]="imageLoading" (load)="onLoad()" />
 			</div>
 		</div>
-	</div>
 
-</a>
+		<div class="box">
+			<div class="flex padded flex-center">
+				<div class="width-6">
+					<h6>{{card.name}}</h6>
+				</div>
+				<div class="width-3">
+					{{card.getCardNumber()}}
+				</div>
+				<div class="width-3">
+					<div class="money-tag" *ngIf="card.last_prices">
+						{{card.last_prices.market_price | currency}}
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>
