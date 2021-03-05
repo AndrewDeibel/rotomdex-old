@@ -26,6 +26,7 @@
 			top: 50%;
 			left: 50%;
 			transform: translate(-50%, -50%) rotate(45deg);
+			transition: $transition;
 		}
 		&:checked {
 			&:after {
@@ -33,7 +34,7 @@
 			}
 		}
 		&:focus {
-			box-shadow: $shadow-focus, $shadow-focus-inset;
+			box-shadow: $shadow-focus-inset, $shadow-focus;
 		}
 	}
 	label {

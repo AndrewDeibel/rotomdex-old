@@ -4,6 +4,13 @@
 .menu {
 	box-shadow: $shadow-sheen;
 	border: $border;
+	@media (max-width: $screen-medium) {
+		&.medium-stacked {
+			a {
+				flex-direction: column;
+			}
+		}
+	}
 	a:not(.no-ellipsis) {
 		.text {
 			white-space: nowrap;

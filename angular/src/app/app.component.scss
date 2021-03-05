@@ -22,6 +22,9 @@
     flex: 1;
     position: relative;
 	z-index: 1;
+	@media (max-width: $screen-medium) {
+		padding-top: $header-height;
+	}
 }
 
 .scrollTop {
@@ -38,6 +41,9 @@
 	z-index: 10;
 	&:hover {
 		box-shadow: $shadow-large;
+	}
+	@media (max-width: $screen-medium) {
+		bottom: 80px;
 	}
 }
 
