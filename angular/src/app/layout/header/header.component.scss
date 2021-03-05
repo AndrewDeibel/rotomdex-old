@@ -108,9 +108,7 @@
 
 #menu {
 	background: $menu-bg;
-	display: flex;
 	justify-content: center;
-	padding: $spacing;
 	z-index: 2;
 	position: relative;
 
@@ -120,9 +118,17 @@
 }
 
 @media (max-width: $screen-medium) {
-	#menu .menu.tabs {
-		> ul > li {
-			flex: 1;
+	#menu .menu {
+		> ul {
+			> li {
+				flex: 1;
+				a {
+					justify-content: center;
+					.text {
+						flex: initial;
+					}
+				}
+			}
 		}
 	}
 	mb-search {
