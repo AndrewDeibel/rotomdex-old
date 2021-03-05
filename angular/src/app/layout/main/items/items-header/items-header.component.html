@@ -5,7 +5,7 @@
 	class="z-4 border-bottom">
 	<div class="max-12 width-12">
 		<div class="max">
-			<div class="flex box padded-2 flex-center flex-nowrap">
+			<div class="flex box padded-2 flex-center">
 
 				<!-- Symbol -->
 				<div class="symbol-wrapper" *ngIf="itemsHeader.symbol">
@@ -53,6 +53,10 @@
 				<!-- Button -->
 				<div *ngIf="itemsHeader.button">
 					<mb-button [button]="itemsHeader.button"></mb-button>
+				</div>
+
+				<div *ngIf="itemsHeader.progress" class="width-3 medium-12">
+					<mb-progress-bar [value]="itemsHeader.progress"></mb-progress-bar>
 				</div>
 
 			</div>

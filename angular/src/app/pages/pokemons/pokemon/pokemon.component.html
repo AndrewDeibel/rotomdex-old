@@ -27,6 +27,10 @@
 		<!-- Pokeball -->
 		<img class="pokeball" src="/assets/pokeball.png" />
 
+		<mb-progress-bar
+			[value]="pokemonVariant.progress">
+		</mb-progress-bar>
+
 		<!-- Evolutions -->
 		<div
 			*ngIf="pokemonVariant.pokemon.evolution_chain.length > 1"

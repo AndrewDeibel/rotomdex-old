@@ -7,6 +7,15 @@ export class EvolutionChain {
 	sprite: string;
 }
 
+export class PokemonGeneration {
+	id: number;
+	name: string;
+	region: string;
+	constructor(init?:Partial<PokemonGeneration>) {
+		Object.assign(this, init);
+	}
+}
+
 export class Pokemon {
 	id: number;
 	name: string;
@@ -52,16 +61,8 @@ export class Pokemon {
 	}
 }
 
-export class PokemonGeneration {
-	id: number;
-	name: string;
-	region: string;
-	constructor(init?:Partial<PokemonGeneration>) {
-		Object.assign(this, init);
-	}
-}
-
 export class PokemonVariant {
+	progress: number = 15;
 	id: number;
 	pokemon: Pokemon;
 	name: string;

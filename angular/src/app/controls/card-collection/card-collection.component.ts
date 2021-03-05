@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { GUID } from '@app/helpers';
 import { Condition, Icons, PrintVersion } from '@app/models';
 import { Button } from '../button';
+import { Checkbox } from '../checkbox';
 import { Empty } from '../empty';
 import { CardCollectionItem } from './card-collection-item';
 
@@ -16,6 +17,7 @@ export class CardCollectionComponent implements OnInit {
 	@Input() slug: string;
 	collection: CardCollectionItem[] = [];
 	buttonAdd: Button;
+	checkboxWishList: Checkbox;
 	buttonViewAll: Button;
 	totalValue: number;
 	empty: Empty;
@@ -47,8 +49,13 @@ export class CardCollectionComponent implements OnInit {
 
 		// Button view all
 		this.buttonViewAll = new Button({
-			text: "View Collection",
+			text: "View All",
 			icon: Icons.externalLink,
+		});
+
+		// Checkbox wish list
+		this.checkboxWishList = new Checkbox({
+			text: "Wishlist",
 		});
 
 		this.calculateTotal();

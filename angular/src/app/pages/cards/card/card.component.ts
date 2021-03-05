@@ -58,14 +58,14 @@ export class CardComponent implements OnInit {
 		// Related cards
 		this.relatedCards.footer.pageSize = 12;
 		this.relatedCards.noResultsImage = Symbols.cards;
-		this.relatedCards.header.title = "Related Cards";
+		this.relatedCards.header.title = "Related";
 		this.relatedCards.noResults = "No related cards found";
 		this.relatedCards.itemClasses = "width-2 medium-3 small-6";
 		this.relatedCards.showFilters = false;
 		this.relatedCards.showFooter = false;
 		SetSortByCards(this.relatedCards.filter);
 		this.relatedCards.header.button = new Button({
-			text: "View Related",
+			text: "View All",
 			icon: Icons.externalLink
 		});
 
@@ -77,7 +77,7 @@ export class CardComponent implements OnInit {
 		this.expansionCards.showFooter = false;
 		SetSortByCards(this.expansionCards.filter);
 		this.expansionCards.header.button = new Button({
-			text: "View Expansion",
+			text: "View All",
 			icon: Icons.externalLink
 		});
 

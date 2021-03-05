@@ -37,20 +37,25 @@
 	&.small {
 		max-width: 180px;
 		.expansion-logo {
-			height: 80px;
-			img:not(.symbol) {
-				padding: $spacing * 2;
-				max-width: 80%;
+			.expansion-logo-inner {
+				height: 80px;
+				img:not(.symbol) {
+					padding: $spacing * 2;
+					max-width: 80%;
+				}
 			}
 		}
 	}
 	
 	.expansion-logo {
 		display: block;
-		height: 160px;
 		width: 100%;
 		position: relative;
 		background: lighten($grey, 40%);
+		.expansion-logo-inner {
+			position: relative;
+			height: 160px;
+		}
 		img:not(.symbol) {
 			padding: $spacing * 4;
 			position: absolute;

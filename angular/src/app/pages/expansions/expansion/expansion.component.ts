@@ -48,6 +48,7 @@ export class ExpansionComponent implements OnInit {
 				this.loaderService.clearItemLoading("getExpansion");
 				this.titleService.setTitle(AppSettings.titlePrefix + expansion.name);
 				this.items.header.symbol = expansion.logo;
+				this.items.header.progress = 32;
 				if (expansion.series.name === expansion.name) {
 					this.items.header.title = expansion.name;
 				}

@@ -15,6 +15,7 @@ export class ItemsHeader {
 	menu: Menu;
 	button: Button;
 	toggle: Toggle;
+	progress: number;
 
 	_this: any;
 	getItems: (_this: any) => void;

@@ -3,10 +3,12 @@
 	[routerLink]="expansion.route ? expansion.route : []">
 	
 	<figure class="expansion-logo">
-		<img *ngIf="expansion.name !== 'Base'" class="symbol" src="{{expansion.symbol}}" />
-		<img src="{{expansion.logo}}" />
+		<div class="expansion-logo-inner">
+			<img *ngIf="expansion.name !== 'Base'" class="symbol" src="{{expansion.symbol}}" />
+			<img src="{{expansion.logo}}" />
+		</div>
 		<mb-progress-bar
-			class="absolute bottom right left padding"
+			class="padding block padding-top-none"
 			[value]="expansion.progress">
 		</mb-progress-bar>
 	</figure>

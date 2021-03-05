@@ -154,3 +154,11 @@
 		color: white;
 	}
 }
+
+mb-progress-bar {
+	position: absolute;
+	bottom: 132px;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 200px;
+}

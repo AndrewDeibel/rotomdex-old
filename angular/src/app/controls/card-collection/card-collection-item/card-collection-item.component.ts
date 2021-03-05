@@ -68,12 +68,12 @@ export class CardCollectionItemComponent implements OnInit {
 			}));
 		}
 
-		// Print version
+		// Printing
 		this.selectPrintVerion = new Select({
 			classes: "square",
 			optionGroups: [
 				new SelectOptionGroup({
-					label: "Print Version"
+					label: "Printing"
 				})
 			]
 		});
