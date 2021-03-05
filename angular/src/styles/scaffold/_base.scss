@@ -171,3 +171,9 @@ body {
 .hidden {
 	visibility: hidden !important;
 }
+
+@each $side in $sides {
+	.#{$side} {
+		#{$side}: 0;
+	}
+}

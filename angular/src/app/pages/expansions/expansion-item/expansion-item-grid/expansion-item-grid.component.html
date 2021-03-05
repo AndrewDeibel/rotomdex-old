@@ -5,6 +5,10 @@
 	<figure class="expansion-logo">
 		<img *ngIf="expansion.name !== 'Base'" class="symbol" src="{{expansion.symbol}}" />
 		<img src="{{expansion.logo}}" />
+		<mb-progress-bar
+			class="absolute bottom right left padding"
+			[value]="expansion.progress">
+		</mb-progress-bar>
 	</figure>
 
 	<figcaption class="expansion-info">

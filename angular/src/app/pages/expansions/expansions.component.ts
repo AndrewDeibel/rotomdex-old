@@ -39,7 +39,8 @@ export class ExpansionsComponent implements OnInit {
 			series.forEach(_series => {
 				this.items.itemGroups.push({
 					items: _series.expansions,
-					name: _series.name
+					name: _series.name,
+					progress: 24
 				});
 			});
 		}

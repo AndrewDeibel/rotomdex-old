@@ -8,7 +8,19 @@
 		<div class="item-group-inner padding-x-2" [class.padding-y-2]="showGrid(group)">		
 			<div class="max">
 
-				<h2 *ngIf="group.name">{{group.name}}</h2>
+				<div class="padding-bottom">
+					<div class="flex padded flex-center" *ngIf="group.name">
+						<div class="box">
+							<div class="h2 bold">{{group.name}}</div>
+						</div>
+						<div class="width-3">
+							<mb-progress-bar
+								class="padding-bottom block"
+								[value]="group.progress">
+							</mb-progress-bar>
+						</div>
+					</div>
+				</div>
 
 				<!-- List -->
 				<mb-items-list

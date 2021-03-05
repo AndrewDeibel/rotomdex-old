@@ -14,6 +14,7 @@ export class Expansion {
 	release_date: Date;
 	symbol: string;
 	logo: string;
+	progress: number = 24;
 
 	route: string;
 	cards: Card[] = [];

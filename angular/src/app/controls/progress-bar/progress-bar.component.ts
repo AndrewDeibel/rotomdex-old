@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ProgressBar } from './progress-bar';
 
 @Component({
 	selector: 'mb-progress-bar',
@@ -9,7 +8,7 @@ import { ProgressBar } from './progress-bar';
 
 export class ProgressBarComponent implements OnInit {
 
-	@Input() progressBar: ProgressBar;
+	@Input() value: number;
 
 	constructor() { }
 
