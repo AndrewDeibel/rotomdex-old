@@ -36,8 +36,7 @@
 		box-shadow: $shadow-focus, $shadow-focus-inset;
 	}
 	&[type=number] {
-		padding: 0;
-		padding-left: 8px;
+		padding: 0 16px;
 		line-height: 40px;
 	}
 }

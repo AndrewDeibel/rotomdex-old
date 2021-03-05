@@ -39,6 +39,9 @@ import {
 	ProgressBarComponent,
 	TypeTagComponent,
 	DialogComponent,
+	CardCollectionComponent,
+	CardCollectionItemComponent,
+	EmptyComponent,
 } from './controls';
 
 // Pages
@@ -212,7 +215,6 @@ import {
 	faDotCircle,
 	faInfoCircle
 } from '@fortawesome/pro-duotone-svg-icons';
-import { faPatreon } from '@fortawesome/free-brands-svg-icons';
 import { CardItemListComponent } from './pages/cards/card-item/card-item-list/card-item-list.component';
 
 
@@ -254,6 +256,9 @@ import { CardItemListComponent } from './pages/cards/card-item/card-item-list/ca
 		ProgressBarComponent,
 		TypeTagComponent,
 		DialogComponent,
+		CardCollectionComponent,
+		CardCollectionItemComponent,
+		EmptyComponent,
 
 		// Pages
 		// ====================

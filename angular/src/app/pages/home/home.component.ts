@@ -119,7 +119,7 @@ export class HomeComponent implements OnInit {
 		this.releaseNotesService.getReleaseNotes();
 
 		// Expansions
-		this.expansionsService.allExpansionsObservable().subscribe(series => {
+		this.expansionsService.getExpansionsObservable().subscribe(series => {
 			if (series && series.length) {
 				this.expanions = series[0].expansions;
 			}

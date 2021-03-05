@@ -24,6 +24,7 @@
 
 	&.secondary {
 		background: $secondary-color;
+		border-color: darken($secondary-color, 10%);
 	}
 
 	// Icon

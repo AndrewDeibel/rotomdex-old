@@ -64,7 +64,7 @@ export class CardComponent implements OnInit {
 		this.relatedCards.showFooter = false;
 		SetSortByCards(this.relatedCards.filter);
 		this.relatedCards.header.button = new Button({
-			text: "View More",
+			text: "View Related",
 			icon: Icons.externalLink
 		});
 
@@ -76,7 +76,7 @@ export class CardComponent implements OnInit {
 		this.expansionCards.showFooter = false;
 		SetSortByCards(this.expansionCards.filter);
 		this.expansionCards.header.button = new Button({
-			text: "View More",
+			text: "View Expansion",
 			icon: Icons.externalLink
 		});
 
@@ -98,7 +98,7 @@ export class CardComponent implements OnInit {
 	setupSubscriptions() {
 
 		// Response get card
-		this.cardService.cardObservable().subscribe(card => {
+		this.cardService.getCardObservable().subscribe(card => {
 			if (card) {
 				this.loaderService.clearItemLoading("getCard");
 				this.titleService.setTitle(AppSettings.titlePrefix + card.name);
@@ -140,7 +140,7 @@ export class CardComponent implements OnInit {
 		});
 
 		// Response get related cards
-		this.cardsService.allCardsObservable().subscribe(res => {
+		this.cardsService.getCardsObservable().subscribe(res => {
 			if (res) {
 				this.loaderService.clearItemLoading("getRelatedCards");
 				this.relatedCards.itemGroups = [

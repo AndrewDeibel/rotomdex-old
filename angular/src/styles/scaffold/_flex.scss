@@ -83,6 +83,9 @@
 	.medium-flex-start {
 		align-items: flex-start;
 	}
+	.medium-auto {
+		width: auto !important;
+	}
 	@for $i from 1 through 10 {
 		.medium-order-#{$i} {
 			order: $i;
@@ -105,6 +108,9 @@
 	}
 	.small-vertical {
 		flex-direction: column;
+	}
+	.small-auto {
+		width: auto !important;
 	}
 	@for $i from 1 through 10 {
 		.small-order-#{$i} {

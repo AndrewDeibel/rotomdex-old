@@ -101,3 +101,10 @@ ul, ol, li {
 .nowrap {
 	text-wrap: nowrap;
 }
+
+// HR
+hr {
+	border-top: 0;
+	border-bottom: $border;
+	margin: 8px 0;
+}

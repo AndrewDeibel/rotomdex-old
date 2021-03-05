@@ -4,10 +4,6 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '@app/../environments/environment';
 import { APIResponse } from '@app/models';
 import { Expansion, Series } from '@app/pages/expansions/expansion/expansion';
-import { Card } from '@app/pages/cards/card/card';
-import { CardResults } from './cards.service';
-import { ExpansionFactory, SeriesFactory } from './factory/expansion.factory';
-import { CardFactory } from './factory/card.factory';
 import { CacheGlobal } from './cache/globalCache';
 
 export interface GetExpansions {
@@ -16,23 +12,20 @@ export interface GetExpansions {
 	sort_direction: string;
 }
 
-@Injectable({
-    providedIn: 'root'
-})
-
+@Injectable({ providedIn: 'root' })
 export class ExpansionsService {
 
     constructor(private http: HttpClient) {}
 
-	// Get all expansions
-	private allExpansionsSubject = new BehaviorSubject<Series[]>(null);
-	allExpansionsObservable() {
-		this.allExpansionsSubject = new BehaviorSubject<Series[]>(null);
-		return this.allExpansionsSubject.asObservable();
+	// Get expansions
+	private getExpansionsSubject = new BehaviorSubject<Series[]>(null);
+	getExpansionsObservable() {
+		this.getExpansionsSubject = new BehaviorSubject<Series[]>(null);
+		return this.getExpansionsSubject.asObservable();
 	}
 	getExpansions(params: GetExpansions) {
 		if (CacheGlobal.expansions) {
-			this.allExpansionsSubject.next(this.handleExpansionsParams(params, CacheGlobal.expansions));
+			this.getExpansionsSubject.next(this.handleExpansionsParams(params, CacheGlobal.expansions));
 		}
 		else {
 			this.http.get<APIResponse>(`${environment.api}expansions`).subscribe(res => {
@@ -41,7 +34,7 @@ export class ExpansionsService {
 					series.push(new Series(_series));
 				});
 				CacheGlobal.expansions = series;
-				this.allExpansionsSubject.next(this.handleExpansionsParams(params, series));
+				this.getExpansionsSubject.next(this.handleExpansionsParams(params, series));
 			});
 		}
 	}

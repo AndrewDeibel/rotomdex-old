@@ -6,6 +6,7 @@ import { Items } from './items';
 import { ItemDisplayType } from './items-filter';
 import { Title } from '@angular/platform-browser';
 import { AppSettings } from '@app/app';
+import { Empty } from '@app/controls';
 
 @Component({
 	selector: 'mb-items',
@@ -18,6 +19,7 @@ export class ItemsComponent implements OnInit {
 	@Input() items: Items;
 	@Output() outputGetItems: EventEmitter<void> = new EventEmitter;
 	@Output() outputDisplayModeChanged: EventEmitter<ItemDisplayType> = new EventEmitter;
+	empty: Empty;
 
 	constructor(
 		private route: ActivatedRoute,
@@ -56,6 +58,13 @@ export class ItemsComponent implements OnInit {
 		});
 
 		this.outputGetItems.emit();
+
+		this.empty = new Empty({
+			text: this.items.noResults,
+			button: this.items.buttonNoResults,
+			icon: this.items.noResultsIcon,
+			image: this.items.noResultsImage,
+		})
 	}
 
 	updateQueryParams() {

@@ -23,21 +23,21 @@ export class CardsService {
 
 	constructor(private http: HttpClient) {}
 
-	// Get all
-	private allCardsSubject = new BehaviorSubject<CardResults>(null);
-	allCardsObservable() {
-		this.allCardsSubject = new BehaviorSubject<CardResults>(null);
-		return this.allCardsSubject.asObservable();
+	// Get cards
+	private getCardsSubject = new BehaviorSubject<CardResults>(null);
+	getCardsObservable() {
+		this.getCardsSubject = new BehaviorSubject<CardResults>(null);
+		return this.getCardsSubject.asObservable();
 	}
     getCards(params: GetCards) {
 		var url = params.buildUrl("cards");
-
+		
 		this.http.get<APIResponse>(url).subscribe(res => {
 			let cards = [];
 			res.data.forEach(card => {
 				cards.push(new Card(card));
 			});
-			this.allCardsSubject.next({
+			this.getCardsSubject.next({
 				cards: cards,
 				total_pages: res.meta.last_page,
 				total_results: res.meta.total

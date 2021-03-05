@@ -58,6 +58,7 @@
 									size="small"
 									[pokemonVariant]="card.pokemon.variant">
 								</mb-pokemon-item-grid>
+
 							</div>
 							<div>
 						
@@ -66,6 +67,7 @@
 									size="small"
 									[expansion]="card.expansion">
 								</mb-expansion-item-grid>
+
 							</div>
 						</div>
 
@@ -90,6 +92,7 @@
 							</div>
 						</div>
 
+						<!-- Arist -->
 						<div class="card-artist">
 							<div class="subheading">Illustrated by</div>
 							<a [routerLink]="card.artist">
@@ -108,18 +111,32 @@
 
 	<div class="relative z-1">
 		<div>
+
+			<!-- Collection -->
+			<mb-card-collection *ngIf="card"
+				[slug]="card.slug">
+			</mb-card-collection>
+
+		</div>
+		<div>
+
+			<!-- Related -->
 			<mb-items
 				[items]="relatedCards"
 				(outputGetItems)="getRelatedCards()"
 				(outputDisplayModeChanged)="getRelatedCards()">
 			</mb-items>
+
 		</div>
 		<div>
+
+			<!-- Expansion -->
 			<mb-items
 				[items]="expansionCards"
 				(outputGetItems)="getExpansionCards()"
 				(outputDisplayModeChanged)="getExpansionCards()">
 			</mb-items>
+
 		</div>
 	</div>
 

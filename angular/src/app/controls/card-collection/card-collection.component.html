@@ -1,0 +1,73 @@
+<div class="padding-2 border-bottom">
+	<div class="max">
+		<div class="flex padded flex-center">
+			<div class="box">
+				<h2>Collection</h2>
+			</div>
+			<div>
+				<mb-button [button]="buttonViewAll"></mb-button>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="padding-y padding-x-2 padding-bottom-4">
+	<div class="max">
+		<div class="flex padded vertical">
+
+			<div class="width-12 subheading" *ngIf="collection.length">
+				<div class="flex">
+					<div class="box">
+						<div class="flex">
+							<div class="width-3 medium-4">
+								<div class="flex">
+									<div class="width-6">
+										Price
+									</div>
+									<div class="width-6">
+										Qauntity
+									</div>
+								</div>
+							</div>
+							<div class="width-6 medium-5">
+								<div class="flex">
+									<div class="width-6">
+										Condition
+									</div>
+									<div class="width-6">
+										Graded By
+									</div>
+								</div>
+							</div>
+							<div class="width-3">
+								Printing
+							</div>
+						</div>
+					</div>
+					<div style="height: 0;">
+						<mb-button class="hidden" [button]="{icon: 'trash'}"></mb-button>
+					</div>
+				</div>
+			</div>
+
+			<mb-card-collection-item
+				class="box"
+				*ngFor="let collectionItem of collection"
+				[item]="collectionItem"
+				(deleted)="deleteItem(collectionItem)">
+			</mb-card-collection-item>
+			<mb-empty *ngIf="collection.length === 0" [empty]="empty"></mb-empty>
+			<div class="width-12">
+				<div class="border-top padding-top">
+					<div class="flex padded flex-center">
+						<div class="box subheading">
+							Total: {{ totalValue | currency }}
+						</div>
+						<div>
+							<mb-button [button]="buttonAdd"></mb-button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

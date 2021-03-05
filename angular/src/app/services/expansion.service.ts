@@ -3,6 +3,7 @@ import { Injectable } from "@angular/core";
 import { APIGetPaged, APIResponse } from "@app/models";
 import { Card, Expansion } from "@app/pages";
 import { BehaviorSubject } from "rxjs";
+import { CacheGlobal } from "./cache/globalCache";
 import { CardResults } from "./cards.service";
 
 export class GetExpansion extends APIGetPaged {
@@ -37,11 +38,16 @@ export class ExpansionService {
 		return this.getExpansionSubject.asObservable()
 	}
 	getExpansion(params: GetExpansion) {
-		var url = params.buildUrl("expansion/" + params.code);
-		this.http.get<APIResponse>(url).subscribe(res => {
-			var expansion = new Expansion(res.data);
-			this.getExpansionSubject.next(expansion);
-		});
+		if (CacheGlobal.expansion[params.code]) {
+			this.getExpansionSubject.next(CacheGlobal.expansion[params.code]);
+		}
+		else {
+			var url = params.buildUrl("expansion/" + params.code);
+			this.http.get<APIResponse>(url).subscribe(res => {
+				var expansion = new Expansion(res.data);
+				this.getExpansionSubject.next(expansion);
+			});
+		}
 	}
 
 	// Expansions cards

@@ -1,5 +1,4 @@
 <div
-	[class.bg]="items.showHeader"
 	class="relative small-square"
 	*ngIf="items">
 
@@ -18,20 +17,7 @@
 	</mb-items-filter>
 
 	<!-- Empty -->
-	<div *ngIf="showEmpty()" class="empty">
-		<fa-icon
-			*ngIf="!items.noResultsImage"
-			[icon]="items.noResultsIcon">
-		</fa-icon>
-		<img
-			*ngIf="items.noResultsImage"
-			[src]="items.noResultsImage" />
-		<p>{{items.noResults}}</p>
-		<mb-button
-			*ngIf="items.buttonNoResults"
-			[button]="items.buttonNoResults">
-		</mb-button>
-	</div>
+	<mb-empty *ngIf="empty && showEmpty()" [empty]="empty"></mb-empty>
 
 	<!-- Groups -->
 	<mb-items-groups

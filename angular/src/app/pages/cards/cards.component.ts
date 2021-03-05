@@ -34,7 +34,7 @@ export class CardsComponent implements OnInit {
 	}
 
 	setupSubscriptions() {
-		this.cardsService.allCardsObservable().subscribe(res => {
+		this.cardsService.getCardsObservable().subscribe(res => {
 			this.getCardsResponse(res);
 		});
 	}

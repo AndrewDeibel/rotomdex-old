@@ -21,47 +21,47 @@
 
 // Border radius
 .circle {
-    border-radius: 50%;
+    border-radius: 50% !important;
 }
 .round-small {
-	border-radius: 4px;
+	border-radius: 4px !important;
 }
 .round {
-    border-radius: $border-radius;
+    border-radius: $border-radius !important;
 }
 .round-top {
-	border-top-left-radius: $border-radius;
-	border-top-right-radius: $border-radius;
+	border-top-left-radius: $border-radius !important;
+	border-top-right-radius: $border-radius !important;
 }
 .round-right {
-	border-top-right-radius: $border-radius;
-	border-bottom-right-radius: $border-radius;
+	border-top-right-radius: $border-radius !important;
+	border-bottom-right-radius: $border-radius !important;
 }
 .round-bottom {
-	border-bottom-right-radius: $border-radius;
-	border-bottom-left-radius: $border-radius;
+	border-bottom-right-radius: $border-radius !important;
+	border-bottom-left-radius: $border-radius !important;
 }
 .round-left {
-	border-bottom-left-radius: $border-radius;
-	border-top-left-radius: $border-radius;
+	border-bottom-left-radius: $border-radius !important;
+	border-top-left-radius: $border-radius !important;
 }
 .round-top-left {
-	border-top-left-radius: $border-radius;
+	border-top-left-radius: $border-radius !important;
 }
 .round-top-right {
-	border-top-right-radius: $border-radius;
+	border-top-right-radius: $border-radius !important;
 }
 .round-bottom-right {
-	border-bottom-right-radius: $border-radius;
+	border-bottom-right-radius: $border-radius !important;
 }
 .round-bottom-left {
-	border-bottom-left-radius: $border-radius;
+	border-bottom-left-radius: $border-radius !important;
 }
 .rounded {
-    border-radius: 9999px;
+    border-radius: 9999px !important;
 }
 .square {
-	border-radius: 0;
+	border-radius: 0 !important;
 }
 .square-top {
 	border-top-left-radius: 0 !important;

@@ -27,7 +27,7 @@ export class ExpansionsComponent implements OnInit {
 	}
 
 	setupSubscriptions() {
-		this.expansionsService.allExpansionsObservable().subscribe(series => {
+		this.expansionsService.getExpansionsObservable().subscribe(series => {
 			this.reponseGetExpanions(series);
 		});
 	}
