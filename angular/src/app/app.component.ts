@@ -1,9 +1,7 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
-import { Menu, MenuItem } from '@app/controls/menu';
-import { Icons } from './models/icons';
-import { AuthenticationService } from './services/auth.service';
+import { Component, OnInit, ChangeDetectorRef, HostListener } from '@angular/core';
+import { MenuItem } from '@app/controls/menu';
 import { LoaderService } from './controls';
-import { ActivatedRoute, NavigationEnd, Router, RoutesRecognized } from '@angular/router';
+import { NavigationEnd, Router, RoutesRecognized } from '@angular/router';
 import { Dialog } from './controls/dialog/dialog';
 import { DialogService } from './controls/dialog/dialog.service';
 
@@ -20,12 +18,11 @@ export class AppComponent implements OnInit {
 	dialog: Dialog;
 	menuItemTools: MenuItem;
 	transparentHeader: boolean;
+	showScrollToTop: boolean;
 
 	constructor(
 		private cdRef: ChangeDetectorRef,
 		private router: Router,
-		private activatedRoute: ActivatedRoute,
-		private authenticationService: AuthenticationService,
 		private loaderService: LoaderService,
 		private dialogService: DialogService) { }
 
@@ -65,6 +62,13 @@ export class AppComponent implements OnInit {
 		let body = document.getElementsByTagName('body')[0];
 		body.classList.add('theme');
 		body.classList.add('dark');
+	}
+
+	@HostListener('window:scroll', [])
+	onWindowScroll() {
+		this.showScrollToTop =
+			document.body.scrollTop > 20
+			|| document.documentElement.scrollTop > 20;
 	}
 
 	scrollToTop() {

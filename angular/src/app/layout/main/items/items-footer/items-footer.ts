@@ -11,9 +11,15 @@ export class ItemsFooter {
 
 	// Controls
 	selectPageSize: Select = new Select();
-	buttonPrev: Button = new Button();
-	buttonNext: Button = new Button();
-	textboxPage: Textbox = new Textbox();
+	buttonPrev: Button = new Button({
+		classes: "square-right"
+	});
+	buttonNext: Button = new Button({
+		classes: "square-left"
+	});
+	textboxPage: Textbox = new Textbox({
+		classes: "square"
+	});
 
 	_this: any;
 	getItems: (_this: any) => void;

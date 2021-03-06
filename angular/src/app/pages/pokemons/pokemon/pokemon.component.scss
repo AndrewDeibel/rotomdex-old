@@ -46,15 +46,15 @@
 		filter: drop-shadow($shadow);
 		position: relative;
 		z-index: 2;
-		padding: $spacing;
+		padding: $spacing * 4;
 		width: 400px;
 	}
 	.pokeball {
 		position: absolute;
-		right: -80px;
+		left: 50%;
 		top: 50%;
-		transform: translateY(-50%);
-		width: 800px;
+		transform: translate(-50%, -50%);
+		width: 1000px;
 		opacity: .1;
 		z-index: 1;
 	}
@@ -157,7 +157,7 @@
 
 mb-progress-bar {
 	position: absolute;
-	bottom: 132px;
+	bottom: 160px;
 	left: 50%;
 	transform: translateX(-50%);
 	width: 200px;

@@ -1,23 +1,24 @@
-$poke-normal: #A0A29F;
-$poke-fighting: #D3425F;
+$poke-normal: #c5c5c5;
+$poke-fighting: #d85f4f;
 $poke-flying: #A1BBEC;
-$poke-poison: #B763CF;
-$poke-ground: #DA7C4D;
+$poke-poison: #b162c7;
+$poke-ground: #cc753b;
 $poke-rock: #C9BBA4;
 $poke-bug: #92BC2C;
 $poke-ghost: #5F6DBC;
-$poke-steel: #5695A3;
-$poke-fire: #FBA54C;
+$poke-steel: #94a6b1;
+$poke-fire: #e03b26;
 $poke-water: #539DDF;
 $poke-grass: #5FBD58;
-$poke-electric: #F2D94E;
-$poke-psychic: #FA8581;
-$poke-ice: #75D0C1;
-$poke-dragon: #0C69C8;
-$poke-dark: #595761;
-$poke-fairy: #EE90E6;
+$poke-electric: #FFB400;
+$poke-psychic: #c734a2;
+$poke-ice: #6bc5b6;
+$poke-dragon: #ad9a66;
+$poke-dark: #426075;
+$poke-fairy: #e496dd;
 
 $poke-types: (
+	'colorless': $poke-normal,
 	'normal': $poke-normal,
 	'fighting': $poke-fighting,
 	'flying': $poke-flying,
@@ -26,14 +27,17 @@ $poke-types: (
 	'rock': $poke-rock,
 	'bug': $poke-bug,
 	'ghost': $poke-ghost,
+	'metal': $poke-steel,
 	'steel': $poke-steel,
 	'fire': $poke-fire,
 	'water': $poke-water,
 	'grass': $poke-grass,
+	'lightning': $poke-electric,
 	'electric': $poke-electric,
 	'psychic': $poke-psychic,
 	'ice': $poke-ice,
 	'dragon': $poke-dragon,
+	'darkness': $poke-dark,
 	'dark': $poke-dark,
 	'fairy': $poke-fairy,
 );

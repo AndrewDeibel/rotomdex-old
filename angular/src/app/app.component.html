@@ -19,6 +19,6 @@
 <mb-dialog [dialog]="dialog"></mb-dialog>
 
 <!-- Scroll top -->
-<a class="scrollTop" (click)="scrollToTop()">
+<a class="scrollTop" *ngIf="showScrollToTop" (click)="scrollToTop()">
 	<fa-icon icon="arrow-up"></fa-icon>
 </a>

@@ -24,7 +24,6 @@
 		border: $border;
 	}
 	&.small {
-		max-width: 180px;
 		min-width: 140px;
 		.pokemon-image-wrapper {
 			.pokemon-image {
@@ -97,9 +96,9 @@
 
 		.pokeball {
 			position: absolute;
-			right: -80px;
+			left: 50%;
 			top: 50%;
-			transform: translateY(-50%);
+			transform: translate(-50%, -50%);
 			width: 400px;
 			opacity: .15;
 			z-index: 1;
@@ -113,16 +112,8 @@
 	}
 	.pokemon-info {
 		padding: $spacing;
-		display: flex;
-		align-items: center;
 		background: $menu-bg;
 		width: 100%;
 		color: white;
-		.pokemon-name {
-			display: block;
-			position: relative;
-			flex: 1;
-			font-weight: normal;
-		}
 	}
 }

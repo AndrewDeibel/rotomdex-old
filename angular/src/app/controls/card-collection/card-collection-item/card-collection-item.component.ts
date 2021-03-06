@@ -58,7 +58,7 @@ export class CardCollectionItemComponent implements OnInit {
 			classes: "square",
 			optionGroups: [
 				new SelectOptionGroup({
-					label: "Grading Company",
+					label: "Graded By",
 				})
 			]
 		});

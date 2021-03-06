@@ -39,7 +39,7 @@
 				<div
 					class="pokemon-evolution-wrapper"
 					*ngFor="let evolution of pokemonVariant.pokemon.evolution_chain">
-					<a class="pokemon-evolution" [routerLink]="'/pokemon/' + evolution.slug">
+					<a class="pokemon-evolution round-small" [routerLink]="'/pokemon/' + evolution.slug">
 						<img [src]="evolution.sprite" />
 						<div class="evolution-name">{{evolution.name}}</div>
 						<fa-icon icon="arrow-right"></fa-icon>

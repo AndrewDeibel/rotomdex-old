@@ -51,7 +51,7 @@ export class HeaderComponent implements OnInit {
 		//this.menu.round = false;
 		this.menu.clearActiveClickOutside = true;
 		this.menu.horizontal = true;
-		this.menu.classes = "medium-12 medium-stacked";
+		this.menu.classes = "medium-12 medium-stacked medium-square";
 		this.menu.items.push(
 			new MenuItem({
 				icon: Icons.box,

@@ -2,7 +2,7 @@
 
 		
 	<!-- Card -->
-	<article class="card-detail {{card.types[0].toLowerCase()}} flex z-2 padding-2 relative flex-wrap flex-start" *ngIf="card">
+	<article class="card-detail {{card.types.length ? card.types[0].toLowerCase() : ''}} flex z-2 padding-2 relative flex-wrap flex-start" *ngIf="card">
 		
 		<!-- Pokeball -->
 		<img class="pokeball" src="/assets/pokeball.png" />
@@ -24,21 +24,21 @@
 					</figure>
 				</div>
 
-				<div class="relative z-1 flex justify-center">
-					<div class="panel">
+				<div class="relative z-1 flex medium-12 justify-center">
+					<div class="panel medium-12 medium-square" style="min-width: 320px;">
 						<div class="flex padded-small vertical">
 
 							<!-- Card header -->
 							<div class="card-header">
-								<div class="flex flex-center flex-wrap padded">
-									<div class="card-name">
+								<div class="flex flex-center flex-nowrap padded">
+									<div class="card-name ellipsis box">
 										<h2>{{card.name}}</h2>
 									</div>
-									<div class="flex padded flex-center" *ngIf="card.hp">
+									<div class="flex padded flex-center flex-nowrap" *ngIf="card.hp">
 										<div class="card-hp bold h2">
 											<span class="subheading">HP</span>{{card.hp}}
 										</div>
-										<div class="card-energies flex padded">
+										<div class="card-energies flex flex-nowrap padded">
 											<div *ngFor="let type of card.types">
 												<div class="card-energy {{type.toLowerCase()}}">
 													<div class="card-energy-inner">
@@ -51,18 +51,18 @@
 								</div>
 							</div>
 
-							<div class="flex padded-small">
-								<div class="width-6">
+							<div class="flex padded-small flex-nowrap">
+								<div class="min-6"
+									*ngIf="card.pokemon">
 
 									<!-- Pokemon -->
 									<mb-pokemon-item-grid
-										*ngIf="card.pokemon"
 										size="small"
 										[pokemonVariant]="card.pokemon.variant">
 									</mb-pokemon-item-grid>
 
 								</div>
-								<div class="width-6">
+								<div class="min-6">
 							
 									<!-- Expansion -->
 									<mb-expansion-item-grid
@@ -74,15 +74,15 @@
 							</div>
 
 							<div class="width-12">
-								<div class="flex vertical padded-small">
+								<div class="flex padded-small">
 
 									<!-- TCG Player -->
-									<div *ngIf="buttonTCGPlayer">
+									<div class="width-12 medium-6 small-12" *ngIf="buttonTCGPlayer">
 										<mb-button [button]="buttonTCGPlayer"></mb-button>
 									</div>
 		
 									<!-- TCG Player -->
-									<div *ngIf="buttonEbay">
+									<div class="width-12 medium-6 small-12" *ngIf="buttonEbay">
 										<mb-button [button]="buttonEbay"></mb-button>
 									</div>
 
@@ -100,15 +100,15 @@
 								</div>
 
 								<!-- Arist -->
-								<div class="card-artist subheading">
-									<a [routerLink]="card.artist">
+								<div class="card-artist subheading flex" *ngIf="card.artist">
+									<div class="flex" [routerLink]="card.artist">
 										<div class="flex flex-center padded-small">
 											<div>
 												<fa-icon style="width: 12px;" icon="paint-brush"></fa-icon>
 											</div>
 											<span>{{card.artist}}</span>
 										</div>
-									</a>
+									</div>
 								</div>
 
 							</div>

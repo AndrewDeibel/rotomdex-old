@@ -87,6 +87,9 @@
 	}
 	.medium-square {
 		border-radius: 0 !important;
+		&:after {
+			border-radius: 0 !important;
+		}
 	}
 }
 

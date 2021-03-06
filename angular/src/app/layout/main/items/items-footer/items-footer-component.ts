@@ -31,43 +31,35 @@ export class ItemsFooterComponent implements OnInit {
 	setupDefaultControls() {
 
 		// Page
-		this.itemsFooter.textboxPage = new Textbox({
-			value: this.itemsFooter.page.toString(),
-			max: this.itemsFooter.totalPages,
-			change: value => {
-				this.itemsFooter.page = +value;
-				this.outputGetItems.emit();
-			}
-		});
+		this.itemsFooter.textboxPage.value = this.itemsFooter.page.toString();
+		this.itemsFooter.textboxPage.max = this.itemsFooter.totalPages;
+		this.itemsFooter.textboxPage.change = value => {
+			this.itemsFooter.page = +value;
+			this.outputGetItems.emit();
+		}
 
 		// Page size
-		this.itemsFooter.selectPageSize = new Select({
-			value: this.itemsFooter.pageSize.toString(),
-			change: value => {
-				this.itemsFooter.pageSize = +value;
-				this.itemsFooter.page = 1;
-				this.itemsFooter.textboxPage.value = this.itemsFooter.page.toString();
-				this.outputGetItems.emit();
-			}
-		});
+		this.itemsFooter.selectPageSize.value = this.itemsFooter.pageSize.toString();
+		this.itemsFooter.selectPageSize.change = value => {
+			this.itemsFooter.pageSize = +value;
+			this.itemsFooter.page = 1;
+			this.itemsFooter.textboxPage.value = this.itemsFooter.page.toString();
+			this.outputGetItems.emit();
+		};
 
 		// Prev
-		this.itemsFooter.buttonPrev = new Button({
-			click: () => {
-				this.itemsFooter.page--;
-				this.itemsFooter.textboxPage.value = this.itemsFooter.page.toString();
-				this.outputGetItems.emit();
-			}
-		});
+		this.itemsFooter.buttonPrev.click = () => {
+			this.itemsFooter.page--;
+			this.itemsFooter.textboxPage.value = this.itemsFooter.page.toString();
+			this.outputGetItems.emit();
+		};
 
 		// Next
-		this.itemsFooter.buttonNext = new Button({
-			click: () => {
-				this.itemsFooter.page++;
-				this.itemsFooter.textboxPage.value = this.itemsFooter.page.toString();
-				this.outputGetItems.emit();
-			}
-		});
+		this.itemsFooter.buttonNext.click = () => {
+			this.itemsFooter.page++;
+			this.itemsFooter.textboxPage.value = this.itemsFooter.page.toString();
+			this.outputGetItems.emit();
+		};
 	}
 
 	setupDefaultControlAttributes() {

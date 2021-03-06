@@ -237,6 +237,18 @@
 			}
         }
 	}
+	@media (max-width: $screen-medium) {
+		&.medium-square {
+			> ul > li {
+				&:first-child > a {
+					border-radius: 0 !important;
+				}
+				&:last-child > a {
+					border-radius: 0 !important
+				}
+			}
+		}
+	}
 	&.round-top {
 		li {
 			&:first-child > a {

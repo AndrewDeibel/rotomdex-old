@@ -14,7 +14,7 @@
 
 			<!-- Pages -->
 			<div class="width-6 flex justify-center">
-				<div class="flex padded" *ngIf="itemsFooter.totalPages > 1">
+				<div class="flex" *ngIf="itemsFooter.totalPages > 1">
 					<mb-button [disabled]="isPrevDisabled()" [button]="itemsFooter.buttonPrev"></mb-button>
 					<mb-textbox [textbox]="itemsFooter.textboxPage"></mb-textbox>
 					<mb-button [disabled]="isNextDisabled()" [button]="itemsFooter.buttonNext"></mb-button>

@@ -13,20 +13,17 @@
 		</mb-progress-bar>
 	</figure>
 
-	<figcaption class="expansion-info">
-		<div class="flex padded flex-center flex-nowrap">
-			<div class="box ellipsis">
-				<div class="expansion-name ellipsis">
-					{{expansion.name}}
-				</div>
-				<span class="subheading expansion-release-date">
-					{{expansion.release_date | date}}
-				</span>
-				-
-				<span class="subheading expansion-total-cards">
-					{{expansion.total_cards}} Cards
-				</span>
-			</div>
+	<figcaption class="expansion-info flex vertical">
+		<div class="expansion-name ellipsis max-12">
+			{{expansion.name}}
+		</div>
+		<div class="flex">
+			<span class="subheading expansion-release-date">
+				{{expansion.release_date | date}} -
+			</span>
+			<span class="subheading expansion-total-cards">
+				{{expansion.total_cards}} Cards
+			</span>
 		</div>
 	</figcaption>
 
