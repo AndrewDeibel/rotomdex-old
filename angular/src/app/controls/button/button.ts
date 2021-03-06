@@ -15,6 +15,7 @@ export class Button {
 	classes: string;
 	width: string;
 	type: ButtonType = ButtonType.button;
+	price: number;
 
     public click: () => void;
 

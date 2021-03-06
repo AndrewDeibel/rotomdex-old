@@ -83,12 +83,14 @@ export class CardComponent implements OnInit {
 
 		// Buttons
 		this.buttonTCGPlayer = new Button({
+			icon: Icons.externalLink,
 			text: "Buy on TCGPlayer",
-			icon: 'external-link',
+			classes: "small width-12"
 		});
 		this.buttonEbay = new Button({
+			icon: Icons.externalLink,
 			text: "Buy on eBay",
-			icon: 'external-link',
+			classes: "small width-12"
 		});
 	}
 
@@ -139,10 +141,8 @@ export class CardComponent implements OnInit {
 
 				// Prices
 				if (this.card.last_prices) {
-					this.buttonTCGPlayer.text = `Buy on TCGPlayer <span class="money-tag">$${this.card.last_prices.market_price}</span>`;
-				}
-				if (this.card.last_prices) {
-					this.buttonEbay.text = `Buy on eBay <span class="money-tag">$${this.card.last_prices.market_price}</span>`;
+					this.buttonTCGPlayer.price = this.card.last_prices.market_price;
+					this.buttonEbay.price = this.card.last_prices.market_price;
 				}
 			}
 		});

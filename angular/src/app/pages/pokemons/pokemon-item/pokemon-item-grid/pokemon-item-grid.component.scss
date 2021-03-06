@@ -34,14 +34,16 @@
 				width: 80px;
 				padding: $spacing;
 			}
+			.pokemon-image-placeholder {
+				padding: 0 !important;
+				height: 32px !important;
+				width: 32px !important;
+				margin-top: $spacing * 3;
+				margin-bottom: $spacing * 3;
+			}
 		}
 		.pokemon-types {
 			display: none !important;
-		}
-		.pokemon-image-placeholder {
-			padding: 0 !important;
-			height: 32px !important;
-			width: 32px !important;
 		}
 	}
 	&:hover {
@@ -73,8 +75,6 @@
 		.pokemon-image-placeholder {
 			color: white;
 			padding: $spacing * 2;
-			margin-top: $spacing * 3;
-			margin-bottom: $spacing * 3;
 			fa-icon {
 				height: 100%;
 			}

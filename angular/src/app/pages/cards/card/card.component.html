@@ -26,7 +26,7 @@
 
 				<div class="relative z-1 flex justify-center">
 					<div class="panel">
-						<div class="flex padded vertical">
+						<div class="flex padded-small vertical">
 
 							<!-- Card header -->
 							<div class="card-header">
@@ -51,8 +51,8 @@
 								</div>
 							</div>
 
-							<div class="flex padded">
-								<div>
+							<div class="flex padded-small">
+								<div class="width-6">
 
 									<!-- Pokemon -->
 									<mb-pokemon-item-grid
@@ -62,7 +62,7 @@
 									</mb-pokemon-item-grid>
 
 								</div>
-								<div>
+								<div class="width-6">
 							
 									<!-- Expansion -->
 									<mb-expansion-item-grid
@@ -73,33 +73,44 @@
 								</div>
 							</div>
 
-							<!-- TCG Player -->
-							<div *ngIf="buttonTCGPlayer">
-								<mb-button [button]="buttonTCGPlayer"></mb-button>
+							<div class="width-12">
+								<div class="flex vertical padded-small">
+
+									<!-- TCG Player -->
+									<div *ngIf="buttonTCGPlayer">
+										<mb-button [button]="buttonTCGPlayer"></mb-button>
+									</div>
+		
+									<!-- TCG Player -->
+									<div *ngIf="buttonEbay">
+										<mb-button [button]="buttonEbay"></mb-button>
+									</div>
+
+								</div>
 							</div>
 
-							<!-- Ebay -->
-							<div *ngIf="buttonEbay">
-								<mb-button [button]="buttonEbay"></mb-button>
-							</div>
-
-							<div class="card-rarity flex align-middle padded" *ngIf="tagRarity">
+							<div class="card-rarity flex flex-center padded" *ngIf="tagRarity">
 
 								<!-- Rarity -->
 								<mb-tag [tag]="tagRarity"></mb-tag>
 
 								<!-- Number -->
-								<div class="subheading flex vertical justify-center">
+								<div class="subheading">
 									{{card.getCardNumber()}}
 								</div>
-							</div>
 
-							<!-- Arist -->
-							<div class="card-artist">
-								<div class="subheading">Illustrated by</div>
-								<a [routerLink]="card.artist">
-									{{card.artist}}
-								</a>
+								<!-- Arist -->
+								<div class="card-artist subheading">
+									<a [routerLink]="card.artist">
+										<div class="flex flex-center padded-small">
+											<div>
+												<fa-icon style="width: 12px;" icon="paint-brush"></fa-icon>
+											</div>
+											<span>{{card.artist}}</span>
+										</div>
+									</a>
+								</div>
+
 							</div>
 							
 						</div>

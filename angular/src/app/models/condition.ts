@@ -5,6 +5,7 @@ export enum Condition {
 	ModeratelyPlayed = "Moderately Played",
 	HeavilyPlayed = "Heavily Played",
 	Damaged = "Damaged",
+	Misprint = "Misprint",
 };
 
 export enum ConditionGraded {

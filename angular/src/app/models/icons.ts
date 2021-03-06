@@ -129,4 +129,8 @@ export enum Icons {
 	box = "box",
 	alignLeft = "align-left",
 	infoCircle = "info-circle",
+	dollar = "dollar-sign",
+	brush = "brush",
+	paintBrush = "paint-brush",
+	hashtag = "hastag",
 }

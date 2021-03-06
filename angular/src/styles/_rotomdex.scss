@@ -86,6 +86,11 @@ $poke-types: (
 }
 
 .button {
+	&.small {
+		.money-tag {
+			margin-right: -8px;
+		}
+	}
 	.money-tag {
 		margin: -4px 0;
 		margin-right: -4px;

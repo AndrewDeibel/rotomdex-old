@@ -213,7 +213,10 @@ import {
 	faExpandArrowsAlt,
 	faOtter,
 	faDotCircle,
-	faInfoCircle
+	faInfoCircle,
+	faBrush,
+	faPaintBrush,
+	faHashtag
 } from '@fortawesome/pro-duotone-svg-icons';
 import { CardItemListComponent } from './pages/cards/card-item/card-item-list/card-item-list.component';
 
@@ -459,6 +462,10 @@ export class AppModule {
 			faBox,
 			faAlignLeft,
 			faInfoCircle,
+			faDollarSign,
+			faBrush,
+			faPaintBrush,
+			faHashtag,
 		);
 		faConfig.defaultPrefix = "fad";
 	}
