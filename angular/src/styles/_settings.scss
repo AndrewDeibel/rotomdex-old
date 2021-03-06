@@ -47,13 +47,14 @@ $border-radius-card: #{4.8%/4%};
 
 // Borders
 $border-color: rgba(black, .1);
-$border-color-dark: rgba(white, .1);
+$border-color-dark: rgba(black, .3);
 $border: 1px solid $border-color;
 $border-dark: 1px solid $border-color-dark;
 
 // Shadows
 $shadow: 0 2px 4px rgba(black, .4);
 $shadow-inset: inset 0 0 2px rgba(black, .1);
+$shadow-inset-large: inset 0 0 6px 2px rgba(black, .4);
 $shadow-large: 0 4px 12px rgba(black, .4);
 $shadow-sheen: inset 0 0 0 1px rgba(white, .2);
 

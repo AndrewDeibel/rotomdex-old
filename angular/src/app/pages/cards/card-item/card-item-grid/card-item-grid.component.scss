@@ -17,7 +17,7 @@
 		outline: 0 !important;
 	}
 	&:hover {
-		box-shadow: $shadow-focus;
+		box-shadow: $shadow-focus, $shadow-large;
 	}
     .card-image-wrapper {
 		width: 100%;

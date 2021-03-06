@@ -2,12 +2,12 @@
 
 		
 	<!-- Card -->
-	<article class="card-detail {{card.types.length ? card.types[0].toLowerCase() : ''}} flex z-2 padding-2 relative flex-wrap flex-start" *ngIf="card">
+	<article class="card-detail {{card.types.length ? card.types[0].toLowerCase() : ''}} flex z-2 padding-y-4 padding-x-2 relative flex-wrap flex-start" *ngIf="card">
 		
 		<!-- Pokeball -->
 		<img class="pokeball" src="/assets/pokeball.png" />
 
-		<div class="max flex width-12 z-2 relative">
+		<div class="max flex width-12 z-3 relative">
 
 			<div class="flex padded-2 box justify-center small-vertical">
 
@@ -15,7 +15,7 @@
 				<div class="relative z-2 flex justify-center">
 					<figure class="card-image-wrapper"
 						[class.active]="cardImageHover">
-						<div class="card-image">
+						<div class="card-image link">
 							<img
 								src="{{card.image}}"
 								class="img-card-image border-radius-card shadow transition"
@@ -89,26 +89,21 @@
 								</div>
 							</div>
 
-							<div class="card-rarity flex flex-center padded" *ngIf="tagRarity">
+							<div class="card-rarity flex flex-center padded-small" *ngIf="tagRarity">
 
 								<!-- Rarity -->
-								<mb-tag [tag]="tagRarity"></mb-tag>
+								<div>
+									<mb-tag [tag]="tagRarity"></mb-tag>
+								</div>
+
+								<!-- Artist -->
+								<div>
+									<mb-tag [tag]="tagArtist"></mb-tag>
+								</div>
 
 								<!-- Number -->
 								<div class="subheading">
 									{{card.getCardNumber()}}
-								</div>
-
-								<!-- Arist -->
-								<div class="card-artist subheading flex" *ngIf="card.artist">
-									<div class="flex" [routerLink]="card.artist">
-										<div class="flex flex-center padded-small">
-											<div>
-												<fa-icon style="width: 12px;" icon="paint-brush"></fa-icon>
-											</div>
-											<span>{{card.artist}}</span>
-										</div>
-									</div>
 								</div>
 
 							</div>

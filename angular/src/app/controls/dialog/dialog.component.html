@@ -15,7 +15,8 @@
 					</div>
 				</div>
 			</div>
-			<div class="dialog-content" [innerHtml]="dialog.content"></div>
+			<div class="dialog-content" [innerHtml]="dialog.content">
+			</div>
 			<div class="dialog-footer" *ngIf="dialog.buttons.length">
 				<div class="flex padded">
 					<div *ngFor="let button of dialog.buttons">

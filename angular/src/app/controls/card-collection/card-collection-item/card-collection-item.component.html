@@ -2,28 +2,26 @@
 	<div class="flex flex-center">
 		<div class="box">
 			<div class="flex flex-center">
-				<div class="width-3 medium-4">
+				<div>
+					<div class="subheading money" style="min-width: 56px;">
+						{{ item.price | currency }}
+					</div>
+				</div>
+				<div class="box">
 					<div class="flex flex-center">
-						<div class="width-6 subheading">
-							{{ item.price | currency }}
-						</div>
-						<div class="width-6">
+						<div class="width-2 small-3">
 							<mb-textbox [textbox]="textboxQuantity"></mb-textbox>
 						</div>
-					</div>
-				</div>
-				<div class="width-6 medium-5">
-					<div class="flex">
-						<div class="width-6">
+						<div class="width-3">
 							<mb-select [select]="selectCondition"></mb-select>
 						</div>
-						<div class="width-6">
+						<div class="width-3">
 							<mb-select [select]="selectGradingCompany"></mb-select>
 						</div>
+						<div class="width-4 small-3">
+							<mb-select [select]="selectPrintVerion"></mb-select>
+						</div>
 					</div>
-				</div>
-				<div class="width-3 medium-3">
-					<mb-select [select]="selectPrintVerion"></mb-select>
 				</div>
 			</div>
 		</div>

@@ -29,6 +29,7 @@ export class CardComponent implements OnInit {
 	expansionCards: Items = new Items();
 	cardImageHover: boolean = false;
 	tagRarity: Tag;
+	tagArtist: Tag;
 	buttonTCGPlayer: Button;
 	buttonEbay: Button;
 
@@ -53,12 +54,12 @@ export class CardComponent implements OnInit {
 	}
 
 	setupControls() {
+
 		this.resetControls();
 
 		// Related cards
 		this.relatedCards.footer.pageSize = 12;
 		this.relatedCards.noResultsImage = Symbols.cards;
-		this.relatedCards.header.title = "Related";
 		this.relatedCards.noResults = "No related cards found";
 		this.relatedCards.itemClasses = "width-2 medium-3 small-6";
 		this.relatedCards.showFilters = false;
@@ -116,17 +117,29 @@ export class CardComponent implements OnInit {
 				// Data
 				this.card = card;
 
+				this.relatedCards.header.title = `More ${this.card.pokemon.name} Cards`;
+				this.relatedCards.noResults = `No ${this.card.pokemon.name} cards found`;
+				this.relatedCards.header.button.route = this.card.pokemon.route;
+
 				// Rarity
 				if (this.card.expansion.name.toLowerCase().includes("promo")) {
 					this.tagRarity = new Tag({
 						text: "Promo",
-						classes: "promo card-rarity"
+						classes: "promo card-rarity",
 					});
 				}
 				else if (this.card.rarity) {
 					this.tagRarity = new Tag({
 						text: this.card.rarity,
-						classes: "card-rarity " + this.card.rarity.toLowerCase().replace(' ', '-')
+						classes: "card-rarity " + this.card.rarity.toLowerCase().replace(' ', '-'),
+					});
+				}
+
+				// Artist
+				if (this.card.artist) {
+					this.tagArtist = new Tag({
+						text: this.card.artist,
+						icon: Icons.paintBrush
 					});
 				}
 
@@ -148,9 +161,9 @@ export class CardComponent implements OnInit {
 		});
 
 		// Response get related cards
-		this.cardsService.getCardsObservable().subscribe(res => {
+		this.pokemonService.getPokemonVariantCardsObservable().subscribe(res => {
 			if (res) {
-				this.loaderService.clearItemLoading("getRelatedCards");
+				this.loaderService.clearItemLoading("getPokemonCards");
 				this.relatedCards.itemGroups = [
 					new ItemGroup({
 						items: res.cards
@@ -183,15 +196,15 @@ export class CardComponent implements OnInit {
 
 	getRelatedCards() {
 		if (this.card) {
-			// this.loaderService.addItemLoading("getRelatedCards");
-			// this.pokemonService.getPokemonVariantCards(new GetPokemonVariantCards({
-			// 	page: this.relatedCards.footer.page,
-			// 	page_size: this.relatedCards.footer.pageSize,
-			// 	query: this.relatedCards.filter.textboxSearch.value,
-			// 	slug: this.card.pokemon.slug,
-			// 	sort_by: this.relatedCards.filter.selectSortBy.value,
-			// 	sort_direction: this.relatedCards.filter.selectSortDirection.value
-			// }));
+			this.loaderService.addItemLoading("getPokemonCards");
+			this.pokemonService.getPokemonVariantCards(new GetPokemonVariantCards({
+				page: this.relatedCards.footer.page,
+				slug: this.card.pokemon.variant.slug,
+				page_size: this.relatedCards.footer.pageSize,
+				sort_by: this.relatedCards.filter.selectSortBy.value,
+				sort_direction: this.relatedCards.filter.selectSortDirection.value,
+				query: this.relatedCards.filter.textboxSearch.value
+			}));
 		}
 	}
 

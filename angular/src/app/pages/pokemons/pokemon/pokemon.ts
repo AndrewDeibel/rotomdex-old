@@ -62,7 +62,7 @@ export class Pokemon {
 }
 
 export class PokemonVariant {
-	progress: number = 15;
+	progress: number = 80;
 	id: number;
 	pokemon: Pokemon;
 	name: string;

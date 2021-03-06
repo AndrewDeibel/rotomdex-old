@@ -35,6 +35,7 @@
 		}
 		&:focus {
 			box-shadow: $shadow-focus-inset, $shadow-focus;
+			border-color: $primary-color;
 		}
 	}
 	label {
