@@ -31,15 +31,22 @@ export class CardCollectionComponent implements OnInit {
 	setupControls() {
 
 		this.empty = new Empty({
-			text: "No collection items found",
-			icon: Icons.box
+			text: "This card is not in your collection",
+			icon: Icons.box,
+			button: new Button({
+				text: "Add to Collection",
+				icon: Icons.plus,
+				click: () => {
+					this.addItem();
+				}
+			}),
 		});
 		
 		this.addItem();
 
 		// Button add
 		this.buttonAdd = new Button({
-			text: "Card",
+			text: "Add to Collection",
 			icon: Icons.plus,
 			classes: "secondary",
 			click: () => {
@@ -49,7 +56,7 @@ export class CardCollectionComponent implements OnInit {
 
 		// Button view all
 		this.buttonViewAll = new Button({
-			text: "View All",
+			text: "View Collection",
 			icon: Icons.externalLink,
 		});
 

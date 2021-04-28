@@ -20,7 +20,14 @@
 				<!-- Title -->
 				<div class="box min-0">
 					<h2 class="title ellipsis">
-						{{itemsHeader.title}}
+						<a
+							*ngIf="itemsHeader.titleRoute"
+							[routerLink]="itemsHeader.titleRoute">
+							{{itemsHeader.title}}
+						</a>
+						<span *ngIf="!itemsHeader.titleRoute">
+							{{itemsHeader.title}}
+						</span>
 					</h2>
 					<div class="subheading">
 						{{itemsHeader.subtitle}}

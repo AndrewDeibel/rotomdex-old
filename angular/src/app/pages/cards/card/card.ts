@@ -1,6 +1,6 @@
 import { Select, SelectOption, SelectOptionGroup } from '@app/controls';
 import { Menu } from '@app/controls/menu';
-import "@app/extensions/string.extensions";
+import "@app/helpers/string.extensions";
 import { ItemsFilter } from '@app/layout';
 import { Icons } from '@app/models';
 import { Expansion } from '@app/pages/expansions';

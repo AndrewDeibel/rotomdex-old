@@ -5,7 +5,7 @@ import { Card, SetSortByCards } from './card';
 import { ActivatedRoute } from '@angular/router';
 import { CardService } from '../../../services/card.service';
 import { AuthenticationService } from '@app/services/auth.service';
-import "@app/extensions/string.extensions";
+import "@app/helpers/string.extensions";
 import { Icons, Symbols } from '@app/models/icons';
 import { Button, Dialog, DialogService, LoaderService, Tag } from '@app/controls';
 import { CardsService } from '../../../services/cards.service';
@@ -30,6 +30,7 @@ export class CardComponent implements OnInit {
 	cardImageHover: boolean = false;
 	tagRarity: Tag;
 	tagArtist: Tag;
+	tagNumber: Tag;
 	buttonTCGPlayer: Button;
 	buttonEbay: Button;
 
@@ -65,10 +66,6 @@ export class CardComponent implements OnInit {
 		this.relatedCards.showFilters = false;
 		this.relatedCards.showFooter = false;
 		SetSortByCards(this.relatedCards.filter);
-		this.relatedCards.header.button = new Button({
-			text: "View All",
-			icon: Icons.externalLink
-		});
 
 		// Expansion cards
 		this.expansionCards.footer.pageSize = 12;
@@ -77,10 +74,6 @@ export class CardComponent implements OnInit {
 		this.expansionCards.showFilters = false;
 		this.expansionCards.showFooter = false;
 		SetSortByCards(this.expansionCards.filter);
-		this.expansionCards.header.button = new Button({
-			text: "View All",
-			icon: Icons.externalLink
-		});
 
 		// Buttons
 		this.buttonTCGPlayer = new Button({
@@ -118,8 +111,8 @@ export class CardComponent implements OnInit {
 				this.card = card;
 
 				this.relatedCards.header.title = `More ${this.card.pokemon.name} Cards`;
+				this.relatedCards.header.titleRoute = this.card.pokemon.route;
 				this.relatedCards.noResults = `No ${this.card.pokemon.name} cards found`;
-				this.relatedCards.header.button.route = this.card.pokemon.route;
 
 				// Rarity
 				if (this.card.expansion.name.toLowerCase().includes("promo")) {
@@ -143,6 +136,10 @@ export class CardComponent implements OnInit {
 					});
 				}
 
+				this.tagNumber = new Tag({
+					text: this.card.getCardNumber()
+				});
+
 				// Get related/expansion cards
 				this.getRelatedCards();
 				this.getExpansionCards();
@@ -150,7 +147,7 @@ export class CardComponent implements OnInit {
 				// Expansion name
 				this.expansionCards.header.title = "More " + this.card.expansion.name + " Cards";
 				this.expansionCards.noResults = "No " + this.card.expansion.name + " cards found";
-				this.expansionCards.header.button.route = this.card.expansion.route;
+				this.expansionCards.header.titleRoute = this.card.expansion.route;
 
 				// Prices
 				if (this.card.last_prices) {

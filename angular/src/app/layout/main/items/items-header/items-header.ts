@@ -6,6 +6,7 @@ import { Toggle } from '@app/controls/toggle';
 
 export class ItemsHeader {
 	title: string;
+	titleRoute: string;
 	subtitle: string;
 	tags: Tag[] = [];
 	symbol: string;

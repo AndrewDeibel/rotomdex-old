@@ -2,13 +2,10 @@
 	<div class="max">
 		<div class="flex padded flex-center">
 			<div class="box">
-				<h2>Collection</h2>
+				<h2><a [routerLink]="">Collection</a></h2>
 			</div>
 			<div>
 				<mb-checkbox [checkbox]="checkboxWishList"></mb-checkbox>
-			</div>
-			<div>
-				<mb-button [button]="buttonViewAll"></mb-button>
 			</div>
 		</div>
 	</div>
@@ -55,7 +52,7 @@
 				(deleted)="deleteItem(collectionItem)">
 			</mb-card-collection-item>
 			<mb-empty *ngIf="collection.length === 0" [empty]="empty"></mb-empty>
-			<div class="width-12">
+			<div class="width-12" *ngIf="collection.length">
 				<div class="border-top padding-top">
 					<div class="flex padded flex-center">
 						<div class="box subheading">

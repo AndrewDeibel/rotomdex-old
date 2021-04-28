@@ -10,7 +10,7 @@ import { LoaderService } from '@app/controls';
 import { ItemGroup, Items } from '@app/layout/main';
 import { SetSortByCards } from './card/card';
 import { AppSettings } from '@app/app';
-import "@app/extensions/string.extensions";
+import "@app/helpers/string.extensions";
 import { Symbols } from '@app/models';
 
 @Component({
