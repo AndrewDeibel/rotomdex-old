@@ -15,6 +15,10 @@ export class ProgressBarComponent implements OnInit {
 		return `${Math.round(this.progressBar.value/this.progressBar.total * 100)}%`;
 	}
 
+	isComplete = () => {
+		return this.progressBar.value >= this.progressBar.total;
+	}
+
 	constructor() { }
 
 	ngOnInit() { }

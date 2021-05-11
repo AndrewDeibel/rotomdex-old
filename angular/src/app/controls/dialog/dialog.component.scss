@@ -8,7 +8,7 @@
 	min-width: 200px;
 	display: flex;
 	flex-direction: column;
-	background: white;
+	background: $panel-bg;
 	box-shadow: $shadow-large;
 	border-radius: $border-radius-small;
 	max-width: calc(100% - #{$spacing * 4});

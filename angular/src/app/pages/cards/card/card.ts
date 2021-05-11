@@ -71,7 +71,7 @@ export class Card {
 		Object.assign(this, init);
 
 		// Route
-		this.route = "/card/" + this.slug;
+		this.route = "/cards/" + this.slug;
 
 		// Initalize expansion
 		if (init.expansion) {

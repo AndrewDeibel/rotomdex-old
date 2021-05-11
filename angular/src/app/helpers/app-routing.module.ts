@@ -35,7 +35,7 @@ const routes: Routes = [
 		component: CardsComponent,
 	},
 	{
-		path: 'card/:slug',
+		path: 'cards/:slug',
 		component: CardComponent,
 	},
 
