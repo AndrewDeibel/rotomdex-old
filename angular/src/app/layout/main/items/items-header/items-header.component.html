@@ -17,8 +17,9 @@
 					<fa-icon [icon]="itemsHeader.icon"></fa-icon>
 				</div>
 
-				<!-- Title -->
 				<div class="box min-0">
+
+					<!-- Title -->
 					<h2 class="title ellipsis">
 						<a
 							*ngIf="itemsHeader.titleRoute"
@@ -29,6 +30,8 @@
 							{{itemsHeader.title}}
 						</span>
 					</h2>
+
+					<!-- Sub heading -->
 					<div class="subheading">
 						{{itemsHeader.subtitle}}
 						<span *ngIf="itemsHeader.price">-
@@ -38,6 +41,7 @@
 						</span>
 					</div>
 
+					<!-- Tags -->
 					<div class="tags" *ngIf="itemsHeader.tags.length">
 						<div class="flex padded flex-wrap">
 							<div *ngFor="let tag of itemsHeader.tags">
@@ -45,6 +49,7 @@
 							</div>
 						</div>
 					</div>
+					
 				</div>
 
 				<!-- Menu -->
@@ -62,8 +67,9 @@
 					<mb-button [button]="itemsHeader.button"></mb-button>
 				</div>
 
-				<div *ngIf="itemsHeader.progress" class="width-3 medium-12">
-					<mb-progress-bar [value]="itemsHeader.progress"></mb-progress-bar>
+				<!-- Progress bar -->
+				<div *ngIf="itemsHeader.progressBar" class="width-3 medium-12">
+					<progress-bar [progressBar]="itemsHeader.progressBar"></progress-bar>
 				</div>
 
 			</div>

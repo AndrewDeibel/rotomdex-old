@@ -1,4 +1,7 @@
-<div class="progress" *ngIf="value">
-	<div class="progress-bar" [style.width]="value + '%'"></div>
-	<div class="progress-value">{{value}}%</div>
+<div class="progress" *ngIf="progressBar">
+	<div class="progress-bar" [style.width]="getWidth()"></div>
+	<div class="progress-value">
+		{{getWidth()}}
+		({{progressBar.value}}/{{progressBar.total}})
+	</div>
 </div>

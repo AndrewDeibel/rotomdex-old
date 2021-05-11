@@ -11,6 +11,7 @@ import { LoaderService, Menu, MenuItem } from '@app/controls';
 import { ItemGroup, Items } from '@app/layout/main';
 import { AppSettings } from '@app/app';
 import { Icons } from '@app/models';
+import { ProgressBar } from '@app/controls/progress-bar/progress-bar';
 
 @AutoUnsubscribe()
 @Component({
@@ -48,7 +49,10 @@ export class ExpansionComponent implements OnInit {
 				this.loaderService.clearItemLoading("getExpansion");
 				this.titleService.setTitle(AppSettings.titlePrefix + expansion.name);
 				this.items.header.symbol = expansion.logo;
-				this.items.header.progress = 32;
+				this.items.header.progressBar = new ProgressBar({
+					value: 12,
+					total: expansion.total_cards
+				});
 				if (expansion.series.name === expansion.name) {
 					this.items.header.title = expansion.name;
 				}

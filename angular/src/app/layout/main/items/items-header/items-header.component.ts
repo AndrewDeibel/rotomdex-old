@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { ProgressBar } from '@app/controls/progress-bar/progress-bar';
 import { ItemsHeader } from './items-header';
 
 @Component({

@@ -3,6 +3,7 @@ import { Tag } from '@app/controls/tag';
 import { Icons } from '@app/models/icons';
 import { Button } from '@app/controls/button';
 import { Toggle } from '@app/controls/toggle';
+import { ProgressBar } from '@app/controls/progress-bar/progress-bar';
 
 export class ItemsHeader {
 	title: string;
@@ -16,7 +17,7 @@ export class ItemsHeader {
 	menu: Menu;
 	button: Button;
 	toggle: Toggle;
-	progress: number;
+	progressBar: ProgressBar;
 
 	_this: any;
 	getItems: (_this: any) => void;

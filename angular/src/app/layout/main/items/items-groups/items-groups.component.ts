@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ProgressBar } from '@app/controls/progress-bar/progress-bar';
 import { ItemDisplayType } from '../items-filter';
 import { ItemGroup } from './item-group';
 
@@ -13,10 +14,19 @@ export class ItemsGroupsComponent implements OnInit {
 	@Input() groups: ItemGroup[];
 	@Input() itemDisplayType: ItemDisplayType;
 	@Input() itemClasses: string;
+	progressBar: ProgressBar;
 
 	constructor() { }
 
-	ngOnInit() { }
+	ngOnInit() {
+	}
+
+	getProgressBar(group) {
+		this.progressBar = new ProgressBar({
+			value: group.progress,
+			total: group.total_cards
+		});
+	}
 
 	showGrid(group: ItemGroup) {
 		return group.items.length

@@ -16,15 +16,6 @@
 		box-shadow: $shadow-large;
 		border-top: $border;
 		padding-top: 0;
-		&:after {
-			content: '';
-			width: 100%;
-			height: 100%;
-			box-shadow: $shadow-sheen;
-			z-index: 10;
-			position: absolute;
-			border: $border;
-		}
 		.menu {
 			box-shadow: none !important
 		}
@@ -145,16 +136,6 @@
 				padding-left: 0;
 				padding-top: $spacing / 2;
 			}
-		}
-		&:after {
-			content: '';
-			width: 100%;
-			height: 100%;
-			box-shadow: $shadow-sheen;
-			z-index: 10;
-			position: absolute;
-			border: $border;
-			pointer-events: none;
 		}
 	}
 

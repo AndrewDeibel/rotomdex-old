@@ -14,10 +14,10 @@
 							<div class="h2 bold">{{group.name}}</div>
 						</div>
 						<div class="width-3">
-							<mb-progress-bar
+							<progress-bar
 								class="padding-bottom block"
-								[value]="group.progress">
-							</mb-progress-bar>
+								[progressBar]="getProgressBar(group)">
+							</progress-bar>
 						</div>
 					</div>
 				</div>

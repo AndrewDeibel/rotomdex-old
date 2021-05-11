@@ -9,6 +9,7 @@ import { Title } from '@angular/platform-browser';
 import { AppSettings } from '@app/app';
 import { Icons, Symbols } from '@app/models';
 import { Dialog } from '@app/controls/dialog/dialog';
+import { ProgressBar } from '@app/controls/progress-bar/progress-bar';
 
 @Component({
 	selector: 'mb-pokemon',
@@ -23,6 +24,7 @@ export class PokemonComponent implements OnInit {
 	slug: string;
 	buttonDex: Button;
 	dialogDex: Dialog;
+	progressBar: ProgressBar;
 
 	constructor(
 		private titleService: Title,
@@ -44,6 +46,10 @@ export class PokemonComponent implements OnInit {
 				this.loaderService.clearItemLoading("getPokemon");
 				this.pokemonVariant = pokemonVariant;
 				this.items.noResults = "No " + this.pokemonVariant.name + " cards found";
+				this.progressBar = new ProgressBar({
+					value: pokemonVariant.progress,
+					total: pokemonVariant.total_cards
+				});
 				this.getCards();
 				
 				// Dex button

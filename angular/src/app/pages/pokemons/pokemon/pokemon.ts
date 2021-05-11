@@ -63,6 +63,7 @@ export class Pokemon {
 
 export class PokemonVariant {
 	progress: number = 80;
+	total_cards: number = 100;
 	id: number;
 	pokemon: Pokemon;
 	name: string;
