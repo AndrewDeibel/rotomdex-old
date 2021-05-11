@@ -12,6 +12,9 @@
 			<div class="money-tag" *ngIf="card.last_prices && card.last_prices.market_price">
 				{{card.last_prices.market_price | currency}}
 			</div>
+			<div class="collection">
+				<mb-textbox [textbox]="textbox"></mb-textbox>
+			</div>
 		</div>
 
 		<div class="card-information ellipsis">

@@ -1,6 +1,6 @@
 // Angular
 import { Component, OnInit, Input } from '@angular/core';
-
+import { Textbox } from '@app/controls';
 import { Card } from '../../card/card';
 
 @Component({
@@ -13,10 +13,17 @@ export class CardItemGridComponent implements OnInit {
 
 	@Input() card: Card;
 	imageLoading: boolean = true;
+	textbox: Textbox;
 
 	constructor() { }
 
-	ngOnInit() { }
+	ngOnInit() {
+		this.textbox = new Textbox({
+			type: "number",
+			wrapperClasses: "small",
+			value: "1"
+		});
+	}
 
 	onLoad() {
 		this.imageLoading = false;

@@ -1,4 +1,5 @@
 <div
+	(click)="click($event)"
 	*ngIf="textbox"
 	class="textbox-wrapper {{textbox.wrapperClasses}}"
 	[class.dark]="textbox.dark">
@@ -11,6 +12,7 @@
 	
 	<!-- Not color picker -->
 	<input
+		(click)="click($event)"
 		*ngIf="!textbox.colorPicker"
 		#textboxEl
 		[style.width]="textbox.width ? textbox.width + 'px' : null"

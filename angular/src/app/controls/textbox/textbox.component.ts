@@ -19,6 +19,11 @@ import { Alert } from '../alert';
 
 export class TextboxComponent implements ControlValueAccessor {
 
+	click = (e: MouseEvent) => {
+		e.preventDefault();
+		e.stopPropagation();
+	}
+
 	onChange: any = () => {};
 	onTouched: any = () => {};
 	registerOnChange(fn) { this.onChange = fn }

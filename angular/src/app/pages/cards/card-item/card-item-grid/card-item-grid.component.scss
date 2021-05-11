@@ -51,8 +51,19 @@
 			.money-tag {
 				position: absolute;
 				bottom: 0;
+				left: 0;
+				margin: $spacing;
+				box-shadow: $shadow;
+			}
+			.collection {
+				position: absolute;
+				bottom: 0;
 				right: 0;
 				margin: $spacing;
+				background: white;
+				border-radius: $border-radius;
+				box-shadow: $shadow;
+				width: 48px;
 			}
 		}
 		> mb-menu {

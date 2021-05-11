@@ -19,11 +19,19 @@
 			border: $border-dark;
 		}
 	}
+	&.small {
+		.textbox {
+			height: 24px;
+			line-height: 24px;
+			&[type=number] {
+				padding: 0 0 0 8px;
+			}
+		}
+	}
 }
 .textbox {
     border-radius: $border-radius;
-	padding: 0 16px;
-	padding-right: 32px;
+	padding: 0 32px 0 16px;
 	text-overflow: ellipsis;
     height: 40px;
 	border: $border;
@@ -36,7 +44,7 @@
 		box-shadow: $shadow-focus, $shadow-focus-inset;
 	}
 	&[type=number] {
-		padding-right: 0;
+		padding: 0 0 0 16px;
 		line-height: 40px;
 	}
 }
