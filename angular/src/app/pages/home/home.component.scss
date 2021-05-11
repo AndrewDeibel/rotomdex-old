@@ -1,48 +1,50 @@
 @import "settings";
 
 .logo {
-  h1 {
-    font-family: $font-family;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    font-weight: normal;
-    color: white;
-  }
+	h1 {
+		font-family: $font-family;
+		text-transform: uppercase;
+		letter-spacing: 2px;
+		font-weight: normal;
+		color: white;
+	}
 }
 
 .card {
-  border-radius: $border-radius-card;
-  overflow: hidden;
-  box-shadow: $shadow;
-  display: block;
+	border-radius: $border-radius-card;
+	overflow: hidden;
+	box-shadow: $shadow;
+	display: block;
 }
 
 .section {
-  padding: $spacing * 14 $spacing * 2;
-  &:not(:last-child) {
-    border-bottom: $border;
-  }
-}
-
-.section-dark {
-  background: rgba(black, 0.75);
-  color: rgba(white, 0.6);
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    color: white;
-  }
+	padding: $spacing * 14 $spacing * 2;
+	&:not(:last-child) {
+		border-bottom: $border;
+	}
+	&.dark {
+		background: rgb(64 64 64);
+		color: rgba(white, 0.6);
+		&:not(:last-child) {
+			border-bottom: $border-light;
+		}
+		h1,
+		h2,
+		h3,
+		h4,
+		h5,
+		h6 {
+			color: white;
+		}
+	}
 }
 
 #dev-alert {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%) translateY(-50%);
-  width: calc(100% - #{$spacing * 4});
-  max-width: 816px;
-  text-align: center;
-  z-index: 2;
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%) translateY(-50%);
+	width: calc(100% - #{$spacing * 4});
+	max-width: 816px;
+	text-align: center;
+	z-index: 2;
 }

@@ -5,177 +5,144 @@
 <mb-alert [alert]="alert" id="dev-alert"></mb-alert>
 
 <!-- Latest -->
-<div class="section section-dark">
-  <div class="max">
-    <div class="flex padded-y-8 padded-x-2">
-      <!-- Release notes -->
-      <div class="width-6 medium-12">
-        <div class="flex padded flex-center">
-          <div>
-            <fa-icon class="large" icon="newspaper"></fa-icon>
-          </div>
-          <div>
-            <h2>Release Notes</h2>
-          </div>
-        </div>
-        <div class="padding-y-2">
-          <div class="flex padded">
-            <div *ngFor="let releaseNote of releaseNotes" class="width-12">
-              <div class="padding-bottom">
-                <h5>{{ releaseNote.title }}</h5>
-                <div class="ellipsis" [innerHtml]="releaseNote.content"></div>
-                <div class="subheading">
-                  v{{ releaseNote.version }} - {{ releaseNote.date | date }}
-                </div>
-              </div>
-              <a (click)="createDialogReleaseNote(releaseNote)"> Details... </a>
-            </div>
-          </div>
-        </div>
-      </div>
+<div class="section dark">
+	<div class="max">
+		<div class="flex padded-y-8 padded-x-2">
 
-      <!-- Newest expansions -->
-      <div class="width-6 medium-12">
-        <div class="flex padded flex-center">
-          <div>
-            <fa-icon class="large" icon="sparkles"></fa-icon>
-          </div>
-          <div>
-            <h2>Newest Expansions</h2>
-          </div>
-        </div>
-        <div class="padding-y-2">
-          <div class="flex padded">
-            <div *ngFor="let expansion of expanions" class="width-6">
-              <div>{{ expansion.name }}</div>
-              <div class="subheading">
-                {{ expansion.release_date }}
-              </div>
-              <a [routerLink]="expansion.route"> Details.. </a>
-            </div>
-          </div>
-        </div>
-      </div>
+			<!-- Release notes -->
+			<div class="width-6 medium-12 flex vertical">
+				<div class="panel dark box width-12">
+					<div class="flex padded flex-center">
+						<div>
+							<fa-icon class="large" icon="newspaper"></fa-icon>
+						</div>
+						<div>
+							<h2>Updates</h2>
+						</div>
+					</div>
+					<div class="padding-top-2">
+						<div class="flex padded-2">
+							<div *ngFor="let releaseNote of releaseNotes" class="width-12">
+								<div class="padding-bottom">
+									<h5>{{ releaseNote.title }}</h5>
+									<div class="ellipsis" [innerHtml]="releaseNote.content"></div>
+									<div class="subheading">
+										v{{ releaseNote.version }} - {{ releaseNote.date | date }}
+									</div>
+								</div>
+								<a (click)="createDialogReleaseNote(releaseNote)"> Details... </a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 
-      <!-- Increasing price -->
-      <div class="width-6 medium-12">
-        <div class="flex padded flex-center">
-          <div>
-            <fa-icon class="large" icon="arrow-up"></fa-icon>
-          </div>
-          <div>
-            <h2>Cards Increasing in Price</h2>
-          </div>
-        </div>
-        <p>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Itaque, ad
-          dolorum voluptates commodi, accusantium quod delectus earum quis eius
-          modi voluptatibus totam veniam. Id in quod repellat. In, architecto
-          sequi?
-        </p>
-      </div>
+			<!-- Newest expansions -->
+			<div class="width-6 medium-12 flex vertical">
+				<div class="panel dark box width-12">
+					<div class="flex padded flex-center">
+						<div>
+							<fa-icon class="large" icon="sparkles"></fa-icon>
+						</div>
+						<div>
+							<h2>New Expansions</h2>
+						</div>
+					</div>
+					<div class="padding-top-2">
+						<div class="flex padded-2">
+							<div *ngFor="let expansion of expanions" class="width-6">
+								<div>{{ expansion.name }}</div>
+								<div class="subheading">
+									{{ expansion.release_date }}
+								</div>
+								<a [routerLink]="expansion.route"> Details.. </a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 
-      <!-- Decreasing price -->
-      <div class="width-6 medium-12">
-        <div class="flex padded flex-center">
-          <div>
-            <fa-icon class="large" icon="arrow-down"></fa-icon>
-          </div>
-          <div>
-            <h2>Cards Decreasing in Price</h2>
-          </div>
-        </div>
-        <p>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Itaque, ad
-          dolorum voluptates commodi, accusantium quod delectus earum quis eius
-          modi voluptatibus totam veniam. Id in quod repellat. In, architecto
-          sequi?
-        </p>
-      </div>
-    </div>
-  </div>
+		</div>
+	</div>
 </div>
 
 <!-- Expansions -->
-<div class="bg-alt section">
-  <div class="max">
-    <div class="flex flex-center padded-8">
-      <div class="width-6 small-12 small-order-2">
-        <div id="expansion-logos">
-          <div class="flex padded">
-            <div
-              class="width-3 small-2"
-              *ngFor="let expansionLogo of expansionLogos"
-            >
-              <img class="hover-zoom-large" src="{{ expansionLogo }}" />
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="width-6 small-12 small-order-1">
-        <h2>Expansions</h2>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi error,
-          aperiam qui molestiae ullam quo quos sapiente sint? Culpa, esse!
-          Veniam nesciunt eaque delectus eligendi eveniet. Porro quia maxime
-          eius.
-        </p>
-        <mb-button [button]="expansionButton"></mb-button>
-      </div>
-    </div>
-  </div>
+<div class="section dark">
+	<div class="max">
+		<div class="flex flex-center padded-8">
+			<div class="width-6 small-12 small-order-2">
+				<div id="expansion-logos">
+					<div class="flex padded">
+						<div class="width-3 small-2" *ngFor="let expansionLogo of expansionLogos">
+							<img class="hover-zoom-large" src="{{ expansionLogo }}" />
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="width-6 small-12 small-order-1">
+				<h2>Expansions</h2>
+				<p>
+					Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi error,
+					aperiam qui molestiae ullam quo quos sapiente sint? Culpa, esse!
+					Veniam nesciunt eaque delectus eligendi eveniet. Porro quia maxime
+					eius.
+				</p>
+				<mb-button [button]="expansionButton"></mb-button>
+			</div>
+		</div>
+	</div>
 </div>
 
 <!-- Cards -->
-<div class="section">
-  <div class="max">
-    <div class="flex flex-center padded-8">
-      <div class="width-6 small-12">
-        <h2>Cards</h2>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero
-          voluptate, quisquam ducimus ex natus ratione illo cupiditate iusto rem
-          libero necessitatibus pariatur beatae id similique, tenetur ipsam cum
-          quod eos.
-        </p>
-        <mb-button [button]="cardsButton"></mb-button>
-      </div>
-      <div class="width-6 small-12">
-        <div id="cards">
-          <div class="flex padded">
-            <div class="width-2 small-2" *ngFor="let card of cards">
-              <img class="card hover-zoom-large" src="{{ card }}" />
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+<div class="section dark">
+	<div class="max">
+		<div class="flex flex-center padded-8">
+			<div class="width-6 small-12">
+				<h2>Cards</h2>
+				<p>
+					Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero
+					voluptate, quisquam ducimus ex natus ratione illo cupiditate iusto rem
+					libero necessitatibus pariatur beatae id similique, tenetur ipsam cum
+					quod eos.
+				</p>
+				<mb-button [button]="cardsButton"></mb-button>
+			</div>
+			<div class="width-6 small-12">
+				<div id="cards">
+					<div class="flex padded">
+						<div class="width-2 small-2" *ngFor="let card of cards">
+							<img class="card hover-zoom-large" src="{{ card }}" />
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
 
 <!-- Pokemon -->
-<div class="section">
-  <div class="max">
-    <div class="flex flex-center padded-8">
-      <div class="width-6 small-12 small-order-2">
-        <div id="expansion-logos">
-          <div class="flex padded">
-            <div class="width-2 small-2" *ngFor="let pokemon of pokemons">
-              <img class="hover-zoom-large" src="{{ pokemon }}" />
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="width-6 small-12 small-order-1">
-        <h2>Pokemon</h2>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi error,
-          aperiam qui molestiae ullam quo quos sapiente sint? Culpa, esse!
-          Veniam nesciunt eaque delectus eligendi eveniet. Porro quia maxime
-          eius.
-        </p>
-        <mb-button [button]="pokemonButton"></mb-button>
-      </div>
-    </div>
-  </div>
+<div class="section dark">
+	<div class="max">
+		<div class="flex flex-center padded-8">
+			<div class="width-6 small-12 small-order-2">
+				<div id="expansion-logos">
+					<div class="flex padded">
+						<div class="width-2 small-2" *ngFor="let pokemon of pokemons">
+							<img class="hover-zoom-large" src="{{ pokemon }}" />
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="width-6 small-12 small-order-1">
+				<h2>Pokemon</h2>
+				<p>
+					Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi error,
+					aperiam qui molestiae ullam quo quos sapiente sint? Culpa, esse!
+					Veniam nesciunt eaque delectus eligendi eveniet. Porro quia maxime
+					eius.
+				</p>
+				<mb-button [button]="pokemonButton"></mb-button>
+			</div>
+		</div>
+	</div>
 </div>

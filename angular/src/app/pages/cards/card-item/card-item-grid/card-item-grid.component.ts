@@ -14,6 +14,14 @@ export class CardItemGridComponent implements OnInit {
 	@Input() card: Card;
 	imageLoading: boolean = true;
 	textbox: Textbox;
+	values = [
+		"0",
+		"0",
+		"0",
+		"1",
+		"2",
+		"3",
+	];
 
 	constructor() { }
 
@@ -21,7 +29,8 @@ export class CardItemGridComponent implements OnInit {
 		this.textbox = new Textbox({
 			type: "number",
 			wrapperClasses: "small",
-			value: "1"
+			value: this.values[Math.floor(Math.random() * this.values.length)],
+			min: 0
 		});
 	}
 
