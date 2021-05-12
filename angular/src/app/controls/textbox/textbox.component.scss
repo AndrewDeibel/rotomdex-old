@@ -1,6 +1,5 @@
 @import "settings";
 
-
 .textbox-wrapper {
 	position: relative;
 	display: flex;
@@ -16,7 +15,7 @@
 	}
 	&.dark {
 		.textbox {
-			border: $border-dark;
+			border: $border-strong;
 		}
 	}
 	&.small {
@@ -24,27 +23,27 @@
 			height: 24px;
 			line-height: 24px;
 			font-size: 12px;
-			&[type=number] {
+			&[type="number"] {
 				padding: 0 0 0 8px;
 			}
 		}
 	}
 }
 .textbox {
-    border-radius: $border-radius;
+	border-radius: $border-radius;
 	padding: 0 32px 0 16px;
 	text-overflow: ellipsis;
-    height: 40px;
+	height: 40px;
 	border: $border;
 	transition: $transition;
 	max-width: 100%;
-	cursor: text; 
-	background: rgba($panel-bg, .05);
+	cursor: text;
+	background: rgba($panel-bg, 0.05);
 	&:focus {
 		border-color: $primary-color;
 		box-shadow: $shadow-focus, $shadow-focus-inset;
 	}
-	&[type=number] {
+	&[type="number"] {
 		padding: 0 0 0 16px;
 		line-height: 40px;
 	}

@@ -12,7 +12,7 @@
 	}
 	&.dark {
 		select {
-			border: $border-dark;
+			border: $border-strong;
 		}
 	}
 }
@@ -28,9 +28,10 @@ select {
 	font-size: $font-size;
 	color: $primary-color;
 	outline: 0 !important;
-	background: rgba($panel-bg, .05);
+	background: rgba($panel-bg, 0.05);
 	cursor: pointer;
-	option, optgroup {
+	option,
+	optgroup {
 		color: $font-color;
 	}
 	&:focus {
