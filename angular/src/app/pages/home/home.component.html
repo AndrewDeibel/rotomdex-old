@@ -72,9 +72,9 @@
 		<div class="flex flex-center padded-8">
 			<div class="width-6 small-12 small-order-2">
 				<div id="expansion-logos">
-					<div class="flex padded">
+					<div class="flex padded relative">
 						<div class="width-3 small-2" *ngFor="let expansionLogo of expansionLogos">
-							<img class="hover-zoom-large" src="{{ expansionLogo }}" />
+							<img class="hover-zoom-large shadow hover-z-1" src="{{ expansionLogo }}" />
 						</div>
 					</div>
 				</div>
@@ -109,9 +109,9 @@
 			</div>
 			<div class="width-6 small-12">
 				<div id="cards">
-					<div class="flex padded">
+					<div class="flex padded relative">
 						<div class="width-2 small-2" *ngFor="let card of cards">
-							<img class="card hover-zoom-large" src="{{ card }}" />
+							<img class="card hover-zoom-large hover-z-1" src="{{ card }}" />
 						</div>
 					</div>
 				</div>
@@ -125,10 +125,12 @@
 	<div class="max">
 		<div class="flex flex-center padded-8">
 			<div class="width-6 small-12 small-order-2">
-				<div id="expansion-logos">
-					<div class="flex padded">
+				<div id="pokemon">
+					<div class="flex padded relative">
 						<div class="width-2 small-2" *ngFor="let pokemon of pokemons">
-							<img class="hover-zoom-large" src="{{ pokemon }}" />
+							<a [routerLink]="pokemon.route">
+								<img class="hover-zoom-large shadow hover-z-1" src="{{ pokemon.image }}" />
+							</a>
 						</div>
 					</div>
 				</div>

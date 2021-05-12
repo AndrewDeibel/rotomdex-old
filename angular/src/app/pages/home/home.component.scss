@@ -19,23 +19,9 @@
 
 .section {
 	padding: $spacing * 14 $spacing * 2;
+	background: $main-bg;
 	&:not(:last-child) {
 		border-bottom: $border;
-	}
-	&.dark {
-		background: rgb(64 64 64);
-		color: rgba(white, 0.6);
-		&:not(:last-child) {
-			border-bottom: $border-light;
-		}
-		h1,
-		h2,
-		h3,
-		h4,
-		h5,
-		h6 {
-			color: white;
-		}
 	}
 }
 
@@ -47,4 +33,21 @@
 	max-width: 816px;
 	text-align: center;
 	z-index: 2;
+}
+
+#expansion-logos,
+#cards,
+#pokemon {
+	position: relative;
+	&:before {
+		content: "";
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%, -50%);
+		background: radial-gradient(rgba(white, 0.2) 0%, transparent 50%);
+		width: 200%;
+		height: 200%;
+		pointer-events: none;
+	}
 }

@@ -43,7 +43,7 @@
 		left: 0;
 		right: 0;
 		height: 128px;
-		background: linear-gradient(transparent 0%, rgba(64, 64, 64, 1) 100%);
+		background: linear-gradient(transparent 0%, $main-bg 100%);
 		z-index: 2;
 	}
 }

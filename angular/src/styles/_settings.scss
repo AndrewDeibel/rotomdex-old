@@ -2,12 +2,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700&display=swap");
 $font-family: "Source Sans Pro", sans-serif;
 $font-size: 16px;
-$font-color: rgba(black, 0.6);
+$font-color: rgb(200, 200, 200);
 $heading-font-family: "Source Sans Pro", serif;
 $heading-font-size: initial; // TODO: replace with real value
-$heading-font-color: rgba(black, 0.6);
+$heading-font-color: rgba(232, 232, 232);
 
-// Colors
+// Base color wheel
 $white: white;
 $grey: grey;
 $black: black;
@@ -16,7 +16,7 @@ $orange: #f68603;
 $yellow: #f1c500;
 $green: rgb(58, 156, 58);
 $teal: #1ba083;
-$blue: #55a0da;
+$blue: #247abb;
 $purple: #8936b7;
 $pink: #d11a58;
 
@@ -24,13 +24,14 @@ $primary-color: $blue;
 $secondary-color: #a8b7c2;
 
 $header-height: 56px;
+
+// Element colors
 $header-bg: linear-gradient($red, darken($red, 10%));
-$menu-bg: #323232;
 $header-color: white;
-$main-bg: white;
-$panel-bg: white;
+$menu-bg: #323232;
+$main-bg: rgba(32, 32, 32);
 $footer-bg: $menu-bg;
-$dark-bg: rgba(32, 32, 32);
+$panel-bg: rgba(48, 48, 48);
 
 // Alerts
 $success: $green;
@@ -47,12 +48,10 @@ $border-radius-small: 6px;
 $border-radius-card: #{4.8%/4%};
 
 // Borders
-$border-color: rgba(black, 0.1);
-$border-color-dark: rgba(black, 0.3);
-$border-color-light: rgba(white, 0.1);
+$border-color: rgba($font-color, 0.1);
+$border-color-dark: rgba($font-color, 0.3);
 $border: 1px solid $border-color;
 $border-dark: 1px solid $border-color-dark;
-$border-light: 1px solid $border-color-light;
 
 // Shadows
 $shadow: 0 2px 4px rgba(black, 0.4);

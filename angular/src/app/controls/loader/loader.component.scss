@@ -13,16 +13,16 @@ $border-pokeball: 4px solid rgb(102, 0, 0);
 	width: 60px;
 	height: 60px;
 	background-color: #fff;
-	border-radius: 50% ;
+	border-radius: 50%;
 	position: relative;
 	overflow: hidden;
-	animation: rotate .8s  linear 0s infinite;
-    box-shadow: 0 0 8px 8px;
+	animation: rotate 0.8s linear 0s infinite;
+	box-shadow: 0 0 8px 8px black;
 }
 
 // Center
-.pokeball:before{
-	content: '';
+.pokeball:before {
+	content: "";
 	position: absolute;
 	background-color: #fff;
 	width: 14px;
@@ -36,8 +36,8 @@ $border-pokeball: 4px solid rgb(102, 0, 0);
 }
 
 // Red
-.pokeball:after{
-	content: '';
+.pokeball:after {
+	content: "";
 	position: absolute;
 	background-color: red;
 	border-bottom: $border-pokeball;
@@ -50,7 +50,7 @@ $border-pokeball: 4px solid rgb(102, 0, 0);
 	0% {
 		transform: rotate(0deg);
 	}
-	100%{
+	100% {
 		transform: rotate(360deg);
 	}
 }
