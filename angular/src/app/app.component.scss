@@ -1,8 +1,8 @@
 @import "settings";
 
 :host {
-    display: flex;
-    flex-direction: column;
+	display: flex;
+	flex-direction: column;
 	flex: 1 0 0;
 	z-index: 1;
 	position: relative;
@@ -18,9 +18,9 @@
 }
 
 #main {
-    background-color: $main-bg;
-    flex: 1;
-    position: relative;
+	background-color: $main-bg;
+	flex: 1;
+	position: relative;
 	z-index: 1;
 	@media (max-width: $screen-medium) {
 		padding-top: $header-height;
@@ -35,7 +35,8 @@
 	position: fixed;
 	bottom: 32px;
 	right: 32px;
-	background: white;
+	background: $secondary-color;
+	color: white;
 	box-shadow: $shadow;
 	cursor: pointer;
 	z-index: 10;

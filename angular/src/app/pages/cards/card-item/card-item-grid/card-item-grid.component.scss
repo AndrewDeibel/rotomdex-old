@@ -6,26 +6,26 @@
 
 .card-grid {
 	display: block;
-    transition: $transition;
+	transition: $transition;
 	border-radius: $border-radius-small;
 	flex: 1 0 0;
 	background: linear-gradient(transparent 50%, $menu-bg 51%);
 	cursor: pointer;
-    &:active {
-		border-color: $primary-color!important;
+	&:active {
+		border-color: $primary-color !important;
 		box-shadow: $shadow-focus !important;
 		outline: 0 !important;
 	}
 	&:hover {
 		box-shadow: $shadow-focus, $shadow-large;
 	}
-    .card-image-wrapper {
+	.card-image-wrapper {
 		width: 100%;
 		position: relative;
 		&:after {
 			display: none;
 		}
-        .card-image {
+		.card-image {
 			width: 100%;
 			box-shadow: $shadow;
 			overflow: hidden;
@@ -33,7 +33,7 @@
 			position: relative;
 			z-index: 2;
 			&:before {
-				content: '';
+				content: "";
 				width: 100%;
 				display: block;
 				padding-bottom: 100% * $card-ratio;
@@ -60,7 +60,7 @@
 				bottom: 0;
 				right: 0;
 				margin: $spacing;
-				background: white;
+				background: lighten(black, 5%);
 				border-radius: $border-radius;
 				box-shadow: $shadow;
 				width: 44px;
@@ -71,15 +71,15 @@
 			left: $spacing;
 			bottom: $spacing;
 		}
-    }
-    .card-information {
+	}
+	.card-information {
 		width: 100%;
 		padding: ($spacing * 2.5) $spacing $spacing $spacing;
 		margin-top: -$spacing * 2;
 		border-bottom-left-radius: $border-radius-small;
 		border-bottom-right-radius: $border-radius-small;
 		bottom: 0;
-		background: rgba($menu-bg, .9);
+		background: rgba($menu-bg, 0.9);
 		display: flex;
 		flex-direction: column;
 		color: white;
@@ -87,7 +87,7 @@
 		position: relative;
 		z-index: 1;
 		&:after {
-			content: '';
+			content: "";
 			border-radius: $border-radius-small;
 			width: 100%;
 			height: 100%;
@@ -103,5 +103,5 @@
 			padding-bottom: 4px;
 			margin-bottom: -4px;
 		}
-    }
+	}
 }
