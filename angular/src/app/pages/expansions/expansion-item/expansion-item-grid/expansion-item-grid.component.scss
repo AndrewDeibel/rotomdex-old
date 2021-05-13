@@ -17,7 +17,7 @@
 	overflow: hidden;
 	position: relative;
 	&:after {
-		content: '';
+		content: "";
 		border-radius: $border-radius-small;
 		width: 100%;
 		height: 100%;
@@ -45,12 +45,12 @@
 			}
 		}
 	}
-	
+
 	.expansion-logo {
 		display: block;
 		width: 100%;
 		position: relative;
-		background: lighten($grey, 40%);
+		background: $panel-bg;
 		.expansion-logo-inner {
 			position: relative;
 			height: 160px;
@@ -73,7 +73,7 @@
 	.expansion-info {
 		width: 100%;
 		padding: $spacing;
-		background: $menu-bg;
+		background: $main-bg;
 		color: white;
 	}
 }
