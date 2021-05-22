@@ -18,14 +18,13 @@ import {
 } from '../pages';
 
 const routes: Routes = [
-
 	// Home
 	{
 		path: '',
 		component: HomeComponent,
 		data: {
-			transparentHeader: true
-		}
+			transparentHeader: true,
+		},
 	},
 
 	// Cards
@@ -40,18 +39,18 @@ const routes: Routes = [
 	},
 
 	// Scanner
-	// {
-	// 	path: 'scanner',
-	// 	component: ScannerComponent
-	// },
-	// {
-	// 	path: 'scanner/lists',
-	// 	component: ScannerListsComponent
-	// },
-	// {
-	// 	path: 'scanner/lists/:id',
-	// 	component: ScannerListComponent
-	// },
+	{
+		path: 'scanner',
+		component: ScannerComponent,
+	},
+	{
+		path: 'scanner/lists',
+		component: ScannerListsComponent,
+	},
+	{
+		path: 'scanner/lists/:id',
+		component: ScannerListComponent,
+	},
 
 	// Auth
 	// {
@@ -66,34 +65,32 @@ const routes: Routes = [
 	// Expansions
 	{
 		path: 'expansions',
-		component: ExpansionsComponent
+		component: ExpansionsComponent,
 	},
 	{
 		path: 'expansions/:code',
-		component: ExpansionComponent
+		component: ExpansionComponent,
 	},
 
 	// Pokemon
 	{
 		path: 'pokemon',
-		component: PokemonsComponent
+		component: PokemonsComponent,
 	},
 	{
 		path: 'pokemon/:slug',
-		component: PokemonComponent
+		component: PokemonComponent,
 	},
 
 	// otherwise redirect to home
 	{
 		path: '**',
-		redirectTo: ''
-	}
-	
+		redirectTo: '',
+	},
 ];
 
 @NgModule({
 	imports: [RouterModule.forRoot(routes)],
-	exports: [RouterModule]
+	exports: [RouterModule],
 })
-
-export class AppRoutingModule { }
+export class AppRoutingModule {}
