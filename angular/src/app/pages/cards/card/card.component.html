@@ -176,7 +176,7 @@
 			<mb-card-collection *ngIf="card" [slug]="card.slug">
 			</mb-card-collection>
 		</div>
-		<div>
+		<div *ngIf="showRelated">
 			<!-- Related -->
 			<mb-items
 				[items]="relatedCards"

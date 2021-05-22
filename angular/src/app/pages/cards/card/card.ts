@@ -1,12 +1,12 @@
 import { Select, SelectOption, SelectOptionGroup } from '@app/controls';
 import { Menu } from '@app/controls/menu';
-import "@app/helpers/string.extensions";
+import '@app/helpers/string.extensions';
 import { ItemsFilter } from '@app/layout';
 import { Icons } from '@app/models';
 import { Expansion } from '@app/pages/expansions';
 import { Pokemon } from '@app/pages/pokemons/pokemon/pokemon';
 
-export const DEFAULT_IMAGE = "/assets/back.jpg";
+export const DEFAULT_IMAGE = '/assets/back.jpg';
 
 export class Weakness {
 	type: string;
@@ -56,7 +56,7 @@ export class Card {
 		if (!isNaN(+this.number)) {
 			let x = `${this.number}`;
 			let y = `${this.expansion.total_cards}`;
-			let pad = "000";
+			let pad = '000';
 			let xFormatted = pad.substring(0, pad.length - x.length) + x;
 			let yFormatted = pad.substring(0, pad.length - y.length) + y;
 			return `${xFormatted}/${yFormatted}`;
@@ -67,11 +67,11 @@ export class Card {
 		}
 	}
 
-    constructor(init?:Partial<Card>) {
+	constructor(init?: Partial<Card>) {
 		Object.assign(this, init);
 
 		// Route
-		this.route = "/cards/" + this.slug;
+		this.route = '/cards/' + this.slug;
 
 		// Initalize expansion
 		if (init.expansion) {
@@ -99,7 +99,7 @@ export class CardLastPrices {
 	updated_at: Date;
 	variation: string;
 
-    constructor(init?:Partial<CardLastPrices>) {
+	constructor(init?: Partial<CardLastPrices>) {
 		Object.assign(this, init);
 	}
 }
@@ -109,8 +109,8 @@ export class CardGroup {
 	icon: Icons;
 	cards: Card[] = [];
 	count: number = 0;
-    constructor(init?:Partial<CardGroup>) {
-        Object.assign(this, init);
+	constructor(init?: Partial<CardGroup>) {
+		Object.assign(this, init);
 	}
 }
 
@@ -119,36 +119,36 @@ export class CardCount {
 		return this.cards.length;
 	}
 	cards: Card[] = [];
-    constructor(init?:Partial<CardCount>) {
-        Object.assign(this, init);
+	constructor(init?: Partial<CardCount>) {
+		Object.assign(this, init);
 	}
 }
 
 export function SetSortByCards(itemFilter: ItemsFilter) {
 	itemFilter.selectSortBy.optionGroups[0] = new SelectOptionGroup({
-		label: "Sort By",
+		label: 'Sort By',
 		options: [
 			new SelectOption({
-				text: "Number",
-				value: "number"
+				text: 'Number',
+				value: 'number',
 			}),
 			new SelectOption({
-				text: "Name",
-				value: "name"
+				text: 'Name',
+				value: 'name',
 			}),
+			// new SelectOption({
+			// 	text: 'Price',
+			// 	value: 'price',
+			// }),
 			new SelectOption({
-				text: "Price",
-				value: "price"
+				text: 'Release Date',
+				value: 'release_date',
 			}),
-			new SelectOption({
-				text: "Release Date",
-				value: "release_date"
-			}),
-			new SelectOption({
-				text: "Rarity",
-				value: "rarity"
-			})
-		]
+			// new SelectOption({
+			// 	text: 'Rarity',
+			// 	value: 'rarity',
+			// }),
+		],
 	});
-	itemFilter.selectSortBy.value = "number";
-};
+	itemFilter.selectSortBy.value = 'number';
+}

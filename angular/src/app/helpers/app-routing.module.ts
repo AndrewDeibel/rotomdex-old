@@ -15,6 +15,7 @@ import {
 	ScannerListComponent,
 	PokemonsComponent,
 	PokemonComponent,
+	CollectionComponent,
 } from '../pages';
 
 const routes: Routes = [
@@ -36,6 +37,12 @@ const routes: Routes = [
 	{
 		path: 'cards/:slug',
 		component: CardComponent,
+	},
+
+	// Collection
+	{
+		path: 'collection',
+		component: CollectionComponent,
 	},
 
 	// Scanner

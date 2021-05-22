@@ -28,7 +28,7 @@ select {
 	font-size: $font-size;
 	color: $primary-color;
 	outline: 0 !important;
-	background: rgba($panel-bg, 0.05);
+	background: $input-bg;
 	cursor: pointer;
 	option,
 	optgroup {

@@ -4,6 +4,7 @@
 .menu {
 	box-shadow: $shadow-sheen;
 	border: $border;
+	background: $input-bg;
 	@media (max-width: $screen-medium) {
 		&.medium-stacked {
 			a {

@@ -10,13 +10,14 @@
 	fa-icon {
 		width: 128px;
 		height: 128px;
-		opacity: .5;
+		opacity: 0.5;
 		padding: $spacing * 2;
 	}
 	img {
 		width: 128px;
 		height: 128px;
-		opacity: .4;
+		opacity: 0.4;
 		padding: $spacing;
+		filter: invert(1);
 	}
 }

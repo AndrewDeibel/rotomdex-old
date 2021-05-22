@@ -4,7 +4,7 @@ import { Card } from '@app/pages/cards';
 
 export class Expansion {
 	id: number;
-    name: string;
+	name: string;
 	code: string;
 	ptcgo_code?: string;
 	series: Series;
@@ -19,20 +19,20 @@ export class Expansion {
 	route: string;
 	cards: Card[] = [];
 
-    constructor(init?:Partial<Expansion>) {
+	constructor(init?: Partial<Expansion>) {
 		Object.assign(this, init);
-		
+
 		// Route
 		this.route = `/expansions/${this.code}`;
 
 		// Initalize cards
 		if (init.cards) {
 			this.cards = [];
-			init.cards.forEach(card => {
+			init.cards.forEach((card) => {
 				this.cards.push(new Card(card));
 			});
 		}
-    }
+	}
 }
 
 export class Series {
@@ -40,43 +40,47 @@ export class Series {
 	name: string;
 	expansions: Expansion[] = [];
 
-    constructor(init?:Partial<Series>) {
+	constructor(init?: Partial<Series>) {
 		Object.assign(this, init);
-		
+
 		// Initalize expanions
 		if (init.expansions) {
 			this.expansions = [];
-			init.expansions.forEach(expansion => {
+			init.expansions.forEach((expansion) => {
 				this.expansions.push(new Expansion(expansion));
 			});
 		}
-    }
+	}
 }
 
 export function SetSortByExpansions(itemFilter: ItemsFilter) {
 	itemFilter.selectSortBy.optionGroups[0] = new SelectOptionGroup({
-		label: "Sort By",
+		label: 'Sort By',
 		options: [
 			new SelectOption({
-				text: "Release Date",
-				value: "expansion.release_date"
+				text: 'Release Date',
+				value: 'expansion.release_date',
 			}),
-		]
+		],
 	});
-	itemFilter.selectSortBy.value = "expansion.release_date";
+	itemFilter.selectSortBy.value = 'expansion.release_date';
 }
 
 export function SetSortByExpansion(itemFilter: ItemsFilter) {
 	itemFilter.selectSortBy.optionGroups[0] = new SelectOptionGroup({
-		label: "Sort By",
+		label: 'Sort By',
 		options: [
 			new SelectOption({
-				text: "Number",
-				value: "number"
+				text: 'Number',
+				value: 'number',
 			}),
-		]
+			new SelectOption({
+				text: 'Name',
+				value: 'name',
+			}),
+		],
 	});
-	itemFilter.selectSortBy.value = "number";
+	itemFilter.selectSortBy.value = 'number';
 }
 
 export function SetPageSize(itemFooter: ItemsFooter) {

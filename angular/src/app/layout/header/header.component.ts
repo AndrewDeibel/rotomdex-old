@@ -96,6 +96,14 @@ export class HeaderComponent implements OnInit {
 				click: () => {
 					this.menu.clearActive();
 				},
+			}),
+			new MenuItem({
+				icon: Icons.archive,
+				text: 'Collection',
+				route: 'collection',
+				click: () => {
+					this.menu.clearActive();
+				},
 			})
 		);
 	}

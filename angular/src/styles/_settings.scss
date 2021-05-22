@@ -31,10 +31,11 @@ $secondary-color: rgba(white, 0.2);
 // ========================================
 $header-bg: linear-gradient($red, darken($red, 10%));
 $header-color: white;
-$menu-bg: #252525;
+$menu-bg: rgba(24, 24, 24);
 $main-bg: rgba(32, 32, 32);
 $footer-bg: $menu-bg;
-$panel-bg: rgba(48, 48, 48);
+$panel-bg: rgba(64, 64, 64);
+$input-bg: rgba(white, 0.025);
 
 // Alerts
 // ========================================

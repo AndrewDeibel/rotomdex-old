@@ -38,7 +38,7 @@
 	transition: $transition;
 	max-width: 100%;
 	cursor: text;
-	background: rgba($panel-bg, 0.05);
+	background: $input-bg;
 	&:focus {
 		border-color: $primary-color;
 		box-shadow: $shadow-focus, $shadow-focus-inset;

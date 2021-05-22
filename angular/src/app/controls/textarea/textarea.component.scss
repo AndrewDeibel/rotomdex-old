@@ -14,11 +14,11 @@
 	}
 }
 .textarea {
-    border-radius: $border-radius;
+	border-radius: $border-radius;
 	padding: 16px;
 	padding-right: 32px;
 	text-overflow: ellipsis;
-    min-height: 64px;
+	min-height: 64px;
 	border: $border;
 	box-shadow: $shadow-inset;
 	transition: $transition;
@@ -27,12 +27,13 @@
 	font-family: $font-family;
 	font-size: $font-size;
 	color: $font-color;
+	background: $input-bg;
 	&:focus {
 		outline: 0;
 		border-color: $primary-color;
 		box-shadow: $shadow-focus, $shadow-focus-inset;
 	}
-	&[type=number] {
+	&[type="number"] {
 		padding: 0;
 		padding-left: 16px;
 		line-height: 40px;

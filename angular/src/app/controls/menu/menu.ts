@@ -8,8 +8,8 @@ export class Menu {
 	unfilteredItems: MenuItem[] = [];
 	horizontal: boolean = false;
 	round: boolean = true;
-    tabs: boolean = false;
-    classes?: string;
+	tabs: boolean = false;
+	classes?: string;
 	size: Size = Size.medium;
 	minHeight?: string;
 	minWidth?: string;
@@ -21,7 +21,7 @@ export class Menu {
 	search: boolean;
 	dark: boolean;
 
-    constructor(init?:Partial<Menu>) {
+	constructor(init?: Partial<Menu>) {
 		Object.assign(this, init);
 		this.setupControls();
 	}
@@ -30,13 +30,13 @@ export class Menu {
 		this.textboxSearch = new Textbox({
 			icon: Icons.search,
 			clearable: true,
-			placeholder: "Search...",
+			placeholder: 'Search...',
 			keydownEnter: (value) => {
 				this.searchItems(value);
 			},
 			clickIcon: (value) => {
 				this.searchItems(value);
-			}
+			},
 		});
 	}
 
@@ -46,14 +46,15 @@ export class Menu {
 				this.unfilteredItems = this.items;
 			}
 			this.items = this.items.filter((menuItem: MenuItem) => {
-				return menuItem.text.toLowerCase().includes(query.toLowerCase());
+				return menuItem.text
+					.toLowerCase()
+					.includes(query.toLowerCase());
 			});
-		}
-		else {
+		} else {
 			this.items = this.unfilteredItems;
 		}
 	}
-	
+
 	clearActive() {
 		if (this.items.length) {
 			this.items.forEach((item) => {
@@ -67,11 +68,11 @@ export class Menu {
 }
 
 export class MenuItem {
-    text?: string;
+	text?: string;
 	route?: string;
-    href?: string;
-    icon?: string;
-    active: boolean = false;
+	href?: string;
+	icon?: string;
+	active: boolean = false;
 	menu?: Menu;
 	price?: number;
 	symbol?: string;
@@ -81,10 +82,14 @@ export class MenuItem {
 	button?: Button;
 	disabled: boolean;
 	separator: boolean = false;
-	
+	target?: string;
+
 	public click: (event: any) => void;
 
-    public constructor(init?:Partial<MenuItem>) {
-        Object.assign(this, init);
+	public constructor(init?: Partial<MenuItem>) {
+		Object.assign(this, init);
+		if (this.href) {
+			this.target = '_blank';
+		}
 	}
 }

@@ -41,6 +41,7 @@ export class CardComponent implements OnInit {
 	tagNumber: Tag;
 	buttonTCGPlayer: Button;
 	buttonEbay: Button;
+	showRelated: boolean;
 
 	constructor(
 		private titleService: Title,
@@ -119,9 +120,12 @@ export class CardComponent implements OnInit {
 				// Data
 				this.card = card;
 
-				this.relatedCards.header.title = `${this.card.pokemon.name} Cards`;
-				this.relatedCards.header.titleRoute = this.card.pokemon.route;
-				this.relatedCards.noResults = `No ${this.card.pokemon.name} cards found`;
+				if (this.card.pokemon) {
+					this.relatedCards.header.title = `${this.card.pokemon.name} Cards`;
+					this.relatedCards.header.titleRoute =
+						this.card.pokemon.route;
+					this.relatedCards.noResults = `No ${this.card.pokemon.name} cards found`;
+				}
 
 				// Rarity
 				if (this.card.expansion.name.toLowerCase().includes('promo')) {
@@ -207,7 +211,8 @@ export class CardComponent implements OnInit {
 	}
 
 	getRelatedCards() {
-		if (this.card) {
+		if (this.card && this.card.pokemon) {
+			this.showRelated = true;
 			this.loaderService.addItemLoading('getPokemonCards');
 			this.pokemonService.getPokemonVariantCards(
 				new GetPokemonVariantCards({
