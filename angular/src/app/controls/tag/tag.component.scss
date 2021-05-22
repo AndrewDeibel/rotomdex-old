@@ -89,7 +89,7 @@
 		}
 	}
 	&.uncommon {
-		color: $font-color;
+		color: rgba(black, 0.5);
 		//box-shadow: 0 0 8px 4px rgba($font-color, .1);
 		&:before {
 			content: "";
@@ -97,7 +97,7 @@
 			width: 8px;
 			height: 8px;
 			transform: rotate(45deg);
-			background: $font-color;
+			background: rgba(black, 0.5);
 		}
 		span {
 			margin-left: 6px;

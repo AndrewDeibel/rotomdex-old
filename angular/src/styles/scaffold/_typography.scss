@@ -3,9 +3,9 @@
 // Headings
 $heading-divisor: 4;
 @for $i from 1 through 6 {
-    h#{$i} {
+	h#{$i} {
 		line-height: 1.1;
-        font-family: $heading-font-family;
+		font-family: $heading-font-family;
 		color: $heading-font-color;
 		margin-bottom: $spacing;
 		margin-top: $spacing * 2;
@@ -16,27 +16,30 @@ $heading-divisor: 4;
 		&:last-child {
 			margin-bottom: 0;
 		}
-    }
+	}
 	.h#{$i} {
 		line-height: 1.1;
-        font-family: $heading-font-family;
+		font-family: $heading-font-family;
 		color: $heading-font-color;
 		font-size: $font-size * (1 + ((6 - $i) / $heading-divisor));
 	}
 }
 
 // Links
-a, .link {
-    cursor: pointer;
-    text-decoration: none;
+a,
+.link {
+	cursor: pointer;
+	text-decoration: none;
 	color: $primary-color;
 	transition: $transition;
-    outline: none;
-    &:hover, &:focus, &:active {
-        outline: none;
+	outline: none;
+	&:hover,
+	&:focus,
+	&:active {
+		outline: none;
 	}
 	&:focus {
-		border-color: $primary-color!important;
+		border-color: $primary-color !important;
 		box-shadow: $shadow-focus !important;
 		outline: 0 !important;
 	}
@@ -60,7 +63,9 @@ p {
 }
 
 // Lists
-ul, ol, li {
+ul,
+ol,
+li {
 	list-style: none;
 	margin: 0;
 	padding: 0;
@@ -74,10 +79,10 @@ ul, ol, li {
 
 // Subheading
 .subheading {
-    font-size: 11px;
-    text-transform: uppercase;
-    //letter-spacing: 2px;
-    font-weight: bold;
+	font-size: 11px;
+	text-transform: uppercase;
+	//letter-spacing: 2px;
+	font-weight: bold;
 }
 
 // Helpers
@@ -85,7 +90,7 @@ ul, ol, li {
 	text-align: left;
 }
 .align-center {
-    text-align: center;
+	text-align: center;
 }
 .align-right {
 	text-align: right;
@@ -123,4 +128,12 @@ hr {
 		background: $color-value;
 		padding: ($spacing / 2) $spacing;
 	}
+}
+
+.color {
+	color: $font-color;
+}
+
+.color-dark {
+	color: darken($font-color, 50%);
 }

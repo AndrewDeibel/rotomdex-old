@@ -11,54 +11,52 @@ import { Icons } from '@app/models';
 	selector: 'mb-search',
 	templateUrl: './search.component.html',
 	styleUrls: ['./search.component.scss'],
-	encapsulation: ViewEncapsulation.None
+	encapsulation: ViewEncapsulation.None,
 })
-
 export class SearchComponent implements OnInit {
-
-	query: string = "";
+	query: string = '';
 	textbox: Textbox;
 
 	constructor(
 		private searchService: SearchService,
 		private router: Router,
 		private route: ActivatedRoute,
-		private cardsService: CardsService) { }
+		private cardsService: CardsService
+	) {}
 
 	ngOnInit(): void {
-
 		// Get query from route
-		this.route.queryParams.subscribe(params => {
-			if (params["quicksearch"]) {
-				this.query = params["quicksearch"];
+		this.route.queryParams.subscribe((params) => {
+			if (params['quicksearch']) {
+				this.query = params['quicksearch'];
 			}
 		});
 
 		this.textbox = new Textbox({
-			placeholder: "Search Cards...",
+			placeholder: 'Search Cards...',
 			icon: Icons.search,
-			classes: "bg-white",
-			keydownEnter: value => {
+			classes: 'bg-white color-dark',
+			keydownEnter: (value) => {
 				this.query = value;
 				this.search();
 			},
-			clickIcon: value => {
+			clickIcon: (value) => {
 				this.query = value;
 				this.search();
-			}
+			},
 		});
 	}
 
 	search() {
 		this.router.navigate(['/cards'], {
 			queryParams: {
-				search: this.query
-			}
+				search: this.query,
+			},
 		});
 	}
 
 	clear(textboxEl: HTMLElement) {
-		this.query = "";
+		this.query = '';
 		// Set focus
 		textboxEl.focus();
 	}
