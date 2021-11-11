@@ -75,6 +75,14 @@ img {
 .inline-block {
 	display: inline-block !important;
 }
+.none {
+	display: none !important;
+}
+@media (max-width: $screen-small) {
+	.small-none {
+		display: none !important;
+	}
+}
 
 // Backgrounds
 .bg {

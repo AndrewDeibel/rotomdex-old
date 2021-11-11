@@ -1,17 +1,17 @@
 @import "settings";
 
 .button {
-    padding: 11px 16px;
-	line-height: 14px;
+	padding: 11px 16px;
+	line-height: 16px;
 	border: 1px solid darken($primary-color, 10%);
-    border-radius: 999px;
-    background: $primary-color;
+	border-radius: 999px;
+	background: $primary-color;
 	color: white;
 	display: flex;
 	align-items: center;
-    transition: $transition;
-    position: relative;
-    cursor: pointer;
+	transition: $transition;
+	position: relative;
+	cursor: pointer;
 	overflow: hidden;
 	font-size: $font-size;
 	outline: 0;
@@ -56,10 +56,10 @@
 	}
 
 	// States
-    &:focus {
-        box-shadow: $shadow-focus;
-    }
-    &:hover {
+	&:focus {
+		box-shadow: $shadow-focus;
+	}
+	&:hover {
 		background: mix(white, $primary-color, 10%);
 		box-shadow: $shadow-sheen, $shadow-focus;
 		&.secondary {

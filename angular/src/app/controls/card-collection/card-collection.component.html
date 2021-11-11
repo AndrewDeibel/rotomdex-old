@@ -13,34 +13,31 @@
 <div class="padding-y padding-x-2 padding-bottom-4">
 	<div class="max">
 		<div class="flex padded vertical">
-
 			<div class="width-12 subheading" *ngIf="collection.length">
 				<div class="flex">
 					<div class="box">
 						<div class="flex">
-							<div style="min-width: 56px;">
-								Price
-							</div>
 							<div class="box">
 								<div class="flex">
-									<div class="width-2 small-3">
-										Qauntity
-									</div>
-									<div class="width-3">
-										Condition
-									</div>
-									<div class="width-3">
+									<div class="width-2 small-4">Qauntity</div>
+									<div class="width-2 small-4">Condition</div>
+									<div class="width-2 small-none">
 										Graded By
 									</div>
-									<div class="width-4 small-3">
+									<div class="width-2 small-none">
 										Printing
 									</div>
+									<div class="width-2 small-4">Binder</div>
+									<div class="width-2 small-none">Notes</div>
 								</div>
 							</div>
 						</div>
 					</div>
-					<div style="height: 0;">
-						<mb-button class="hidden" [button]="{icon: 'trash'}"></mb-button>
+					<div style="height: 0">
+						<mb-button
+							class="hidden"
+							[button]="{ icon: 'trash' }"
+						></mb-button>
 					</div>
 				</div>
 			</div>
@@ -49,15 +46,17 @@
 				class="box"
 				*ngFor="let collectionItem of collection"
 				[item]="collectionItem"
-				(deleted)="deleteItem(collectionItem)">
+				(deleted)="deleteItem(collectionItem)"
+			>
 			</mb-card-collection-item>
-			<mb-empty *ngIf="collection.length === 0" [empty]="empty"></mb-empty>
+			<mb-empty
+				*ngIf="collection.length === 0"
+				[empty]="empty"
+			></mb-empty>
 			<div class="width-12" *ngIf="collection.length">
 				<div class="border-top padding-top">
 					<div class="flex padded flex-center">
-						<div class="box subheading">
-							Total: <span class="money">{{ totalValue | currency }}</span>
-						</div>
+						<div class="box"></div>
 						<div>
 							<mb-button [button]="buttonAdd"></mb-button>
 						</div>
