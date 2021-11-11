@@ -72,10 +72,14 @@
 											<div
 												*ngFor="let type of card.types"
 											>
-												<div
+												<a
 													class="card-energy {{
 														type.toLowerCase()
 													}}"
+													[routerLink]="
+														'/cards/types/' +
+														type.toLowerCase()
+													"
 												>
 													<div
 														class="
@@ -90,7 +94,7 @@
 															"
 														/>
 													</div>
-												</div>
+												</a>
 											</div>
 										</div>
 									</div>

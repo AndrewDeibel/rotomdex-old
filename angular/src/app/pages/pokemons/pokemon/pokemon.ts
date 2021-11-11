@@ -1,4 +1,4 @@
-import { Select, SelectOption, SelectOptionGroup } from "@app/controls";
+import { Select, SelectOption, SelectOptionGroup } from '@app/controls';
 
 export class EvolutionChain {
 	id: number;
@@ -11,7 +11,7 @@ export class PokemonGeneration {
 	id: number;
 	name: string;
 	region: string;
-	constructor(init?:Partial<PokemonGeneration>) {
+	constructor(init?: Partial<PokemonGeneration>) {
 		Object.assign(this, init);
 	}
 }
@@ -41,16 +41,16 @@ export class Pokemon {
 
 	route: string;
 
-	constructor(init?:Partial<Pokemon>) {
+	constructor(init?: Partial<Pokemon>) {
 		Object.assign(this, init);
-		
+
 		// Route
 		this.route = `/pokemon/${this.slug}`;
 
 		// Initalize variants
 		if (init.variants) {
 			this.variants = [];
-			init.variants.forEach(variant => {
+			init.variants.forEach((variant) => {
 				this.variants.push(new PokemonVariant(variant));
 			});
 		}
@@ -78,9 +78,9 @@ export class PokemonVariant {
 
 	route: string;
 
-	constructor(init?:Partial<PokemonVariant>) {
+	constructor(init?: Partial<PokemonVariant>) {
 		Object.assign(this, init);
-		
+
 		// Route
 		this.route = `/pokemon/${this.slug}`;
 
@@ -94,33 +94,33 @@ export class PokemonSprites {
 	official?: string;
 	shiny?: string;
 	icon?: string;
-	
-	constructor(init?:Partial<PokemonSprites>) {
+
+	constructor(init?: Partial<PokemonSprites>) {
 		Object.assign(this, init);
 	}
 }
 
 export function SetSortByPokemon(select: Select) {
 	select.optionGroups[0] = new SelectOptionGroup({
-		label: "Sort By",
+		label: 'Sort By',
 		options: [
 			new SelectOption({
-				text: "Number",
-				value: "pokemon.order"
+				text: 'Number',
+				value: 'pokemon.order',
 			}),
 			new SelectOption({
-				text: "Name",
-				value: "pokemon_variants.name"
+				text: 'Name',
+				value: 'pokemon_variants.name',
 			}),
 			new SelectOption({
-				text: "Weight",
-				value: "pokemon_variants.weight"
+				text: 'Weight',
+				value: 'pokemon_variants.weight',
 			}),
 			new SelectOption({
-				text: "Height",
-				value: "pokemon_variants.height"
+				text: 'Height',
+				value: 'pokemon_variants.height',
 			}),
-		]
+		],
 	});
-	select.value = "pokemon.order";
-};
+	select.value = 'pokemon.order';
+}

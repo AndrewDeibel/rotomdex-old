@@ -109,6 +109,9 @@ li {
 	white-space: nowrap;
 	overflow: hidden;
 }
+.word-break {
+	word-break: break-word;
+}
 .wrap {
 	text-wrap: wrap;
 }

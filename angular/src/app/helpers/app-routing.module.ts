@@ -9,13 +9,16 @@ import {
 	HomeComponent,
 	ExpansionsComponent,
 	ExpansionComponent,
-	AuthComponent,
 	ScannerComponent,
 	ScannerListsComponent,
 	ScannerListComponent,
 	PokemonsComponent,
 	PokemonComponent,
 	CollectionComponent,
+	SignInComponent,
+	SignUpComponent,
+	ForgotComponent,
+	ResetComponent,
 } from '../pages';
 
 const routes: Routes = [
@@ -37,6 +40,12 @@ const routes: Routes = [
 	{
 		path: 'cards/:slug',
 		component: CardComponent,
+		children: [
+			{
+				path: 'types/:type',
+				component: CardComponent,
+			},
+		],
 	},
 
 	// Collection
@@ -60,14 +69,22 @@ const routes: Routes = [
 	},
 
 	// Auth
-	// {
-	// 	path: 'signin',
-	// 	component: AuthComponent
-	// },
-	// {
-	// 	path: 'signup',
-	// 	component: AuthComponent
-	// },
+	{
+		path: 'signin',
+		component: SignInComponent,
+	},
+	{
+		path: 'signup',
+		component: SignUpComponent,
+	},
+	{
+		path: 'forgot',
+		component: ForgotComponent,
+	},
+	{
+		path: 'reset/:token',
+		component: ResetComponent,
+	},
 
 	// Expansions
 	{

@@ -9,26 +9,24 @@ export class Notification {
 	hidden: boolean;
 	duration?: number; // Null duration = dismiss required
 	destroy: () => void;
-	click = () => {
+	click = () => {};
 
-	}
-
-    public constructor(init?:Partial<Notification>) {
+	public constructor(init?: Partial<Notification>) {
 		Object.assign(this, init);
 		this.setupDefaults();
 	}
 
 	setupDefaults() {
-		let defaultDuration = 3000;
+		let defaultDuration = 5000;
 		switch (this.alertType) {
 			case AlertType.success: {
 				if (!this.duration) {
-					this.duration = defaultDuration
+					this.duration = defaultDuration;
 				}
 				this.icon = Icons.check;
 				this.click = () => {
 					this.hide();
-				}
+				};
 				break;
 			}
 			case AlertType.info: {
@@ -37,12 +35,12 @@ export class Notification {
 			}
 			case AlertType.warning: {
 				if (!this.duration) {
-					this.duration = defaultDuration
+					this.duration = defaultDuration;
 				}
 				this.icon = Icons.warning;
 				this.click = () => {
 					this.hide();
-				}
+				};
 				this.icon = Icons.warning;
 				break;
 			}

@@ -51,9 +51,10 @@ import {
 
 // Pages
 import {
-	AuthComponent,
 	SignInComponent,
 	SignUpComponent,
+	ForgotComponent,
+	ResetComponent,
 	CardsComponent,
 	CardComponent,
 	CardItemGridComponent,
@@ -279,9 +280,10 @@ import { CardItemListComponent } from './pages/cards/card-item/card-item-list/ca
 		CardItemListComponent,
 		CardComponent,
 		// Auth
-		AuthComponent,
 		SignInComponent,
 		SignUpComponent,
+		ForgotComponent,
+		ResetComponent,
 		// Scanner
 		ScannerComponent,
 		ScannerListsComponent,

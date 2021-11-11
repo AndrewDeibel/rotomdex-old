@@ -1,19 +1,39 @@
-<form class="padding-large" [formGroup]="form" (ngSubmit)="submit()">
-	<div class="flex vertical padded flex-center">
+<form
+	class="padding-y-8 flex vertical flex-center"
+	[formGroup]="form"
+	(ngSubmit)="submit()"
+>
+	<div class="flex vertical padded-2">
 		<div>
 			<h1>Sign In</h1>
 		</div>
 		<div>
-			<mb-textbox [formControl]="form.controls.emailControl" [textbox]="textboxEmail"></mb-textbox>
+			<mb-textbox
+				[formControl]="form.controls.emailControl"
+				[textbox]="textboxEmail"
+			></mb-textbox>
 		</div>
 		<div>
-			<mb-textbox [formControl]="form.controls.passwordControl" [textbox]="textboxPassword"></mb-textbox>
+			<mb-textbox
+				[formControl]="form.controls.passwordControl"
+				[textbox]="textboxPassword"
+			></mb-textbox>
 		</div>
+		<!-- <div>
+			<mb-checkbox
+				[formControl]="form.controls.rememberMeControl"
+				[checkbox]="rememberMeCheckbox"
+			></mb-checkbox>
+		</div> -->
 		<div>
-			<mb-checkbox [formControl]="form.controls.rememberMeControl" [checkbox]="rememberMeCheckbox"></mb-checkbox>
-		</div>
-		<div>
-			<mb-button [button]="buttonSubmit"></mb-button>
+			<div class="flex padded flex-center">
+				<div>
+					<mb-button [button]="buttonSubmit"></mb-button>
+				</div>
+				<div>
+					<a routerLink="/forgot">Forgot Password?</a>
+				</div>
+			</div>
 		</div>
 	</div>
 </form>

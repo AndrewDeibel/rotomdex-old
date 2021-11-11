@@ -5,6 +5,7 @@ import {
 	CardsService,
 	CardResults,
 	GetCards as GetCards,
+	GetCardsFiltered,
 } from '../../services/cards.service';
 import { ActivatedRoute } from '@angular/router';
 import { ItemDisplayType } from '@app/layout/main/items/items-filter/items-filter';
@@ -24,8 +25,10 @@ import { Symbols } from '@app/models';
 })
 export class CardsComponent implements OnInit {
 	items: Items = new Items();
+	type: string;
 
 	constructor(
+		private route: ActivatedRoute,
 		private titleService: Title,
 		private cardsService: CardsService,
 		private loaderService: LoaderService
@@ -37,7 +40,17 @@ export class CardsComponent implements OnInit {
 	}
 
 	setupSubscriptions() {
+		this.route.params.subscribe((params) => {
+			this.type = params['type'];
+			if (this.type) {
+			} else {
+				this.getCards();
+			}
+		});
 		this.cardsService.getCardsObservable().subscribe((res) => {
+			this.getCardsResponse(res);
+		});
+		this.cardsService.getCardsFilteredObservable().subscribe((res) => {
 			this.getCardsResponse(res);
 		});
 	}
@@ -59,6 +72,7 @@ export class CardsComponent implements OnInit {
 	}
 
 	setupControls() {
+		this.items;
 		this.items.noResults = 'No cards found';
 		this.items.noResultsImage = Symbols.cards;
 		this.titleService.setTitle(AppSettings.titlePrefix + 'All Cards');
@@ -68,11 +82,32 @@ export class CardsComponent implements OnInit {
 		SetSortByCards(this.items.filter);
 	}
 
+	_getCards() {
+		if (this.type) {
+			this.getFilteredCards();
+		} else {
+			this.getCards();
+		}
+	}
+
 	getCards() {
 		this.loaderService.addItemLoading('getCards');
 		this.items.showHeader = false;
 		this.cardsService.getCards(
 			new GetCards({
+				page: this.items.footer.page,
+				page_size: this.items.footer.pageSize,
+				query: this.items.filter.textboxSearch.value,
+				sort_by: this.items.filter.selectSortBy.value,
+				sort_direction: this.items.filter.selectSortDirection.value,
+			})
+		);
+	}
+
+	getFilteredCards() {
+		this.loaderService.addItemLoading('getFilteredCards');
+		this.cardsService.getCardsFiltered(
+			new GetCardsFiltered({
 				page: this.items.footer.page,
 				page_size: this.items.footer.pageSize,
 				query: this.items.filter.textboxSearch.value,

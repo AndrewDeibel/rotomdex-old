@@ -11,11 +11,9 @@ import { NotificationsService, Notification, AlertType } from '@app/controls';
 @Component({
 	selector: 'mb-signin',
 	templateUrl: './signin.component.html',
-	styleUrls: ['./signin.component.scss']
+	styleUrls: ['./signin.component.scss'],
 })
-
 export class SignInComponent implements OnInit {
-
 	loading: boolean = false;
 	returnUrl: string;
 	form: FormGroup;
@@ -29,9 +27,10 @@ export class SignInComponent implements OnInit {
 		private formBuilder: FormBuilder,
 		private router: Router,
 		private route: ActivatedRoute,
-		private authenticationService: AuthenticationService) {
+		private authenticationService: AuthenticationService
+	) {
 		if (this.authenticationService.currentUserValue) {
-			this.router.navigateByUrl("/");
+			this.router.navigateByUrl('/');
 		}
 	}
 
@@ -42,19 +41,19 @@ export class SignInComponent implements OnInit {
 			rememberMeControl: [''],
 		});
 		this.textboxEmail = new Textbox({
-			label: "Email"
+			label: 'Email',
 		});
 		this.textboxPassword = new Textbox({
-			label: "Password",
-			type: "password"
+			label: 'Password',
+			type: 'password',
 		});
 		this.rememberMeCheckbox = new Checkbox({
-			text: "Remember Me",
-			id: "rememberMe"
+			text: 'Remember Me',
+			id: 'rememberMe',
 		});
 		this.buttonSubmit = new Button({
-			text: "Sign In",
-			type: ButtonType.submit
+			text: 'Sign In',
+			type: ButtonType.submit,
 		});
 
 		// Get return url from route params, else default to /
@@ -67,23 +66,25 @@ export class SignInComponent implements OnInit {
 		}
 
 		this.loading = true;
-		this.authenticationService.login(this.form.controls.emailControl.value, this.form.controls.passwordControl.value)
+		this.authenticationService
+			.login(
+				this.form.controls.emailControl.value,
+				this.form.controls.passwordControl.value
+			)
 			.pipe(first())
 			.subscribe(
-				data => {
-					//location.href = this.returnUrl;
+				(data) => {
 					this.router.navigateByUrl(this.returnUrl);
 					this.notificationService.addNotifications([
 						new Notification({
 							alertType: AlertType.success,
-							message: "Successfully signed in"
-						})
-					])
+							message: 'Successfully signed in',
+						}),
+					]);
 				},
-				error => {
+				(error) => {
 					this.loading = false;
 				}
-			)
+			);
 	}
-
 }

@@ -1,7 +1,8 @@
 <header
 	id="header"
 	[class.transparent]="transparent"
-	[class.scrolled]="scrolled">
+	[class.scrolled]="scrolled"
+>
 	<div class="max">
 		<div class="flex box padded">
 			<div class="width-3 flex">
@@ -12,8 +13,12 @@
 					<span><b>Rotom</b>dex</span>
 				</a>
 			</div>
-			<div *ngIf="signedIn" class="profile flex justify-end width-3" mb-profile></div>
-			<div *ngIf="!signedIn && false" class="login flex justify-end width-3">
+			<div
+				*ngIf="signedIn"
+				class="profile flex justify-end width-3"
+				mb-profile
+			></div>
+			<div *ngIf="!signedIn" class="login flex justify-end width-3">
 				<mb-menu id="menuLogin" [menu]="menuLogin"></mb-menu>
 			</div>
 		</div>
