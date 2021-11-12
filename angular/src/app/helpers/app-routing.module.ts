@@ -40,12 +40,26 @@ const routes: Routes = [
 	{
 		path: 'cards/:slug',
 		component: CardComponent,
-		children: [
-			{
-				path: 'types/:type',
-				component: CardComponent,
-			},
-		],
+	},
+	{
+		path: 'cards/types/:type',
+		component: CardsComponent,
+	},
+	{
+		path: 'cards/rarity/:rarity',
+		component: CardsComponent,
+	},
+	{
+		path: 'cards/artists/:artist',
+		component: CardsComponent,
+	},
+	{
+		path: 'cards/supertype/:supertype',
+		component: CardsComponent,
+	},
+	{
+		path: 'cards/subtype/:subtype',
+		component: CardsComponent,
 	},
 
 	// Collection

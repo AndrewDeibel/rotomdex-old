@@ -26,6 +26,10 @@ import { Symbols } from '@app/models';
 export class CardsComponent implements OnInit {
 	items: Items = new Items();
 	type: string;
+	artist: string;
+	supertype: string;
+	subtype: string;
+	rarity: string;
 
 	constructor(
 		private route: ActivatedRoute,
@@ -41,8 +45,18 @@ export class CardsComponent implements OnInit {
 
 	setupSubscriptions() {
 		this.route.params.subscribe((params) => {
-			this.type = params['type'];
-			if (this.type) {
+			this.type = params['type']?.replace('-', ' ');
+			this.artist = params['artist']?.replace('-', ' ');
+			this.supertype = params['supertype']?.replace('-', ' ');
+			this.subtype = params['subtype']?.replace('-', ' ');
+			this.rarity = params['rarity']?.replace('-', ' ');
+			if (
+				this.type ||
+				this.artist ||
+				this.supertype ||
+				this.subtype ||
+				this.rarity
+			) {
 			} else {
 				this.getCards();
 			}
@@ -58,6 +72,7 @@ export class CardsComponent implements OnInit {
 	getCardsResponse(res: CardResults) {
 		if (res) {
 			this.loaderService.clearItemLoading('getCards');
+			this.loaderService.clearItemLoading('getFilteredCards');
 			this.items.footer.totalPages = res.total_pages;
 			if (res.cards && res.cards.length) {
 				this.items.itemGroups = [
@@ -83,7 +98,13 @@ export class CardsComponent implements OnInit {
 	}
 
 	_getCards() {
-		if (this.type) {
+		if (
+			this.type ||
+			this.artist ||
+			this.supertype ||
+			this.subtype ||
+			this.rarity
+		) {
 			this.getFilteredCards();
 		} else {
 			this.getCards();
@@ -113,6 +134,11 @@ export class CardsComponent implements OnInit {
 				query: this.items.filter.textboxSearch.value,
 				sort_by: this.items.filter.selectSortBy.value,
 				sort_direction: this.items.filter.selectSortDirection.value,
+				type: this.type,
+				rarity: this.rarity,
+				artist: this.artist,
+				subtype: this.subtype,
+				supertype: this.supertype,
 			})
 		);
 	}

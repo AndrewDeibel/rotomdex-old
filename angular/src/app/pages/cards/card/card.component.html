@@ -78,7 +78,9 @@
 													}}"
 													[routerLink]="
 														'/cards/types/' +
-														type.toLowerCase()
+														type
+															.toLowerCase()
+															.replace(' ', '-')
 													"
 												>
 													<div
@@ -154,7 +156,16 @@
 							>
 								<!-- Rarity -->
 								<div>
-									<mb-tag [tag]="tagRarity"></mb-tag>
+									<a
+										[routerLink]="
+											'/cards/rarity/' +
+											card.rarity
+												.toLowerCase()
+												.replace(' ', '-')
+										"
+									>
+										<mb-tag [tag]="tagRarity"></mb-tag>
+									</a>
 								</div>
 
 								<!-- Number -->
@@ -164,7 +175,17 @@
 
 								<!-- Artist -->
 								<div>
-									<mb-tag [tag]="tagArtist"></mb-tag>
+									<a
+										class="artist-link"
+										[routerLink]="
+											'/cards/artists/' +
+											card.artist
+												.toLowerCase()
+												.replace(' ', '-')
+										"
+									>
+										<mb-tag [tag]="tagArtist"></mb-tag>
+									</a>
 								</div>
 							</div>
 						</div>

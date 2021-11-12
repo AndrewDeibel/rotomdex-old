@@ -25,6 +25,11 @@ export class APIGetPaged {
 	sort_by: string;
 	sort_direction: string;
 	query: string;
+	artist: string;
+	type: string;
+	supertype: string;
+	subtype: string;
+	rarity: string;
 
 	url: string;
 
@@ -55,6 +60,30 @@ export class APIGetPaged {
 		if (this.query && this.query.length)
 			query = query.set('search', this.query);
 		else query = query.delete('search');
+
+		// Artist
+		if (this.artist && this.artist.length)
+			query = query.set('artist', this.artist);
+		else query = query.delete('artist');
+
+		// Type
+		if (this.type && this.type.length) query = query.set('type', this.type);
+		else query = query.delete('type');
+
+		// Super type
+		if (this.supertype && this.supertype.length)
+			query = query.set('supertype', this.supertype);
+		else query = query.delete('supertype');
+
+		// Sub type
+		if (this.subtype && this.subtype.length)
+			query = query.set('subtype', this.subtype);
+		else query = query.delete('subtype');
+
+		// Rarity
+		if (this.rarity && this.rarity.length)
+			query = query.set('rarity', this.rarity);
+		else query = query.delete('rarity');
 
 		// Include ? and query string if provided
 		let queryString = query.toString();
