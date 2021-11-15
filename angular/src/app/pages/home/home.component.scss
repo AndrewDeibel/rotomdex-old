@@ -51,3 +51,30 @@
 		pointer-events: none;
 	}
 }
+
+#pokemon {
+	.pokemon-link {
+		position: relative;
+		display: block;
+		img {
+			transition: $transition;
+			display: block;
+		}
+		.sprite-animated {
+			position: absolute;
+			opacity: 0;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+		}
+		&:hover {
+			.sprite-default {
+				opacity: 0;
+			}
+			.sprite-animated {
+				opacity: 1;
+				transform: translate(-50%, -50%) scale(1.5);
+			}
+		}
+	}
+}

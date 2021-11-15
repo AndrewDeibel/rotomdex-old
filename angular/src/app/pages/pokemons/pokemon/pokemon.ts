@@ -82,6 +82,8 @@ export class PokemonVariant {
 		Object.assign(this, init);
 
 		// Route
+		if (!this.slug && this.name)
+			this.slug = this.name.toLowerCase().replace(' ', '-');
 		this.route = `/pokemon/${this.slug}`;
 
 		// Init sprites

@@ -14,8 +14,7 @@ export interface GetExpansions {
 
 @Injectable({ providedIn: 'root' })
 export class ExpansionsService {
-
-    constructor(private http: HttpClient) {}
+	constructor(private http: HttpClient) {}
 
 	// Get expansions
 	private getExpansionsSubject = new BehaviorSubject<Series[]>(null);
@@ -25,95 +24,101 @@ export class ExpansionsService {
 	}
 	getExpansions(params: GetExpansions) {
 		if (CacheGlobal.expansions) {
-			this.getExpansionsSubject.next(this.handleExpansionsParams(params, CacheGlobal.expansions));
-		}
-		else {
-			this.http.get<APIResponse>(`${environment.api}expansions`).subscribe(res => {
-				let series: Series[] = [];
-				res.data.forEach(_series => {
-					series.push(new Series(_series));
+			this.getExpansionsSubject.next(
+				this.handleExpansionsParams(params, CacheGlobal.expansions)
+			);
+		} else {
+			this.http
+				.get<APIResponse>(`${environment.api}expansions`)
+				.subscribe((res) => {
+					let series: Series[] = [];
+					res.data.forEach((_series) => {
+						series.push(new Series(_series));
+					});
+					CacheGlobal.expansions = series;
+					this.getExpansionsSubject.next(
+						this.handleExpansionsParams(params, series)
+					);
 				});
-				CacheGlobal.expansions = series;
-				this.getExpansionsSubject.next(this.handleExpansionsParams(params, series));
-			});
 		}
 	}
-	handleExpansionsParams(params: GetExpansions, seriesCollection: Series[]): Series[] {
-
+	handleExpansionsParams(
+		params: GetExpansions,
+		seriesCollection: Series[]
+	): Series[] {
 		// No data
 		if (!seriesCollection.length) {
 			return [];
-		}
-		else {
-
+		} else {
 			let _seriesCollection: Series[] = [];
-			
+
 			// Query
 			if (params.query && params.query.length) {
 				// Filter expansions
-				seriesCollection.forEach(series => {
-					let expansions = series.expansions.filter(expansion => {
-						return expansion.name.toLowerCase().includes(params.query.toLowerCase());
+				seriesCollection.forEach((series) => {
+					let expansions = series.expansions.filter((expansion) => {
+						return expansion.name
+							.toLowerCase()
+							.includes(params.query.toLowerCase());
 					});
 					if (expansions.length) {
-						let _series = Object.assign({}, series)
+						let _series = Object.assign({}, series);
 						_series.expansions = expansions;
 						_seriesCollection.push(_series);
 					}
 				});
-			}
-			else {
+			} else {
 				_seriesCollection = seriesCollection;
 			}
 
 			// Sort
-			function sortSeriesAsc(a:Series, b:Series) {
-				if ( a.id < b.id ){
+			function sortSeriesAsc(a: Series, b: Series) {
+				if (a.id < b.id) {
 					return -1;
 				}
-				if ( a.id > b.id ){
+				if (a.id > b.id) {
 					return 1;
 				}
 				return 0;
 			}
-			function sortSeriesDesc(a:Series, b:Series) {
-				if ( a.id > b.id ){
+			function sortSeriesDesc(a: Series, b: Series) {
+				if (a.id > b.id) {
 					return -1;
 				}
-				if ( a.id < b.id ){
+				if (a.id < b.id) {
 					return 1;
 				}
 				return 0;
 			}
-			function sortExpansionAsc(a:Expansion, b:Expansion) {
-				if ( a.release_date < b.release_date ){
+			function sortExpansionAsc(a: Expansion, b: Expansion) {
+				if (a.release_date < b.release_date) {
 					return -1;
 				}
-				if ( a.release_date > b.release_date ){
+				if (a.release_date > b.release_date) {
 					return 1;
 				}
 				return 0;
 			}
-			function sortExpansionDesc(a:Expansion, b:Expansion) {
-				if ( a.release_date > b.release_date ){
+			function sortExpansionDesc(a: Expansion, b: Expansion) {
+				if (a.release_date > b.release_date) {
 					return -1;
 				}
-				if ( a.release_date < b.release_date ){
+				if (a.release_date < b.release_date) {
 					return 1;
 				}
 				return 0;
 			}
 			switch (params.sort_direction) {
-				case "asc":
+				case 'asc':
 					_seriesCollection.sort(sortSeriesAsc);
-					_seriesCollection.forEach(_series => {
-						_series.expansions.sort(sortExpansionAsc)
+					_seriesCollection.forEach((_series) => {
+						_series.expansions.sort(sortExpansionAsc);
 					});
 					break;
-				case "desc":
+				case 'desc':
 					_seriesCollection.sort(sortSeriesDesc);
-					_seriesCollection.forEach(_series => {
-						_series.expansions.sort(sortExpansionDesc)
+					_seriesCollection.forEach((_series) => {
+						_series.expansions.sort(sortExpansionDesc);
 					});
 					break;
 			}
@@ -121,5 +126,4 @@ export class ExpansionsService {
 			return _seriesCollection;
 		}
 	}
-	
 }
