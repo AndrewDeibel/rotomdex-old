@@ -106,6 +106,7 @@ export class CardCollectionItemComponent implements OnInit {
 		// Binder
 		this.selectBinder = new Select({
 			classes: 'square',
+			multiple: true,
 		});
 
 		// Quantity
