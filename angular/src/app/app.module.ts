@@ -43,11 +43,15 @@ import {
 	ProgressBarComponent,
 	TypeTagComponent,
 	DialogComponent,
-	CardCollectionComponent,
-	CardCollectionItemComponent,
 	EmptyComponent,
 	HeroComponent,
 } from './controls';
+
+// Components
+import {
+	CardCollectionComponent,
+	CardCollectionItemComponent,
+} from './components';
 
 // Pages
 import {

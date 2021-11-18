@@ -1,4 +1,9 @@
-import { Component, OnInit, ChangeDetectorRef, HostListener } from '@angular/core';
+import {
+	Component,
+	OnInit,
+	ChangeDetectorRef,
+	HostListener,
+} from '@angular/core';
 import { MenuItem } from '@app/controls/menu';
 import { LoaderService } from './controls';
 import { NavigationEnd, Router, RoutesRecognized } from '@angular/router';
@@ -8,11 +13,10 @@ import { DialogService } from './controls/dialog/dialog.service';
 @Component({
 	selector: 'app-root',
 	templateUrl: './app.component.html',
-	styleUrls: ['./app.component.scss']
+	styleUrls: ['./app.component.scss'],
 })
-
 export class AppComponent implements OnInit {
-	theme: string = "dark";
+	theme: string = 'dark';
 	showMenu: boolean = true;
 	loading: boolean = false;
 	dialog: Dialog;
@@ -24,17 +28,19 @@ export class AppComponent implements OnInit {
 		private cdRef: ChangeDetectorRef,
 		private router: Router,
 		private loaderService: LoaderService,
-		private dialogService: DialogService) { }
+		private dialogService: DialogService
+	) {}
 
 	ngOnInit() {
-
-		// Loader 
-		this.loaderService.loading.asObservable().subscribe((loading: boolean) => {
-			if (this.loading != loading) {
-				this.loading = loading;
-				this.cdRef.detectChanges();
-			}
-		});
+		// Loader
+		this.loaderService.loading
+			.asObservable()
+			.subscribe((loading: boolean) => {
+				if (this.loading != loading) {
+					this.loading = loading;
+					this.cdRef.detectChanges();
+				}
+			});
 
 		// Dialog
 		this.dialogService.dialog.asObservable().subscribe((dialog: Dialog) => {
@@ -44,7 +50,7 @@ export class AppComponent implements OnInit {
 		});
 
 		// Scroll to top
-		this.router.events.subscribe(event => {
+		this.router.events.subscribe((event) => {
 			if (!(event instanceof NavigationEnd)) {
 				return;
 			}
@@ -54,9 +60,11 @@ export class AppComponent implements OnInit {
 		// Transparent header
 		this.router.events.subscribe((data) => {
 			if (data instanceof RoutesRecognized) {
-				this.transparentHeader = data.state.root.firstChild.data['transparentHeader'] as boolean;
+				this.transparentHeader = data.state.root.firstChild.data[
+					'transparentHeader'
+				] as boolean;
 			}
-		})
+		});
 
 		// Theme
 		let body = document.getElementsByTagName('body')[0];
@@ -67,8 +75,13 @@ export class AppComponent implements OnInit {
 	@HostListener('window:scroll', [])
 	onWindowScroll() {
 		this.showScrollToTop =
-			document.body.scrollTop > 20
-			|| document.documentElement.scrollTop > 20;
+			document.body.scrollTop > 20 ||
+			document.documentElement.scrollTop > 20;
+	}
+
+	@HostListener('window:popstate', ['$event'])
+	onPopState(event) {
+		this.dialog.close();
 	}
 
 	scrollToTop() {

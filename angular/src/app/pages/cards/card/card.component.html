@@ -158,10 +158,11 @@
 								<div>
 									<a
 										[routerLink]="
+											card.rarity &&
 											'/cards/rarity/' +
-											card.rarity
-												.toLowerCase()
-												.replace(' ', '-')
+												card.rarity
+													.toLowerCase()
+													.replace(' ', '-')
 										"
 									>
 										<mb-tag [tag]="tagRarity"></mb-tag>
