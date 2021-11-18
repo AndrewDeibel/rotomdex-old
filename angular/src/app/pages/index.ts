@@ -6,3 +6,4 @@ export * from './scanner/';
 export * from './expansions';
 export * from './pokemons';
 export * from './collection';
+export * from './edit-profile';

@@ -83,6 +83,7 @@ export class MenuItem {
 	disabled: boolean;
 	separator: boolean = false;
 	target?: string;
+	exactMatch: boolean = false;
 
 	public click: (event: any) => void;
 

@@ -25,6 +25,7 @@
 			[class.active]="item.active"
 			class="{{ item.classes ? item.classes : '' }}"
 			[routerLinkActive]="item.route ? 'active' : ''"
+			[routerLinkActiveOptions]="{ exact: item.exactMatch }"
 		>
 			<hr *ngIf="item.separator" />
 

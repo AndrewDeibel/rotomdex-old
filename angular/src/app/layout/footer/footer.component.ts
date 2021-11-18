@@ -20,6 +20,7 @@ export class FooterComponent implements OnInit {
 					icon: Icons.house,
 					text: 'Home',
 					route: '/',
+					exactMatch: true,
 				}),
 				new MenuItem({
 					icon: Icons.box,
