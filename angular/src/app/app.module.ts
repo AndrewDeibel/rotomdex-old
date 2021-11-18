@@ -71,6 +71,7 @@ import {
 	PokmeonItemListComponent,
 	PokemonComponent,
 	CollectionComponent,
+	CollectionCardGroupComponent,
 } from './pages';
 
 // Page
@@ -224,6 +225,8 @@ import {
 	faBrush,
 	faPaintBrush,
 	faHashtag,
+	faBookOpen,
+	faInbox,
 } from '@fortawesome/pro-duotone-svg-icons';
 import { CardItemListComponent } from './pages/cards/card-item/card-item-list/card-item-list.component';
 
@@ -244,6 +247,7 @@ import { CardItemListComponent } from './pages/cards/card-item/card-item-list/ca
 		ItemsGridComponent,
 		ItemsListComponent,
 		ItemsGroupsComponent,
+		CollectionCardGroupComponent,
 
 		// Controls
 		// ====================
@@ -474,7 +478,10 @@ export class AppModule {
 			faDollarSign,
 			faBrush,
 			faPaintBrush,
-			faHashtag
+			faHashtag,
+			faBookOpen,
+			faInbox,
+			faBalanceScale
 		);
 		faConfig.defaultPrefix = 'fad';
 	}

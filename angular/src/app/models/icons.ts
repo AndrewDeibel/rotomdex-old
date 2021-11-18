@@ -134,4 +134,7 @@ export enum Icons {
 	brush = 'brush',
 	paintBrush = 'paint-brush',
 	hashtag = 'hastag',
+	binder = 'book-open',
+	inbox = 'inbox',
+	balanceScale = 'balance-scale',
 }

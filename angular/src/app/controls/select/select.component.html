@@ -2,7 +2,7 @@
 	{{ select.label }}
 </label>
 
-<div *ngIf="!select.multiple" class="select" [class.dark]="select.dark">
+<div *ngIf="!select.advancedSelect" class="select" [class.dark]="select.dark">
 	<fa-icon icon="caret-down"></fa-icon>
 	<select
 		[(ngModel)]="value"
@@ -26,4 +26,30 @@
 	</select>
 </div>
 
-<div *ngIf="select.multiple" class="select-multiple"></div>
+<div
+	*ngIf="select.advancedSelect"
+	class="select-advanced"
+	(click)="click()"
+	(clickOutside)="clickOutside()"
+>
+	<div class="placeholder">{{ select.placeholder }}</div>
+	<div class="selected-options">
+		<div
+			class="select-option"
+			*ngFor="let option of select.getSelectedOptions()"
+		>
+			<fa-icon [icon]="option.icon"></fa-icon>
+			<span class="text">{{ option.text }}</span>
+		</div>
+	</div>
+	<div class="available-options" *ngIf="select.open">
+		<div
+			class="select-option"
+			*ngFor="let option of select.getUnselectedOptions()"
+		>
+			<fa-icon [icon]="option.icon"></fa-icon>
+			<span class="text">{{ option.text }}</span>
+		</div>
+	</div>
+	<fa-icon icon="caret-down"></fa-icon>
+</div>

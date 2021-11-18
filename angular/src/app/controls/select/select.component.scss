@@ -43,3 +43,57 @@ select {
 		outline: 0 !important;
 	}
 }
+.select-advanced {
+	min-height: 40px;
+	border: $border;
+	border-radius: $border-radius;
+	position: relative;
+	cursor: pointer;
+	background: $input-bg;
+	> fa-icon {
+		position: absolute;
+		top: 50%;
+		right: 16px;
+		transform: translateY(-50%);
+	}
+	.placeholder {
+		line-height: 38px;
+		padding: 0 16px;
+		opacity: 0.5;
+	}
+	.available-options {
+		position: absolute;
+		top: 100%;
+		left: 0;
+		right: 0;
+		background: $main-bg;
+		box-shadow: $shadow;
+		border-radius: $border-radius;
+		overflow: hidden;
+		max-height: 300px;
+		border: $border;
+		.select-option {
+			padding: 8px 16px;
+			background: $input-bg;
+			&:hover {
+				background: $primary-color;
+			}
+		}
+	}
+	.select-option {
+		display: flex;
+		align-items: center;
+		transition: $transition;
+		cursor: pointer;
+		&:hover {
+			background: $primary-color;
+		}
+		.text {
+			flex: 1;
+			padding-left: 8px;
+		}
+		fa-icon {
+			width: 16px;
+		}
+	}
+}

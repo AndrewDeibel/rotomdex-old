@@ -19,6 +19,7 @@ import {
 	SignUpComponent,
 	ForgotComponent,
 	ResetComponent,
+	CollectionCardGroupComponent,
 } from '../pages';
 
 const routes: Routes = [
@@ -64,8 +65,12 @@ const routes: Routes = [
 
 	// Collection
 	{
-		path: 'collection',
+		path: 'collection/dashboard',
 		component: CollectionComponent,
+	},
+	{
+		path: 'collection/add',
+		component: CollectionCardGroupComponent,
 	},
 
 	// Scanner

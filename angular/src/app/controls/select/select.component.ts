@@ -11,28 +11,34 @@ import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 		{
 			provide: NG_VALUE_ACCESSOR,
 			useExisting: forwardRef(() => SelectComponent),
-			multi: true
-		}
-	]
+			multi: true,
+		},
+	],
 })
-
 export class SelectComponent implements ControlValueAccessor {
+	constructor() {}
 
-	constructor() { }
-
-	onChange: any = () => { };
-	onTouched: any = () => { };
-	registerOnChange(fn) { this.onChange = fn }
-	registerOnTouched(fn) { this.onTouched = fn }
-	writeValue(_value) { this.value = _value; }
-	get value() { return this.select.value; }
+	onChange: any = () => {};
+	onTouched: any = () => {};
+	registerOnChange(fn) {
+		this.onChange = fn;
+	}
+	registerOnTouched(fn) {
+		this.onTouched = fn;
+	}
+	writeValue(_value) {
+		this.value = _value;
+	}
+	get value() {
+		return this.select.value;
+	}
 	set value(_value) {
 		this.select.value = _value;
-		this.select.options.forEach(option => {
+		this.select.options.forEach((option) => {
 			option.selected = option.value === _value;
 		});
-		this.select.optionGroups.forEach(group => {
-			group.options.forEach(option => {
+		this.select.optionGroups.forEach((group) => {
+			group.options.forEach((option) => {
 				option.selected = option.value === _value;
 			});
 		});
@@ -42,6 +48,14 @@ export class SelectComponent implements ControlValueAccessor {
 
 	@Input() select: Select;
 
+	click() {
+		this.select.open = true;
+	}
+
+	clickOutside() {
+		this.select.open = false;
+	}
+
 	change() {
 		if (this.select.change) {
 			this.select.change(this.select.value);
@@ -50,5 +64,4 @@ export class SelectComponent implements ControlValueAccessor {
 			this.select._change(this.select.value);
 		}
 	}
-
 }
