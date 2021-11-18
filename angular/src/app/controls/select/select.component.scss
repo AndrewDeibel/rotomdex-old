@@ -39,6 +39,9 @@ select {
 		outline: 0 !important;
 		border-color: $primary-color;
 	}
+	&:hover {
+		border-color: $primary-color;
+	}
 	&:active {
 		outline: 0 !important;
 	}
@@ -50,6 +53,14 @@ select {
 	position: relative;
 	cursor: pointer;
 	background: $input-bg;
+	user-select: none;
+	&:hover {
+		border-color: $primary-color;
+	}
+	&:focus {
+		border-color: $primary-color;
+		box-shadow: $shadow-focus, $shadow-focus-inset;
+	}
 	> fa-icon {
 		position: absolute;
 		top: 50%;

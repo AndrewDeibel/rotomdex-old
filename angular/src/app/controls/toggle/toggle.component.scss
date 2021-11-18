@@ -8,6 +8,7 @@
 	display: block;
 	position: relative;
 	user-select: none;
+	cursor: pointer;
 	input[type="checkbox"] {
 		margin: 0;
 		appearance: none;
@@ -41,7 +42,11 @@
 				opacity: 0;
 			}
 		}
+		&:hover {
+			border-color: $primary-color;
+		}
 		&:focus {
+			border-color: $primary-color;
 			box-shadow: $shadow-focus, $shadow;
 		}
 	}

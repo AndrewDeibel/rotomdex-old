@@ -2,8 +2,8 @@
 @import "../button/button.component.scss";
 
 .menu {
-	box-shadow: $shadow-sheen;
-	border: $border;
+	//box-shadow: $shadow-sheen;
+	//border: $border;
 	background: $input-bg;
 	@media (max-width: $screen-medium) {
 		&.medium-stacked {

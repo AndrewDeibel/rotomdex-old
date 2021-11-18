@@ -7,7 +7,7 @@ export class Select {
 	classes: string;
 	dark: boolean;
 	multiple: boolean;
-	advancedSelect: boolean = true;
+	advancedSelect: boolean = false;
 	placeholder: string = 'Select option';
 	open: boolean;
 	change: (value: string) => void;
