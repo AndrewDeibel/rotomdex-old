@@ -81,13 +81,15 @@ class AppComponent {
         this.router = router;
         this.loaderService = loaderService;
         this.dialogService = dialogService;
-        this.theme = "dark";
+        this.theme = 'dark';
         this.showMenu = true;
         this.loading = false;
     }
     ngOnInit() {
-        // Loader 
-        this.loaderService.loading.asObservable().subscribe((loading) => {
+        // Loader
+        this.loaderService.loading
+            .asObservable()
+            .subscribe((loading) => {
             if (this.loading != loading) {
                 this.loading = loading;
                 this.cdRef.detectChanges();
@@ -100,7 +102,7 @@ class AppComponent {
             }
         });
         // Scroll to top
-        this.router.events.subscribe(event => {
+        this.router.events.subscribe((event) => {
             if (!(event instanceof _angular_router__WEBPACK_IMPORTED_MODULE_1__["NavigationEnd"])) {
                 return;
             }
@@ -119,8 +121,11 @@ class AppComponent {
     }
     onWindowScroll() {
         this.showScrollToTop =
-            document.body.scrollTop > 20
-                || document.documentElement.scrollTop > 20;
+            document.body.scrollTop > 20 ||
+                document.documentElement.scrollTop > 20;
+    }
+    onPopState(event) {
+        this.dialog.close();
     }
     scrollToTop() {
         window.scrollTo(0, 0);
@@ -128,7 +133,7 @@ class AppComponent {
 }
 AppComponent.ɵfac = function AppComponent_Factory(t) { return new (t || AppComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectorRef"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_controls__WEBPACK_IMPORTED_MODULE_2__["LoaderService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_controls_dialog_dialog_service__WEBPACK_IMPORTED_MODULE_3__["DialogService"])); };
 AppComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: AppComponent, selectors: [["app-root"]], hostBindings: function AppComponent_HostBindings(rf, ctx) { if (rf & 1) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("scroll", function AppComponent_scroll_HostBindingHandler() { return ctx.onWindowScroll(); }, false, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵresolveWindow"]);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("scroll", function AppComponent_scroll_HostBindingHandler() { return ctx.onWindowScroll(); }, false, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵresolveWindow"])("popstate", function AppComponent_popstate_HostBindingHandler($event) { return ctx.onPopState($event); }, false, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵresolveWindow"]);
     } }, decls: 8, vars: 6, consts: [[3, "transparent"], ["id", "main"], [3, "active"], [3, "dialog"], ["class", "scrollTop", 3, "click", 4, "ngIf"], [1, "scrollTop", 3, "click"], ["icon", "arrow-up"]], template: function AppComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "mb-header", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](1, "mb-notifications");
@@ -155,11 +160,14 @@ AppComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineCompo
         args: [{
                 selector: 'app-root',
                 templateUrl: './app.component.html',
-                styleUrls: ['./app.component.scss']
+                styleUrls: ['./app.component.scss'],
             }]
     }], function () { return [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectorRef"] }, { type: _angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"] }, { type: _controls__WEBPACK_IMPORTED_MODULE_2__["LoaderService"] }, { type: _controls_dialog_dialog_service__WEBPACK_IMPORTED_MODULE_3__["DialogService"] }]; }, { onWindowScroll: [{
             type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["HostListener"],
             args: ['window:scroll', []]
+        }], onPopState: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["HostListener"],
+            args: ['window:popstate', ['$event']]
         }] }); })();
 
 
@@ -191,14 +199,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _helpers_app_routing_module__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./helpers/app-routing.module */ "./src/app/helpers/app-routing.module.ts");
 /* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
 /* harmony import */ var _controls__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./controls */ "./src/app/controls/index.ts");
-/* harmony import */ var _pages__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./pages */ "./src/app/pages/index.ts");
-/* harmony import */ var _layout__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./layout */ "./src/app/layout/index.ts");
-/* harmony import */ var _helpers__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./helpers */ "./src/app/helpers/index.ts");
-/* harmony import */ var _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! @fortawesome/pro-duotone-svg-icons */ "./node_modules/@fortawesome/pro-duotone-svg-icons/index.es.js");
-/* harmony import */ var _pages_cards_card_item_card_item_list_card_item_list_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./pages/cards/card-item/card-item-list/card-item-list.component */ "./src/app/pages/cards/card-item/card-item-list/card-item-list.component.ts");
-/* harmony import */ var _angular_cdk_scrolling__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! @angular/cdk/scrolling */ "./node_modules/@angular/cdk/__ivy_ngcc__/fesm2015/scrolling.js");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
-/* harmony import */ var _angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! @angular/cdk/bidi */ "./node_modules/@angular/cdk/__ivy_ngcc__/fesm2015/bidi.js");
+/* harmony import */ var _components__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./components */ "./src/app/components/index.ts");
+/* harmony import */ var _pages__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./pages */ "./src/app/pages/index.ts");
+/* harmony import */ var _layout__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./layout */ "./src/app/layout/index.ts");
+/* harmony import */ var _helpers__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./helpers */ "./src/app/helpers/index.ts");
+/* harmony import */ var _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! @fortawesome/pro-duotone-svg-icons */ "./node_modules/@fortawesome/pro-duotone-svg-icons/index.es.js");
+/* harmony import */ var _pages_cards_card_item_card_item_list_card_item_list_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./pages/cards/card-item/card-item-list/card-item-list.component */ "./src/app/pages/cards/card-item/card-item-list/card-item-list.component.ts");
+/* harmony import */ var _angular_cdk_scrolling__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! @angular/cdk/scrolling */ "./node_modules/@angular/cdk/__ivy_ngcc__/fesm2015/scrolling.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
+/* harmony import */ var _angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! @angular/cdk/bidi */ "./node_modules/@angular/cdk/__ivy_ngcc__/fesm2015/bidi.js");
 // Angular
 
 
@@ -218,6 +227,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 // Controls
+
+// Components
 
 // Pages
 
@@ -246,7 +257,7 @@ class AppModule {
     constructor(library, faConfig) {
         this.library = library;
         this.faConfig = faConfig;
-        library.addIcons(_fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faSearch"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faList"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faArchive"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faBookSpells"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faChartLine"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faUser"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faCrown"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faLightSwitchOn"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faCog"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faBox"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faFolders"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faUsers"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faEllipsisV"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faArrowUp"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faArrowDown"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faHorizontalRule"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faTrash"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faPalette"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faCrosshairs"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faHistory"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faExternalLink"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faDollarSign"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faCog"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faAngleLeft"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faAngleRight"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faArrowLeft"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faArrowRight"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faCaretUp"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faCaretRight"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faCaretDown"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faCaretLeft"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faSignIn"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faSignOut"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faPlus"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faUserPlus"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faTh"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faCamera"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faVideo"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faBringFront"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faSync"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faPlay"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faPause"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faStop"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faDonate"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faTachometer"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faCheck"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faInfo"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faExclamationTriangle"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faTimesOctagon"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faTimes"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faLayerGroup"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faRectanglePortrait"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faAlbumCollection"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faShoppingCart"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faGavel"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faBalanceScale"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faSave"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faLineColumns"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faShieldAlt"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faPalette"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faSwords"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faAlignLeft"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faEye"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faRepeat"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faUndo"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faArrowToTop"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faArrowToBottom"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faRandom"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faHandHoldingMedical"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faTombstoneAlt"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faLevelUp"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faLevelDown"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faSwords"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faSortSizeUp"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faSortSizeDownAlt"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faSortAlt"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faDiceThree"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faDice"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faDiceD4"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faDiceD6"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faDiceD8"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faDiceD10"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faDiceD12"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faDiceD20"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faExclamationCircle"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faThumbsUp"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faExclamation"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faCoin"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faForward"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faHourglassStart"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faHourglassEnd"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faKeyboard"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faClone"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faFlaskPotion"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faFolder"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faEdit"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faAngleUp"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faAngleRight"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faAngleDown"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faAngleLeft"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faMinus"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faExpand"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faCompress"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faLock"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faLockOpen"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faImage"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faPawClaws"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faTrophy"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faBolt"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faMagic"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faMountains"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faEclipse"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faHoodCloak"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faDragon"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faTools"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faToolbox"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faHeart"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faHeartbeat"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faThunderstorm"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faNewspaper"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faSparkles"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faQuestion"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faBars"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faHouse"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faCopy"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faExpandArrowsAlt"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faOtter"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faDotCircle"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faBox"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faAlignLeft"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faInfoCircle"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faDollarSign"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faBrush"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faPaintBrush"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faHashtag"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faBookOpen"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faInbox"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faBalanceScale"]);
+        library.addIcons(_fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faSearch"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faList"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faArchive"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faBookSpells"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faChartLine"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faUser"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faCrown"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faLightSwitchOn"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faCog"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faBox"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faFolders"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faUsers"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faEllipsisV"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faArrowUp"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faArrowDown"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faHorizontalRule"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faTrash"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faPalette"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faCrosshairs"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faHistory"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faExternalLink"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faDollarSign"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faCog"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faAngleLeft"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faAngleRight"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faArrowLeft"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faArrowRight"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faCaretUp"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faCaretRight"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faCaretDown"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faCaretLeft"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faSignIn"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faSignOut"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faPlus"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faUserPlus"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faTh"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faCamera"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faVideo"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faBringFront"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faSync"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faPlay"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faPause"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faStop"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faDonate"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faTachometer"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faCheck"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faInfo"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faExclamationTriangle"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faTimesOctagon"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faTimes"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faLayerGroup"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faRectanglePortrait"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faAlbumCollection"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faShoppingCart"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faGavel"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faBalanceScale"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faSave"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faLineColumns"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faShieldAlt"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faPalette"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faSwords"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faAlignLeft"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faEye"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faRepeat"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faUndo"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faArrowToTop"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faArrowToBottom"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faRandom"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faHandHoldingMedical"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faTombstoneAlt"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faLevelUp"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faLevelDown"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faSwords"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faSortSizeUp"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faSortSizeDownAlt"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faSortAlt"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faDiceThree"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faDice"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faDiceD4"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faDiceD6"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faDiceD8"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faDiceD10"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faDiceD12"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faDiceD20"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faExclamationCircle"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faThumbsUp"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faExclamation"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faCoin"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faForward"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faHourglassStart"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faHourglassEnd"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faKeyboard"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faClone"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faFlaskPotion"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faFolder"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faEdit"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faAngleUp"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faAngleRight"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faAngleDown"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faAngleLeft"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faMinus"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faExpand"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faCompress"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faLock"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faLockOpen"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faImage"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faPawClaws"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faTrophy"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faBolt"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faMagic"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faMountains"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faEclipse"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faHoodCloak"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faDragon"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faTools"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faToolbox"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faHeart"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faHeartbeat"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faThunderstorm"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faNewspaper"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faSparkles"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faQuestion"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faBars"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faHouse"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faCopy"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faExpandArrowsAlt"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faOtter"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faDotCircle"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faBox"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faAlignLeft"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faInfoCircle"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faDollarSign"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faBrush"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faPaintBrush"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faHashtag"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faBookOpen"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faInbox"], _fortawesome_pro_duotone_svg_icons__WEBPACK_IMPORTED_MODULE_20__["faBalanceScale"]);
         faConfig.defaultPrefix = 'fad';
     }
 }
@@ -254,12 +265,12 @@ AppModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineNgModule
 AppModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjector"]({ factory: function AppModule_Factory(t) { return new (t || AppModule)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_fortawesome_angular_fontawesome__WEBPACK_IMPORTED_MODULE_9__["FaIconLibrary"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_fortawesome_angular_fontawesome__WEBPACK_IMPORTED_MODULE_9__["FaConfig"])); }, providers: [
         {
             provide: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HTTP_INTERCEPTORS"],
-            useClass: _helpers__WEBPACK_IMPORTED_MODULE_18__["JwtInterceptor"],
+            useClass: _helpers__WEBPACK_IMPORTED_MODULE_19__["JwtInterceptor"],
             multi: true,
         },
         {
             provide: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HTTP_INTERCEPTORS"],
-            useClass: _helpers__WEBPACK_IMPORTED_MODULE_18__["ErrorIntercept"],
+            useClass: _helpers__WEBPACK_IMPORTED_MODULE_19__["ErrorIntercept"],
             multi: true,
         },
         _angular_common__WEBPACK_IMPORTED_MODULE_4__["DatePipe"],
@@ -282,18 +293,18 @@ AppModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjector
 (function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵsetNgModuleScope"](AppModule, { declarations: [_app_component__WEBPACK_IMPORTED_MODULE_14__["AppComponent"],
         // Page
         // ====================
-        _layout__WEBPACK_IMPORTED_MODULE_17__["HeaderComponent"],
-        _layout__WEBPACK_IMPORTED_MODULE_17__["SearchComponent"],
-        _layout__WEBPACK_IMPORTED_MODULE_17__["ProfileComponent"],
-        _layout__WEBPACK_IMPORTED_MODULE_17__["FooterComponent"],
-        _layout__WEBPACK_IMPORTED_MODULE_17__["ItemsComponent"],
-        _layout__WEBPACK_IMPORTED_MODULE_17__["ItemsHeaderComponent"],
-        _layout__WEBPACK_IMPORTED_MODULE_17__["ItemsFilterComponent"],
-        _layout__WEBPACK_IMPORTED_MODULE_17__["ItemsFooterComponent"],
-        _layout__WEBPACK_IMPORTED_MODULE_17__["ItemsGridComponent"],
-        _layout__WEBPACK_IMPORTED_MODULE_17__["ItemsListComponent"],
-        _layout__WEBPACK_IMPORTED_MODULE_17__["ItemsGroupsComponent"],
-        _pages__WEBPACK_IMPORTED_MODULE_16__["CollectionCardGroupComponent"],
+        _layout__WEBPACK_IMPORTED_MODULE_18__["HeaderComponent"],
+        _layout__WEBPACK_IMPORTED_MODULE_18__["SearchComponent"],
+        _layout__WEBPACK_IMPORTED_MODULE_18__["ProfileComponent"],
+        _layout__WEBPACK_IMPORTED_MODULE_18__["FooterComponent"],
+        _layout__WEBPACK_IMPORTED_MODULE_18__["ItemsComponent"],
+        _layout__WEBPACK_IMPORTED_MODULE_18__["ItemsHeaderComponent"],
+        _layout__WEBPACK_IMPORTED_MODULE_18__["ItemsFilterComponent"],
+        _layout__WEBPACK_IMPORTED_MODULE_18__["ItemsFooterComponent"],
+        _layout__WEBPACK_IMPORTED_MODULE_18__["ItemsGridComponent"],
+        _layout__WEBPACK_IMPORTED_MODULE_18__["ItemsListComponent"],
+        _layout__WEBPACK_IMPORTED_MODULE_18__["ItemsGroupsComponent"],
+        _pages__WEBPACK_IMPORTED_MODULE_17__["CollectionCardGroupComponent"],
         // Controls
         // ====================
         _controls__WEBPACK_IMPORTED_MODULE_15__["MenuComponent"],
@@ -314,44 +325,44 @@ AppModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjector
         _controls__WEBPACK_IMPORTED_MODULE_15__["ProgressBarComponent"],
         _controls__WEBPACK_IMPORTED_MODULE_15__["TypeTagComponent"],
         _controls__WEBPACK_IMPORTED_MODULE_15__["DialogComponent"],
-        _controls__WEBPACK_IMPORTED_MODULE_15__["CardCollectionComponent"],
-        _controls__WEBPACK_IMPORTED_MODULE_15__["CardCollectionItemComponent"],
+        _components__WEBPACK_IMPORTED_MODULE_16__["CardCollectionComponent"],
+        _components__WEBPACK_IMPORTED_MODULE_16__["CardCollectionItemComponent"],
         _controls__WEBPACK_IMPORTED_MODULE_15__["EmptyComponent"],
         _controls__WEBPACK_IMPORTED_MODULE_15__["HeroComponent"],
         // Pages
         // ====================
         // Website
-        _pages__WEBPACK_IMPORTED_MODULE_16__["HomeComponent"],
+        _pages__WEBPACK_IMPORTED_MODULE_17__["HomeComponent"],
         // Cards
-        _pages__WEBPACK_IMPORTED_MODULE_16__["CardsComponent"],
-        _pages__WEBPACK_IMPORTED_MODULE_16__["CardItemGridComponent"],
-        _pages_cards_card_item_card_item_list_card_item_list_component__WEBPACK_IMPORTED_MODULE_20__["CardItemListComponent"],
-        _pages__WEBPACK_IMPORTED_MODULE_16__["CardComponent"],
+        _pages__WEBPACK_IMPORTED_MODULE_17__["CardsComponent"],
+        _pages__WEBPACK_IMPORTED_MODULE_17__["CardItemGridComponent"],
+        _pages_cards_card_item_card_item_list_card_item_list_component__WEBPACK_IMPORTED_MODULE_21__["CardItemListComponent"],
+        _pages__WEBPACK_IMPORTED_MODULE_17__["CardComponent"],
         // Auth
-        _pages__WEBPACK_IMPORTED_MODULE_16__["SignInComponent"],
-        _pages__WEBPACK_IMPORTED_MODULE_16__["SignUpComponent"],
-        _pages__WEBPACK_IMPORTED_MODULE_16__["ForgotComponent"],
-        _pages__WEBPACK_IMPORTED_MODULE_16__["ResetComponent"],
+        _pages__WEBPACK_IMPORTED_MODULE_17__["SignInComponent"],
+        _pages__WEBPACK_IMPORTED_MODULE_17__["SignUpComponent"],
+        _pages__WEBPACK_IMPORTED_MODULE_17__["ForgotComponent"],
+        _pages__WEBPACK_IMPORTED_MODULE_17__["ResetComponent"],
         // Scanner
-        _pages__WEBPACK_IMPORTED_MODULE_16__["ScannerComponent"],
-        _pages__WEBPACK_IMPORTED_MODULE_16__["ScannerListsComponent"],
-        _pages__WEBPACK_IMPORTED_MODULE_16__["ScannerListComponent"],
+        _pages__WEBPACK_IMPORTED_MODULE_17__["ScannerComponent"],
+        _pages__WEBPACK_IMPORTED_MODULE_17__["ScannerListsComponent"],
+        _pages__WEBPACK_IMPORTED_MODULE_17__["ScannerListComponent"],
         // Expansion
-        _pages__WEBPACK_IMPORTED_MODULE_16__["ExpansionsComponent"],
-        _pages__WEBPACK_IMPORTED_MODULE_16__["ExpansionItemGridComponent"],
-        _pages__WEBPACK_IMPORTED_MODULE_16__["ExpansionItemListComponent"],
-        _pages__WEBPACK_IMPORTED_MODULE_16__["ExpansionComponent"],
+        _pages__WEBPACK_IMPORTED_MODULE_17__["ExpansionsComponent"],
+        _pages__WEBPACK_IMPORTED_MODULE_17__["ExpansionItemGridComponent"],
+        _pages__WEBPACK_IMPORTED_MODULE_17__["ExpansionItemListComponent"],
+        _pages__WEBPACK_IMPORTED_MODULE_17__["ExpansionComponent"],
         // Pokemon
-        _pages__WEBPACK_IMPORTED_MODULE_16__["PokemonsComponent"],
-        _pages__WEBPACK_IMPORTED_MODULE_16__["PokemonItemGridComponent"],
-        _pages__WEBPACK_IMPORTED_MODULE_16__["PokmeonItemListComponent"],
-        _pages__WEBPACK_IMPORTED_MODULE_16__["PokemonComponent"],
+        _pages__WEBPACK_IMPORTED_MODULE_17__["PokemonsComponent"],
+        _pages__WEBPACK_IMPORTED_MODULE_17__["PokemonItemGridComponent"],
+        _pages__WEBPACK_IMPORTED_MODULE_17__["PokmeonItemListComponent"],
+        _pages__WEBPACK_IMPORTED_MODULE_17__["PokemonComponent"],
         // Social
-        _layout__WEBPACK_IMPORTED_MODULE_17__["ProfileComponent"],
+        _layout__WEBPACK_IMPORTED_MODULE_18__["ProfileComponent"],
         // Collection
-        _pages__WEBPACK_IMPORTED_MODULE_16__["CollectionComponent"],
+        _pages__WEBPACK_IMPORTED_MODULE_17__["CollectionComponent"],
         // Helpers
-        _helpers__WEBPACK_IMPORTED_MODULE_18__["ClickOutsideDirective"]], imports: [_angular_cdk_drag_drop__WEBPACK_IMPORTED_MODULE_5__["DragDropModule"],
+        _helpers__WEBPACK_IMPORTED_MODULE_19__["ClickOutsideDirective"]], imports: [_angular_cdk_drag_drop__WEBPACK_IMPORTED_MODULE_5__["DragDropModule"],
         _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
         _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClientModule"],
         _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"],
@@ -371,18 +382,18 @@ AppModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjector
                     _app_component__WEBPACK_IMPORTED_MODULE_14__["AppComponent"],
                     // Page
                     // ====================
-                    _layout__WEBPACK_IMPORTED_MODULE_17__["HeaderComponent"],
-                    _layout__WEBPACK_IMPORTED_MODULE_17__["SearchComponent"],
-                    _layout__WEBPACK_IMPORTED_MODULE_17__["ProfileComponent"],
-                    _layout__WEBPACK_IMPORTED_MODULE_17__["FooterComponent"],
-                    _layout__WEBPACK_IMPORTED_MODULE_17__["ItemsComponent"],
-                    _layout__WEBPACK_IMPORTED_MODULE_17__["ItemsHeaderComponent"],
-                    _layout__WEBPACK_IMPORTED_MODULE_17__["ItemsFilterComponent"],
-                    _layout__WEBPACK_IMPORTED_MODULE_17__["ItemsFooterComponent"],
-                    _layout__WEBPACK_IMPORTED_MODULE_17__["ItemsGridComponent"],
-                    _layout__WEBPACK_IMPORTED_MODULE_17__["ItemsListComponent"],
-                    _layout__WEBPACK_IMPORTED_MODULE_17__["ItemsGroupsComponent"],
-                    _pages__WEBPACK_IMPORTED_MODULE_16__["CollectionCardGroupComponent"],
+                    _layout__WEBPACK_IMPORTED_MODULE_18__["HeaderComponent"],
+                    _layout__WEBPACK_IMPORTED_MODULE_18__["SearchComponent"],
+                    _layout__WEBPACK_IMPORTED_MODULE_18__["ProfileComponent"],
+                    _layout__WEBPACK_IMPORTED_MODULE_18__["FooterComponent"],
+                    _layout__WEBPACK_IMPORTED_MODULE_18__["ItemsComponent"],
+                    _layout__WEBPACK_IMPORTED_MODULE_18__["ItemsHeaderComponent"],
+                    _layout__WEBPACK_IMPORTED_MODULE_18__["ItemsFilterComponent"],
+                    _layout__WEBPACK_IMPORTED_MODULE_18__["ItemsFooterComponent"],
+                    _layout__WEBPACK_IMPORTED_MODULE_18__["ItemsGridComponent"],
+                    _layout__WEBPACK_IMPORTED_MODULE_18__["ItemsListComponent"],
+                    _layout__WEBPACK_IMPORTED_MODULE_18__["ItemsGroupsComponent"],
+                    _pages__WEBPACK_IMPORTED_MODULE_17__["CollectionCardGroupComponent"],
                     // Controls
                     // ====================
                     _controls__WEBPACK_IMPORTED_MODULE_15__["MenuComponent"],
@@ -403,44 +414,44 @@ AppModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjector
                     _controls__WEBPACK_IMPORTED_MODULE_15__["ProgressBarComponent"],
                     _controls__WEBPACK_IMPORTED_MODULE_15__["TypeTagComponent"],
                     _controls__WEBPACK_IMPORTED_MODULE_15__["DialogComponent"],
-                    _controls__WEBPACK_IMPORTED_MODULE_15__["CardCollectionComponent"],
-                    _controls__WEBPACK_IMPORTED_MODULE_15__["CardCollectionItemComponent"],
+                    _components__WEBPACK_IMPORTED_MODULE_16__["CardCollectionComponent"],
+                    _components__WEBPACK_IMPORTED_MODULE_16__["CardCollectionItemComponent"],
                     _controls__WEBPACK_IMPORTED_MODULE_15__["EmptyComponent"],
                     _controls__WEBPACK_IMPORTED_MODULE_15__["HeroComponent"],
                     // Pages
                     // ====================
                     // Website
-                    _pages__WEBPACK_IMPORTED_MODULE_16__["HomeComponent"],
+                    _pages__WEBPACK_IMPORTED_MODULE_17__["HomeComponent"],
                     // Cards
-                    _pages__WEBPACK_IMPORTED_MODULE_16__["CardsComponent"],
-                    _pages__WEBPACK_IMPORTED_MODULE_16__["CardItemGridComponent"],
-                    _pages_cards_card_item_card_item_list_card_item_list_component__WEBPACK_IMPORTED_MODULE_20__["CardItemListComponent"],
-                    _pages__WEBPACK_IMPORTED_MODULE_16__["CardComponent"],
+                    _pages__WEBPACK_IMPORTED_MODULE_17__["CardsComponent"],
+                    _pages__WEBPACK_IMPORTED_MODULE_17__["CardItemGridComponent"],
+                    _pages_cards_card_item_card_item_list_card_item_list_component__WEBPACK_IMPORTED_MODULE_21__["CardItemListComponent"],
+                    _pages__WEBPACK_IMPORTED_MODULE_17__["CardComponent"],
                     // Auth
-                    _pages__WEBPACK_IMPORTED_MODULE_16__["SignInComponent"],
-                    _pages__WEBPACK_IMPORTED_MODULE_16__["SignUpComponent"],
-                    _pages__WEBPACK_IMPORTED_MODULE_16__["ForgotComponent"],
-                    _pages__WEBPACK_IMPORTED_MODULE_16__["ResetComponent"],
+                    _pages__WEBPACK_IMPORTED_MODULE_17__["SignInComponent"],
+                    _pages__WEBPACK_IMPORTED_MODULE_17__["SignUpComponent"],
+                    _pages__WEBPACK_IMPORTED_MODULE_17__["ForgotComponent"],
+                    _pages__WEBPACK_IMPORTED_MODULE_17__["ResetComponent"],
                     // Scanner
-                    _pages__WEBPACK_IMPORTED_MODULE_16__["ScannerComponent"],
-                    _pages__WEBPACK_IMPORTED_MODULE_16__["ScannerListsComponent"],
-                    _pages__WEBPACK_IMPORTED_MODULE_16__["ScannerListComponent"],
+                    _pages__WEBPACK_IMPORTED_MODULE_17__["ScannerComponent"],
+                    _pages__WEBPACK_IMPORTED_MODULE_17__["ScannerListsComponent"],
+                    _pages__WEBPACK_IMPORTED_MODULE_17__["ScannerListComponent"],
                     // Expansion
-                    _pages__WEBPACK_IMPORTED_MODULE_16__["ExpansionsComponent"],
-                    _pages__WEBPACK_IMPORTED_MODULE_16__["ExpansionItemGridComponent"],
-                    _pages__WEBPACK_IMPORTED_MODULE_16__["ExpansionItemListComponent"],
-                    _pages__WEBPACK_IMPORTED_MODULE_16__["ExpansionComponent"],
+                    _pages__WEBPACK_IMPORTED_MODULE_17__["ExpansionsComponent"],
+                    _pages__WEBPACK_IMPORTED_MODULE_17__["ExpansionItemGridComponent"],
+                    _pages__WEBPACK_IMPORTED_MODULE_17__["ExpansionItemListComponent"],
+                    _pages__WEBPACK_IMPORTED_MODULE_17__["ExpansionComponent"],
                     // Pokemon
-                    _pages__WEBPACK_IMPORTED_MODULE_16__["PokemonsComponent"],
-                    _pages__WEBPACK_IMPORTED_MODULE_16__["PokemonItemGridComponent"],
-                    _pages__WEBPACK_IMPORTED_MODULE_16__["PokmeonItemListComponent"],
-                    _pages__WEBPACK_IMPORTED_MODULE_16__["PokemonComponent"],
+                    _pages__WEBPACK_IMPORTED_MODULE_17__["PokemonsComponent"],
+                    _pages__WEBPACK_IMPORTED_MODULE_17__["PokemonItemGridComponent"],
+                    _pages__WEBPACK_IMPORTED_MODULE_17__["PokmeonItemListComponent"],
+                    _pages__WEBPACK_IMPORTED_MODULE_17__["PokemonComponent"],
                     // Social
-                    _layout__WEBPACK_IMPORTED_MODULE_17__["ProfileComponent"],
+                    _layout__WEBPACK_IMPORTED_MODULE_18__["ProfileComponent"],
                     // Collection
-                    _pages__WEBPACK_IMPORTED_MODULE_16__["CollectionComponent"],
+                    _pages__WEBPACK_IMPORTED_MODULE_17__["CollectionComponent"],
                     // Helpers
-                    _helpers__WEBPACK_IMPORTED_MODULE_18__["ClickOutsideDirective"],
+                    _helpers__WEBPACK_IMPORTED_MODULE_19__["ClickOutsideDirective"],
                 ],
                 imports: [
                     _angular_cdk_drag_drop__WEBPACK_IMPORTED_MODULE_5__["DragDropModule"],
@@ -461,12 +472,12 @@ AppModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjector
                 providers: [
                     {
                         provide: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HTTP_INTERCEPTORS"],
-                        useClass: _helpers__WEBPACK_IMPORTED_MODULE_18__["JwtInterceptor"],
+                        useClass: _helpers__WEBPACK_IMPORTED_MODULE_19__["JwtInterceptor"],
                         multi: true,
                     },
                     {
                         provide: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HTTP_INTERCEPTORS"],
-                        useClass: _helpers__WEBPACK_IMPORTED_MODULE_18__["ErrorIntercept"],
+                        useClass: _helpers__WEBPACK_IMPORTED_MODULE_19__["ErrorIntercept"],
                         multi: true,
                     },
                     _angular_common__WEBPACK_IMPORTED_MODULE_4__["DatePipe"],
@@ -474,22 +485,22 @@ AppModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjector
                 bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_14__["AppComponent"]],
             }]
     }], function () { return [{ type: _fortawesome_angular_fontawesome__WEBPACK_IMPORTED_MODULE_9__["FaIconLibrary"] }, { type: _fortawesome_angular_fontawesome__WEBPACK_IMPORTED_MODULE_9__["FaConfig"] }]; }, null); })();
-_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵsetComponentScope"](_layout__WEBPACK_IMPORTED_MODULE_17__["ItemsGridComponent"], [_angular_cdk_scrolling__WEBPACK_IMPORTED_MODULE_21__["CdkScrollable"], _angular_cdk_drag_drop__WEBPACK_IMPORTED_MODULE_5__["CdkDropList"], _angular_cdk_drag_drop__WEBPACK_IMPORTED_MODULE_5__["CdkDropListGroup"], _angular_cdk_drag_drop__WEBPACK_IMPORTED_MODULE_5__["CdkDrag"], _angular_cdk_drag_drop__WEBPACK_IMPORTED_MODULE_5__["CdkDragHandle"], _angular_cdk_drag_drop__WEBPACK_IMPORTED_MODULE_5__["CdkDragPreview"], _angular_cdk_drag_drop__WEBPACK_IMPORTED_MODULE_5__["CdkDragPlaceholder"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgClass"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgComponentOutlet"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgForOf"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgIf"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgTemplateOutlet"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgStyle"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgSwitch"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgSwitchCase"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgSwitchDefault"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgPlural"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgPluralCase"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["ɵangular_packages_forms_forms_y"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgSelectOption"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["ɵangular_packages_forms_forms_x"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["DefaultValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NumberValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["RangeValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["CheckboxControlValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["SelectControlValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["SelectMultipleControlValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["RadioControlValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgControlStatus"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgControlStatusGroup"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["RequiredValidator"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["MinLengthValidator"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["MaxLengthValidator"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["PatternValidator"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["CheckboxRequiredValidator"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["EmailValidator"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgModel"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgModelGroup"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgForm"], _angular_router__WEBPACK_IMPORTED_MODULE_22__["RouterOutlet"], _angular_router__WEBPACK_IMPORTED_MODULE_22__["RouterLink"], _angular_router__WEBPACK_IMPORTED_MODULE_22__["RouterLinkWithHref"], _angular_router__WEBPACK_IMPORTED_MODULE_22__["RouterLinkActive"], _angular_router__WEBPACK_IMPORTED_MODULE_22__["ɵangular_packages_router_router_l"], _fortawesome_angular_fontawesome__WEBPACK_IMPORTED_MODULE_9__["FaIconComponent"], _fortawesome_angular_fontawesome__WEBPACK_IMPORTED_MODULE_9__["FaDuotoneIconComponent"], _fortawesome_angular_fontawesome__WEBPACK_IMPORTED_MODULE_9__["FaLayersComponent"], _fortawesome_angular_fontawesome__WEBPACK_IMPORTED_MODULE_9__["FaLayersTextComponent"], _fortawesome_angular_fontawesome__WEBPACK_IMPORTED_MODULE_9__["FaLayersCounterComponent"], _fortawesome_angular_fontawesome__WEBPACK_IMPORTED_MODULE_9__["FaStackComponent"], _fortawesome_angular_fontawesome__WEBPACK_IMPORTED_MODULE_9__["FaStackItemSizeDirective"], ngx_webcam__WEBPACK_IMPORTED_MODULE_10__["WebcamComponent"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControlDirective"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormGroupDirective"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControlName"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormGroupName"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormArrayName"], _ckeditor_ckeditor5_angular__WEBPACK_IMPORTED_MODULE_8__["CKEditorComponent"], _angular_cdk_overlay__WEBPACK_IMPORTED_MODULE_6__["CdkConnectedOverlay"], _angular_cdk_overlay__WEBPACK_IMPORTED_MODULE_6__["CdkOverlayOrigin"], _angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_23__["Dir"], _angular_cdk_scrolling__WEBPACK_IMPORTED_MODULE_21__["CdkFixedSizeVirtualScroll"], _angular_cdk_scrolling__WEBPACK_IMPORTED_MODULE_21__["CdkVirtualForOf"], _angular_cdk_scrolling__WEBPACK_IMPORTED_MODULE_21__["CdkVirtualScrollViewport"], angular_fittext__WEBPACK_IMPORTED_MODULE_12__["AngularFittextDirective"], ngx_color_picker__WEBPACK_IMPORTED_MODULE_7__["ColorPickerDirective"], ng_inline_svg__WEBPACK_IMPORTED_MODULE_11__["InlineSVGDirective"], _app_component__WEBPACK_IMPORTED_MODULE_14__["AppComponent"],
+_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵsetComponentScope"](_layout__WEBPACK_IMPORTED_MODULE_18__["ItemsGridComponent"], [_angular_cdk_scrolling__WEBPACK_IMPORTED_MODULE_22__["CdkScrollable"], _angular_cdk_drag_drop__WEBPACK_IMPORTED_MODULE_5__["CdkDropList"], _angular_cdk_drag_drop__WEBPACK_IMPORTED_MODULE_5__["CdkDropListGroup"], _angular_cdk_drag_drop__WEBPACK_IMPORTED_MODULE_5__["CdkDrag"], _angular_cdk_drag_drop__WEBPACK_IMPORTED_MODULE_5__["CdkDragHandle"], _angular_cdk_drag_drop__WEBPACK_IMPORTED_MODULE_5__["CdkDragPreview"], _angular_cdk_drag_drop__WEBPACK_IMPORTED_MODULE_5__["CdkDragPlaceholder"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgClass"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgComponentOutlet"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgForOf"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgIf"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgTemplateOutlet"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgStyle"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgSwitch"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgSwitchCase"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgSwitchDefault"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgPlural"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgPluralCase"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["ɵangular_packages_forms_forms_y"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgSelectOption"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["ɵangular_packages_forms_forms_x"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["DefaultValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NumberValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["RangeValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["CheckboxControlValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["SelectControlValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["SelectMultipleControlValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["RadioControlValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgControlStatus"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgControlStatusGroup"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["RequiredValidator"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["MinLengthValidator"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["MaxLengthValidator"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["PatternValidator"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["CheckboxRequiredValidator"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["EmailValidator"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgModel"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgModelGroup"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgForm"], _angular_router__WEBPACK_IMPORTED_MODULE_23__["RouterOutlet"], _angular_router__WEBPACK_IMPORTED_MODULE_23__["RouterLink"], _angular_router__WEBPACK_IMPORTED_MODULE_23__["RouterLinkWithHref"], _angular_router__WEBPACK_IMPORTED_MODULE_23__["RouterLinkActive"], _angular_router__WEBPACK_IMPORTED_MODULE_23__["ɵangular_packages_router_router_l"], _fortawesome_angular_fontawesome__WEBPACK_IMPORTED_MODULE_9__["FaIconComponent"], _fortawesome_angular_fontawesome__WEBPACK_IMPORTED_MODULE_9__["FaDuotoneIconComponent"], _fortawesome_angular_fontawesome__WEBPACK_IMPORTED_MODULE_9__["FaLayersComponent"], _fortawesome_angular_fontawesome__WEBPACK_IMPORTED_MODULE_9__["FaLayersTextComponent"], _fortawesome_angular_fontawesome__WEBPACK_IMPORTED_MODULE_9__["FaLayersCounterComponent"], _fortawesome_angular_fontawesome__WEBPACK_IMPORTED_MODULE_9__["FaStackComponent"], _fortawesome_angular_fontawesome__WEBPACK_IMPORTED_MODULE_9__["FaStackItemSizeDirective"], ngx_webcam__WEBPACK_IMPORTED_MODULE_10__["WebcamComponent"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControlDirective"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormGroupDirective"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControlName"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormGroupName"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormArrayName"], _ckeditor_ckeditor5_angular__WEBPACK_IMPORTED_MODULE_8__["CKEditorComponent"], _angular_cdk_overlay__WEBPACK_IMPORTED_MODULE_6__["CdkConnectedOverlay"], _angular_cdk_overlay__WEBPACK_IMPORTED_MODULE_6__["CdkOverlayOrigin"], _angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_24__["Dir"], _angular_cdk_scrolling__WEBPACK_IMPORTED_MODULE_22__["CdkFixedSizeVirtualScroll"], _angular_cdk_scrolling__WEBPACK_IMPORTED_MODULE_22__["CdkVirtualForOf"], _angular_cdk_scrolling__WEBPACK_IMPORTED_MODULE_22__["CdkVirtualScrollViewport"], angular_fittext__WEBPACK_IMPORTED_MODULE_12__["AngularFittextDirective"], ngx_color_picker__WEBPACK_IMPORTED_MODULE_7__["ColorPickerDirective"], ng_inline_svg__WEBPACK_IMPORTED_MODULE_11__["InlineSVGDirective"], _app_component__WEBPACK_IMPORTED_MODULE_14__["AppComponent"],
     // Page
     // ====================
-    _layout__WEBPACK_IMPORTED_MODULE_17__["HeaderComponent"],
-    _layout__WEBPACK_IMPORTED_MODULE_17__["SearchComponent"],
+    _layout__WEBPACK_IMPORTED_MODULE_18__["HeaderComponent"],
+    _layout__WEBPACK_IMPORTED_MODULE_18__["SearchComponent"],
     // Social
-    _layout__WEBPACK_IMPORTED_MODULE_17__["ProfileComponent"],
-    _layout__WEBPACK_IMPORTED_MODULE_17__["FooterComponent"],
-    _layout__WEBPACK_IMPORTED_MODULE_17__["ItemsComponent"],
-    _layout__WEBPACK_IMPORTED_MODULE_17__["ItemsHeaderComponent"],
-    _layout__WEBPACK_IMPORTED_MODULE_17__["ItemsFilterComponent"],
-    _layout__WEBPACK_IMPORTED_MODULE_17__["ItemsFooterComponent"],
-    _layout__WEBPACK_IMPORTED_MODULE_17__["ItemsGridComponent"],
-    _layout__WEBPACK_IMPORTED_MODULE_17__["ItemsListComponent"],
-    _layout__WEBPACK_IMPORTED_MODULE_17__["ItemsGroupsComponent"],
-    _pages__WEBPACK_IMPORTED_MODULE_16__["CollectionCardGroupComponent"],
+    _layout__WEBPACK_IMPORTED_MODULE_18__["ProfileComponent"],
+    _layout__WEBPACK_IMPORTED_MODULE_18__["FooterComponent"],
+    _layout__WEBPACK_IMPORTED_MODULE_18__["ItemsComponent"],
+    _layout__WEBPACK_IMPORTED_MODULE_18__["ItemsHeaderComponent"],
+    _layout__WEBPACK_IMPORTED_MODULE_18__["ItemsFilterComponent"],
+    _layout__WEBPACK_IMPORTED_MODULE_18__["ItemsFooterComponent"],
+    _layout__WEBPACK_IMPORTED_MODULE_18__["ItemsGridComponent"],
+    _layout__WEBPACK_IMPORTED_MODULE_18__["ItemsListComponent"],
+    _layout__WEBPACK_IMPORTED_MODULE_18__["ItemsGroupsComponent"],
+    _pages__WEBPACK_IMPORTED_MODULE_17__["CollectionCardGroupComponent"],
     // Controls
     // ====================
     _controls__WEBPACK_IMPORTED_MODULE_15__["MenuComponent"],
@@ -510,58 +521,58 @@ _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵsetComponentScope"](_layout__WEB
     _controls__WEBPACK_IMPORTED_MODULE_15__["ProgressBarComponent"],
     _controls__WEBPACK_IMPORTED_MODULE_15__["TypeTagComponent"],
     _controls__WEBPACK_IMPORTED_MODULE_15__["DialogComponent"],
-    _controls__WEBPACK_IMPORTED_MODULE_15__["CardCollectionComponent"],
-    _controls__WEBPACK_IMPORTED_MODULE_15__["CardCollectionItemComponent"],
+    _components__WEBPACK_IMPORTED_MODULE_16__["CardCollectionComponent"],
+    _components__WEBPACK_IMPORTED_MODULE_16__["CardCollectionItemComponent"],
     _controls__WEBPACK_IMPORTED_MODULE_15__["EmptyComponent"],
     _controls__WEBPACK_IMPORTED_MODULE_15__["HeroComponent"],
     // Pages
     // ====================
     // Website
-    _pages__WEBPACK_IMPORTED_MODULE_16__["HomeComponent"],
+    _pages__WEBPACK_IMPORTED_MODULE_17__["HomeComponent"],
     // Cards
-    _pages__WEBPACK_IMPORTED_MODULE_16__["CardsComponent"],
-    _pages__WEBPACK_IMPORTED_MODULE_16__["CardItemGridComponent"],
-    _pages_cards_card_item_card_item_list_card_item_list_component__WEBPACK_IMPORTED_MODULE_20__["CardItemListComponent"],
-    _pages__WEBPACK_IMPORTED_MODULE_16__["CardComponent"],
+    _pages__WEBPACK_IMPORTED_MODULE_17__["CardsComponent"],
+    _pages__WEBPACK_IMPORTED_MODULE_17__["CardItemGridComponent"],
+    _pages_cards_card_item_card_item_list_card_item_list_component__WEBPACK_IMPORTED_MODULE_21__["CardItemListComponent"],
+    _pages__WEBPACK_IMPORTED_MODULE_17__["CardComponent"],
     // Auth
-    _pages__WEBPACK_IMPORTED_MODULE_16__["SignInComponent"],
-    _pages__WEBPACK_IMPORTED_MODULE_16__["SignUpComponent"],
-    _pages__WEBPACK_IMPORTED_MODULE_16__["ForgotComponent"],
-    _pages__WEBPACK_IMPORTED_MODULE_16__["ResetComponent"],
+    _pages__WEBPACK_IMPORTED_MODULE_17__["SignInComponent"],
+    _pages__WEBPACK_IMPORTED_MODULE_17__["SignUpComponent"],
+    _pages__WEBPACK_IMPORTED_MODULE_17__["ForgotComponent"],
+    _pages__WEBPACK_IMPORTED_MODULE_17__["ResetComponent"],
     // Scanner
-    _pages__WEBPACK_IMPORTED_MODULE_16__["ScannerComponent"],
-    _pages__WEBPACK_IMPORTED_MODULE_16__["ScannerListsComponent"],
-    _pages__WEBPACK_IMPORTED_MODULE_16__["ScannerListComponent"],
+    _pages__WEBPACK_IMPORTED_MODULE_17__["ScannerComponent"],
+    _pages__WEBPACK_IMPORTED_MODULE_17__["ScannerListsComponent"],
+    _pages__WEBPACK_IMPORTED_MODULE_17__["ScannerListComponent"],
     // Expansion
-    _pages__WEBPACK_IMPORTED_MODULE_16__["ExpansionsComponent"],
-    _pages__WEBPACK_IMPORTED_MODULE_16__["ExpansionItemGridComponent"],
-    _pages__WEBPACK_IMPORTED_MODULE_16__["ExpansionItemListComponent"],
-    _pages__WEBPACK_IMPORTED_MODULE_16__["ExpansionComponent"],
+    _pages__WEBPACK_IMPORTED_MODULE_17__["ExpansionsComponent"],
+    _pages__WEBPACK_IMPORTED_MODULE_17__["ExpansionItemGridComponent"],
+    _pages__WEBPACK_IMPORTED_MODULE_17__["ExpansionItemListComponent"],
+    _pages__WEBPACK_IMPORTED_MODULE_17__["ExpansionComponent"],
     // Pokemon
-    _pages__WEBPACK_IMPORTED_MODULE_16__["PokemonsComponent"],
-    _pages__WEBPACK_IMPORTED_MODULE_16__["PokemonItemGridComponent"],
-    _pages__WEBPACK_IMPORTED_MODULE_16__["PokmeonItemListComponent"],
-    _pages__WEBPACK_IMPORTED_MODULE_16__["PokemonComponent"],
+    _pages__WEBPACK_IMPORTED_MODULE_17__["PokemonsComponent"],
+    _pages__WEBPACK_IMPORTED_MODULE_17__["PokemonItemGridComponent"],
+    _pages__WEBPACK_IMPORTED_MODULE_17__["PokmeonItemListComponent"],
+    _pages__WEBPACK_IMPORTED_MODULE_17__["PokemonComponent"],
     // Collection
-    _pages__WEBPACK_IMPORTED_MODULE_16__["CollectionComponent"],
+    _pages__WEBPACK_IMPORTED_MODULE_17__["CollectionComponent"],
     // Helpers
-    _helpers__WEBPACK_IMPORTED_MODULE_18__["ClickOutsideDirective"]], [_angular_common__WEBPACK_IMPORTED_MODULE_4__["AsyncPipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["UpperCasePipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["LowerCasePipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["JsonPipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["SlicePipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["DecimalPipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["PercentPipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["TitleCasePipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["CurrencyPipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["DatePipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["I18nPluralPipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["I18nSelectPipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["KeyValuePipe"]]);
-_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵsetComponentScope"](_layout__WEBPACK_IMPORTED_MODULE_17__["ItemsListComponent"], [_angular_cdk_scrolling__WEBPACK_IMPORTED_MODULE_21__["CdkScrollable"], _angular_cdk_drag_drop__WEBPACK_IMPORTED_MODULE_5__["CdkDropList"], _angular_cdk_drag_drop__WEBPACK_IMPORTED_MODULE_5__["CdkDropListGroup"], _angular_cdk_drag_drop__WEBPACK_IMPORTED_MODULE_5__["CdkDrag"], _angular_cdk_drag_drop__WEBPACK_IMPORTED_MODULE_5__["CdkDragHandle"], _angular_cdk_drag_drop__WEBPACK_IMPORTED_MODULE_5__["CdkDragPreview"], _angular_cdk_drag_drop__WEBPACK_IMPORTED_MODULE_5__["CdkDragPlaceholder"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgClass"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgComponentOutlet"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgForOf"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgIf"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgTemplateOutlet"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgStyle"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgSwitch"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgSwitchCase"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgSwitchDefault"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgPlural"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgPluralCase"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["ɵangular_packages_forms_forms_y"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgSelectOption"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["ɵangular_packages_forms_forms_x"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["DefaultValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NumberValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["RangeValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["CheckboxControlValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["SelectControlValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["SelectMultipleControlValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["RadioControlValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgControlStatus"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgControlStatusGroup"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["RequiredValidator"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["MinLengthValidator"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["MaxLengthValidator"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["PatternValidator"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["CheckboxRequiredValidator"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["EmailValidator"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgModel"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgModelGroup"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgForm"], _angular_router__WEBPACK_IMPORTED_MODULE_22__["RouterOutlet"], _angular_router__WEBPACK_IMPORTED_MODULE_22__["RouterLink"], _angular_router__WEBPACK_IMPORTED_MODULE_22__["RouterLinkWithHref"], _angular_router__WEBPACK_IMPORTED_MODULE_22__["RouterLinkActive"], _angular_router__WEBPACK_IMPORTED_MODULE_22__["ɵangular_packages_router_router_l"], _fortawesome_angular_fontawesome__WEBPACK_IMPORTED_MODULE_9__["FaIconComponent"], _fortawesome_angular_fontawesome__WEBPACK_IMPORTED_MODULE_9__["FaDuotoneIconComponent"], _fortawesome_angular_fontawesome__WEBPACK_IMPORTED_MODULE_9__["FaLayersComponent"], _fortawesome_angular_fontawesome__WEBPACK_IMPORTED_MODULE_9__["FaLayersTextComponent"], _fortawesome_angular_fontawesome__WEBPACK_IMPORTED_MODULE_9__["FaLayersCounterComponent"], _fortawesome_angular_fontawesome__WEBPACK_IMPORTED_MODULE_9__["FaStackComponent"], _fortawesome_angular_fontawesome__WEBPACK_IMPORTED_MODULE_9__["FaStackItemSizeDirective"], ngx_webcam__WEBPACK_IMPORTED_MODULE_10__["WebcamComponent"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControlDirective"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormGroupDirective"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControlName"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormGroupName"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormArrayName"], _ckeditor_ckeditor5_angular__WEBPACK_IMPORTED_MODULE_8__["CKEditorComponent"], _angular_cdk_overlay__WEBPACK_IMPORTED_MODULE_6__["CdkConnectedOverlay"], _angular_cdk_overlay__WEBPACK_IMPORTED_MODULE_6__["CdkOverlayOrigin"], _angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_23__["Dir"], _angular_cdk_scrolling__WEBPACK_IMPORTED_MODULE_21__["CdkFixedSizeVirtualScroll"], _angular_cdk_scrolling__WEBPACK_IMPORTED_MODULE_21__["CdkVirtualForOf"], _angular_cdk_scrolling__WEBPACK_IMPORTED_MODULE_21__["CdkVirtualScrollViewport"], angular_fittext__WEBPACK_IMPORTED_MODULE_12__["AngularFittextDirective"], ngx_color_picker__WEBPACK_IMPORTED_MODULE_7__["ColorPickerDirective"], ng_inline_svg__WEBPACK_IMPORTED_MODULE_11__["InlineSVGDirective"], _app_component__WEBPACK_IMPORTED_MODULE_14__["AppComponent"],
+    _helpers__WEBPACK_IMPORTED_MODULE_19__["ClickOutsideDirective"]], [_angular_common__WEBPACK_IMPORTED_MODULE_4__["AsyncPipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["UpperCasePipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["LowerCasePipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["JsonPipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["SlicePipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["DecimalPipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["PercentPipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["TitleCasePipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["CurrencyPipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["DatePipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["I18nPluralPipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["I18nSelectPipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["KeyValuePipe"]]);
+_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵsetComponentScope"](_layout__WEBPACK_IMPORTED_MODULE_18__["ItemsListComponent"], [_angular_cdk_scrolling__WEBPACK_IMPORTED_MODULE_22__["CdkScrollable"], _angular_cdk_drag_drop__WEBPACK_IMPORTED_MODULE_5__["CdkDropList"], _angular_cdk_drag_drop__WEBPACK_IMPORTED_MODULE_5__["CdkDropListGroup"], _angular_cdk_drag_drop__WEBPACK_IMPORTED_MODULE_5__["CdkDrag"], _angular_cdk_drag_drop__WEBPACK_IMPORTED_MODULE_5__["CdkDragHandle"], _angular_cdk_drag_drop__WEBPACK_IMPORTED_MODULE_5__["CdkDragPreview"], _angular_cdk_drag_drop__WEBPACK_IMPORTED_MODULE_5__["CdkDragPlaceholder"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgClass"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgComponentOutlet"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgForOf"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgIf"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgTemplateOutlet"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgStyle"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgSwitch"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgSwitchCase"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgSwitchDefault"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgPlural"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgPluralCase"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["ɵangular_packages_forms_forms_y"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgSelectOption"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["ɵangular_packages_forms_forms_x"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["DefaultValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NumberValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["RangeValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["CheckboxControlValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["SelectControlValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["SelectMultipleControlValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["RadioControlValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgControlStatus"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgControlStatusGroup"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["RequiredValidator"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["MinLengthValidator"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["MaxLengthValidator"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["PatternValidator"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["CheckboxRequiredValidator"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["EmailValidator"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgModel"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgModelGroup"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgForm"], _angular_router__WEBPACK_IMPORTED_MODULE_23__["RouterOutlet"], _angular_router__WEBPACK_IMPORTED_MODULE_23__["RouterLink"], _angular_router__WEBPACK_IMPORTED_MODULE_23__["RouterLinkWithHref"], _angular_router__WEBPACK_IMPORTED_MODULE_23__["RouterLinkActive"], _angular_router__WEBPACK_IMPORTED_MODULE_23__["ɵangular_packages_router_router_l"], _fortawesome_angular_fontawesome__WEBPACK_IMPORTED_MODULE_9__["FaIconComponent"], _fortawesome_angular_fontawesome__WEBPACK_IMPORTED_MODULE_9__["FaDuotoneIconComponent"], _fortawesome_angular_fontawesome__WEBPACK_IMPORTED_MODULE_9__["FaLayersComponent"], _fortawesome_angular_fontawesome__WEBPACK_IMPORTED_MODULE_9__["FaLayersTextComponent"], _fortawesome_angular_fontawesome__WEBPACK_IMPORTED_MODULE_9__["FaLayersCounterComponent"], _fortawesome_angular_fontawesome__WEBPACK_IMPORTED_MODULE_9__["FaStackComponent"], _fortawesome_angular_fontawesome__WEBPACK_IMPORTED_MODULE_9__["FaStackItemSizeDirective"], ngx_webcam__WEBPACK_IMPORTED_MODULE_10__["WebcamComponent"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControlDirective"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormGroupDirective"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControlName"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormGroupName"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormArrayName"], _ckeditor_ckeditor5_angular__WEBPACK_IMPORTED_MODULE_8__["CKEditorComponent"], _angular_cdk_overlay__WEBPACK_IMPORTED_MODULE_6__["CdkConnectedOverlay"], _angular_cdk_overlay__WEBPACK_IMPORTED_MODULE_6__["CdkOverlayOrigin"], _angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_24__["Dir"], _angular_cdk_scrolling__WEBPACK_IMPORTED_MODULE_22__["CdkFixedSizeVirtualScroll"], _angular_cdk_scrolling__WEBPACK_IMPORTED_MODULE_22__["CdkVirtualForOf"], _angular_cdk_scrolling__WEBPACK_IMPORTED_MODULE_22__["CdkVirtualScrollViewport"], angular_fittext__WEBPACK_IMPORTED_MODULE_12__["AngularFittextDirective"], ngx_color_picker__WEBPACK_IMPORTED_MODULE_7__["ColorPickerDirective"], ng_inline_svg__WEBPACK_IMPORTED_MODULE_11__["InlineSVGDirective"], _app_component__WEBPACK_IMPORTED_MODULE_14__["AppComponent"],
     // Page
     // ====================
-    _layout__WEBPACK_IMPORTED_MODULE_17__["HeaderComponent"],
-    _layout__WEBPACK_IMPORTED_MODULE_17__["SearchComponent"],
+    _layout__WEBPACK_IMPORTED_MODULE_18__["HeaderComponent"],
+    _layout__WEBPACK_IMPORTED_MODULE_18__["SearchComponent"],
     // Social
-    _layout__WEBPACK_IMPORTED_MODULE_17__["ProfileComponent"],
-    _layout__WEBPACK_IMPORTED_MODULE_17__["FooterComponent"],
-    _layout__WEBPACK_IMPORTED_MODULE_17__["ItemsComponent"],
-    _layout__WEBPACK_IMPORTED_MODULE_17__["ItemsHeaderComponent"],
-    _layout__WEBPACK_IMPORTED_MODULE_17__["ItemsFilterComponent"],
-    _layout__WEBPACK_IMPORTED_MODULE_17__["ItemsFooterComponent"],
-    _layout__WEBPACK_IMPORTED_MODULE_17__["ItemsGridComponent"],
-    _layout__WEBPACK_IMPORTED_MODULE_17__["ItemsListComponent"],
-    _layout__WEBPACK_IMPORTED_MODULE_17__["ItemsGroupsComponent"],
-    _pages__WEBPACK_IMPORTED_MODULE_16__["CollectionCardGroupComponent"],
+    _layout__WEBPACK_IMPORTED_MODULE_18__["ProfileComponent"],
+    _layout__WEBPACK_IMPORTED_MODULE_18__["FooterComponent"],
+    _layout__WEBPACK_IMPORTED_MODULE_18__["ItemsComponent"],
+    _layout__WEBPACK_IMPORTED_MODULE_18__["ItemsHeaderComponent"],
+    _layout__WEBPACK_IMPORTED_MODULE_18__["ItemsFilterComponent"],
+    _layout__WEBPACK_IMPORTED_MODULE_18__["ItemsFooterComponent"],
+    _layout__WEBPACK_IMPORTED_MODULE_18__["ItemsGridComponent"],
+    _layout__WEBPACK_IMPORTED_MODULE_18__["ItemsListComponent"],
+    _layout__WEBPACK_IMPORTED_MODULE_18__["ItemsGroupsComponent"],
+    _pages__WEBPACK_IMPORTED_MODULE_17__["CollectionCardGroupComponent"],
     // Controls
     // ====================
     _controls__WEBPACK_IMPORTED_MODULE_15__["MenuComponent"],
@@ -582,58 +593,58 @@ _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵsetComponentScope"](_layout__WEB
     _controls__WEBPACK_IMPORTED_MODULE_15__["ProgressBarComponent"],
     _controls__WEBPACK_IMPORTED_MODULE_15__["TypeTagComponent"],
     _controls__WEBPACK_IMPORTED_MODULE_15__["DialogComponent"],
-    _controls__WEBPACK_IMPORTED_MODULE_15__["CardCollectionComponent"],
-    _controls__WEBPACK_IMPORTED_MODULE_15__["CardCollectionItemComponent"],
+    _components__WEBPACK_IMPORTED_MODULE_16__["CardCollectionComponent"],
+    _components__WEBPACK_IMPORTED_MODULE_16__["CardCollectionItemComponent"],
     _controls__WEBPACK_IMPORTED_MODULE_15__["EmptyComponent"],
     _controls__WEBPACK_IMPORTED_MODULE_15__["HeroComponent"],
     // Pages
     // ====================
     // Website
-    _pages__WEBPACK_IMPORTED_MODULE_16__["HomeComponent"],
+    _pages__WEBPACK_IMPORTED_MODULE_17__["HomeComponent"],
     // Cards
-    _pages__WEBPACK_IMPORTED_MODULE_16__["CardsComponent"],
-    _pages__WEBPACK_IMPORTED_MODULE_16__["CardItemGridComponent"],
-    _pages_cards_card_item_card_item_list_card_item_list_component__WEBPACK_IMPORTED_MODULE_20__["CardItemListComponent"],
-    _pages__WEBPACK_IMPORTED_MODULE_16__["CardComponent"],
+    _pages__WEBPACK_IMPORTED_MODULE_17__["CardsComponent"],
+    _pages__WEBPACK_IMPORTED_MODULE_17__["CardItemGridComponent"],
+    _pages_cards_card_item_card_item_list_card_item_list_component__WEBPACK_IMPORTED_MODULE_21__["CardItemListComponent"],
+    _pages__WEBPACK_IMPORTED_MODULE_17__["CardComponent"],
     // Auth
-    _pages__WEBPACK_IMPORTED_MODULE_16__["SignInComponent"],
-    _pages__WEBPACK_IMPORTED_MODULE_16__["SignUpComponent"],
-    _pages__WEBPACK_IMPORTED_MODULE_16__["ForgotComponent"],
-    _pages__WEBPACK_IMPORTED_MODULE_16__["ResetComponent"],
+    _pages__WEBPACK_IMPORTED_MODULE_17__["SignInComponent"],
+    _pages__WEBPACK_IMPORTED_MODULE_17__["SignUpComponent"],
+    _pages__WEBPACK_IMPORTED_MODULE_17__["ForgotComponent"],
+    _pages__WEBPACK_IMPORTED_MODULE_17__["ResetComponent"],
     // Scanner
-    _pages__WEBPACK_IMPORTED_MODULE_16__["ScannerComponent"],
-    _pages__WEBPACK_IMPORTED_MODULE_16__["ScannerListsComponent"],
-    _pages__WEBPACK_IMPORTED_MODULE_16__["ScannerListComponent"],
+    _pages__WEBPACK_IMPORTED_MODULE_17__["ScannerComponent"],
+    _pages__WEBPACK_IMPORTED_MODULE_17__["ScannerListsComponent"],
+    _pages__WEBPACK_IMPORTED_MODULE_17__["ScannerListComponent"],
     // Expansion
-    _pages__WEBPACK_IMPORTED_MODULE_16__["ExpansionsComponent"],
-    _pages__WEBPACK_IMPORTED_MODULE_16__["ExpansionItemGridComponent"],
-    _pages__WEBPACK_IMPORTED_MODULE_16__["ExpansionItemListComponent"],
-    _pages__WEBPACK_IMPORTED_MODULE_16__["ExpansionComponent"],
+    _pages__WEBPACK_IMPORTED_MODULE_17__["ExpansionsComponent"],
+    _pages__WEBPACK_IMPORTED_MODULE_17__["ExpansionItemGridComponent"],
+    _pages__WEBPACK_IMPORTED_MODULE_17__["ExpansionItemListComponent"],
+    _pages__WEBPACK_IMPORTED_MODULE_17__["ExpansionComponent"],
     // Pokemon
-    _pages__WEBPACK_IMPORTED_MODULE_16__["PokemonsComponent"],
-    _pages__WEBPACK_IMPORTED_MODULE_16__["PokemonItemGridComponent"],
-    _pages__WEBPACK_IMPORTED_MODULE_16__["PokmeonItemListComponent"],
-    _pages__WEBPACK_IMPORTED_MODULE_16__["PokemonComponent"],
+    _pages__WEBPACK_IMPORTED_MODULE_17__["PokemonsComponent"],
+    _pages__WEBPACK_IMPORTED_MODULE_17__["PokemonItemGridComponent"],
+    _pages__WEBPACK_IMPORTED_MODULE_17__["PokmeonItemListComponent"],
+    _pages__WEBPACK_IMPORTED_MODULE_17__["PokemonComponent"],
     // Collection
-    _pages__WEBPACK_IMPORTED_MODULE_16__["CollectionComponent"],
+    _pages__WEBPACK_IMPORTED_MODULE_17__["CollectionComponent"],
     // Helpers
-    _helpers__WEBPACK_IMPORTED_MODULE_18__["ClickOutsideDirective"]], [_angular_common__WEBPACK_IMPORTED_MODULE_4__["AsyncPipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["UpperCasePipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["LowerCasePipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["JsonPipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["SlicePipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["DecimalPipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["PercentPipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["TitleCasePipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["CurrencyPipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["DatePipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["I18nPluralPipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["I18nSelectPipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["KeyValuePipe"]]);
-_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵsetComponentScope"](_layout__WEBPACK_IMPORTED_MODULE_17__["ItemsGroupsComponent"], [_angular_cdk_scrolling__WEBPACK_IMPORTED_MODULE_21__["CdkScrollable"], _angular_cdk_drag_drop__WEBPACK_IMPORTED_MODULE_5__["CdkDropList"], _angular_cdk_drag_drop__WEBPACK_IMPORTED_MODULE_5__["CdkDropListGroup"], _angular_cdk_drag_drop__WEBPACK_IMPORTED_MODULE_5__["CdkDrag"], _angular_cdk_drag_drop__WEBPACK_IMPORTED_MODULE_5__["CdkDragHandle"], _angular_cdk_drag_drop__WEBPACK_IMPORTED_MODULE_5__["CdkDragPreview"], _angular_cdk_drag_drop__WEBPACK_IMPORTED_MODULE_5__["CdkDragPlaceholder"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgClass"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgComponentOutlet"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgForOf"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgIf"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgTemplateOutlet"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgStyle"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgSwitch"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgSwitchCase"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgSwitchDefault"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgPlural"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgPluralCase"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["ɵangular_packages_forms_forms_y"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgSelectOption"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["ɵangular_packages_forms_forms_x"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["DefaultValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NumberValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["RangeValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["CheckboxControlValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["SelectControlValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["SelectMultipleControlValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["RadioControlValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgControlStatus"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgControlStatusGroup"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["RequiredValidator"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["MinLengthValidator"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["MaxLengthValidator"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["PatternValidator"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["CheckboxRequiredValidator"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["EmailValidator"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgModel"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgModelGroup"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgForm"], _angular_router__WEBPACK_IMPORTED_MODULE_22__["RouterOutlet"], _angular_router__WEBPACK_IMPORTED_MODULE_22__["RouterLink"], _angular_router__WEBPACK_IMPORTED_MODULE_22__["RouterLinkWithHref"], _angular_router__WEBPACK_IMPORTED_MODULE_22__["RouterLinkActive"], _angular_router__WEBPACK_IMPORTED_MODULE_22__["ɵangular_packages_router_router_l"], _fortawesome_angular_fontawesome__WEBPACK_IMPORTED_MODULE_9__["FaIconComponent"], _fortawesome_angular_fontawesome__WEBPACK_IMPORTED_MODULE_9__["FaDuotoneIconComponent"], _fortawesome_angular_fontawesome__WEBPACK_IMPORTED_MODULE_9__["FaLayersComponent"], _fortawesome_angular_fontawesome__WEBPACK_IMPORTED_MODULE_9__["FaLayersTextComponent"], _fortawesome_angular_fontawesome__WEBPACK_IMPORTED_MODULE_9__["FaLayersCounterComponent"], _fortawesome_angular_fontawesome__WEBPACK_IMPORTED_MODULE_9__["FaStackComponent"], _fortawesome_angular_fontawesome__WEBPACK_IMPORTED_MODULE_9__["FaStackItemSizeDirective"], ngx_webcam__WEBPACK_IMPORTED_MODULE_10__["WebcamComponent"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControlDirective"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormGroupDirective"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControlName"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormGroupName"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormArrayName"], _ckeditor_ckeditor5_angular__WEBPACK_IMPORTED_MODULE_8__["CKEditorComponent"], _angular_cdk_overlay__WEBPACK_IMPORTED_MODULE_6__["CdkConnectedOverlay"], _angular_cdk_overlay__WEBPACK_IMPORTED_MODULE_6__["CdkOverlayOrigin"], _angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_23__["Dir"], _angular_cdk_scrolling__WEBPACK_IMPORTED_MODULE_21__["CdkFixedSizeVirtualScroll"], _angular_cdk_scrolling__WEBPACK_IMPORTED_MODULE_21__["CdkVirtualForOf"], _angular_cdk_scrolling__WEBPACK_IMPORTED_MODULE_21__["CdkVirtualScrollViewport"], angular_fittext__WEBPACK_IMPORTED_MODULE_12__["AngularFittextDirective"], ngx_color_picker__WEBPACK_IMPORTED_MODULE_7__["ColorPickerDirective"], ng_inline_svg__WEBPACK_IMPORTED_MODULE_11__["InlineSVGDirective"], _app_component__WEBPACK_IMPORTED_MODULE_14__["AppComponent"],
+    _helpers__WEBPACK_IMPORTED_MODULE_19__["ClickOutsideDirective"]], [_angular_common__WEBPACK_IMPORTED_MODULE_4__["AsyncPipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["UpperCasePipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["LowerCasePipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["JsonPipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["SlicePipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["DecimalPipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["PercentPipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["TitleCasePipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["CurrencyPipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["DatePipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["I18nPluralPipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["I18nSelectPipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["KeyValuePipe"]]);
+_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵsetComponentScope"](_layout__WEBPACK_IMPORTED_MODULE_18__["ItemsGroupsComponent"], [_angular_cdk_scrolling__WEBPACK_IMPORTED_MODULE_22__["CdkScrollable"], _angular_cdk_drag_drop__WEBPACK_IMPORTED_MODULE_5__["CdkDropList"], _angular_cdk_drag_drop__WEBPACK_IMPORTED_MODULE_5__["CdkDropListGroup"], _angular_cdk_drag_drop__WEBPACK_IMPORTED_MODULE_5__["CdkDrag"], _angular_cdk_drag_drop__WEBPACK_IMPORTED_MODULE_5__["CdkDragHandle"], _angular_cdk_drag_drop__WEBPACK_IMPORTED_MODULE_5__["CdkDragPreview"], _angular_cdk_drag_drop__WEBPACK_IMPORTED_MODULE_5__["CdkDragPlaceholder"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgClass"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgComponentOutlet"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgForOf"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgIf"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgTemplateOutlet"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgStyle"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgSwitch"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgSwitchCase"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgSwitchDefault"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgPlural"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgPluralCase"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["ɵangular_packages_forms_forms_y"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgSelectOption"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["ɵangular_packages_forms_forms_x"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["DefaultValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NumberValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["RangeValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["CheckboxControlValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["SelectControlValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["SelectMultipleControlValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["RadioControlValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgControlStatus"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgControlStatusGroup"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["RequiredValidator"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["MinLengthValidator"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["MaxLengthValidator"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["PatternValidator"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["CheckboxRequiredValidator"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["EmailValidator"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgModel"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgModelGroup"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgForm"], _angular_router__WEBPACK_IMPORTED_MODULE_23__["RouterOutlet"], _angular_router__WEBPACK_IMPORTED_MODULE_23__["RouterLink"], _angular_router__WEBPACK_IMPORTED_MODULE_23__["RouterLinkWithHref"], _angular_router__WEBPACK_IMPORTED_MODULE_23__["RouterLinkActive"], _angular_router__WEBPACK_IMPORTED_MODULE_23__["ɵangular_packages_router_router_l"], _fortawesome_angular_fontawesome__WEBPACK_IMPORTED_MODULE_9__["FaIconComponent"], _fortawesome_angular_fontawesome__WEBPACK_IMPORTED_MODULE_9__["FaDuotoneIconComponent"], _fortawesome_angular_fontawesome__WEBPACK_IMPORTED_MODULE_9__["FaLayersComponent"], _fortawesome_angular_fontawesome__WEBPACK_IMPORTED_MODULE_9__["FaLayersTextComponent"], _fortawesome_angular_fontawesome__WEBPACK_IMPORTED_MODULE_9__["FaLayersCounterComponent"], _fortawesome_angular_fontawesome__WEBPACK_IMPORTED_MODULE_9__["FaStackComponent"], _fortawesome_angular_fontawesome__WEBPACK_IMPORTED_MODULE_9__["FaStackItemSizeDirective"], ngx_webcam__WEBPACK_IMPORTED_MODULE_10__["WebcamComponent"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControlDirective"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormGroupDirective"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControlName"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormGroupName"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormArrayName"], _ckeditor_ckeditor5_angular__WEBPACK_IMPORTED_MODULE_8__["CKEditorComponent"], _angular_cdk_overlay__WEBPACK_IMPORTED_MODULE_6__["CdkConnectedOverlay"], _angular_cdk_overlay__WEBPACK_IMPORTED_MODULE_6__["CdkOverlayOrigin"], _angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_24__["Dir"], _angular_cdk_scrolling__WEBPACK_IMPORTED_MODULE_22__["CdkFixedSizeVirtualScroll"], _angular_cdk_scrolling__WEBPACK_IMPORTED_MODULE_22__["CdkVirtualForOf"], _angular_cdk_scrolling__WEBPACK_IMPORTED_MODULE_22__["CdkVirtualScrollViewport"], angular_fittext__WEBPACK_IMPORTED_MODULE_12__["AngularFittextDirective"], ngx_color_picker__WEBPACK_IMPORTED_MODULE_7__["ColorPickerDirective"], ng_inline_svg__WEBPACK_IMPORTED_MODULE_11__["InlineSVGDirective"], _app_component__WEBPACK_IMPORTED_MODULE_14__["AppComponent"],
     // Page
     // ====================
-    _layout__WEBPACK_IMPORTED_MODULE_17__["HeaderComponent"],
-    _layout__WEBPACK_IMPORTED_MODULE_17__["SearchComponent"],
+    _layout__WEBPACK_IMPORTED_MODULE_18__["HeaderComponent"],
+    _layout__WEBPACK_IMPORTED_MODULE_18__["SearchComponent"],
     // Social
-    _layout__WEBPACK_IMPORTED_MODULE_17__["ProfileComponent"],
-    _layout__WEBPACK_IMPORTED_MODULE_17__["FooterComponent"],
-    _layout__WEBPACK_IMPORTED_MODULE_17__["ItemsComponent"],
-    _layout__WEBPACK_IMPORTED_MODULE_17__["ItemsHeaderComponent"],
-    _layout__WEBPACK_IMPORTED_MODULE_17__["ItemsFilterComponent"],
-    _layout__WEBPACK_IMPORTED_MODULE_17__["ItemsFooterComponent"],
-    _layout__WEBPACK_IMPORTED_MODULE_17__["ItemsGridComponent"],
-    _layout__WEBPACK_IMPORTED_MODULE_17__["ItemsListComponent"],
-    _layout__WEBPACK_IMPORTED_MODULE_17__["ItemsGroupsComponent"],
-    _pages__WEBPACK_IMPORTED_MODULE_16__["CollectionCardGroupComponent"],
+    _layout__WEBPACK_IMPORTED_MODULE_18__["ProfileComponent"],
+    _layout__WEBPACK_IMPORTED_MODULE_18__["FooterComponent"],
+    _layout__WEBPACK_IMPORTED_MODULE_18__["ItemsComponent"],
+    _layout__WEBPACK_IMPORTED_MODULE_18__["ItemsHeaderComponent"],
+    _layout__WEBPACK_IMPORTED_MODULE_18__["ItemsFilterComponent"],
+    _layout__WEBPACK_IMPORTED_MODULE_18__["ItemsFooterComponent"],
+    _layout__WEBPACK_IMPORTED_MODULE_18__["ItemsGridComponent"],
+    _layout__WEBPACK_IMPORTED_MODULE_18__["ItemsListComponent"],
+    _layout__WEBPACK_IMPORTED_MODULE_18__["ItemsGroupsComponent"],
+    _pages__WEBPACK_IMPORTED_MODULE_17__["CollectionCardGroupComponent"],
     // Controls
     // ====================
     _controls__WEBPACK_IMPORTED_MODULE_15__["MenuComponent"],
@@ -654,58 +665,58 @@ _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵsetComponentScope"](_layout__WEB
     _controls__WEBPACK_IMPORTED_MODULE_15__["ProgressBarComponent"],
     _controls__WEBPACK_IMPORTED_MODULE_15__["TypeTagComponent"],
     _controls__WEBPACK_IMPORTED_MODULE_15__["DialogComponent"],
-    _controls__WEBPACK_IMPORTED_MODULE_15__["CardCollectionComponent"],
-    _controls__WEBPACK_IMPORTED_MODULE_15__["CardCollectionItemComponent"],
+    _components__WEBPACK_IMPORTED_MODULE_16__["CardCollectionComponent"],
+    _components__WEBPACK_IMPORTED_MODULE_16__["CardCollectionItemComponent"],
     _controls__WEBPACK_IMPORTED_MODULE_15__["EmptyComponent"],
     _controls__WEBPACK_IMPORTED_MODULE_15__["HeroComponent"],
     // Pages
     // ====================
     // Website
-    _pages__WEBPACK_IMPORTED_MODULE_16__["HomeComponent"],
+    _pages__WEBPACK_IMPORTED_MODULE_17__["HomeComponent"],
     // Cards
-    _pages__WEBPACK_IMPORTED_MODULE_16__["CardsComponent"],
-    _pages__WEBPACK_IMPORTED_MODULE_16__["CardItemGridComponent"],
-    _pages_cards_card_item_card_item_list_card_item_list_component__WEBPACK_IMPORTED_MODULE_20__["CardItemListComponent"],
-    _pages__WEBPACK_IMPORTED_MODULE_16__["CardComponent"],
+    _pages__WEBPACK_IMPORTED_MODULE_17__["CardsComponent"],
+    _pages__WEBPACK_IMPORTED_MODULE_17__["CardItemGridComponent"],
+    _pages_cards_card_item_card_item_list_card_item_list_component__WEBPACK_IMPORTED_MODULE_21__["CardItemListComponent"],
+    _pages__WEBPACK_IMPORTED_MODULE_17__["CardComponent"],
     // Auth
-    _pages__WEBPACK_IMPORTED_MODULE_16__["SignInComponent"],
-    _pages__WEBPACK_IMPORTED_MODULE_16__["SignUpComponent"],
-    _pages__WEBPACK_IMPORTED_MODULE_16__["ForgotComponent"],
-    _pages__WEBPACK_IMPORTED_MODULE_16__["ResetComponent"],
+    _pages__WEBPACK_IMPORTED_MODULE_17__["SignInComponent"],
+    _pages__WEBPACK_IMPORTED_MODULE_17__["SignUpComponent"],
+    _pages__WEBPACK_IMPORTED_MODULE_17__["ForgotComponent"],
+    _pages__WEBPACK_IMPORTED_MODULE_17__["ResetComponent"],
     // Scanner
-    _pages__WEBPACK_IMPORTED_MODULE_16__["ScannerComponent"],
-    _pages__WEBPACK_IMPORTED_MODULE_16__["ScannerListsComponent"],
-    _pages__WEBPACK_IMPORTED_MODULE_16__["ScannerListComponent"],
+    _pages__WEBPACK_IMPORTED_MODULE_17__["ScannerComponent"],
+    _pages__WEBPACK_IMPORTED_MODULE_17__["ScannerListsComponent"],
+    _pages__WEBPACK_IMPORTED_MODULE_17__["ScannerListComponent"],
     // Expansion
-    _pages__WEBPACK_IMPORTED_MODULE_16__["ExpansionsComponent"],
-    _pages__WEBPACK_IMPORTED_MODULE_16__["ExpansionItemGridComponent"],
-    _pages__WEBPACK_IMPORTED_MODULE_16__["ExpansionItemListComponent"],
-    _pages__WEBPACK_IMPORTED_MODULE_16__["ExpansionComponent"],
+    _pages__WEBPACK_IMPORTED_MODULE_17__["ExpansionsComponent"],
+    _pages__WEBPACK_IMPORTED_MODULE_17__["ExpansionItemGridComponent"],
+    _pages__WEBPACK_IMPORTED_MODULE_17__["ExpansionItemListComponent"],
+    _pages__WEBPACK_IMPORTED_MODULE_17__["ExpansionComponent"],
     // Pokemon
-    _pages__WEBPACK_IMPORTED_MODULE_16__["PokemonsComponent"],
-    _pages__WEBPACK_IMPORTED_MODULE_16__["PokemonItemGridComponent"],
-    _pages__WEBPACK_IMPORTED_MODULE_16__["PokmeonItemListComponent"],
-    _pages__WEBPACK_IMPORTED_MODULE_16__["PokemonComponent"],
+    _pages__WEBPACK_IMPORTED_MODULE_17__["PokemonsComponent"],
+    _pages__WEBPACK_IMPORTED_MODULE_17__["PokemonItemGridComponent"],
+    _pages__WEBPACK_IMPORTED_MODULE_17__["PokmeonItemListComponent"],
+    _pages__WEBPACK_IMPORTED_MODULE_17__["PokemonComponent"],
     // Collection
-    _pages__WEBPACK_IMPORTED_MODULE_16__["CollectionComponent"],
+    _pages__WEBPACK_IMPORTED_MODULE_17__["CollectionComponent"],
     // Helpers
-    _helpers__WEBPACK_IMPORTED_MODULE_18__["ClickOutsideDirective"]], [_angular_common__WEBPACK_IMPORTED_MODULE_4__["AsyncPipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["UpperCasePipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["LowerCasePipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["JsonPipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["SlicePipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["DecimalPipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["PercentPipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["TitleCasePipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["CurrencyPipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["DatePipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["I18nPluralPipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["I18nSelectPipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["KeyValuePipe"]]);
-_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵsetComponentScope"](_controls__WEBPACK_IMPORTED_MODULE_15__["HeroComponent"], [_angular_cdk_scrolling__WEBPACK_IMPORTED_MODULE_21__["CdkScrollable"], _angular_cdk_drag_drop__WEBPACK_IMPORTED_MODULE_5__["CdkDropList"], _angular_cdk_drag_drop__WEBPACK_IMPORTED_MODULE_5__["CdkDropListGroup"], _angular_cdk_drag_drop__WEBPACK_IMPORTED_MODULE_5__["CdkDrag"], _angular_cdk_drag_drop__WEBPACK_IMPORTED_MODULE_5__["CdkDragHandle"], _angular_cdk_drag_drop__WEBPACK_IMPORTED_MODULE_5__["CdkDragPreview"], _angular_cdk_drag_drop__WEBPACK_IMPORTED_MODULE_5__["CdkDragPlaceholder"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgClass"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgComponentOutlet"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgForOf"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgIf"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgTemplateOutlet"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgStyle"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgSwitch"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgSwitchCase"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgSwitchDefault"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgPlural"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgPluralCase"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["ɵangular_packages_forms_forms_y"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgSelectOption"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["ɵangular_packages_forms_forms_x"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["DefaultValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NumberValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["RangeValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["CheckboxControlValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["SelectControlValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["SelectMultipleControlValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["RadioControlValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgControlStatus"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgControlStatusGroup"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["RequiredValidator"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["MinLengthValidator"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["MaxLengthValidator"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["PatternValidator"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["CheckboxRequiredValidator"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["EmailValidator"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgModel"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgModelGroup"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgForm"], _angular_router__WEBPACK_IMPORTED_MODULE_22__["RouterOutlet"], _angular_router__WEBPACK_IMPORTED_MODULE_22__["RouterLink"], _angular_router__WEBPACK_IMPORTED_MODULE_22__["RouterLinkWithHref"], _angular_router__WEBPACK_IMPORTED_MODULE_22__["RouterLinkActive"], _angular_router__WEBPACK_IMPORTED_MODULE_22__["ɵangular_packages_router_router_l"], _fortawesome_angular_fontawesome__WEBPACK_IMPORTED_MODULE_9__["FaIconComponent"], _fortawesome_angular_fontawesome__WEBPACK_IMPORTED_MODULE_9__["FaDuotoneIconComponent"], _fortawesome_angular_fontawesome__WEBPACK_IMPORTED_MODULE_9__["FaLayersComponent"], _fortawesome_angular_fontawesome__WEBPACK_IMPORTED_MODULE_9__["FaLayersTextComponent"], _fortawesome_angular_fontawesome__WEBPACK_IMPORTED_MODULE_9__["FaLayersCounterComponent"], _fortawesome_angular_fontawesome__WEBPACK_IMPORTED_MODULE_9__["FaStackComponent"], _fortawesome_angular_fontawesome__WEBPACK_IMPORTED_MODULE_9__["FaStackItemSizeDirective"], ngx_webcam__WEBPACK_IMPORTED_MODULE_10__["WebcamComponent"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControlDirective"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormGroupDirective"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControlName"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormGroupName"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormArrayName"], _ckeditor_ckeditor5_angular__WEBPACK_IMPORTED_MODULE_8__["CKEditorComponent"], _angular_cdk_overlay__WEBPACK_IMPORTED_MODULE_6__["CdkConnectedOverlay"], _angular_cdk_overlay__WEBPACK_IMPORTED_MODULE_6__["CdkOverlayOrigin"], _angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_23__["Dir"], _angular_cdk_scrolling__WEBPACK_IMPORTED_MODULE_21__["CdkFixedSizeVirtualScroll"], _angular_cdk_scrolling__WEBPACK_IMPORTED_MODULE_21__["CdkVirtualForOf"], _angular_cdk_scrolling__WEBPACK_IMPORTED_MODULE_21__["CdkVirtualScrollViewport"], angular_fittext__WEBPACK_IMPORTED_MODULE_12__["AngularFittextDirective"], ngx_color_picker__WEBPACK_IMPORTED_MODULE_7__["ColorPickerDirective"], ng_inline_svg__WEBPACK_IMPORTED_MODULE_11__["InlineSVGDirective"], _app_component__WEBPACK_IMPORTED_MODULE_14__["AppComponent"],
+    _helpers__WEBPACK_IMPORTED_MODULE_19__["ClickOutsideDirective"]], [_angular_common__WEBPACK_IMPORTED_MODULE_4__["AsyncPipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["UpperCasePipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["LowerCasePipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["JsonPipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["SlicePipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["DecimalPipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["PercentPipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["TitleCasePipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["CurrencyPipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["DatePipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["I18nPluralPipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["I18nSelectPipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["KeyValuePipe"]]);
+_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵsetComponentScope"](_controls__WEBPACK_IMPORTED_MODULE_15__["HeroComponent"], [_angular_cdk_scrolling__WEBPACK_IMPORTED_MODULE_22__["CdkScrollable"], _angular_cdk_drag_drop__WEBPACK_IMPORTED_MODULE_5__["CdkDropList"], _angular_cdk_drag_drop__WEBPACK_IMPORTED_MODULE_5__["CdkDropListGroup"], _angular_cdk_drag_drop__WEBPACK_IMPORTED_MODULE_5__["CdkDrag"], _angular_cdk_drag_drop__WEBPACK_IMPORTED_MODULE_5__["CdkDragHandle"], _angular_cdk_drag_drop__WEBPACK_IMPORTED_MODULE_5__["CdkDragPreview"], _angular_cdk_drag_drop__WEBPACK_IMPORTED_MODULE_5__["CdkDragPlaceholder"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgClass"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgComponentOutlet"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgForOf"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgIf"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgTemplateOutlet"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgStyle"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgSwitch"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgSwitchCase"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgSwitchDefault"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgPlural"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgPluralCase"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["ɵangular_packages_forms_forms_y"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgSelectOption"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["ɵangular_packages_forms_forms_x"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["DefaultValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NumberValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["RangeValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["CheckboxControlValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["SelectControlValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["SelectMultipleControlValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["RadioControlValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgControlStatus"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgControlStatusGroup"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["RequiredValidator"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["MinLengthValidator"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["MaxLengthValidator"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["PatternValidator"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["CheckboxRequiredValidator"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["EmailValidator"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgModel"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgModelGroup"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgForm"], _angular_router__WEBPACK_IMPORTED_MODULE_23__["RouterOutlet"], _angular_router__WEBPACK_IMPORTED_MODULE_23__["RouterLink"], _angular_router__WEBPACK_IMPORTED_MODULE_23__["RouterLinkWithHref"], _angular_router__WEBPACK_IMPORTED_MODULE_23__["RouterLinkActive"], _angular_router__WEBPACK_IMPORTED_MODULE_23__["ɵangular_packages_router_router_l"], _fortawesome_angular_fontawesome__WEBPACK_IMPORTED_MODULE_9__["FaIconComponent"], _fortawesome_angular_fontawesome__WEBPACK_IMPORTED_MODULE_9__["FaDuotoneIconComponent"], _fortawesome_angular_fontawesome__WEBPACK_IMPORTED_MODULE_9__["FaLayersComponent"], _fortawesome_angular_fontawesome__WEBPACK_IMPORTED_MODULE_9__["FaLayersTextComponent"], _fortawesome_angular_fontawesome__WEBPACK_IMPORTED_MODULE_9__["FaLayersCounterComponent"], _fortawesome_angular_fontawesome__WEBPACK_IMPORTED_MODULE_9__["FaStackComponent"], _fortawesome_angular_fontawesome__WEBPACK_IMPORTED_MODULE_9__["FaStackItemSizeDirective"], ngx_webcam__WEBPACK_IMPORTED_MODULE_10__["WebcamComponent"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControlDirective"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormGroupDirective"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControlName"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormGroupName"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormArrayName"], _ckeditor_ckeditor5_angular__WEBPACK_IMPORTED_MODULE_8__["CKEditorComponent"], _angular_cdk_overlay__WEBPACK_IMPORTED_MODULE_6__["CdkConnectedOverlay"], _angular_cdk_overlay__WEBPACK_IMPORTED_MODULE_6__["CdkOverlayOrigin"], _angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_24__["Dir"], _angular_cdk_scrolling__WEBPACK_IMPORTED_MODULE_22__["CdkFixedSizeVirtualScroll"], _angular_cdk_scrolling__WEBPACK_IMPORTED_MODULE_22__["CdkVirtualForOf"], _angular_cdk_scrolling__WEBPACK_IMPORTED_MODULE_22__["CdkVirtualScrollViewport"], angular_fittext__WEBPACK_IMPORTED_MODULE_12__["AngularFittextDirective"], ngx_color_picker__WEBPACK_IMPORTED_MODULE_7__["ColorPickerDirective"], ng_inline_svg__WEBPACK_IMPORTED_MODULE_11__["InlineSVGDirective"], _app_component__WEBPACK_IMPORTED_MODULE_14__["AppComponent"],
     // Page
     // ====================
-    _layout__WEBPACK_IMPORTED_MODULE_17__["HeaderComponent"],
-    _layout__WEBPACK_IMPORTED_MODULE_17__["SearchComponent"],
+    _layout__WEBPACK_IMPORTED_MODULE_18__["HeaderComponent"],
+    _layout__WEBPACK_IMPORTED_MODULE_18__["SearchComponent"],
     // Social
-    _layout__WEBPACK_IMPORTED_MODULE_17__["ProfileComponent"],
-    _layout__WEBPACK_IMPORTED_MODULE_17__["FooterComponent"],
-    _layout__WEBPACK_IMPORTED_MODULE_17__["ItemsComponent"],
-    _layout__WEBPACK_IMPORTED_MODULE_17__["ItemsHeaderComponent"],
-    _layout__WEBPACK_IMPORTED_MODULE_17__["ItemsFilterComponent"],
-    _layout__WEBPACK_IMPORTED_MODULE_17__["ItemsFooterComponent"],
-    _layout__WEBPACK_IMPORTED_MODULE_17__["ItemsGridComponent"],
-    _layout__WEBPACK_IMPORTED_MODULE_17__["ItemsListComponent"],
-    _layout__WEBPACK_IMPORTED_MODULE_17__["ItemsGroupsComponent"],
-    _pages__WEBPACK_IMPORTED_MODULE_16__["CollectionCardGroupComponent"],
+    _layout__WEBPACK_IMPORTED_MODULE_18__["ProfileComponent"],
+    _layout__WEBPACK_IMPORTED_MODULE_18__["FooterComponent"],
+    _layout__WEBPACK_IMPORTED_MODULE_18__["ItemsComponent"],
+    _layout__WEBPACK_IMPORTED_MODULE_18__["ItemsHeaderComponent"],
+    _layout__WEBPACK_IMPORTED_MODULE_18__["ItemsFilterComponent"],
+    _layout__WEBPACK_IMPORTED_MODULE_18__["ItemsFooterComponent"],
+    _layout__WEBPACK_IMPORTED_MODULE_18__["ItemsGridComponent"],
+    _layout__WEBPACK_IMPORTED_MODULE_18__["ItemsListComponent"],
+    _layout__WEBPACK_IMPORTED_MODULE_18__["ItemsGroupsComponent"],
+    _pages__WEBPACK_IMPORTED_MODULE_17__["CollectionCardGroupComponent"],
     // Controls
     // ====================
     _controls__WEBPACK_IMPORTED_MODULE_15__["MenuComponent"],
@@ -726,58 +737,58 @@ _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵsetComponentScope"](_controls__W
     _controls__WEBPACK_IMPORTED_MODULE_15__["ProgressBarComponent"],
     _controls__WEBPACK_IMPORTED_MODULE_15__["TypeTagComponent"],
     _controls__WEBPACK_IMPORTED_MODULE_15__["DialogComponent"],
-    _controls__WEBPACK_IMPORTED_MODULE_15__["CardCollectionComponent"],
-    _controls__WEBPACK_IMPORTED_MODULE_15__["CardCollectionItemComponent"],
+    _components__WEBPACK_IMPORTED_MODULE_16__["CardCollectionComponent"],
+    _components__WEBPACK_IMPORTED_MODULE_16__["CardCollectionItemComponent"],
     _controls__WEBPACK_IMPORTED_MODULE_15__["EmptyComponent"],
     _controls__WEBPACK_IMPORTED_MODULE_15__["HeroComponent"],
     // Pages
     // ====================
     // Website
-    _pages__WEBPACK_IMPORTED_MODULE_16__["HomeComponent"],
+    _pages__WEBPACK_IMPORTED_MODULE_17__["HomeComponent"],
     // Cards
-    _pages__WEBPACK_IMPORTED_MODULE_16__["CardsComponent"],
-    _pages__WEBPACK_IMPORTED_MODULE_16__["CardItemGridComponent"],
-    _pages_cards_card_item_card_item_list_card_item_list_component__WEBPACK_IMPORTED_MODULE_20__["CardItemListComponent"],
-    _pages__WEBPACK_IMPORTED_MODULE_16__["CardComponent"],
+    _pages__WEBPACK_IMPORTED_MODULE_17__["CardsComponent"],
+    _pages__WEBPACK_IMPORTED_MODULE_17__["CardItemGridComponent"],
+    _pages_cards_card_item_card_item_list_card_item_list_component__WEBPACK_IMPORTED_MODULE_21__["CardItemListComponent"],
+    _pages__WEBPACK_IMPORTED_MODULE_17__["CardComponent"],
     // Auth
-    _pages__WEBPACK_IMPORTED_MODULE_16__["SignInComponent"],
-    _pages__WEBPACK_IMPORTED_MODULE_16__["SignUpComponent"],
-    _pages__WEBPACK_IMPORTED_MODULE_16__["ForgotComponent"],
-    _pages__WEBPACK_IMPORTED_MODULE_16__["ResetComponent"],
+    _pages__WEBPACK_IMPORTED_MODULE_17__["SignInComponent"],
+    _pages__WEBPACK_IMPORTED_MODULE_17__["SignUpComponent"],
+    _pages__WEBPACK_IMPORTED_MODULE_17__["ForgotComponent"],
+    _pages__WEBPACK_IMPORTED_MODULE_17__["ResetComponent"],
     // Scanner
-    _pages__WEBPACK_IMPORTED_MODULE_16__["ScannerComponent"],
-    _pages__WEBPACK_IMPORTED_MODULE_16__["ScannerListsComponent"],
-    _pages__WEBPACK_IMPORTED_MODULE_16__["ScannerListComponent"],
+    _pages__WEBPACK_IMPORTED_MODULE_17__["ScannerComponent"],
+    _pages__WEBPACK_IMPORTED_MODULE_17__["ScannerListsComponent"],
+    _pages__WEBPACK_IMPORTED_MODULE_17__["ScannerListComponent"],
     // Expansion
-    _pages__WEBPACK_IMPORTED_MODULE_16__["ExpansionsComponent"],
-    _pages__WEBPACK_IMPORTED_MODULE_16__["ExpansionItemGridComponent"],
-    _pages__WEBPACK_IMPORTED_MODULE_16__["ExpansionItemListComponent"],
-    _pages__WEBPACK_IMPORTED_MODULE_16__["ExpansionComponent"],
+    _pages__WEBPACK_IMPORTED_MODULE_17__["ExpansionsComponent"],
+    _pages__WEBPACK_IMPORTED_MODULE_17__["ExpansionItemGridComponent"],
+    _pages__WEBPACK_IMPORTED_MODULE_17__["ExpansionItemListComponent"],
+    _pages__WEBPACK_IMPORTED_MODULE_17__["ExpansionComponent"],
     // Pokemon
-    _pages__WEBPACK_IMPORTED_MODULE_16__["PokemonsComponent"],
-    _pages__WEBPACK_IMPORTED_MODULE_16__["PokemonItemGridComponent"],
-    _pages__WEBPACK_IMPORTED_MODULE_16__["PokmeonItemListComponent"],
-    _pages__WEBPACK_IMPORTED_MODULE_16__["PokemonComponent"],
+    _pages__WEBPACK_IMPORTED_MODULE_17__["PokemonsComponent"],
+    _pages__WEBPACK_IMPORTED_MODULE_17__["PokemonItemGridComponent"],
+    _pages__WEBPACK_IMPORTED_MODULE_17__["PokmeonItemListComponent"],
+    _pages__WEBPACK_IMPORTED_MODULE_17__["PokemonComponent"],
     // Collection
-    _pages__WEBPACK_IMPORTED_MODULE_16__["CollectionComponent"],
+    _pages__WEBPACK_IMPORTED_MODULE_17__["CollectionComponent"],
     // Helpers
-    _helpers__WEBPACK_IMPORTED_MODULE_18__["ClickOutsideDirective"]], [_angular_common__WEBPACK_IMPORTED_MODULE_4__["AsyncPipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["UpperCasePipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["LowerCasePipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["JsonPipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["SlicePipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["DecimalPipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["PercentPipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["TitleCasePipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["CurrencyPipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["DatePipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["I18nPluralPipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["I18nSelectPipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["KeyValuePipe"]]);
-_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵsetComponentScope"](_pages__WEBPACK_IMPORTED_MODULE_16__["CardComponent"], [_angular_cdk_scrolling__WEBPACK_IMPORTED_MODULE_21__["CdkScrollable"], _angular_cdk_drag_drop__WEBPACK_IMPORTED_MODULE_5__["CdkDropList"], _angular_cdk_drag_drop__WEBPACK_IMPORTED_MODULE_5__["CdkDropListGroup"], _angular_cdk_drag_drop__WEBPACK_IMPORTED_MODULE_5__["CdkDrag"], _angular_cdk_drag_drop__WEBPACK_IMPORTED_MODULE_5__["CdkDragHandle"], _angular_cdk_drag_drop__WEBPACK_IMPORTED_MODULE_5__["CdkDragPreview"], _angular_cdk_drag_drop__WEBPACK_IMPORTED_MODULE_5__["CdkDragPlaceholder"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgClass"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgComponentOutlet"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgForOf"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgIf"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgTemplateOutlet"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgStyle"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgSwitch"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgSwitchCase"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgSwitchDefault"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgPlural"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgPluralCase"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["ɵangular_packages_forms_forms_y"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgSelectOption"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["ɵangular_packages_forms_forms_x"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["DefaultValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NumberValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["RangeValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["CheckboxControlValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["SelectControlValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["SelectMultipleControlValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["RadioControlValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgControlStatus"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgControlStatusGroup"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["RequiredValidator"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["MinLengthValidator"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["MaxLengthValidator"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["PatternValidator"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["CheckboxRequiredValidator"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["EmailValidator"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgModel"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgModelGroup"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgForm"], _angular_router__WEBPACK_IMPORTED_MODULE_22__["RouterOutlet"], _angular_router__WEBPACK_IMPORTED_MODULE_22__["RouterLink"], _angular_router__WEBPACK_IMPORTED_MODULE_22__["RouterLinkWithHref"], _angular_router__WEBPACK_IMPORTED_MODULE_22__["RouterLinkActive"], _angular_router__WEBPACK_IMPORTED_MODULE_22__["ɵangular_packages_router_router_l"], _fortawesome_angular_fontawesome__WEBPACK_IMPORTED_MODULE_9__["FaIconComponent"], _fortawesome_angular_fontawesome__WEBPACK_IMPORTED_MODULE_9__["FaDuotoneIconComponent"], _fortawesome_angular_fontawesome__WEBPACK_IMPORTED_MODULE_9__["FaLayersComponent"], _fortawesome_angular_fontawesome__WEBPACK_IMPORTED_MODULE_9__["FaLayersTextComponent"], _fortawesome_angular_fontawesome__WEBPACK_IMPORTED_MODULE_9__["FaLayersCounterComponent"], _fortawesome_angular_fontawesome__WEBPACK_IMPORTED_MODULE_9__["FaStackComponent"], _fortawesome_angular_fontawesome__WEBPACK_IMPORTED_MODULE_9__["FaStackItemSizeDirective"], ngx_webcam__WEBPACK_IMPORTED_MODULE_10__["WebcamComponent"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControlDirective"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormGroupDirective"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControlName"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormGroupName"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormArrayName"], _ckeditor_ckeditor5_angular__WEBPACK_IMPORTED_MODULE_8__["CKEditorComponent"], _angular_cdk_overlay__WEBPACK_IMPORTED_MODULE_6__["CdkConnectedOverlay"], _angular_cdk_overlay__WEBPACK_IMPORTED_MODULE_6__["CdkOverlayOrigin"], _angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_23__["Dir"], _angular_cdk_scrolling__WEBPACK_IMPORTED_MODULE_21__["CdkFixedSizeVirtualScroll"], _angular_cdk_scrolling__WEBPACK_IMPORTED_MODULE_21__["CdkVirtualForOf"], _angular_cdk_scrolling__WEBPACK_IMPORTED_MODULE_21__["CdkVirtualScrollViewport"], angular_fittext__WEBPACK_IMPORTED_MODULE_12__["AngularFittextDirective"], ngx_color_picker__WEBPACK_IMPORTED_MODULE_7__["ColorPickerDirective"], ng_inline_svg__WEBPACK_IMPORTED_MODULE_11__["InlineSVGDirective"], _app_component__WEBPACK_IMPORTED_MODULE_14__["AppComponent"],
+    _helpers__WEBPACK_IMPORTED_MODULE_19__["ClickOutsideDirective"]], [_angular_common__WEBPACK_IMPORTED_MODULE_4__["AsyncPipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["UpperCasePipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["LowerCasePipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["JsonPipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["SlicePipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["DecimalPipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["PercentPipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["TitleCasePipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["CurrencyPipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["DatePipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["I18nPluralPipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["I18nSelectPipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["KeyValuePipe"]]);
+_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵsetComponentScope"](_pages__WEBPACK_IMPORTED_MODULE_17__["CardComponent"], [_angular_cdk_scrolling__WEBPACK_IMPORTED_MODULE_22__["CdkScrollable"], _angular_cdk_drag_drop__WEBPACK_IMPORTED_MODULE_5__["CdkDropList"], _angular_cdk_drag_drop__WEBPACK_IMPORTED_MODULE_5__["CdkDropListGroup"], _angular_cdk_drag_drop__WEBPACK_IMPORTED_MODULE_5__["CdkDrag"], _angular_cdk_drag_drop__WEBPACK_IMPORTED_MODULE_5__["CdkDragHandle"], _angular_cdk_drag_drop__WEBPACK_IMPORTED_MODULE_5__["CdkDragPreview"], _angular_cdk_drag_drop__WEBPACK_IMPORTED_MODULE_5__["CdkDragPlaceholder"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgClass"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgComponentOutlet"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgForOf"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgIf"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgTemplateOutlet"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgStyle"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgSwitch"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgSwitchCase"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgSwitchDefault"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgPlural"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgPluralCase"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["ɵangular_packages_forms_forms_y"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgSelectOption"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["ɵangular_packages_forms_forms_x"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["DefaultValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NumberValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["RangeValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["CheckboxControlValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["SelectControlValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["SelectMultipleControlValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["RadioControlValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgControlStatus"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgControlStatusGroup"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["RequiredValidator"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["MinLengthValidator"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["MaxLengthValidator"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["PatternValidator"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["CheckboxRequiredValidator"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["EmailValidator"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgModel"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgModelGroup"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgForm"], _angular_router__WEBPACK_IMPORTED_MODULE_23__["RouterOutlet"], _angular_router__WEBPACK_IMPORTED_MODULE_23__["RouterLink"], _angular_router__WEBPACK_IMPORTED_MODULE_23__["RouterLinkWithHref"], _angular_router__WEBPACK_IMPORTED_MODULE_23__["RouterLinkActive"], _angular_router__WEBPACK_IMPORTED_MODULE_23__["ɵangular_packages_router_router_l"], _fortawesome_angular_fontawesome__WEBPACK_IMPORTED_MODULE_9__["FaIconComponent"], _fortawesome_angular_fontawesome__WEBPACK_IMPORTED_MODULE_9__["FaDuotoneIconComponent"], _fortawesome_angular_fontawesome__WEBPACK_IMPORTED_MODULE_9__["FaLayersComponent"], _fortawesome_angular_fontawesome__WEBPACK_IMPORTED_MODULE_9__["FaLayersTextComponent"], _fortawesome_angular_fontawesome__WEBPACK_IMPORTED_MODULE_9__["FaLayersCounterComponent"], _fortawesome_angular_fontawesome__WEBPACK_IMPORTED_MODULE_9__["FaStackComponent"], _fortawesome_angular_fontawesome__WEBPACK_IMPORTED_MODULE_9__["FaStackItemSizeDirective"], ngx_webcam__WEBPACK_IMPORTED_MODULE_10__["WebcamComponent"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControlDirective"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormGroupDirective"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControlName"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormGroupName"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormArrayName"], _ckeditor_ckeditor5_angular__WEBPACK_IMPORTED_MODULE_8__["CKEditorComponent"], _angular_cdk_overlay__WEBPACK_IMPORTED_MODULE_6__["CdkConnectedOverlay"], _angular_cdk_overlay__WEBPACK_IMPORTED_MODULE_6__["CdkOverlayOrigin"], _angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_24__["Dir"], _angular_cdk_scrolling__WEBPACK_IMPORTED_MODULE_22__["CdkFixedSizeVirtualScroll"], _angular_cdk_scrolling__WEBPACK_IMPORTED_MODULE_22__["CdkVirtualForOf"], _angular_cdk_scrolling__WEBPACK_IMPORTED_MODULE_22__["CdkVirtualScrollViewport"], angular_fittext__WEBPACK_IMPORTED_MODULE_12__["AngularFittextDirective"], ngx_color_picker__WEBPACK_IMPORTED_MODULE_7__["ColorPickerDirective"], ng_inline_svg__WEBPACK_IMPORTED_MODULE_11__["InlineSVGDirective"], _app_component__WEBPACK_IMPORTED_MODULE_14__["AppComponent"],
     // Page
     // ====================
-    _layout__WEBPACK_IMPORTED_MODULE_17__["HeaderComponent"],
-    _layout__WEBPACK_IMPORTED_MODULE_17__["SearchComponent"],
+    _layout__WEBPACK_IMPORTED_MODULE_18__["HeaderComponent"],
+    _layout__WEBPACK_IMPORTED_MODULE_18__["SearchComponent"],
     // Social
-    _layout__WEBPACK_IMPORTED_MODULE_17__["ProfileComponent"],
-    _layout__WEBPACK_IMPORTED_MODULE_17__["FooterComponent"],
-    _layout__WEBPACK_IMPORTED_MODULE_17__["ItemsComponent"],
-    _layout__WEBPACK_IMPORTED_MODULE_17__["ItemsHeaderComponent"],
-    _layout__WEBPACK_IMPORTED_MODULE_17__["ItemsFilterComponent"],
-    _layout__WEBPACK_IMPORTED_MODULE_17__["ItemsFooterComponent"],
-    _layout__WEBPACK_IMPORTED_MODULE_17__["ItemsGridComponent"],
-    _layout__WEBPACK_IMPORTED_MODULE_17__["ItemsListComponent"],
-    _layout__WEBPACK_IMPORTED_MODULE_17__["ItemsGroupsComponent"],
-    _pages__WEBPACK_IMPORTED_MODULE_16__["CollectionCardGroupComponent"],
+    _layout__WEBPACK_IMPORTED_MODULE_18__["ProfileComponent"],
+    _layout__WEBPACK_IMPORTED_MODULE_18__["FooterComponent"],
+    _layout__WEBPACK_IMPORTED_MODULE_18__["ItemsComponent"],
+    _layout__WEBPACK_IMPORTED_MODULE_18__["ItemsHeaderComponent"],
+    _layout__WEBPACK_IMPORTED_MODULE_18__["ItemsFilterComponent"],
+    _layout__WEBPACK_IMPORTED_MODULE_18__["ItemsFooterComponent"],
+    _layout__WEBPACK_IMPORTED_MODULE_18__["ItemsGridComponent"],
+    _layout__WEBPACK_IMPORTED_MODULE_18__["ItemsListComponent"],
+    _layout__WEBPACK_IMPORTED_MODULE_18__["ItemsGroupsComponent"],
+    _pages__WEBPACK_IMPORTED_MODULE_17__["CollectionCardGroupComponent"],
     // Controls
     // ====================
     _controls__WEBPACK_IMPORTED_MODULE_15__["MenuComponent"],
@@ -798,42 +809,42 @@ _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵsetComponentScope"](_pages__WEBP
     _controls__WEBPACK_IMPORTED_MODULE_15__["ProgressBarComponent"],
     _controls__WEBPACK_IMPORTED_MODULE_15__["TypeTagComponent"],
     _controls__WEBPACK_IMPORTED_MODULE_15__["DialogComponent"],
-    _controls__WEBPACK_IMPORTED_MODULE_15__["CardCollectionComponent"],
-    _controls__WEBPACK_IMPORTED_MODULE_15__["CardCollectionItemComponent"],
+    _components__WEBPACK_IMPORTED_MODULE_16__["CardCollectionComponent"],
+    _components__WEBPACK_IMPORTED_MODULE_16__["CardCollectionItemComponent"],
     _controls__WEBPACK_IMPORTED_MODULE_15__["EmptyComponent"],
     _controls__WEBPACK_IMPORTED_MODULE_15__["HeroComponent"],
     // Pages
     // ====================
     // Website
-    _pages__WEBPACK_IMPORTED_MODULE_16__["HomeComponent"],
+    _pages__WEBPACK_IMPORTED_MODULE_17__["HomeComponent"],
     // Cards
-    _pages__WEBPACK_IMPORTED_MODULE_16__["CardsComponent"],
-    _pages__WEBPACK_IMPORTED_MODULE_16__["CardItemGridComponent"],
-    _pages_cards_card_item_card_item_list_card_item_list_component__WEBPACK_IMPORTED_MODULE_20__["CardItemListComponent"],
-    _pages__WEBPACK_IMPORTED_MODULE_16__["CardComponent"],
+    _pages__WEBPACK_IMPORTED_MODULE_17__["CardsComponent"],
+    _pages__WEBPACK_IMPORTED_MODULE_17__["CardItemGridComponent"],
+    _pages_cards_card_item_card_item_list_card_item_list_component__WEBPACK_IMPORTED_MODULE_21__["CardItemListComponent"],
+    _pages__WEBPACK_IMPORTED_MODULE_17__["CardComponent"],
     // Auth
-    _pages__WEBPACK_IMPORTED_MODULE_16__["SignInComponent"],
-    _pages__WEBPACK_IMPORTED_MODULE_16__["SignUpComponent"],
-    _pages__WEBPACK_IMPORTED_MODULE_16__["ForgotComponent"],
-    _pages__WEBPACK_IMPORTED_MODULE_16__["ResetComponent"],
+    _pages__WEBPACK_IMPORTED_MODULE_17__["SignInComponent"],
+    _pages__WEBPACK_IMPORTED_MODULE_17__["SignUpComponent"],
+    _pages__WEBPACK_IMPORTED_MODULE_17__["ForgotComponent"],
+    _pages__WEBPACK_IMPORTED_MODULE_17__["ResetComponent"],
     // Scanner
-    _pages__WEBPACK_IMPORTED_MODULE_16__["ScannerComponent"],
-    _pages__WEBPACK_IMPORTED_MODULE_16__["ScannerListsComponent"],
-    _pages__WEBPACK_IMPORTED_MODULE_16__["ScannerListComponent"],
+    _pages__WEBPACK_IMPORTED_MODULE_17__["ScannerComponent"],
+    _pages__WEBPACK_IMPORTED_MODULE_17__["ScannerListsComponent"],
+    _pages__WEBPACK_IMPORTED_MODULE_17__["ScannerListComponent"],
     // Expansion
-    _pages__WEBPACK_IMPORTED_MODULE_16__["ExpansionsComponent"],
-    _pages__WEBPACK_IMPORTED_MODULE_16__["ExpansionItemGridComponent"],
-    _pages__WEBPACK_IMPORTED_MODULE_16__["ExpansionItemListComponent"],
-    _pages__WEBPACK_IMPORTED_MODULE_16__["ExpansionComponent"],
+    _pages__WEBPACK_IMPORTED_MODULE_17__["ExpansionsComponent"],
+    _pages__WEBPACK_IMPORTED_MODULE_17__["ExpansionItemGridComponent"],
+    _pages__WEBPACK_IMPORTED_MODULE_17__["ExpansionItemListComponent"],
+    _pages__WEBPACK_IMPORTED_MODULE_17__["ExpansionComponent"],
     // Pokemon
-    _pages__WEBPACK_IMPORTED_MODULE_16__["PokemonsComponent"],
-    _pages__WEBPACK_IMPORTED_MODULE_16__["PokemonItemGridComponent"],
-    _pages__WEBPACK_IMPORTED_MODULE_16__["PokmeonItemListComponent"],
-    _pages__WEBPACK_IMPORTED_MODULE_16__["PokemonComponent"],
+    _pages__WEBPACK_IMPORTED_MODULE_17__["PokemonsComponent"],
+    _pages__WEBPACK_IMPORTED_MODULE_17__["PokemonItemGridComponent"],
+    _pages__WEBPACK_IMPORTED_MODULE_17__["PokmeonItemListComponent"],
+    _pages__WEBPACK_IMPORTED_MODULE_17__["PokemonComponent"],
     // Collection
-    _pages__WEBPACK_IMPORTED_MODULE_16__["CollectionComponent"],
+    _pages__WEBPACK_IMPORTED_MODULE_17__["CollectionComponent"],
     // Helpers
-    _helpers__WEBPACK_IMPORTED_MODULE_18__["ClickOutsideDirective"]], [_angular_common__WEBPACK_IMPORTED_MODULE_4__["AsyncPipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["UpperCasePipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["LowerCasePipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["JsonPipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["SlicePipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["DecimalPipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["PercentPipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["TitleCasePipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["CurrencyPipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["DatePipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["I18nPluralPipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["I18nSelectPipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["KeyValuePipe"]]);
+    _helpers__WEBPACK_IMPORTED_MODULE_19__["ClickOutsideDirective"]], [_angular_common__WEBPACK_IMPORTED_MODULE_4__["AsyncPipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["UpperCasePipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["LowerCasePipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["JsonPipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["SlicePipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["DecimalPipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["PercentPipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["TitleCasePipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["CurrencyPipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["DatePipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["I18nPluralPipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["I18nSelectPipe"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["KeyValuePipe"]]);
 
 
 /***/ }),
@@ -851,6 +862,505 @@ __webpack_require__.r(__webpack_exports__);
 class AppSettings {
 }
 AppSettings.titlePrefix = "Rotomdex - ";
+
+
+/***/ }),
+
+/***/ "./src/app/components/card-collection/card-collection-item/card-collection-item.component.ts":
+/*!***************************************************************************************************!*\
+  !*** ./src/app/components/card-collection/card-collection-item/card-collection-item.component.ts ***!
+  \***************************************************************************************************/
+/*! exports provided: CardCollectionItemComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CardCollectionItemComponent", function() { return CardCollectionItemComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+/* harmony import */ var _app_controls_button__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @app/controls/button */ "./src/app/controls/button/index.ts");
+/* harmony import */ var _app_controls_select__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @app/controls/select */ "./src/app/controls/select/index.ts");
+/* harmony import */ var _app_controls_textbox__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @app/controls/textbox */ "./src/app/controls/textbox/index.ts");
+/* harmony import */ var _app_models__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @app/models */ "./src/app/models/index.ts");
+/* harmony import */ var _controls_textbox_textbox_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../controls/textbox/textbox.component */ "./src/app/controls/textbox/textbox.component.ts");
+/* harmony import */ var _controls_select_select_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../controls/select/select.component */ "./src/app/controls/select/select.component.ts");
+/* harmony import */ var _controls_button_button_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../controls/button/button.component */ "./src/app/controls/button/button.component.ts");
+
+
+
+
+
+
+
+
+
+class CardCollectionItemComponent {
+    constructor() {
+        this.deleted = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"](false);
+    }
+    ngOnInit() {
+        this.buildControls();
+    }
+    buildControls() {
+        // Condition
+        this.selectCondition = new _app_controls_select__WEBPACK_IMPORTED_MODULE_2__["Select"]({
+            classes: 'square',
+            optionGroups: [
+                new _app_controls_select__WEBPACK_IMPORTED_MODULE_2__["SelectOptionGroup"]({
+                    label: 'Condition',
+                }),
+                new _app_controls_select__WEBPACK_IMPORTED_MODULE_2__["SelectOptionGroup"]({
+                    label: 'Condition Graded',
+                }),
+            ],
+        });
+        for (let condition in _app_models__WEBPACK_IMPORTED_MODULE_4__["Condition"]) {
+            this.selectCondition.optionGroups[0].options.push(new _app_controls_select__WEBPACK_IMPORTED_MODULE_2__["SelectOption"]({
+                text: _app_models__WEBPACK_IMPORTED_MODULE_4__["Condition"][condition],
+            }));
+        }
+        for (let conditionGraded in _app_models__WEBPACK_IMPORTED_MODULE_4__["ConditionGraded"]) {
+            this.selectCondition.optionGroups[1].options.push(new _app_controls_select__WEBPACK_IMPORTED_MODULE_2__["SelectOption"]({
+                text: _app_models__WEBPACK_IMPORTED_MODULE_4__["ConditionGraded"][conditionGraded],
+            }));
+        }
+        // Grading company
+        this.selectGradingCompany = new _app_controls_select__WEBPACK_IMPORTED_MODULE_2__["Select"]({
+            classes: 'square',
+            optionGroups: [
+                new _app_controls_select__WEBPACK_IMPORTED_MODULE_2__["SelectOptionGroup"]({
+                    label: 'Graded By',
+                }),
+            ],
+        });
+        for (let gradingCompany in _app_models__WEBPACK_IMPORTED_MODULE_4__["GradingCompany"]) {
+            this.selectGradingCompany.optionGroups[0].options.push(new _app_controls_select__WEBPACK_IMPORTED_MODULE_2__["SelectOption"]({
+                text: _app_models__WEBPACK_IMPORTED_MODULE_4__["GradingCompany"][gradingCompany],
+            }));
+        }
+        // Printing
+        this.selectPrintVerion = new _app_controls_select__WEBPACK_IMPORTED_MODULE_2__["Select"]({
+            classes: 'square',
+            optionGroups: [
+                new _app_controls_select__WEBPACK_IMPORTED_MODULE_2__["SelectOptionGroup"]({
+                    label: 'Printing',
+                }),
+            ],
+        });
+        for (let printVersion in _app_models__WEBPACK_IMPORTED_MODULE_4__["PrintVersion"]) {
+            this.selectPrintVerion.optionGroups[0].options.push(new _app_controls_select__WEBPACK_IMPORTED_MODULE_2__["SelectOption"]({
+                text: _app_models__WEBPACK_IMPORTED_MODULE_4__["PrintVersion"][printVersion],
+            }));
+        }
+        // Notes
+        this.buttonNotes = new _app_controls_button__WEBPACK_IMPORTED_MODULE_1__["Button"]({
+            text: 'Notes',
+            classes: 'square secondary',
+            width: '100%',
+        });
+        // Binder
+        this.selectBinder = new _app_controls_select__WEBPACK_IMPORTED_MODULE_2__["Select"]({
+            classes: 'square',
+            multiple: true,
+            options: [
+                new _app_controls_select__WEBPACK_IMPORTED_MODULE_2__["SelectOption"]({
+                    text: 'Binder 1',
+                    value: 'binder1',
+                    selected: true,
+                }),
+            ],
+        });
+        // Quantity
+        this.textboxQuantity = new _app_controls_textbox__WEBPACK_IMPORTED_MODULE_3__["Textbox"]({
+            classes: 'square-right',
+            type: 'number',
+            value: '1',
+            min: 0,
+        });
+        // Button remove
+        this.buttonRemove = new _app_controls_button__WEBPACK_IMPORTED_MODULE_1__["Button"]({
+            icon: _app_models__WEBPACK_IMPORTED_MODULE_4__["Icons"].trash,
+            classes: 'secondary square-left',
+            click: () => {
+                if (confirm('Are you sure you want to delete this item?')) {
+                    this.deleted.emit(true);
+                }
+            },
+        });
+    }
+}
+CardCollectionItemComponent.ɵfac = function CardCollectionItemComponent_Factory(t) { return new (t || CardCollectionItemComponent)(); };
+CardCollectionItemComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: CardCollectionItemComponent, selectors: [["mb-card-collection-item"]], inputs: { item: "item" }, outputs: { deleted: "deleted" }, decls: 20, vars: 7, consts: [[1, "width-12"], [1, "flex", "flex-center"], [1, "box"], [1, "width-2", "small-4"], [3, "textbox"], [3, "select"], [1, "width-2", "small-none"], [3, "button"]], template: function CardCollectionItemComponent_Template(rf, ctx) { if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "div", 2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "div", 1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "div", 2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "div", 1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "div", 3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](7, "mb-textbox", 4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "div", 3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](9, "mb-select", 5);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](10, "div", 6);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](11, "mb-select", 5);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](12, "div", 6);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](13, "mb-select", 5);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](14, "div", 3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](15, "mb-select", 5);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](16, "div", 6);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](17, "mb-button", 7);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](18, "div");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](19, "mb-button", 7);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    } if (rf & 2) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](7);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("textbox", ctx.textboxQuantity);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("select", ctx.selectCondition);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("select", ctx.selectGradingCompany);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("select", ctx.selectPrintVerion);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("select", ctx.selectBinder);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("button", ctx.buttonNotes);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("button", ctx.buttonRemove);
+    } }, directives: [_controls_textbox_textbox_component__WEBPACK_IMPORTED_MODULE_5__["TextboxComponent"], _controls_select_select_component__WEBPACK_IMPORTED_MODULE_6__["SelectComponent"], _controls_button_button_component__WEBPACK_IMPORTED_MODULE_7__["ButtonComponent"]], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvY2FyZC1jb2xsZWN0aW9uL2NhcmQtY29sbGVjdGlvbi1pdGVtL2NhcmQtY29sbGVjdGlvbi1pdGVtLmNvbXBvbmVudC5zY3NzIn0= */"] });
+/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](CardCollectionItemComponent, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
+        args: [{
+                selector: 'mb-card-collection-item',
+                templateUrl: './card-collection-item.component.html',
+                styleUrls: ['./card-collection-item.component.scss'],
+            }]
+    }], function () { return []; }, { item: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+        }], deleted: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"]
+        }] }); })();
+
+
+/***/ }),
+
+/***/ "./src/app/components/card-collection/card-collection-item/card-collection-item.ts":
+/*!*****************************************************************************************!*\
+  !*** ./src/app/components/card-collection/card-collection-item/card-collection-item.ts ***!
+  \*****************************************************************************************/
+/*! exports provided: CardCollectionItem */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CardCollectionItem", function() { return CardCollectionItem; });
+class CardCollectionItem {
+    constructor(init) {
+        Object.assign(this, init);
+    }
+}
+;
+
+
+/***/ }),
+
+/***/ "./src/app/components/card-collection/card-collection-item/index.ts":
+/*!**************************************************************************!*\
+  !*** ./src/app/components/card-collection/card-collection-item/index.ts ***!
+  \**************************************************************************/
+/*! exports provided: CardCollectionItemComponent, CardCollectionItem */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _card_collection_item_component__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./card-collection-item.component */ "./src/app/components/card-collection/card-collection-item/card-collection-item.component.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "CardCollectionItemComponent", function() { return _card_collection_item_component__WEBPACK_IMPORTED_MODULE_0__["CardCollectionItemComponent"]; });
+
+/* harmony import */ var _card_collection_item__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./card-collection-item */ "./src/app/components/card-collection/card-collection-item/card-collection-item.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "CardCollectionItem", function() { return _card_collection_item__WEBPACK_IMPORTED_MODULE_1__["CardCollectionItem"]; });
+
+
+
+
+
+/***/ }),
+
+/***/ "./src/app/components/card-collection/card-collection.component.ts":
+/*!*************************************************************************!*\
+  !*** ./src/app/components/card-collection/card-collection.component.ts ***!
+  \*************************************************************************/
+/*! exports provided: CardCollectionComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CardCollectionComponent", function() { return CardCollectionComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+/* harmony import */ var _app_helpers__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @app/helpers */ "./src/app/helpers/index.ts");
+/* harmony import */ var _app_models__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @app/models */ "./src/app/models/index.ts");
+/* harmony import */ var _controls_button__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../controls/button */ "./src/app/controls/button/index.ts");
+/* harmony import */ var _controls_checkbox__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../controls/checkbox */ "./src/app/controls/checkbox/index.ts");
+/* harmony import */ var _controls_empty__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../controls/empty */ "./src/app/controls/empty/index.ts");
+/* harmony import */ var _card_collection_item__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./card-collection-item */ "./src/app/components/card-collection/card-collection-item/index.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
+/* harmony import */ var _controls_checkbox_checkbox_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../controls/checkbox/checkbox.component */ "./src/app/controls/checkbox/checkbox.component.ts");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
+/* harmony import */ var _controls_button_button_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../controls/button/button.component */ "./src/app/controls/button/button.component.ts");
+/* harmony import */ var _card_collection_item_card_collection_item_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./card-collection-item/card-collection-item.component */ "./src/app/components/card-collection/card-collection-item/card-collection-item.component.ts");
+/* harmony import */ var _controls_empty_empty_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../controls/empty/empty.component */ "./src/app/controls/empty/empty.component.ts");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+const _c0 = function () { return { icon: "trash" }; };
+function CardCollectionComponent_div_12_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 12);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 13);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "div", 3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "div", 13);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "div", 3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "div", 13);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "div", 14);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](7, "Qauntity");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "div", 14);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](9, "Condition");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](10, "div", 15);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](11, " Graded By ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](12, "div", 15);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](13, " Printing ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](14, "div", 14);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](15, "Binder");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](16, "div", 15);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](17, "Notes");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](18, "div", 16);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](19, "mb-button", 17);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](19);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("button", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction0"](1, _c0));
+} }
+function CardCollectionComponent_mb_card_collection_item_13_Template(rf, ctx) { if (rf & 1) {
+    const _r6 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "mb-card-collection-item", 18);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("deleted", function CardCollectionComponent_mb_card_collection_item_13_Template_mb_card_collection_item_deleted_0_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r6); const collectionItem_r4 = ctx.$implicit; const ctx_r5 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r5.deleteItem(collectionItem_r4); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const collectionItem_r4 = ctx.$implicit;
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("item", collectionItem_r4);
+} }
+function CardCollectionComponent_mb_empty_14_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "mb-empty", 19);
+} if (rf & 2) {
+    const ctx_r2 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("empty", ctx_r2.empty);
+} }
+function CardCollectionComponent_div_15_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 20);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 21);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "div", 2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](3, "div", 3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "div");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](5, "mb-button", 22);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const ctx_r3 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("button", ctx_r3.buttonAdd);
+} }
+class CardCollectionComponent {
+    constructor() {
+        this.collection = [];
+    }
+    ngOnInit() {
+        this.setupControls();
+    }
+    setupControls() {
+        this.empty = new _controls_empty__WEBPACK_IMPORTED_MODULE_5__["Empty"]({
+            text: 'This card is not in your collection',
+            icon: _app_models__WEBPACK_IMPORTED_MODULE_2__["Icons"].box,
+            button: new _controls_button__WEBPACK_IMPORTED_MODULE_3__["Button"]({
+                text: 'Add to Collection',
+                icon: _app_models__WEBPACK_IMPORTED_MODULE_2__["Icons"].plus,
+                click: () => {
+                    this.addItem();
+                },
+            }),
+        });
+        this.addItem();
+        // Button add
+        this.buttonAdd = new _controls_button__WEBPACK_IMPORTED_MODULE_3__["Button"]({
+            text: 'Add to Collection',
+            icon: _app_models__WEBPACK_IMPORTED_MODULE_2__["Icons"].plus,
+            classes: 'secondary',
+            click: () => {
+                this.addItem();
+            },
+        });
+        // Button view all
+        this.buttonViewAll = new _controls_button__WEBPACK_IMPORTED_MODULE_3__["Button"]({
+            text: 'View Collection',
+            icon: _app_models__WEBPACK_IMPORTED_MODULE_2__["Icons"].externalLink,
+        });
+        // Checkbox wish list
+        this.checkboxWishList = new _controls_checkbox__WEBPACK_IMPORTED_MODULE_4__["Checkbox"]({
+            text: 'Wishlist',
+        });
+        this.calculateTotal();
+    }
+    addItem() {
+        this.collection.push(new _card_collection_item__WEBPACK_IMPORTED_MODULE_6__["CardCollectionItem"]({
+            condition: _app_models__WEBPACK_IMPORTED_MODULE_2__["Condition"].Mint,
+            printVersion: _app_models__WEBPACK_IMPORTED_MODULE_2__["PrintVersion"].Unlimited,
+            quantity: 1,
+            id: Object(_app_helpers__WEBPACK_IMPORTED_MODULE_1__["GUID"])(),
+            price: 10,
+        }));
+        this.calculateTotal();
+    }
+    deleteItem(itemToDelete) {
+        this.collection = this.collection.filter((item) => {
+            return item.id !== itemToDelete.id;
+        });
+        this.calculateTotal();
+    }
+    calculateTotal() {
+        this.totalValue = this.collection
+            .filter((item) => {
+            return item.price;
+        })
+            .reduce((sum, item) => sum + item.price, 0);
+    }
+}
+CardCollectionComponent.ɵfac = function CardCollectionComponent_Factory(t) { return new (t || CardCollectionComponent)(); };
+CardCollectionComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: CardCollectionComponent, selectors: [["mb-card-collection"]], inputs: { slug: "slug" }, decls: 16, vars: 5, consts: [[1, "padding-2", "border-bottom"], [1, "max"], [1, "flex", "padded", "flex-center"], [1, "box"], [3, "routerLink"], [3, "checkbox"], [1, "padding-y", "padding-x-2", "padding-bottom-4"], [1, "flex", "padded", "vertical"], ["class", "width-12 subheading", 4, "ngIf"], ["class", "box", 3, "item", "deleted", 4, "ngFor", "ngForOf"], [3, "empty", 4, "ngIf"], ["class", "width-12", 4, "ngIf"], [1, "width-12", "subheading"], [1, "flex"], [1, "width-2", "small-4"], [1, "width-2", "small-none"], [2, "height", "0"], [1, "hidden", 3, "button"], [1, "box", 3, "item", "deleted"], [3, "empty"], [1, "width-12"], [1, "border-top", "padding-top"], [3, "button"]], template: function CardCollectionComponent_Template(rf, ctx) { if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "div", 2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "div", 3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "h2");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "a", 4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](6, "Collection");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "div");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](8, "mb-checkbox", 5);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](9, "div", 6);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](10, "div", 1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](11, "div", 7);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](12, CardCollectionComponent_div_12_Template, 20, 2, "div", 8);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](13, CardCollectionComponent_mb_card_collection_item_13_Template, 1, 1, "mb-card-collection-item", 9);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](14, CardCollectionComponent_mb_empty_14_Template, 1, 1, "mb-empty", 10);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](15, CardCollectionComponent_div_15_Template, 6, 1, "div", 11);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    } if (rf & 2) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](8);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("checkbox", ctx.checkboxWishList);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.collection.length);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx.collection);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.collection.length === 0);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.collection.length);
+    } }, directives: [_angular_router__WEBPACK_IMPORTED_MODULE_7__["RouterLinkWithHref"], _controls_checkbox_checkbox_component__WEBPACK_IMPORTED_MODULE_8__["CheckboxComponent"], _angular_common__WEBPACK_IMPORTED_MODULE_9__["NgIf"], _angular_common__WEBPACK_IMPORTED_MODULE_9__["NgForOf"], _controls_button_button_component__WEBPACK_IMPORTED_MODULE_10__["ButtonComponent"], _card_collection_item_card_collection_item_component__WEBPACK_IMPORTED_MODULE_11__["CardCollectionItemComponent"], _controls_empty_empty_component__WEBPACK_IMPORTED_MODULE_12__["EmptyComponent"]], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvY2FyZC1jb2xsZWN0aW9uL2NhcmQtY29sbGVjdGlvbi5jb21wb25lbnQuc2NzcyJ9 */"] });
+/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](CardCollectionComponent, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
+        args: [{
+                selector: 'mb-card-collection',
+                templateUrl: './card-collection.component.html',
+                styleUrls: ['./card-collection.component.scss'],
+            }]
+    }], function () { return []; }, { slug: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+        }] }); })();
+
+
+/***/ }),
+
+/***/ "./src/app/components/card-collection/index.ts":
+/*!*****************************************************!*\
+  !*** ./src/app/components/card-collection/index.ts ***!
+  \*****************************************************/
+/*! exports provided: CardCollectionComponent, CardCollectionItemComponent, CardCollectionItem */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _card_collection_component__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./card-collection.component */ "./src/app/components/card-collection/card-collection.component.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "CardCollectionComponent", function() { return _card_collection_component__WEBPACK_IMPORTED_MODULE_0__["CardCollectionComponent"]; });
+
+/* harmony import */ var _card_collection_item__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./card-collection-item */ "./src/app/components/card-collection/card-collection-item/index.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "CardCollectionItemComponent", function() { return _card_collection_item__WEBPACK_IMPORTED_MODULE_1__["CardCollectionItemComponent"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "CardCollectionItem", function() { return _card_collection_item__WEBPACK_IMPORTED_MODULE_1__["CardCollectionItem"]; });
+
+
+
+
+
+/***/ }),
+
+/***/ "./src/app/components/index.ts":
+/*!*************************************!*\
+  !*** ./src/app/components/index.ts ***!
+  \*************************************/
+/*! exports provided: CardCollectionComponent, CardCollectionItemComponent, CardCollectionItem */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _card_collection__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./card-collection */ "./src/app/components/card-collection/index.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "CardCollectionComponent", function() { return _card_collection__WEBPACK_IMPORTED_MODULE_0__["CardCollectionComponent"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "CardCollectionItemComponent", function() { return _card_collection__WEBPACK_IMPORTED_MODULE_0__["CardCollectionItemComponent"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "CardCollectionItem", function() { return _card_collection__WEBPACK_IMPORTED_MODULE_0__["CardCollectionItem"]; });
+
+
 
 
 /***/ }),
@@ -1088,482 +1598,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony import */ var _button_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./button.component */ "./src/app/controls/button/button.component.ts");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ButtonComponent", function() { return _button_component__WEBPACK_IMPORTED_MODULE_1__["ButtonComponent"]; });
-
-
-
-
-
-/***/ }),
-
-/***/ "./src/app/controls/card-collection/card-collection-item/card-collection-item.component.ts":
-/*!*************************************************************************************************!*\
-  !*** ./src/app/controls/card-collection/card-collection-item/card-collection-item.component.ts ***!
-  \*************************************************************************************************/
-/*! exports provided: CardCollectionItemComponent */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CardCollectionItemComponent", function() { return CardCollectionItemComponent; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
-/* harmony import */ var _app_controls_button__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @app/controls/button */ "./src/app/controls/button/index.ts");
-/* harmony import */ var _app_controls_select__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @app/controls/select */ "./src/app/controls/select/index.ts");
-/* harmony import */ var _app_controls_textbox__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @app/controls/textbox */ "./src/app/controls/textbox/index.ts");
-/* harmony import */ var _app_models__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @app/models */ "./src/app/models/index.ts");
-/* harmony import */ var _textbox_textbox_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../textbox/textbox.component */ "./src/app/controls/textbox/textbox.component.ts");
-/* harmony import */ var _select_select_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../select/select.component */ "./src/app/controls/select/select.component.ts");
-/* harmony import */ var _button_button_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../button/button.component */ "./src/app/controls/button/button.component.ts");
-
-
-
-
-
-
-
-
-
-class CardCollectionItemComponent {
-    constructor() {
-        this.deleted = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"](false);
-    }
-    ngOnInit() {
-        this.buildControls();
-    }
-    buildControls() {
-        // Condition
-        this.selectCondition = new _app_controls_select__WEBPACK_IMPORTED_MODULE_2__["Select"]({
-            classes: 'square',
-            optionGroups: [
-                new _app_controls_select__WEBPACK_IMPORTED_MODULE_2__["SelectOptionGroup"]({
-                    label: 'Condition',
-                }),
-                new _app_controls_select__WEBPACK_IMPORTED_MODULE_2__["SelectOptionGroup"]({
-                    label: 'Condition Graded',
-                }),
-            ],
-        });
-        for (let condition in _app_models__WEBPACK_IMPORTED_MODULE_4__["Condition"]) {
-            this.selectCondition.optionGroups[0].options.push(new _app_controls_select__WEBPACK_IMPORTED_MODULE_2__["SelectOption"]({
-                text: _app_models__WEBPACK_IMPORTED_MODULE_4__["Condition"][condition],
-            }));
-        }
-        for (let conditionGraded in _app_models__WEBPACK_IMPORTED_MODULE_4__["ConditionGraded"]) {
-            this.selectCondition.optionGroups[1].options.push(new _app_controls_select__WEBPACK_IMPORTED_MODULE_2__["SelectOption"]({
-                text: _app_models__WEBPACK_IMPORTED_MODULE_4__["ConditionGraded"][conditionGraded],
-            }));
-        }
-        // Grading company
-        this.selectGradingCompany = new _app_controls_select__WEBPACK_IMPORTED_MODULE_2__["Select"]({
-            classes: 'square',
-            optionGroups: [
-                new _app_controls_select__WEBPACK_IMPORTED_MODULE_2__["SelectOptionGroup"]({
-                    label: 'Graded By',
-                }),
-            ],
-        });
-        for (let gradingCompany in _app_models__WEBPACK_IMPORTED_MODULE_4__["GradingCompany"]) {
-            this.selectGradingCompany.optionGroups[0].options.push(new _app_controls_select__WEBPACK_IMPORTED_MODULE_2__["SelectOption"]({
-                text: _app_models__WEBPACK_IMPORTED_MODULE_4__["GradingCompany"][gradingCompany],
-            }));
-        }
-        // Printing
-        this.selectPrintVerion = new _app_controls_select__WEBPACK_IMPORTED_MODULE_2__["Select"]({
-            classes: 'square',
-            optionGroups: [
-                new _app_controls_select__WEBPACK_IMPORTED_MODULE_2__["SelectOptionGroup"]({
-                    label: 'Printing',
-                }),
-            ],
-        });
-        for (let printVersion in _app_models__WEBPACK_IMPORTED_MODULE_4__["PrintVersion"]) {
-            this.selectPrintVerion.optionGroups[0].options.push(new _app_controls_select__WEBPACK_IMPORTED_MODULE_2__["SelectOption"]({
-                text: _app_models__WEBPACK_IMPORTED_MODULE_4__["PrintVersion"][printVersion],
-            }));
-        }
-        // Notes
-        this.buttonNotes = new _app_controls_button__WEBPACK_IMPORTED_MODULE_1__["Button"]({
-            text: 'Notes',
-            classes: 'square secondary',
-            width: '100%',
-        });
-        // Binder
-        this.selectBinder = new _app_controls_select__WEBPACK_IMPORTED_MODULE_2__["Select"]({
-            classes: 'square',
-            multiple: true,
-            options: [
-                new _app_controls_select__WEBPACK_IMPORTED_MODULE_2__["SelectOption"]({
-                    text: 'Binder 1',
-                    value: 'binder1',
-                    selected: true,
-                }),
-            ],
-        });
-        // Quantity
-        this.textboxQuantity = new _app_controls_textbox__WEBPACK_IMPORTED_MODULE_3__["Textbox"]({
-            classes: 'square-right',
-            type: 'number',
-            value: '1',
-            min: 0,
-        });
-        // Button remove
-        this.buttonRemove = new _app_controls_button__WEBPACK_IMPORTED_MODULE_1__["Button"]({
-            icon: _app_models__WEBPACK_IMPORTED_MODULE_4__["Icons"].trash,
-            classes: 'secondary square-left',
-            click: () => {
-                if (confirm('Are you sure you want to delete this item?')) {
-                    this.deleted.emit(true);
-                }
-            },
-        });
-    }
-}
-CardCollectionItemComponent.ɵfac = function CardCollectionItemComponent_Factory(t) { return new (t || CardCollectionItemComponent)(); };
-CardCollectionItemComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: CardCollectionItemComponent, selectors: [["mb-card-collection-item"]], inputs: { item: "item" }, outputs: { deleted: "deleted" }, decls: 20, vars: 7, consts: [[1, "width-12"], [1, "flex", "flex-center"], [1, "box"], [1, "width-2", "small-4"], [3, "textbox"], [3, "select"], [1, "width-2", "small-none"], [3, "button"]], template: function CardCollectionItemComponent_Template(rf, ctx) { if (rf & 1) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 1);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "div", 2);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "div", 1);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "div", 2);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "div", 1);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "div", 3);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](7, "mb-textbox", 4);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "div", 3);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](9, "mb-select", 5);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](10, "div", 6);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](11, "mb-select", 5);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](12, "div", 6);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](13, "mb-select", 5);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](14, "div", 3);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](15, "mb-select", 5);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](16, "div", 6);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](17, "mb-button", 7);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](18, "div");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](19, "mb-button", 7);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    } if (rf & 2) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](7);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("textbox", ctx.textboxQuantity);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("select", ctx.selectCondition);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("select", ctx.selectGradingCompany);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("select", ctx.selectPrintVerion);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("select", ctx.selectBinder);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("button", ctx.buttonNotes);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("button", ctx.buttonRemove);
-    } }, directives: [_textbox_textbox_component__WEBPACK_IMPORTED_MODULE_5__["TextboxComponent"], _select_select_component__WEBPACK_IMPORTED_MODULE_6__["SelectComponent"], _button_button_component__WEBPACK_IMPORTED_MODULE_7__["ButtonComponent"]], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2NvbnRyb2xzL2NhcmQtY29sbGVjdGlvbi9jYXJkLWNvbGxlY3Rpb24taXRlbS9jYXJkLWNvbGxlY3Rpb24taXRlbS5jb21wb25lbnQuc2NzcyJ9 */"] });
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](CardCollectionItemComponent, [{
-        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
-        args: [{
-                selector: 'mb-card-collection-item',
-                templateUrl: './card-collection-item.component.html',
-                styleUrls: ['./card-collection-item.component.scss'],
-            }]
-    }], function () { return []; }, { item: [{
-            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
-        }], deleted: [{
-            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"]
-        }] }); })();
-
-
-/***/ }),
-
-/***/ "./src/app/controls/card-collection/card-collection-item/card-collection-item.ts":
-/*!***************************************************************************************!*\
-  !*** ./src/app/controls/card-collection/card-collection-item/card-collection-item.ts ***!
-  \***************************************************************************************/
-/*! exports provided: CardCollectionItem */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CardCollectionItem", function() { return CardCollectionItem; });
-class CardCollectionItem {
-    constructor(init) {
-        Object.assign(this, init);
-    }
-}
-;
-
-
-/***/ }),
-
-/***/ "./src/app/controls/card-collection/card-collection-item/index.ts":
-/*!************************************************************************!*\
-  !*** ./src/app/controls/card-collection/card-collection-item/index.ts ***!
-  \************************************************************************/
-/*! exports provided: CardCollectionItemComponent, CardCollectionItem */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _card_collection_item_component__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./card-collection-item.component */ "./src/app/controls/card-collection/card-collection-item/card-collection-item.component.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "CardCollectionItemComponent", function() { return _card_collection_item_component__WEBPACK_IMPORTED_MODULE_0__["CardCollectionItemComponent"]; });
-
-/* harmony import */ var _card_collection_item__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./card-collection-item */ "./src/app/controls/card-collection/card-collection-item/card-collection-item.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "CardCollectionItem", function() { return _card_collection_item__WEBPACK_IMPORTED_MODULE_1__["CardCollectionItem"]; });
-
-
-
-
-
-/***/ }),
-
-/***/ "./src/app/controls/card-collection/card-collection.component.ts":
-/*!***********************************************************************!*\
-  !*** ./src/app/controls/card-collection/card-collection.component.ts ***!
-  \***********************************************************************/
-/*! exports provided: CardCollectionComponent */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CardCollectionComponent", function() { return CardCollectionComponent; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
-/* harmony import */ var _app_helpers__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @app/helpers */ "./src/app/helpers/index.ts");
-/* harmony import */ var _app_models__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @app/models */ "./src/app/models/index.ts");
-/* harmony import */ var _button__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../button */ "./src/app/controls/button/index.ts");
-/* harmony import */ var _checkbox__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../checkbox */ "./src/app/controls/checkbox/index.ts");
-/* harmony import */ var _empty__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../empty */ "./src/app/controls/empty/index.ts");
-/* harmony import */ var _card_collection_item__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./card-collection-item */ "./src/app/controls/card-collection/card-collection-item/index.ts");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
-/* harmony import */ var _checkbox_checkbox_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../checkbox/checkbox.component */ "./src/app/controls/checkbox/checkbox.component.ts");
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
-/* harmony import */ var _button_button_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../button/button.component */ "./src/app/controls/button/button.component.ts");
-/* harmony import */ var _card_collection_item_card_collection_item_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./card-collection-item/card-collection-item.component */ "./src/app/controls/card-collection/card-collection-item/card-collection-item.component.ts");
-/* harmony import */ var _empty_empty_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../empty/empty.component */ "./src/app/controls/empty/empty.component.ts");
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-const _c0 = function () { return { icon: "trash" }; };
-function CardCollectionComponent_div_12_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 12);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 13);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "div", 3);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "div", 13);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "div", 3);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "div", 13);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "div", 14);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](7, "Qauntity");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "div", 14);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](9, "Condition");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](10, "div", 15);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](11, " Graded By ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](12, "div", 15);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](13, " Printing ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](14, "div", 14);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](15, "Binder");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](16, "div", 15);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](17, "Notes");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](18, "div", 16);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](19, "mb-button", 17);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-} if (rf & 2) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](19);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("button", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction0"](1, _c0));
-} }
-function CardCollectionComponent_mb_card_collection_item_13_Template(rf, ctx) { if (rf & 1) {
-    const _r6 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "mb-card-collection-item", 18);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("deleted", function CardCollectionComponent_mb_card_collection_item_13_Template_mb_card_collection_item_deleted_0_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r6); const collectionItem_r4 = ctx.$implicit; const ctx_r5 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r5.deleteItem(collectionItem_r4); });
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-} if (rf & 2) {
-    const collectionItem_r4 = ctx.$implicit;
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("item", collectionItem_r4);
-} }
-function CardCollectionComponent_mb_empty_14_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "mb-empty", 19);
-} if (rf & 2) {
-    const ctx_r2 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("empty", ctx_r2.empty);
-} }
-function CardCollectionComponent_div_15_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 20);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 21);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "div", 2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](3, "div", 3);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "div");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](5, "mb-button", 22);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-} if (rf & 2) {
-    const ctx_r3 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("button", ctx_r3.buttonAdd);
-} }
-class CardCollectionComponent {
-    constructor() {
-        this.collection = [];
-    }
-    ngOnInit() {
-        this.setupControls();
-    }
-    setupControls() {
-        this.empty = new _empty__WEBPACK_IMPORTED_MODULE_5__["Empty"]({
-            text: "This card is not in your collection",
-            icon: _app_models__WEBPACK_IMPORTED_MODULE_2__["Icons"].box,
-            button: new _button__WEBPACK_IMPORTED_MODULE_3__["Button"]({
-                text: "Add to Collection",
-                icon: _app_models__WEBPACK_IMPORTED_MODULE_2__["Icons"].plus,
-                click: () => {
-                    this.addItem();
-                }
-            }),
-        });
-        this.addItem();
-        // Button add
-        this.buttonAdd = new _button__WEBPACK_IMPORTED_MODULE_3__["Button"]({
-            text: "Add to Collection",
-            icon: _app_models__WEBPACK_IMPORTED_MODULE_2__["Icons"].plus,
-            classes: "secondary",
-            click: () => {
-                this.addItem();
-            }
-        });
-        // Button view all
-        this.buttonViewAll = new _button__WEBPACK_IMPORTED_MODULE_3__["Button"]({
-            text: "View Collection",
-            icon: _app_models__WEBPACK_IMPORTED_MODULE_2__["Icons"].externalLink,
-        });
-        // Checkbox wish list
-        this.checkboxWishList = new _checkbox__WEBPACK_IMPORTED_MODULE_4__["Checkbox"]({
-            text: "Wishlist",
-        });
-        this.calculateTotal();
-    }
-    addItem() {
-        this.collection.push(new _card_collection_item__WEBPACK_IMPORTED_MODULE_6__["CardCollectionItem"]({
-            condition: _app_models__WEBPACK_IMPORTED_MODULE_2__["Condition"].Mint,
-            printVersion: _app_models__WEBPACK_IMPORTED_MODULE_2__["PrintVersion"].Unlimited,
-            quantity: 1,
-            id: Object(_app_helpers__WEBPACK_IMPORTED_MODULE_1__["GUID"])(),
-            price: 10,
-        }));
-        this.calculateTotal();
-    }
-    deleteItem(itemToDelete) {
-        this.collection = this.collection.filter(item => {
-            return item.id !== itemToDelete.id;
-        });
-        this.calculateTotal();
-    }
-    calculateTotal() {
-        this.totalValue = this.collection
-            .filter(item => { return item.price; })
-            .reduce((sum, item) => sum + item.price, 0);
-    }
-}
-CardCollectionComponent.ɵfac = function CardCollectionComponent_Factory(t) { return new (t || CardCollectionComponent)(); };
-CardCollectionComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: CardCollectionComponent, selectors: [["mb-card-collection"]], inputs: { slug: "slug" }, decls: 16, vars: 5, consts: [[1, "padding-2", "border-bottom"], [1, "max"], [1, "flex", "padded", "flex-center"], [1, "box"], [3, "routerLink"], [3, "checkbox"], [1, "padding-y", "padding-x-2", "padding-bottom-4"], [1, "flex", "padded", "vertical"], ["class", "width-12 subheading", 4, "ngIf"], ["class", "box", 3, "item", "deleted", 4, "ngFor", "ngForOf"], [3, "empty", 4, "ngIf"], ["class", "width-12", 4, "ngIf"], [1, "width-12", "subheading"], [1, "flex"], [1, "width-2", "small-4"], [1, "width-2", "small-none"], [2, "height", "0"], [1, "hidden", 3, "button"], [1, "box", 3, "item", "deleted"], [3, "empty"], [1, "width-12"], [1, "border-top", "padding-top"], [3, "button"]], template: function CardCollectionComponent_Template(rf, ctx) { if (rf & 1) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 1);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "div", 2);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "div", 3);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "h2");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "a", 4);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](6, "Collection");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "div");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](8, "mb-checkbox", 5);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](9, "div", 6);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](10, "div", 1);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](11, "div", 7);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](12, CardCollectionComponent_div_12_Template, 20, 2, "div", 8);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](13, CardCollectionComponent_mb_card_collection_item_13_Template, 1, 1, "mb-card-collection-item", 9);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](14, CardCollectionComponent_mb_empty_14_Template, 1, 1, "mb-empty", 10);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](15, CardCollectionComponent_div_15_Template, 6, 1, "div", 11);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    } if (rf & 2) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](8);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("checkbox", ctx.checkboxWishList);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.collection.length);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx.collection);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.collection.length === 0);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.collection.length);
-    } }, directives: [_angular_router__WEBPACK_IMPORTED_MODULE_7__["RouterLinkWithHref"], _checkbox_checkbox_component__WEBPACK_IMPORTED_MODULE_8__["CheckboxComponent"], _angular_common__WEBPACK_IMPORTED_MODULE_9__["NgIf"], _angular_common__WEBPACK_IMPORTED_MODULE_9__["NgForOf"], _button_button_component__WEBPACK_IMPORTED_MODULE_10__["ButtonComponent"], _card_collection_item_card_collection_item_component__WEBPACK_IMPORTED_MODULE_11__["CardCollectionItemComponent"], _empty_empty_component__WEBPACK_IMPORTED_MODULE_12__["EmptyComponent"]], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2NvbnRyb2xzL2NhcmQtY29sbGVjdGlvbi9jYXJkLWNvbGxlY3Rpb24uY29tcG9uZW50LnNjc3MifQ== */"] });
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](CardCollectionComponent, [{
-        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
-        args: [{
-                selector: 'mb-card-collection',
-                templateUrl: './card-collection.component.html',
-                styleUrls: ['./card-collection.component.scss']
-            }]
-    }], function () { return []; }, { slug: [{
-            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
-        }] }); })();
-
-
-/***/ }),
-
-/***/ "./src/app/controls/card-collection/index.ts":
-/*!***************************************************!*\
-  !*** ./src/app/controls/card-collection/index.ts ***!
-  \***************************************************/
-/*! exports provided: CardCollectionComponent, CardCollectionItemComponent, CardCollectionItem */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _card_collection_component__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./card-collection.component */ "./src/app/controls/card-collection/card-collection.component.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "CardCollectionComponent", function() { return _card_collection_component__WEBPACK_IMPORTED_MODULE_0__["CardCollectionComponent"]; });
-
-/* harmony import */ var _card_collection_item__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./card-collection-item */ "./src/app/controls/card-collection/card-collection-item/index.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "CardCollectionItemComponent", function() { return _card_collection_item__WEBPACK_IMPORTED_MODULE_1__["CardCollectionItemComponent"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "CardCollectionItem", function() { return _card_collection_item__WEBPACK_IMPORTED_MODULE_1__["CardCollectionItem"]; });
 
 
 
@@ -2656,7 +2690,7 @@ __webpack_require__.r(__webpack_exports__);
 /*!***********************************!*\
   !*** ./src/app/controls/index.ts ***!
   \***********************************/
-/*! exports provided: Alert, AlertType, AlertComponent, ButtonType, Button, ButtonComponent, Checkbox, CheckboxComponent, Editor, EditorComponent, MBFormControl, FormControlComponent, MBFormGroup, FormGroupComponent, MBForm, FormComponent, LoaderComponent, LoaderService, Menu, MenuItem, MenuComponent, Notification, NotificationsComponent, NotificationsService, ProgressBarComponent, Select, SelectOption, SelectOptionGroup, SelectComponent, Tag, TagComponent, Textarea, TextareaComponent, Textbox, TextboxComponent, Toggle, ToggleComponent, TypeTag, TypeTagComponent, Dialog, DialogComponent, DialogService, CardCollectionComponent, CardCollectionItemComponent, CardCollectionItem, EmptyComponent, Empty, HeroComponent */
+/*! exports provided: Alert, AlertType, AlertComponent, ButtonType, Button, ButtonComponent, Checkbox, CheckboxComponent, Editor, EditorComponent, MBFormControl, FormControlComponent, MBFormGroup, FormGroupComponent, MBForm, FormComponent, LoaderComponent, LoaderService, Menu, MenuItem, MenuComponent, Notification, NotificationsComponent, NotificationsService, ProgressBarComponent, Select, SelectOption, SelectOptionGroup, SelectComponent, Tag, TagComponent, Textarea, TextareaComponent, Textbox, TextboxComponent, Toggle, ToggleComponent, TypeTag, TypeTagComponent, Dialog, DialogComponent, DialogService, EmptyComponent, Empty, HeroComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2761,21 +2795,13 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "DialogService", function() { return _dialog__WEBPACK_IMPORTED_MODULE_15__["DialogService"]; });
 
-/* harmony import */ var _card_collection__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./card-collection */ "./src/app/controls/card-collection/index.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "CardCollectionComponent", function() { return _card_collection__WEBPACK_IMPORTED_MODULE_16__["CardCollectionComponent"]; });
+/* harmony import */ var _empty__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./empty */ "./src/app/controls/empty/index.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "EmptyComponent", function() { return _empty__WEBPACK_IMPORTED_MODULE_16__["EmptyComponent"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "CardCollectionItemComponent", function() { return _card_collection__WEBPACK_IMPORTED_MODULE_16__["CardCollectionItemComponent"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Empty", function() { return _empty__WEBPACK_IMPORTED_MODULE_16__["Empty"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "CardCollectionItem", function() { return _card_collection__WEBPACK_IMPORTED_MODULE_16__["CardCollectionItem"]; });
-
-/* harmony import */ var _empty__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./empty */ "./src/app/controls/empty/index.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "EmptyComponent", function() { return _empty__WEBPACK_IMPORTED_MODULE_17__["EmptyComponent"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Empty", function() { return _empty__WEBPACK_IMPORTED_MODULE_17__["Empty"]; });
-
-/* harmony import */ var _hero__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./hero */ "./src/app/controls/hero/index.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "HeroComponent", function() { return _hero__WEBPACK_IMPORTED_MODULE_18__["HeroComponent"]; });
-
+/* harmony import */ var _hero__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./hero */ "./src/app/controls/hero/index.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "HeroComponent", function() { return _hero__WEBPACK_IMPORTED_MODULE_17__["HeroComponent"]; });
 
 
 
@@ -5217,6 +5243,7 @@ class FooterComponent {
                 new _app_controls__WEBPACK_IMPORTED_MODULE_1__["MenuItem"]({
                     icon: _app_models__WEBPACK_IMPORTED_MODULE_2__["Icons"].house,
                     text: 'Home',
+                    route: '/',
                 }),
                 new _app_controls__WEBPACK_IMPORTED_MODULE_1__["MenuItem"]({
                     icon: _app_models__WEBPACK_IMPORTED_MODULE_2__["Icons"].box,
@@ -8741,7 +8768,7 @@ function CardComponent_div_0_article_1_div_23_Template(rf, ctx) { if (rf & 1) {
 } if (rf & 2) {
     const ctx_r7 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](3);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("routerLink", "/cards/rarity/" + ctx_r7.card.rarity.toLowerCase().replace(" ", "-"));
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("routerLink", ctx_r7.card.rarity && "/cards/rarity/" + ctx_r7.card.rarity.toLowerCase().replace(" ", "-"));
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("tag", ctx_r7.tagRarity);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
@@ -8930,10 +8957,10 @@ class CardComponent {
                 // Data
                 this.card = card;
                 if (this.card.pokemon) {
-                    this.relatedCards.header.title = `${this.card.pokemon.name} Cards`;
+                    this.relatedCards.header.title = `${this.card.pokemon.variant.name} Cards`;
                     this.relatedCards.header.titleRoute =
                         this.card.pokemon.route;
-                    this.relatedCards.noResults = `No ${this.card.pokemon.name} cards found`;
+                    this.relatedCards.noResults = `No ${this.card.pokemon.variant.name} cards found`;
                 }
                 // Rarity
                 if (this.card.expansion.name.toLowerCase().includes('promo')) {
@@ -10575,15 +10602,15 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function HomeComponent_mb_alert_1_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "mb-alert", 13);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "mb-alert", 10);
 } if (rf & 2) {
     const ctx_r0 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("alert", ctx_r0.alert);
 } }
 function HomeComponent_div_2_div_6_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 16);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "a", 17);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](2, "img", 18);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 13);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "a", 14);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](2, "img", 15);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } if (rf & 2) {
@@ -10597,14 +10624,14 @@ function HomeComponent_div_2_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 2);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 3);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "div", 4);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "div", 10);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "div", 14);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "div", 8);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](6, HomeComponent_div_2_div_6_Template, 3, 2, "div", 15);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "div", 7);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "div", 11);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "div", 9);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](6, HomeComponent_div_2_div_6_Template, 3, 2, "div", 12);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "div", 12);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "div", 5);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "h2");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](9, "Expansions");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -10623,20 +10650,50 @@ function HomeComponent_div_2_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](6);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("button", ctx_r1.expansionButton);
 } }
-function HomeComponent_div_15_Template(rf, ctx) { if (rf & 1) {
+function HomeComponent_div_3_div_12_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 19);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "a", 17);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "a", 14);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](2, "img", 20);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } if (rf & 2) {
-    const card_r6 = ctx.$implicit;
+    const card_r7 = ctx.$implicit;
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("routerLink", card_r6.route);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("routerLink", card_r7.route);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpropertyInterpolate"]("src", card_r6.image, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsanitizeUrl"]);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpropertyInterpolate"]("src", card_r7.image, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsanitizeUrl"]);
 } }
-function HomeComponent_div_22_Template(rf, ctx) { if (rf & 1) {
+function HomeComponent_div_3_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "div", 4);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "div", 16);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "h2");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](5, "Cards");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "p");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](7, " Everyone has a favorite card but with over 9,000 English cards and many more unique Japanese cards, there is always new cards to find and appreciate. ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](8, "mb-button", 6);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](9, "div", 16);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](10, "div", 17);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](11, "div", 9);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](12, HomeComponent_div_3_div_12_Template, 3, 2, "div", 18);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const ctx_r2 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](8);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("button", ctx_r2.cardsButton);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r2.featured.cards);
+} }
+function HomeComponent_div_4_div_6_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 19);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "a", 21);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](2, "img", 22);
@@ -10644,13 +10701,43 @@ function HomeComponent_div_22_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } if (rf & 2) {
-    const pokemon_r7 = ctx.$implicit;
+    const pokemon_r9 = ctx.$implicit;
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("routerLink", pokemon_r7.route);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("routerLink", pokemon_r9.route);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpropertyInterpolate"]("src", pokemon_r7.sprites.default, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsanitizeUrl"]);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpropertyInterpolate"]("src", pokemon_r9.sprites.default, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsanitizeUrl"]);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpropertyInterpolate"]("src", pokemon_r7.sprites.animated || pokemon_r7.sprites.default, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsanitizeUrl"]);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpropertyInterpolate"]("src", pokemon_r9.sprites.animated || pokemon_r9.sprites.default, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsanitizeUrl"]);
+} }
+function HomeComponent_div_4_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "div", 4);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "div", 7);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "div", 8);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "div", 9);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](6, HomeComponent_div_4_div_6_Template, 4, 3, "div", 18);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "div", 5);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "h2");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](9, "Pokemon");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](10, "p");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](11, " View all the cards featuring your favorite Pokemon and explore the ever-growing Pokedex. With nearly 1,000 Pokemon species there is always a new Pokemon to learn about. ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](12, "mb-button", 6);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const ctx_r3 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](6);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r3.featured.pokemon);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](6);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("button", ctx_r3.pokemonButton);
 } }
 class HomeComponent {
     constructor(datePipe, featuredService, releaseNotesService, dialogService) {
@@ -10700,69 +10787,27 @@ class HomeComponent {
     }
 }
 HomeComponent.ɵfac = function HomeComponent_Factory(t) { return new (t || HomeComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_common__WEBPACK_IMPORTED_MODULE_3__["DatePipe"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_featured_service__WEBPACK_IMPORTED_MODULE_4__["FeaturedService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_app_services_release_notes_services__WEBPACK_IMPORTED_MODULE_5__["ReleaseNotesServices"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_app_controls__WEBPACK_IMPORTED_MODULE_1__["DialogService"])); };
-HomeComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: HomeComponent, selectors: [["mb-home"]], decls: 41, vars: 7, consts: [["id", "dev-alert", 3, "alert", 4, "ngIf"], ["class", "section dark", 4, "ngIf"], [1, "section", "dark"], [1, "max"], [1, "flex", "flex-center", "padded-8"], [1, "width-6", "small-12"], [3, "button"], ["id", "cards"], [1, "flex", "padded", "relative"], ["class", "width-2 small-2", 4, "ngFor", "ngForOf"], [1, "width-6", "small-12", "small-order-2"], ["id", "pokemon"], [1, "width-6", "small-12", "small-order-1"], ["id", "dev-alert", 3, "alert"], ["id", "expansion-logos"], ["class", "width-3 small-2", 4, "ngFor", "ngForOf"], [1, "width-3", "small-2"], [3, "routerLink"], [1, "hover-zoom-large", "shadow", "hover-z-1", 3, "src"], [1, "width-2", "small-2"], [1, "card", "hover-zoom-large", "hover-z-1", 3, "src"], [1, "pokemon-link", 3, "routerLink"], [1, "sprite-default", "shadow", 3, "src"], [1, "sprite-animated", "shadow", "z-1", 3, "src"]], template: function HomeComponent_Template(rf, ctx) { if (rf & 1) {
+HomeComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: HomeComponent, selectors: [["mb-home"]], decls: 17, vars: 5, consts: [["id", "dev-alert", 3, "alert", 4, "ngIf"], ["class", "section dark", 4, "ngIf"], [1, "section", "dark"], [1, "max"], [1, "flex", "flex-center", "padded-8"], [1, "width-6", "small-12", "small-order-1"], [3, "button"], [1, "width-6", "small-12", "small-order-2"], ["id", "pokemon"], [1, "flex", "padded", "relative"], ["id", "dev-alert", 3, "alert"], ["id", "expansion-logos"], ["class", "width-3 small-2", 4, "ngFor", "ngForOf"], [1, "width-3", "small-2"], [3, "routerLink"], [1, "hover-zoom-large", "shadow", "hover-z-1", 3, "src"], [1, "width-6", "small-12"], ["id", "cards"], ["class", "width-2 small-2", 4, "ngFor", "ngForOf"], [1, "width-2", "small-2"], [1, "card", "hover-zoom-large", "hover-z-1", 3, "src"], [1, "pokemon-link", 3, "routerLink"], [1, "sprite-default", "shadow", 3, "src"], [1, "sprite-animated", "shadow", "z-1", 3, "src"]], template: function HomeComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "hero");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](1, HomeComponent_mb_alert_1_Template, 1, 1, "mb-alert", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](2, HomeComponent_div_2_Template, 13, 2, "div", 1);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "div", 2);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "div", 3);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "div", 4);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "div", 5);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "h2");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](8, "Cards");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](3, HomeComponent_div_3_Template, 13, 2, "div", 1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](4, HomeComponent_div_4_Template, 13, 2, "div", 1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "div", 2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "div", 3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "div", 4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "div", 5);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](9, "h2");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](10, "Collection");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](9, "p");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](10, " Everyone has a favorite card but with over 9,000 English cards and many more unique Japanese cards, there is always new cards to find and appreciate. ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](11, "p");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](12, " Manage your entire Pokemon card collection, including card metadata such as condition, graded condition, and unique printings. Organize cards using binders, decks, and other grouping categories. View and share your collection stats and history. ");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](11, "mb-button", 6);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](13, "mb-button", 6);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](12, "div", 5);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](13, "div", 7);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](14, "div", 8);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](15, HomeComponent_div_15_Template, 3, 2, "div", 9);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](16, "div", 2);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](17, "div", 3);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](18, "div", 4);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](19, "div", 10);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](20, "div", 11);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](21, "div", 8);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](22, HomeComponent_div_22_Template, 4, 3, "div", 9);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](23, "div", 12);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](24, "h2");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](25, "Pokemon");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](26, "p");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](27, " View all the cards featuring your favorite Pokemon and explore the ever-growing Pokedex. With nearly 1,000 Pokemon species there is always a new Pokemon to learn about. ");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](28, "mb-button", 6);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](29, "div", 2);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](30, "div", 3);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](31, "div", 4);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](32, "div", 12);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](33, "h2");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](34, "Collection");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](35, "p");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](36, " Manage your entire Pokemon card collection, including card metadata such as condition, graded condition, and unique printings. Organize cards using binders, decks, and other grouping categories. View and share your collection stats and history. ");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](37, "mb-button", 6);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](38, "div", 10);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](39, "div", 11);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](40, "div", 8);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](14, "div", 7);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](15, "div", 8);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](16, "div", 9);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -10773,17 +10818,13 @@ HomeComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComp
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", false);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.featured && ctx.featured.expansions);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](9);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("button", ctx.cardsButton);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx.featured.cards);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](7);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx.featured.pokemon);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](6);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("button", ctx.pokemonButton);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.featured && ctx.featured.cards);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.featured && ctx.featured.pokemon);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](9);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("button", ctx.collectionButton);
-    } }, directives: [_controls_hero_hero_component__WEBPACK_IMPORTED_MODULE_6__["HeroComponent"], _angular_common__WEBPACK_IMPORTED_MODULE_3__["NgIf"], _controls_button_button_component__WEBPACK_IMPORTED_MODULE_7__["ButtonComponent"], _angular_common__WEBPACK_IMPORTED_MODULE_3__["NgForOf"], _controls_alert_alert_component__WEBPACK_IMPORTED_MODULE_8__["AlertComponent"], _angular_router__WEBPACK_IMPORTED_MODULE_9__["RouterLinkWithHref"]], styles: ["@import url(\"https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700&display=swap\")[_ngcontent-%COMP%];\n.logo[_ngcontent-%COMP%]   h1[_ngcontent-%COMP%] {\n  font-family: \"Source Sans Pro\", sans-serif;\n  text-transform: uppercase;\n  letter-spacing: 2px;\n  font-weight: normal;\n  color: white;\n}\n.card[_ngcontent-%COMP%] {\n  border-radius: 4.8%/4%;\n  overflow: hidden;\n  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);\n  display: block;\n}\n.section[_ngcontent-%COMP%] {\n  padding: 112px 16px;\n  background: #202020;\n}\n.section[_ngcontent-%COMP%]:not(:last-child) {\n  border-bottom: 1px solid rgba(200, 200, 200, 0.1);\n}\n#dev-alert[_ngcontent-%COMP%] {\n  position: absolute;\n  left: 50%;\n  transform: translateX(-50%) translateY(-50%);\n  width: calc(100% - 32px);\n  max-width: 816px;\n  text-align: center;\n  z-index: 2;\n}\n#expansion-logos[_ngcontent-%COMP%], #cards[_ngcontent-%COMP%], #pokemon[_ngcontent-%COMP%] {\n  position: relative;\n}\n#expansion-logos[_ngcontent-%COMP%]:before, #cards[_ngcontent-%COMP%]:before, #pokemon[_ngcontent-%COMP%]:before {\n  content: \"\";\n  position: absolute;\n  left: 50%;\n  top: 50%;\n  transform: translate(-50%, -50%);\n  background: radial-gradient(rgba(255, 255, 255, 0.2) 0%, transparent 50%);\n  width: 200%;\n  height: 200%;\n  pointer-events: none;\n}\n#pokemon[_ngcontent-%COMP%]   .pokemon-link[_ngcontent-%COMP%] {\n  position: relative;\n  display: block;\n}\n#pokemon[_ngcontent-%COMP%]   .pokemon-link[_ngcontent-%COMP%]   img[_ngcontent-%COMP%] {\n  transition: ease 0.2s color, ease 0.2s border, ease 0.2s background-color, ease 0.2s box-shadow, ease 0.2s transform, ease 0.2s max-width, ease 0.2s opacity, ease 0.2s margin, ease 0.2s fill, ease 0.2s top, ease 0.2s left, ease 0.2s right, ease 0.2s bottom;\n  display: block;\n}\n#pokemon[_ngcontent-%COMP%]   .pokemon-link[_ngcontent-%COMP%]   .sprite-animated[_ngcontent-%COMP%] {\n  position: absolute;\n  opacity: 0;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n}\n#pokemon[_ngcontent-%COMP%]   .pokemon-link[_ngcontent-%COMP%]:hover   .sprite-default[_ngcontent-%COMP%] {\n  opacity: 0;\n}\n#pokemon[_ngcontent-%COMP%]   .pokemon-link[_ngcontent-%COMP%]:hover   .sprite-animated[_ngcontent-%COMP%] {\n  opacity: 1;\n  transform: translate(-50%, -50%) scale(1.5);\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9zdHlsZXMvX3NldHRpbmdzLnNjc3MiLCJzcmMvYXBwL3BhZ2VzL2hvbWUvaG9tZS5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFFUSxpR0FBQTtBQ0NQO0VBQ0MsMENBQUE7RUFDQSx5QkFBQTtFQUNBLG1CQUFBO0VBQ0EsbUJBQUE7RUFDQSxZQUFBO0FBREY7QUFLQTtFQUNDLHNCRDBDb0I7RUN6Q3BCLGdCQUFBO0VBQ0Esd0NENENRO0VDM0NSLGNBQUE7QUFGRDtBQUtBO0VBQ0MsbUJBQUE7RUFDQSxtQkRhUztBQ2ZWO0FBR0M7RUFDQyxpREQyQk87QUM1QlQ7QUFLQTtFQUNDLGtCQUFBO0VBQ0EsU0FBQTtFQUNBLDRDQUFBO0VBQ0Esd0JBQUE7RUFDQSxnQkFBQTtFQUNBLGtCQUFBO0VBQ0EsVUFBQTtBQUZEO0FBS0E7OztFQUdDLGtCQUFBO0FBRkQ7QUFHQzs7O0VBQ0MsV0FBQTtFQUNBLGtCQUFBO0VBQ0EsU0FBQTtFQUNBLFFBQUE7RUFDQSxnQ0FBQTtFQUNBLHlFQUFBO0VBQ0EsV0FBQTtFQUNBLFlBQUE7RUFDQSxvQkFBQTtBQUNGO0FBSUM7RUFDQyxrQkFBQTtFQUNBLGNBQUE7QUFERjtBQUVFO0VBQ0MsZ1FEcUJVO0VDcEJWLGNBQUE7QUFBSDtBQUVFO0VBQ0Msa0JBQUE7RUFDQSxVQUFBO0VBQ0EsUUFBQTtFQUNBLFNBQUE7RUFDQSxnQ0FBQTtBQUFIO0FBR0c7RUFDQyxVQUFBO0FBREo7QUFHRztFQUNDLFVBQUE7RUFDQSwyQ0FBQTtBQURKIiwiZmlsZSI6InNyYy9hcHAvcGFnZXMvaG9tZS9ob21lLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLy8gVHlwb2dyYXBoeVxuLy8gPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PVxuQGltcG9ydCB1cmwoXCJodHRwczovL2ZvbnRzLmdvb2dsZWFwaXMuY29tL2NzczI/ZmFtaWx5PVNvdXJjZStTYW5zK1Bybzp3Z2h0QDQwMDs3MDAmZGlzcGxheT1zd2FwXCIpO1xuLy8gRm9udFxuJGZvbnQtZmFtaWx5OiBcIlNvdXJjZSBTYW5zIFByb1wiLCBzYW5zLXNlcmlmO1xuJGZvbnQtc2l6ZTogMTZweDtcbiRmb250LWNvbG9yOiByZ2IoMjAwLCAyMDAsIDIwMCk7XG4vLyBIZWFkaW5nXG4kaGVhZGluZy1mb250LWZhbWlseTogXCJTb3VyY2UgU2FucyBQcm9cIiwgc2VyaWY7XG4kaGVhZGluZy1mb250LXNpemU6IGluaXRpYWw7IC8vIFRPRE86IHJlcGxhY2Ugd2l0aCByZWFsIHZhbHVlXG4kaGVhZGluZy1mb250LWNvbG9yOiByZ2JhKDIzMiwgMjMyLCAyMzIpO1xuXG4vLyBDb2xvciB3aGVlbFxuLy8gPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PVxuJHdoaXRlOiB3aGl0ZTtcbiRncmV5OiBncmV5O1xuJGJsYWNrOiBibGFjaztcbiRyZWQ6IHJnYigyMDEsIDM1LCAzNSk7XG4kb3JhbmdlOiAjZjY4NjAzO1xuJHllbGxvdzogI2YxYzUwMDtcbiRncmVlbjogcmdiKDU4LCAxNTYsIDU4KTtcbiR0ZWFsOiAjMWJhMDgzO1xuJGJsdWU6ICMyNDdhYmI7XG4kcHVycGxlOiAjODkzNmI3O1xuJHBpbms6ICNkMTFhNTg7XG4vLyBQcmltYXJ5L3NlY29uZGFyeVxuJHByaW1hcnktY29sb3I6ICRibHVlO1xuJHNlY29uZGFyeS1jb2xvcjogcmdiYSh3aGl0ZSwgMC4yKTtcblxuLy8gU2VjdGlvbiBjb2xvcnNcbi8vID09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT1cbiRoZWFkZXItYmc6IGxpbmVhci1ncmFkaWVudCgkcmVkLCBkYXJrZW4oJHJlZCwgMTAlKSk7XG4kaGVhZGVyLWNvbG9yOiB3aGl0ZTtcbiRtZW51LWJnOiByZ2JhKDI0LCAyNCwgMjQpO1xuJG1haW4tYmc6IHJnYmEoMzIsIDMyLCAzMik7XG4kZm9vdGVyLWJnOiAkbWVudS1iZztcbiRwYW5lbC1iZzogcmdiYSg2NCwgNjQsIDY0KTtcbiRpbnB1dC1iZzogcmdiYSh3aGl0ZSwgMC4wNSk7XG5cbi8vIEFsZXJ0c1xuLy8gPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PVxuJHN1Y2Nlc3M6ICRncmVlbjtcbiRpbmZvOiAkYmx1ZTtcbiR3YXJuaW5nOiAkeWVsbG93O1xuJGVycm9yOiAkcmVkO1xuXG4vLyBCb3JkZXJzXG4vLyA9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09XG4kYm9yZGVyLWNvbG9yOiByZ2JhKCRmb250LWNvbG9yLCAwLjEpO1xuJGJvcmRlci1jb2xvci1zdHJvbmc6IHJnYmEoJGZvbnQtY29sb3IsIDAuMyk7XG4kYm9yZGVyOiAxcHggc29saWQgJGJvcmRlci1jb2xvcjtcbiRib3JkZXItc3Ryb25nOiAxcHggc29saWQgJGJvcmRlci1jb2xvci1zdHJvbmc7XG4vLyBCb3JkZXIgcmFkaXVzXG4kYm9yZGVyLXJhZGl1czogMjBweDtcbiRib3JkZXItcmFkaXVzLXNtYWxsOiA2cHg7XG4kYm9yZGVyLXJhZGl1cy1jYXJkOiAjezQuOCUvNCV9O1xuXG4vLyBTaGFkb3dzXG4vLyA9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09XG4kc2hhZG93OiAwIDJweCA0cHggcmdiYShibGFjaywgMC40KTtcbiRzaGFkb3ctaW5zZXQ6IGluc2V0IDAgMCAycHggcmdiYShibGFjaywgMC4xKTtcbiRzaGFkb3ctaW5zZXQtbGFyZ2U6IGluc2V0IDAgMCA2cHggMnB4IHJnYmEoYmxhY2ssIDAuNCk7XG4kc2hhZG93LWxhcmdlOiAwIDRweCAxMnB4IHJnYmEoYmxhY2ssIDAuNCk7XG4kc2hhZG93LXNoZWVuOiBpbnNldCAwIDAgMCAxcHggcmdiYSh3aGl0ZSwgMC4yKTtcbi8vIEZvY3VzIHNoYWRvd1xuJHNoYWRvdy1mb2N1czogMCAwIDAgNHB4IHJnYmEoJHByaW1hcnktY29sb3IsIDAuNik7XG4kc2hhZG93LWZvY3VzLWluc2V0OiBpbnNldCAwIDJweCA0cHggcmdiYShibGFjaywgMC4yKTtcbi8vIFRleHQgc2hhZG93XG4kdGV4dC1zaGFkb3c6IDAgMXB4IDRweCByZ2JhKGJsYWNrLCAwLjYpO1xuJHRleHQtc2hhZG93LWZvY3VzOiAwIDFweCA0cHggcmdiYShibGFjaywgMC44KTtcbiR0ZXh0LXNoYWRvdy1pbnNldDogMCAxcHggMXB4IHJnYmEod2hpdGUsIDAuNik7XG4vLyBBbGVydCBzaGFkb3dcbiRzaGFkb3ctc3VjY2VzczogMCAwIDAgM3B4IHJnYmEoJHN1Y2Nlc3MsIDAuMik7XG4kc2hhZG93LWluZm86IDAgMCAwIDNweCByZ2JhKCRpbmZvLCAwLjIpO1xuJHNoYWRvdy13YXJuaW5nOiAwIDAgMCAzcHggcmdiYSgkd2FybmluZywgMC4yKTtcbiRzaGFkb3ctZXJyb3I6IDAgMCAwIDNweCByZ2JhKCRlcnJvciwgMC4yKTtcblxuLy8gVHJhbnNpdGlvblxuLy8gPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PVxuJHQ6IGVhc2UgMC4ycztcbiR0cmFuc2l0aW9uOiAkdCBjb2xvciwgJHQgYm9yZGVyLCAkdCBiYWNrZ3JvdW5kLWNvbG9yLCAkdCBib3gtc2hhZG93LFxuXHQkdCB0cmFuc2Zvcm0sICR0IG1heC13aWR0aCwgJHQgb3BhY2l0eSwgJHQgbWFyZ2luLCAkdCBmaWxsLCAkdCB0b3AsICR0IGxlZnQsXG5cdCR0IHJpZ2h0LCAkdCBib3R0b207XG5cbi8vIFNjcmVlblxuLy8gPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PVxuJG1heDogMTA4MHB4O1xuJG1pbjogNDAwcHg7XG4kc2NyZWVuOiAzMjBweDtcbiRzY3JlZW4teHNtYWxsOiAkc2NyZWVuICogMTtcbiRzY3JlZW4tc21hbGw6ICRzY3JlZW4gKiAyO1xuJHNjcmVlbi1tZWRpdW06ICRzY3JlZW4gKiAzO1xuJHNjcmVlbi1sYXJnZTogJHNjcmVlbiAqIDQ7XG4kc2NyZWVuLXhsYXJnZTogJHNjcmVlbiAqIDU7XG5cbi8vIE1pc2Ncbi8vID09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT1cbiRzcGFjaW5nOiA4cHg7XG4kc2lkZXM6IFwidG9wXCIsIFwicmlnaHRcIiwgXCJib3R0b21cIiwgXCJsZWZ0XCI7XG4kaGVhZGVyLWhlaWdodDogNTZweDtcblxuLy8gUm90b21kZXhcbi8vID09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT1cbiRjYXJkLXJhdGlvOiAzMzAvMjQwO1xuIiwiQGltcG9ydCBcInNldHRpbmdzXCI7XG5cbi5sb2dvIHtcblx0aDEge1xuXHRcdGZvbnQtZmFtaWx5OiAkZm9udC1mYW1pbHk7XG5cdFx0dGV4dC10cmFuc2Zvcm06IHVwcGVyY2FzZTtcblx0XHRsZXR0ZXItc3BhY2luZzogMnB4O1xuXHRcdGZvbnQtd2VpZ2h0OiBub3JtYWw7XG5cdFx0Y29sb3I6IHdoaXRlO1xuXHR9XG59XG5cbi5jYXJkIHtcblx0Ym9yZGVyLXJhZGl1czogJGJvcmRlci1yYWRpdXMtY2FyZDtcblx0b3ZlcmZsb3c6IGhpZGRlbjtcblx0Ym94LXNoYWRvdzogJHNoYWRvdztcblx0ZGlzcGxheTogYmxvY2s7XG59XG5cbi5zZWN0aW9uIHtcblx0cGFkZGluZzogJHNwYWNpbmcgKiAxNCAkc3BhY2luZyAqIDI7XG5cdGJhY2tncm91bmQ6ICRtYWluLWJnO1xuXHQmOm5vdCg6bGFzdC1jaGlsZCkge1xuXHRcdGJvcmRlci1ib3R0b206ICRib3JkZXI7XG5cdH1cbn1cblxuI2Rldi1hbGVydCB7XG5cdHBvc2l0aW9uOiBhYnNvbHV0ZTtcblx0bGVmdDogNTAlO1xuXHR0cmFuc2Zvcm06IHRyYW5zbGF0ZVgoLTUwJSkgdHJhbnNsYXRlWSgtNTAlKTtcblx0d2lkdGg6IGNhbGMoMTAwJSAtICN7JHNwYWNpbmcgKiA0fSk7XG5cdG1heC13aWR0aDogODE2cHg7XG5cdHRleHQtYWxpZ246IGNlbnRlcjtcblx0ei1pbmRleDogMjtcbn1cblxuI2V4cGFuc2lvbi1sb2dvcyxcbiNjYXJkcyxcbiNwb2tlbW9uIHtcblx0cG9zaXRpb246IHJlbGF0aXZlO1xuXHQmOmJlZm9yZSB7XG5cdFx0Y29udGVudDogXCJcIjtcblx0XHRwb3NpdGlvbjogYWJzb2x1dGU7XG5cdFx0bGVmdDogNTAlO1xuXHRcdHRvcDogNTAlO1xuXHRcdHRyYW5zZm9ybTogdHJhbnNsYXRlKC01MCUsIC01MCUpO1xuXHRcdGJhY2tncm91bmQ6IHJhZGlhbC1ncmFkaWVudChyZ2JhKHdoaXRlLCAwLjIpIDAlLCB0cmFuc3BhcmVudCA1MCUpO1xuXHRcdHdpZHRoOiAyMDAlO1xuXHRcdGhlaWdodDogMjAwJTtcblx0XHRwb2ludGVyLWV2ZW50czogbm9uZTtcblx0fVxufVxuXG4jcG9rZW1vbiB7XG5cdC5wb2tlbW9uLWxpbmsge1xuXHRcdHBvc2l0aW9uOiByZWxhdGl2ZTtcblx0XHRkaXNwbGF5OiBibG9jaztcblx0XHRpbWcge1xuXHRcdFx0dHJhbnNpdGlvbjogJHRyYW5zaXRpb247XG5cdFx0XHRkaXNwbGF5OiBibG9jaztcblx0XHR9XG5cdFx0LnNwcml0ZS1hbmltYXRlZCB7XG5cdFx0XHRwb3NpdGlvbjogYWJzb2x1dGU7XG5cdFx0XHRvcGFjaXR5OiAwO1xuXHRcdFx0dG9wOiA1MCU7XG5cdFx0XHRsZWZ0OiA1MCU7XG5cdFx0XHR0cmFuc2Zvcm06IHRyYW5zbGF0ZSgtNTAlLCAtNTAlKTtcblx0XHR9XG5cdFx0Jjpob3ZlciB7XG5cdFx0XHQuc3ByaXRlLWRlZmF1bHQge1xuXHRcdFx0XHRvcGFjaXR5OiAwO1xuXHRcdFx0fVxuXHRcdFx0LnNwcml0ZS1hbmltYXRlZCB7XG5cdFx0XHRcdG9wYWNpdHk6IDE7XG5cdFx0XHRcdHRyYW5zZm9ybTogdHJhbnNsYXRlKC01MCUsIC01MCUpIHNjYWxlKDEuNSk7XG5cdFx0XHR9XG5cdFx0fVxuXHR9XG59XG4iXX0= */"] });
+    } }, directives: [_controls_hero_hero_component__WEBPACK_IMPORTED_MODULE_6__["HeroComponent"], _angular_common__WEBPACK_IMPORTED_MODULE_3__["NgIf"], _controls_button_button_component__WEBPACK_IMPORTED_MODULE_7__["ButtonComponent"], _controls_alert_alert_component__WEBPACK_IMPORTED_MODULE_8__["AlertComponent"], _angular_common__WEBPACK_IMPORTED_MODULE_3__["NgForOf"], _angular_router__WEBPACK_IMPORTED_MODULE_9__["RouterLinkWithHref"]], styles: ["@import url(\"https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700&display=swap\")[_ngcontent-%COMP%];\n.logo[_ngcontent-%COMP%]   h1[_ngcontent-%COMP%] {\n  font-family: \"Source Sans Pro\", sans-serif;\n  text-transform: uppercase;\n  letter-spacing: 2px;\n  font-weight: normal;\n  color: white;\n}\n.card[_ngcontent-%COMP%] {\n  border-radius: 4.8%/4%;\n  overflow: hidden;\n  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);\n  display: block;\n}\n.section[_ngcontent-%COMP%] {\n  padding: 112px 16px;\n  background: #202020;\n}\n.section[_ngcontent-%COMP%]:not(:last-child) {\n  border-bottom: 1px solid rgba(200, 200, 200, 0.1);\n}\n#dev-alert[_ngcontent-%COMP%] {\n  position: absolute;\n  left: 50%;\n  transform: translateX(-50%) translateY(-50%);\n  width: calc(100% - 32px);\n  max-width: 816px;\n  text-align: center;\n  z-index: 2;\n}\n#expansion-logos[_ngcontent-%COMP%], #cards[_ngcontent-%COMP%], #pokemon[_ngcontent-%COMP%] {\n  position: relative;\n}\n#expansion-logos[_ngcontent-%COMP%]:before, #cards[_ngcontent-%COMP%]:before, #pokemon[_ngcontent-%COMP%]:before {\n  content: \"\";\n  position: absolute;\n  left: 50%;\n  top: 50%;\n  transform: translate(-50%, -50%);\n  background: radial-gradient(rgba(255, 255, 255, 0.2) 0%, transparent 50%);\n  width: 200%;\n  height: 200%;\n  pointer-events: none;\n}\n#pokemon[_ngcontent-%COMP%]   .pokemon-link[_ngcontent-%COMP%] {\n  position: relative;\n  display: block;\n}\n#pokemon[_ngcontent-%COMP%]   .pokemon-link[_ngcontent-%COMP%]   img[_ngcontent-%COMP%] {\n  transition: ease 0.2s color, ease 0.2s border, ease 0.2s background-color, ease 0.2s box-shadow, ease 0.2s transform, ease 0.2s max-width, ease 0.2s opacity, ease 0.2s margin, ease 0.2s fill, ease 0.2s top, ease 0.2s left, ease 0.2s right, ease 0.2s bottom;\n  display: block;\n}\n#pokemon[_ngcontent-%COMP%]   .pokemon-link[_ngcontent-%COMP%]   .sprite-animated[_ngcontent-%COMP%] {\n  position: absolute;\n  opacity: 0;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n}\n#pokemon[_ngcontent-%COMP%]   .pokemon-link[_ngcontent-%COMP%]:hover   .sprite-default[_ngcontent-%COMP%] {\n  opacity: 0;\n}\n#pokemon[_ngcontent-%COMP%]   .pokemon-link[_ngcontent-%COMP%]:hover   .sprite-animated[_ngcontent-%COMP%] {\n  opacity: 1;\n  transform: translate(-50%, -50%) scale(1.5);\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9zdHlsZXMvX3NldHRpbmdzLnNjc3MiLCJzcmMvYXBwL3BhZ2VzL2hvbWUvaG9tZS5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFFUSxpR0FBQTtBQ0NQO0VBQ0MsMENBQUE7RUFDQSx5QkFBQTtFQUNBLG1CQUFBO0VBQ0EsbUJBQUE7RUFDQSxZQUFBO0FBREY7QUFLQTtFQUNDLHNCRDBDb0I7RUN6Q3BCLGdCQUFBO0VBQ0Esd0NENENRO0VDM0NSLGNBQUE7QUFGRDtBQUtBO0VBQ0MsbUJBQUE7RUFDQSxtQkRhUztBQ2ZWO0FBR0M7RUFDQyxpREQyQk87QUM1QlQ7QUFLQTtFQUNDLGtCQUFBO0VBQ0EsU0FBQTtFQUNBLDRDQUFBO0VBQ0Esd0JBQUE7RUFDQSxnQkFBQTtFQUNBLGtCQUFBO0VBQ0EsVUFBQTtBQUZEO0FBS0E7OztFQUdDLGtCQUFBO0FBRkQ7QUFHQzs7O0VBQ0MsV0FBQTtFQUNBLGtCQUFBO0VBQ0EsU0FBQTtFQUNBLFFBQUE7RUFDQSxnQ0FBQTtFQUNBLHlFQUFBO0VBQ0EsV0FBQTtFQUNBLFlBQUE7RUFDQSxvQkFBQTtBQUNGO0FBSUM7RUFDQyxrQkFBQTtFQUNBLGNBQUE7QUFERjtBQUVFO0VBQ0MsZ1FEcUJVO0VDcEJWLGNBQUE7QUFBSDtBQUVFO0VBQ0Msa0JBQUE7RUFDQSxVQUFBO0VBQ0EsUUFBQTtFQUNBLFNBQUE7RUFDQSxnQ0FBQTtBQUFIO0FBR0c7RUFDQyxVQUFBO0FBREo7QUFHRztFQUNDLFVBQUE7RUFDQSwyQ0FBQTtBQURKIiwiZmlsZSI6InNyYy9hcHAvcGFnZXMvaG9tZS9ob21lLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLy8gVHlwb2dyYXBoeVxuLy8gPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PVxuQGltcG9ydCB1cmwoXCJodHRwczovL2ZvbnRzLmdvb2dsZWFwaXMuY29tL2NzczI/ZmFtaWx5PVNvdXJjZStTYW5zK1Bybzp3Z2h0QDQwMDs3MDAmZGlzcGxheT1zd2FwXCIpO1xuLy8gRm9udFxuJGZvbnQtZmFtaWx5OiBcIlNvdXJjZSBTYW5zIFByb1wiLCBzYW5zLXNlcmlmO1xuJGZvbnQtc2l6ZTogMTZweDtcbiRmb250LWNvbG9yOiByZ2IoMjAwLCAyMDAsIDIwMCk7XG4vLyBIZWFkaW5nXG4kaGVhZGluZy1mb250LWZhbWlseTogXCJTb3VyY2UgU2FucyBQcm9cIiwgc2VyaWY7XG4kaGVhZGluZy1mb250LXNpemU6IGluaXRpYWw7IC8vIFRPRE86IHJlcGxhY2Ugd2l0aCByZWFsIHZhbHVlXG4kaGVhZGluZy1mb250LWNvbG9yOiByZ2JhKDIzMiwgMjMyLCAyMzIpO1xuXG4vLyBDb2xvciB3aGVlbFxuLy8gPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PVxuJHdoaXRlOiB3aGl0ZTtcbiRncmV5OiBncmV5O1xuJGJsYWNrOiBibGFjaztcbiRyZWQ6IHJnYigyMDEsIDM1LCAzNSk7XG4kb3JhbmdlOiAjZjY4NjAzO1xuJHllbGxvdzogI2YxYzUwMDtcbiRncmVlbjogcmdiKDU4LCAxNTYsIDU4KTtcbiR0ZWFsOiAjMWJhMDgzO1xuJGJsdWU6ICMyNDdhYmI7XG4kcHVycGxlOiAjODkzNmI3O1xuJHBpbms6ICNkMTFhNTg7XG4vLyBQcmltYXJ5L3NlY29uZGFyeVxuJHByaW1hcnktY29sb3I6ICRibHVlO1xuJHNlY29uZGFyeS1jb2xvcjogcmdiYSh3aGl0ZSwgMC4yKTtcblxuLy8gU2VjdGlvbiBjb2xvcnNcbi8vID09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT1cbiRoZWFkZXItYmc6IGxpbmVhci1ncmFkaWVudCgkcmVkLCBkYXJrZW4oJHJlZCwgMTAlKSk7XG4kaGVhZGVyLWNvbG9yOiB3aGl0ZTtcbiRtZW51LWJnOiByZ2JhKDI0LCAyNCwgMjQpO1xuJG1haW4tYmc6IHJnYmEoMzIsIDMyLCAzMik7XG4kZm9vdGVyLWJnOiAkbWVudS1iZztcbiRwYW5lbC1iZzogcmdiYSg2NCwgNjQsIDY0KTtcbiRpbnB1dC1iZzogcmdiYSh3aGl0ZSwgMC4wNSk7XG5cbi8vIEFsZXJ0c1xuLy8gPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PVxuJHN1Y2Nlc3M6ICRncmVlbjtcbiRpbmZvOiAkYmx1ZTtcbiR3YXJuaW5nOiAkeWVsbG93O1xuJGVycm9yOiAkcmVkO1xuXG4vLyBCb3JkZXJzXG4vLyA9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09XG4kYm9yZGVyLWNvbG9yOiByZ2JhKCRmb250LWNvbG9yLCAwLjEpO1xuJGJvcmRlci1jb2xvci1zdHJvbmc6IHJnYmEoJGZvbnQtY29sb3IsIDAuMyk7XG4kYm9yZGVyOiAxcHggc29saWQgJGJvcmRlci1jb2xvcjtcbiRib3JkZXItc3Ryb25nOiAxcHggc29saWQgJGJvcmRlci1jb2xvci1zdHJvbmc7XG4vLyBCb3JkZXIgcmFkaXVzXG4kYm9yZGVyLXJhZGl1czogMjBweDtcbiRib3JkZXItcmFkaXVzLXNtYWxsOiA2cHg7XG4kYm9yZGVyLXJhZGl1cy1jYXJkOiAjezQuOCUvNCV9O1xuXG4vLyBTaGFkb3dzXG4vLyA9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09XG4kc2hhZG93OiAwIDJweCA0cHggcmdiYShibGFjaywgMC40KTtcbiRzaGFkb3ctaW5zZXQ6IGluc2V0IDAgMCAycHggcmdiYShibGFjaywgMC4xKTtcbiRzaGFkb3ctaW5zZXQtbGFyZ2U6IGluc2V0IDAgMCA2cHggMnB4IHJnYmEoYmxhY2ssIDAuNCk7XG4kc2hhZG93LWxhcmdlOiAwIDRweCAxMnB4IHJnYmEoYmxhY2ssIDAuNCk7XG4kc2hhZG93LXNoZWVuOiBpbnNldCAwIDAgMCAxcHggcmdiYSh3aGl0ZSwgMC4yKTtcbi8vIEZvY3VzIHNoYWRvd1xuJHNoYWRvdy1mb2N1czogMCAwIDAgNHB4IHJnYmEoJHByaW1hcnktY29sb3IsIDAuNik7XG4kc2hhZG93LWZvY3VzLWluc2V0OiBpbnNldCAwIDJweCA0cHggcmdiYShibGFjaywgMC4yKTtcbi8vIFRleHQgc2hhZG93XG4kdGV4dC1zaGFkb3c6IDAgMXB4IDRweCByZ2JhKGJsYWNrLCAwLjYpO1xuJHRleHQtc2hhZG93LWZvY3VzOiAwIDFweCA0cHggcmdiYShibGFjaywgMC44KTtcbiR0ZXh0LXNoYWRvdy1pbnNldDogMCAxcHggMXB4IHJnYmEod2hpdGUsIDAuNik7XG4vLyBBbGVydCBzaGFkb3dcbiRzaGFkb3ctc3VjY2VzczogMCAwIDAgM3B4IHJnYmEoJHN1Y2Nlc3MsIDAuMik7XG4kc2hhZG93LWluZm86IDAgMCAwIDNweCByZ2JhKCRpbmZvLCAwLjIpO1xuJHNoYWRvdy13YXJuaW5nOiAwIDAgMCAzcHggcmdiYSgkd2FybmluZywgMC4yKTtcbiRzaGFkb3ctZXJyb3I6IDAgMCAwIDNweCByZ2JhKCRlcnJvciwgMC4yKTtcblxuLy8gVHJhbnNpdGlvblxuLy8gPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PVxuJHQ6IGVhc2UgMC4ycztcbiR0cmFuc2l0aW9uOiAkdCBjb2xvciwgJHQgYm9yZGVyLCAkdCBiYWNrZ3JvdW5kLWNvbG9yLCAkdCBib3gtc2hhZG93LFxuXHQkdCB0cmFuc2Zvcm0sICR0IG1heC13aWR0aCwgJHQgb3BhY2l0eSwgJHQgbWFyZ2luLCAkdCBmaWxsLCAkdCB0b3AsICR0IGxlZnQsXG5cdCR0IHJpZ2h0LCAkdCBib3R0b207XG5cbi8vIFNjcmVlblxuLy8gPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PVxuJG1heDogMTA4MHB4O1xuJG1pbjogNDAwcHg7XG4kc2NyZWVuOiAzMjBweDtcbiRzY3JlZW4teHNtYWxsOiAkc2NyZWVuICogMTtcbiRzY3JlZW4tc21hbGw6ICRzY3JlZW4gKiAyO1xuJHNjcmVlbi1tZWRpdW06ICRzY3JlZW4gKiAzO1xuJHNjcmVlbi1sYXJnZTogJHNjcmVlbiAqIDQ7XG4kc2NyZWVuLXhsYXJnZTogJHNjcmVlbiAqIDU7XG5cbi8vIE1pc2Ncbi8vID09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT1cbiRzcGFjaW5nOiA4cHg7XG4kc2lkZXM6IFwidG9wXCIsIFwicmlnaHRcIiwgXCJib3R0b21cIiwgXCJsZWZ0XCI7XG4kaGVhZGVyLWhlaWdodDogNTZweDtcblxuLy8gUm90b21kZXhcbi8vID09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT1cbiRjYXJkLXJhdGlvOiAzMzAvMjQwO1xuIiwiQGltcG9ydCBcInNldHRpbmdzXCI7XG5cbi5sb2dvIHtcblx0aDEge1xuXHRcdGZvbnQtZmFtaWx5OiAkZm9udC1mYW1pbHk7XG5cdFx0dGV4dC10cmFuc2Zvcm06IHVwcGVyY2FzZTtcblx0XHRsZXR0ZXItc3BhY2luZzogMnB4O1xuXHRcdGZvbnQtd2VpZ2h0OiBub3JtYWw7XG5cdFx0Y29sb3I6IHdoaXRlO1xuXHR9XG59XG5cbi5jYXJkIHtcblx0Ym9yZGVyLXJhZGl1czogJGJvcmRlci1yYWRpdXMtY2FyZDtcblx0b3ZlcmZsb3c6IGhpZGRlbjtcblx0Ym94LXNoYWRvdzogJHNoYWRvdztcblx0ZGlzcGxheTogYmxvY2s7XG59XG5cbi5zZWN0aW9uIHtcblx0cGFkZGluZzogJHNwYWNpbmcgKiAxNCAkc3BhY2luZyAqIDI7XG5cdGJhY2tncm91bmQ6ICRtYWluLWJnO1xuXHQmOm5vdCg6bGFzdC1jaGlsZCkge1xuXHRcdGJvcmRlci1ib3R0b206ICRib3JkZXI7XG5cdH1cbn1cblxuI2Rldi1hbGVydCB7XG5cdHBvc2l0aW9uOiBhYnNvbHV0ZTtcblx0bGVmdDogNTAlO1xuXHR0cmFuc2Zvcm06IHRyYW5zbGF0ZVgoLTUwJSkgdHJhbnNsYXRlWSgtNTAlKTtcblx0d2lkdGg6IGNhbGMoMTAwJSAtICN7JHNwYWNpbmcgKiA0fSk7XG5cdG1heC13aWR0aDogODE2cHg7XG5cdHRleHQtYWxpZ246IGNlbnRlcjtcblx0ei1pbmRleDogMjtcbn1cblxuI2V4cGFuc2lvbi1sb2dvcyxcbiNjYXJkcyxcbiNwb2tlbW9uIHtcblx0cG9zaXRpb246IHJlbGF0aXZlO1xuXHQmOmJlZm9yZSB7XG5cdFx0Y29udGVudDogXCJcIjtcblx0XHRwb3NpdGlvbjogYWJzb2x1dGU7XG5cdFx0bGVmdDogNTAlO1xuXHRcdHRvcDogNTAlO1xuXHRcdHRyYW5zZm9ybTogdHJhbnNsYXRlKC01MCUsIC01MCUpO1xuXHRcdGJhY2tncm91bmQ6IHJhZGlhbC1ncmFkaWVudChyZ2JhKHdoaXRlLCAwLjIpIDAlLCB0cmFuc3BhcmVudCA1MCUpO1xuXHRcdHdpZHRoOiAyMDAlO1xuXHRcdGhlaWdodDogMjAwJTtcblx0XHRwb2ludGVyLWV2ZW50czogbm9uZTtcblx0fVxufVxuXG4jcG9rZW1vbiB7XG5cdC5wb2tlbW9uLWxpbmsge1xuXHRcdHBvc2l0aW9uOiByZWxhdGl2ZTtcblx0XHRkaXNwbGF5OiBibG9jaztcblx0XHRpbWcge1xuXHRcdFx0dHJhbnNpdGlvbjogJHRyYW5zaXRpb247XG5cdFx0XHRkaXNwbGF5OiBibG9jaztcblx0XHR9XG5cdFx0LnNwcml0ZS1hbmltYXRlZCB7XG5cdFx0XHRwb3NpdGlvbjogYWJzb2x1dGU7XG5cdFx0XHRvcGFjaXR5OiAwO1xuXHRcdFx0dG9wOiA1MCU7XG5cdFx0XHRsZWZ0OiA1MCU7XG5cdFx0XHR0cmFuc2Zvcm06IHRyYW5zbGF0ZSgtNTAlLCAtNTAlKTtcblx0XHR9XG5cdFx0Jjpob3ZlciB7XG5cdFx0XHQuc3ByaXRlLWRlZmF1bHQge1xuXHRcdFx0XHRvcGFjaXR5OiAwO1xuXHRcdFx0fVxuXHRcdFx0LnNwcml0ZS1hbmltYXRlZCB7XG5cdFx0XHRcdG9wYWNpdHk6IDE7XG5cdFx0XHRcdHRyYW5zZm9ybTogdHJhbnNsYXRlKC01MCUsIC01MCUpIHNjYWxlKDEuNSk7XG5cdFx0XHR9XG5cdFx0fVxuXHR9XG59XG4iXX0= */"] });
 /*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](HomeComponent, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
         args: [{
@@ -13287,19 +13328,19 @@ class ExpansionsService {
                 return 0;
             }
             function sortExpansionAsc(a, b) {
-                if (a.release_date < b.release_date) {
+                if (new Date(a.release_date) < new Date(b.release_date)) {
                     return -1;
                 }
-                if (a.release_date > b.release_date) {
+                if (new Date(a.release_date) > new Date(b.release_date)) {
                     return 1;
                 }
                 return 0;
             }
             function sortExpansionDesc(a, b) {
-                if (a.release_date > b.release_date) {
+                if (new Date(a.release_date) > new Date(b.release_date)) {
                     return -1;
                 }
-                if (a.release_date < b.release_date) {
+                if (new Date(a.release_date) < new Date(b.release_date)) {
                     return 1;
                 }
                 return 0;

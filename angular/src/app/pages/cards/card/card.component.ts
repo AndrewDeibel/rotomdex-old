@@ -121,10 +121,10 @@ export class CardComponent implements OnInit {
 				this.card = card;
 
 				if (this.card.pokemon) {
-					this.relatedCards.header.title = `${this.card.pokemon.name} Cards`;
+					this.relatedCards.header.title = `${this.card.pokemon.variant.name} Cards`;
 					this.relatedCards.header.titleRoute =
 						this.card.pokemon.route;
-					this.relatedCards.noResults = `No ${this.card.pokemon.name} cards found`;
+					this.relatedCards.noResults = `No ${this.card.pokemon.variant.name} cards found`;
 				}
 
 				// Rarity

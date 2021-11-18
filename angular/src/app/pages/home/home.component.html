@@ -39,7 +39,7 @@
 </div>
 
 <!-- Cards -->
-<div class="section dark">
+<div class="section dark" *ngIf="featured && featured.cards">
 	<div class="max">
 		<div class="flex flex-center padded-8">
 			<div class="width-6 small-12">
@@ -73,7 +73,7 @@
 </div>
 
 <!-- Pokemon -->
-<div class="section dark">
+<div class="section dark" *ngIf="featured && featured.pokemon">
 	<div class="max">
 		<div class="flex flex-center padded-8">
 			<div class="width-6 small-12 small-order-2">

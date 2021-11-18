@@ -91,19 +91,19 @@ export class ExpansionsService {
 				return 0;
 			}
 			function sortExpansionAsc(a: Expansion, b: Expansion) {
-				if (a.release_date < b.release_date) {
+				if (new Date(a.release_date) < new Date(b.release_date)) {
 					return -1;
 				}
-				if (a.release_date > b.release_date) {
+				if (new Date(a.release_date) > new Date(b.release_date)) {
 					return 1;
 				}
 				return 0;
 			}
 			function sortExpansionDesc(a: Expansion, b: Expansion) {
-				if (a.release_date > b.release_date) {
+				if (new Date(a.release_date) > new Date(b.release_date)) {
 					return -1;
 				}
-				if (a.release_date < b.release_date) {
+				if (new Date(a.release_date) < new Date(b.release_date)) {
 					return 1;
 				}
 				return 0;
