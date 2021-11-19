@@ -37,7 +37,7 @@ export class HomeComponent implements OnInit {
 	});
 	collectionButton: Button = new Button({
 		text: 'Manage Your Collection',
-		icon: Icons.archive,
+		icon: Icons.externalLink,
 		route: '/collection',
 	});
 

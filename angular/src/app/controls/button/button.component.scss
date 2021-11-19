@@ -40,7 +40,7 @@
 			height: 16px !important;
 		}
 		+ .text {
-			margin-left: $spacing;
+			margin-left: $spacing * 2;
 		}
 	}
 
@@ -51,7 +51,7 @@
 			filter: invert(1);
 		}
 		+ .text {
-			margin-left: $spacing;
+			margin-left: $spacing * 2;
 		}
 	}
 

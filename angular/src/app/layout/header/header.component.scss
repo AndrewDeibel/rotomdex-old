@@ -74,6 +74,9 @@
 			.menu {
 				background: $menu-bg;
 				box-shadow: $shadow;
+				@media (max-width: $screen-medium) {
+					background: none;
+				}
 			}
 			a {
 				color: white;

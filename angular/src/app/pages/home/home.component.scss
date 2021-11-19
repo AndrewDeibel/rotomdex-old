@@ -20,6 +20,7 @@
 .section {
 	padding: $spacing * 14 $spacing * 2;
 	background: $main-bg;
+	overflow: hidden;
 	&:not(:last-child) {
 		border-bottom: $border;
 	}

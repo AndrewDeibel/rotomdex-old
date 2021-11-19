@@ -9,6 +9,9 @@
 	color: white;
 	position: relative;
 	margin-top: -($header-height + 58px);
+	@media (max-width: $screen-medium) {
+		padding-top: 150px;
+	}
 	.hero-content {
 		z-index: 3;
 		position: relative;
