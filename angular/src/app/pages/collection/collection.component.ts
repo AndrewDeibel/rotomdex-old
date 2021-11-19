@@ -38,21 +38,25 @@ export class CollectionComponent implements OnInit {
 					text: 'Dashboard',
 					icon: Icons.dashboard,
 					route: '/collection/dashboard',
+					exactMatch: true,
 				}),
 				new MenuItem({
 					text: 'All Cards',
 					symbol: Symbols.cards,
 					route: '/collection',
+					exactMatch: true,
 				}),
 				new MenuItem({
 					text: 'Example Binder 1',
 					icon: Icons.archive,
 					route: '/collection/123',
+					exactMatch: true,
 				}),
 				new MenuItem({
 					text: 'Add Group',
 					icon: Icons.plus,
 					route: '/collection/add',
+					exactMatch: true,
 				}),
 			],
 		});

@@ -27,7 +27,7 @@ export class ProfileComponent implements OnInit {
 							new MenuItem({
 								text: 'Dashboard',
 								icon: Icons.dashboard,
-								route: 'dashboard',
+								route: '/collection/dashboard/',
 								click: () => {
 									this.menu.clearActive();
 								},
@@ -35,7 +35,7 @@ export class ProfileComponent implements OnInit {
 							new MenuItem({
 								text: 'Profile',
 								icon: Icons.user,
-								route: 'profile',
+								route: '/edit-profile',
 								click: () => {
 									this.menu.clearActive();
 								},

@@ -72,6 +72,27 @@ select {
 		padding: 0 16px;
 		opacity: 0.5;
 	}
+	.selected-options {
+		display: flex;
+		flex-wrap: wrap;
+		padding: 3px 32px 0 3px;
+		.select-option {
+			padding: 6px 10px;
+			border-radius: $border-radius;
+			background: $input-bg;
+			margin-right: 3px;
+			margin-bottom: 3px;
+			.text {
+				padding-right: 8px;
+			}
+			[icon="times"] {
+				height: 14px;
+				&:hover {
+					color: $primary-color;
+				}
+			}
+		}
+	}
 	.available-options {
 		position: absolute;
 		top: 100%;

@@ -37,6 +37,11 @@ export class FooterComponent implements OnInit {
 					text: 'Pokemon',
 					route: '/pokemon',
 				}),
+				new MenuItem({
+					icon: Icons.archive,
+					text: 'Collection',
+					route: '/collection/dashboard',
+				}),
 			],
 		});
 		this.menuCenter = new Menu({

@@ -1,3 +1,4 @@
+import { SelectOption } from '@app/controls';
 import { Component, OnInit, Input, forwardRef } from '@angular/core';
 import { Select } from './select';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
@@ -63,5 +64,13 @@ export class SelectComponent implements ControlValueAccessor {
 		if (this.select._change) {
 			this.select._change(this.select.value);
 		}
+	}
+
+	selectOption(option: SelectOption) {
+		option.selected = true;
+	}
+
+	unselectOption(option: SelectOption) {
+		option.selected = false;
 	}
 }
