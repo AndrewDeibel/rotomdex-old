@@ -70,7 +70,7 @@ const routes: Routes = [
 	},
 	{
 		path: 'collection/add',
-		component: CollectionCardGroupComponent,
+		component: CollectionComponent,
 	},
 
 	// Scanner

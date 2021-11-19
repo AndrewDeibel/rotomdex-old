@@ -1,3 +1,4 @@
+import { ActivatedRoute } from '@angular/router';
 import { Icons } from '@app/models';
 import { Menu, MenuItem } from '@app/controls/menu';
 import { ProgressBar } from './../../controls/progress-bar/progress-bar';
@@ -14,7 +15,13 @@ export class CollectionComponent implements OnInit {
 	symbolCards: Symbols;
 	symbolPokemon: Symbols;
 	menuSidebar: Menu;
-	constructor() {}
+
+	showDashboard = () => {
+		return window.location.pathname.includes('/collection/dashboard');
+	};
+	showAddGroup = () => {
+		return window.location.pathname.includes('/collection/add');
+	};
 
 	ngOnInit() {
 		this.progressBar = new ProgressBar({
@@ -25,6 +32,7 @@ export class CollectionComponent implements OnInit {
 		this.symbolPokemon = Symbols.pokeball;
 
 		this.menuSidebar = new Menu({
+			round: false,
 			items: [
 				new MenuItem({
 					text: 'Dashboard',

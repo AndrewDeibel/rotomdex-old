@@ -1,9 +1,11 @@
-<div class="flex padding-2">
-	<div class="padding-2">
+<div class="flex h-100">
+	<div class="input-bg">
 		<mb-menu [menu]="menuSidebar"></mb-menu>
 	</div>
-	<div class="padding-2 box">
-		<div class="max">
+	<div class="padding-4 box">
+		<collection-dashboard *ngIf="showDashboard()"></collection-dashboard>
+		<collection-card-group *ngIf="showAddGroup()"></collection-card-group>
+		<div class="max" *ngIf="false">
 			<div class="flex padded">
 				<div class="width-4 medium-12">
 					<div class="panel">

@@ -75,6 +75,7 @@ import {
 	PokmeonItemListComponent,
 	PokemonComponent,
 	CollectionComponent,
+	CollectionDashboardComponent,
 	CollectionCardGroupComponent,
 } from './pages';
 
@@ -252,6 +253,7 @@ import { CardItemListComponent } from './pages/cards/card-item/card-item-list/ca
 		ItemsListComponent,
 		ItemsGroupsComponent,
 		CollectionCardGroupComponent,
+		CollectionDashboardComponent,
 
 		// Controls
 		// ====================

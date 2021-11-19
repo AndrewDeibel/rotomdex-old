@@ -8,6 +8,7 @@ import {
 	Toggle,
 	Select,
 	SelectOption,
+	ButtonType,
 } from '@app/controls';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
@@ -23,7 +24,8 @@ export class CollectionCardGroupComponent implements OnInit {
 	selectType: Select;
 	textareaDescription: Textarea;
 	togglePublic: Toggle;
-	buttonSubmit: Button;
+	buttonSave: Button;
+	buttonCancel: Button;
 	constructor(
 		private formBuilder: FormBuilder,
 		private authenticationService: AuthenticationService,
@@ -77,6 +79,15 @@ export class CollectionCardGroupComponent implements OnInit {
 		this.togglePublic = new Toggle({
 			text: 'Private',
 			textChecked: 'Public',
+		});
+		this.buttonSave = new Button({
+			text: 'Save',
+			type: ButtonType.submit,
+		});
+		this.buttonCancel = new Button({
+			text: 'Cancel',
+			classes: 'secondary',
+			route: '/collection/dashboard',
 		});
 	}
 

@@ -112,6 +112,9 @@ img {
 		background-color: #{$color-value} !important;
 	}
 }
+.input-bg {
+	background-color: $input-bg;
+}
 
 // Gradient
 .texture-gradient {

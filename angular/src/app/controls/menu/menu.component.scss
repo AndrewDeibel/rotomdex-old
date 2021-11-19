@@ -49,6 +49,8 @@
 			width: 20px;
 			display: flex;
 			justify-content: center;
+			filter: contrast(0) sepia(100%) hue-rotate(164deg) brightness(0.7)
+				saturate(2);
 			img {
 				max-height: 100%;
 				display: block;
