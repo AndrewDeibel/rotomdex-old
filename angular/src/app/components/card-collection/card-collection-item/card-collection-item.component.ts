@@ -18,7 +18,8 @@ import { CardCollectionItem } from './card-collection-item';
 })
 export class CardCollectionItemComponent implements OnInit {
 	@Input() item: CardCollectionItem;
-	@Output() deleted: EventEmitter<boolean> = new EventEmitter(false);
+	@Output() deleted: EventEmitter<boolean> = new EventEmitter();
+	@Output() updated: EventEmitter<CardCollectionItem> = new EventEmitter();
 	selectCondition: Select;
 	selectGradingCompany: Select;
 	selectPrintVerion: Select;
@@ -26,7 +27,6 @@ export class CardCollectionItemComponent implements OnInit {
 	buttonNotes: Button;
 	buttonAdd: Button;
 	buttonRemove: Button;
-	textboxQuantity: Textbox;
 
 	constructor() {}
 
@@ -37,7 +37,7 @@ export class CardCollectionItemComponent implements OnInit {
 	buildControls() {
 		// Condition
 		this.selectCondition = new Select({
-			classes: 'square',
+			classes: 'square-right',
 			optionGroups: [
 				new SelectOptionGroup({
 					label: 'Condition',
@@ -114,14 +114,6 @@ export class CardCollectionItemComponent implements OnInit {
 					selected: true,
 				}),
 			],
-		});
-
-		// Quantity
-		this.textboxQuantity = new Textbox({
-			classes: 'square-right',
-			type: 'number',
-			value: '1',
-			min: 0,
 		});
 
 		// Button remove

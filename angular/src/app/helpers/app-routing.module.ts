@@ -69,6 +69,10 @@ const routes: Routes = [
 		component: CollectionComponent,
 	},
 	{
+		path: 'collection',
+		component: CollectionComponent,
+	},
+	{
 		path: 'collection/add',
 		component: CollectionComponent,
 	},
@@ -123,6 +127,10 @@ const routes: Routes = [
 	{
 		path: 'pokemon/:slug',
 		component: PokemonComponent,
+	},
+	{
+		path: 'pokemon/type/:type',
+		component: PokemonsComponent,
 	},
 
 	// otherwise redirect to home

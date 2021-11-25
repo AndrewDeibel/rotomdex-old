@@ -85,6 +85,10 @@ export class CardCollectionComponent implements OnInit {
 		this.calculateTotal();
 	}
 
+	updateItem(itemToUpdate) {
+		//this.collection =
+	}
+
 	calculateTotal() {
 		this.totalValue = this.collection
 			.filter((item) => {

@@ -30,6 +30,7 @@ export class APIGetPaged {
 	supertype: string;
 	subtype: string;
 	rarity: string;
+	user_id: number;
 
 	url: string;
 
@@ -84,6 +85,11 @@ export class APIGetPaged {
 		if (this.rarity && this.rarity.length)
 			query = query.set('rarity', this.rarity);
 		else query = query.delete('rarity');
+
+		// User ID
+		if (this.user_id && this.user_id.toString().length)
+			query = query.set('user_id', this.user_id.toString());
+		else query = query.delete('user_id');
 
 		// Include ? and query string if provided
 		let queryString = query.toString();

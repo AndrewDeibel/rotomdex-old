@@ -31,6 +31,7 @@
 		flex: 1;
 		max-width: 100%;
 		user-select: none;
+		color: $font-color;
 		@media (max-width: $screen-small) {
 			padding: 8px 12px;
 		}
@@ -49,8 +50,9 @@
 			width: 20px;
 			display: flex;
 			justify-content: center;
-			filter: contrast(0) sepia(100%) hue-rotate(164deg) brightness(0.7)
-				saturate(2);
+			filter: contrast(0) brightness(10);
+			//filter: contrast(0) sepia(100%) hue-rotate(164deg) brightness(0.7)
+			//	saturate(2);
 			img {
 				max-height: 100%;
 				display: block;

@@ -2,9 +2,17 @@
 	<div class="input-bg">
 		<mb-menu [menu]="menuSidebar"></mb-menu>
 	</div>
-	<div class="padding-4 box">
+	<div class="box">
 		<collection-dashboard *ngIf="showDashboard()"></collection-dashboard>
-		<collection-card-group *ngIf="showAddGroup()"></collection-card-group>
+		<mb-items
+			*ngIf="showAll()"
+			[items]="items"
+			(outputGetItems)="getCollectionCards()"
+		></mb-items>
+		<collection-card-group
+			class="padding-4 box"
+			*ngIf="showAddGroup()"
+		></collection-card-group>
 		<div class="max" *ngIf="false">
 			<div class="flex padded">
 				<div class="width-4 medium-12">

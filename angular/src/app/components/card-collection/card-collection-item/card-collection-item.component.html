@@ -4,29 +4,24 @@
 			<div class="flex flex-center">
 				<div class="box">
 					<div class="flex flex-center">
-						<div class="width-2 small-4">
-							<mb-textbox
-								[textbox]="textboxQuantity"
-							></mb-textbox>
-						</div>
-						<div class="width-2 small-4">
+						<div class="width-3 small-4">
 							<mb-select [select]="selectCondition"></mb-select>
 						</div>
-						<div class="width-2 small-none">
+						<div class="width-3 small-none">
 							<mb-select
 								[select]="selectGradingCompany"
 							></mb-select>
 						</div>
-						<div class="width-2 small-none">
+						<div class="width-3 small-none">
 							<mb-select [select]="selectPrintVerion"></mb-select>
 						</div>
-						<div class="width-2 small-4">
+						<div class="width-3 small-4">
 							<mb-select [select]="selectBinder"></mb-select>
 						</div>
-						<div class="width-2 small-none">
-							<mb-button [button]="buttonNotes"></mb-button>
-						</div>
 					</div>
+				</div>
+				<div>
+					<mb-button [button]="buttonNotes"></mb-button>
 				</div>
 			</div>
 		</div>

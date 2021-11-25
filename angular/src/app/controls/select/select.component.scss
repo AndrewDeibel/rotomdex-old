@@ -2,7 +2,7 @@
 
 .select {
 	position: relative;
-	color: $primary-color;
+	color: $font-color;
 	fa-icon {
 		position: absolute;
 		top: 50%;
@@ -26,7 +26,7 @@ select {
 	transition: $transition;
 	width: 100%;
 	font-size: $font-size;
-	color: $primary-color;
+	color: $font-color;
 	outline: 0 !important;
 	background: $input-bg;
 	cursor: pointer;

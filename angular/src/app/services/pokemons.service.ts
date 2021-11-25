@@ -1,12 +1,12 @@
-import { HttpClient } from "@angular/common/http";
-import { Injectable } from "@angular/core";
-import { APIGetPaged, APIResponse } from "@app/models";
-import { BehaviorSubject } from "rxjs";
-import { environment } from "src/environments/environment";
-import { Pokemon, PokemonVariant } from "../pages/pokemons/pokemon/pokemon";
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { APIGetPaged, APIResponse } from '@app/models';
+import { BehaviorSubject } from 'rxjs';
+import { environment } from 'src/environments/environment';
+import { Pokemon, PokemonVariant } from '../pages/pokemons/pokemon/pokemon';
 
 export class GetPokemons extends APIGetPaged {
-	constructor(init?:Partial<GetPokemons>) {
+	constructor(init?: Partial<GetPokemons>) {
 		super();
 		Object.assign(this, init);
 	}
@@ -19,7 +19,8 @@ export interface ResPokemons {
 }
 
 export class GetPokemonVariants extends APIGetPaged {
-	constructor(init?:Partial<GetPokemonVariants>) {
+	type: string;
+	constructor(init?: Partial<GetPokemonVariants>) {
 		super();
 		Object.assign(this, init);
 	}
@@ -32,11 +33,9 @@ export interface ResPokemonVariants {
 }
 
 @Injectable({
-    providedIn: 'root'
+	providedIn: 'root',
 })
-
 export class PokemonsService {
-
 	constructor(private http: HttpClient) {}
 
 	// Get all pokemons
@@ -46,10 +45,10 @@ export class PokemonsService {
 		return this.getPokemonsSubject.asObservable();
 	}
 	getPokemons(params: GetPokemons) {
-		var url = params.buildUrl("pokemon");
-		this.http.get<APIResponse>(url).subscribe(res => {
+		var url = params.buildUrl('pokemon');
+		this.http.get<APIResponse>(url).subscribe((res) => {
 			let pokemons: Pokemon[] = [];
-			res.data.forEach(pokemon => {
+			res.data.forEach((pokemon) => {
 				pokemons.push(new Pokemon(pokemon));
 			});
 			this.getPokemonsSubject.next({
@@ -61,16 +60,19 @@ export class PokemonsService {
 	}
 
 	// Get all pokemons
-	private getPokemonVariantsSubject = new BehaviorSubject<ResPokemonVariants>(null);
+	private getPokemonVariantsSubject = new BehaviorSubject<ResPokemonVariants>(
+		null
+	);
 	getPokemonVariantsObservable() {
-		this.getPokemonVariantsSubject = new BehaviorSubject<ResPokemonVariants>(null);
+		this.getPokemonVariantsSubject =
+			new BehaviorSubject<ResPokemonVariants>(null);
 		return this.getPokemonVariantsSubject.asObservable();
 	}
 	getPokemonVariants(params: GetPokemonVariants) {
-		var url = params.buildUrl("pokemon-variants");
-		this.http.get<APIResponse>(url).subscribe(res => {
+		var url = params.buildUrl('pokemon-variants');
+		this.http.get<APIResponse>(url).subscribe((res) => {
 			let pokemon_variants: PokemonVariant[] = [];
-			res.data.forEach(pokemon_variant => {
+			res.data.forEach((pokemon_variant) => {
 				pokemon_variants.push(new PokemonVariant(pokemon_variant));
 			});
 			this.getPokemonVariantsSubject.next({
