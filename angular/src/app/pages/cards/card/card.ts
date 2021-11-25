@@ -1,3 +1,4 @@
+import { CardCollectionItem } from './../../../components/card-collection/card-collection-item/card-collection-item';
 import { Select, SelectOption, SelectOptionGroup } from '@app/controls';
 import { Menu } from '@app/controls/menu';
 import '@app/helpers/string.extensions';
@@ -47,6 +48,7 @@ export class Card {
 	has_reverse_holo: boolean;
 	types: string[] = [];
 	last_prices: CardLastPrices;
+	user_cards: CardCollectionItem[] = [];
 
 	route: string;
 	tempId: number;

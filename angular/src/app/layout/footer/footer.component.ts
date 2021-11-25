@@ -34,7 +34,7 @@ export class FooterComponent implements OnInit {
 				}),
 				new MenuItem({
 					symbol: Symbols.pokeball,
-					text: 'Pokemon',
+					text: 'Pokémon',
 					route: '/pokemon',
 				}),
 				new MenuItem({

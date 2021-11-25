@@ -5,6 +5,17 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
+export class UpdateCollectionCard {
+	user_card_id: number;
+	condition: string;
+	graded_by: string;
+	printing: string;
+	notes: string;
+	constructor(init?: Partial<UpdateCollectionCard>) {
+		Object.assign(this, init);
+	}
+}
+
 @Injectable({ providedIn: 'root' })
 export class CardCollectionService {
 	constructor(private http: HttpClient) {}
@@ -29,4 +40,15 @@ export class CardCollectionService {
 			});
 		});
 	}
+
+	// Update collection card
+	private updateCollectionCardSubject = new BehaviorSubject<boolean>(null);
+	updateCollectionCardObservable() {
+		this.updateCollectionCardSubject = new BehaviorSubject<boolean>(null);
+		return this.updateCollectionCardSubject.asObservable();
+	}
+	// updateCollectionCard(params: UpdateCollectionCard) {
+	// 	var url = params.buildUrl('user_cards/update');
+	// 	this.http.post<APIResponse>(url).subscribe((res) => {});
+	// }
 }

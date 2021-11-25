@@ -1,3 +1,4 @@
+import { CardCollectionService } from './card-collection.service';
 import { Component, Input, OnInit } from '@angular/core';
 import { GUID } from '@app/helpers';
 import { Condition, Icons, PrintVersion } from '@app/models';
@@ -17,10 +18,9 @@ export class CardCollectionComponent implements OnInit {
 	buttonAdd: Button;
 	checkboxWishList: Checkbox;
 	buttonViewAll: Button;
-	totalValue: number;
 	empty: Empty;
 
-	constructor() {}
+	constructor(private cardCollectionService: CardCollectionService) {}
 
 	ngOnInit(): void {
 		this.setupControls();
@@ -61,8 +61,6 @@ export class CardCollectionComponent implements OnInit {
 		this.checkboxWishList = new Checkbox({
 			text: 'Wishlist',
 		});
-
-		this.calculateTotal();
 	}
 
 	addItem() {
@@ -70,30 +68,18 @@ export class CardCollectionComponent implements OnInit {
 			new CardCollectionItem({
 				condition: Condition.Mint,
 				printVersion: PrintVersion.Unlimited,
-				quantity: 1,
 				id: GUID(),
-				price: 10,
 			})
 		);
-		this.calculateTotal();
 	}
 
 	deleteItem(itemToDelete) {
 		this.collection = this.collection.filter((item) => {
 			return item.id !== itemToDelete.id;
 		});
-		this.calculateTotal();
 	}
 
 	updateItem(itemToUpdate) {
-		//this.collection =
-	}
-
-	calculateTotal() {
-		this.totalValue = this.collection
-			.filter((item) => {
-				return item.price;
-			})
-			.reduce((sum, item) => sum + item.price, 0);
+		alert(JSON.stringify(itemToUpdate));
 	}
 }

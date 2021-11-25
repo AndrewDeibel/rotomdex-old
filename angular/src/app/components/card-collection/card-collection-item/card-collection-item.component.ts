@@ -1,3 +1,5 @@
+import { MBForm } from './../../../controls/form/form';
+import { DialogService } from './../../../controls/dialog/dialog.service';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Button } from '@app/controls/button';
 import { Select, SelectOption, SelectOptionGroup } from '@app/controls/select';
@@ -10,6 +12,14 @@ import {
 	PrintVersion,
 } from '@app/models';
 import { CardCollectionItem } from './card-collection-item';
+import {
+	Dialog,
+	FormComponent,
+	MBFormControl,
+	MBFormGroup,
+	Textarea,
+} from '@app/controls';
+import { FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
 	selector: 'mb-card-collection-item',
@@ -27,14 +37,21 @@ export class CardCollectionItemComponent implements OnInit {
 	buttonNotes: Button;
 	buttonAdd: Button;
 	buttonRemove: Button;
+	formNotes: FormGroup;
 
-	constructor() {}
+	constructor(
+		private dialogService: DialogService,
+		private formBuilder: FormBuilder
+	) {}
 
 	ngOnInit(): void {
 		this.buildControls();
 	}
 
 	buildControls() {
+		this.formNotes = this.formBuilder.group({
+			notesControl: [''],
+		});
 		// Condition
 		this.selectCondition = new Select({
 			classes: 'square-right',
@@ -46,11 +63,21 @@ export class CardCollectionItemComponent implements OnInit {
 					label: 'Condition Graded',
 				}),
 			],
+			change: () => {
+				debugger;
+				this.updated.emit(
+					new CardCollectionItem({
+						...this.item,
+						condition: Condition[this.selectCondition.value],
+					})
+				);
+			},
 		});
 		for (let condition in Condition) {
 			this.selectCondition.optionGroups[0].options.push(
 				new SelectOption({
 					text: Condition[condition],
+					value: Condition[condition],
 				})
 			);
 		}
@@ -58,6 +85,7 @@ export class CardCollectionItemComponent implements OnInit {
 			this.selectCondition.optionGroups[1].options.push(
 				new SelectOption({
 					text: ConditionGraded[conditionGraded],
+					value: ConditionGraded[conditionGraded],
 				})
 			);
 		}
@@ -101,6 +129,28 @@ export class CardCollectionItemComponent implements OnInit {
 			text: 'Notes',
 			classes: 'square secondary',
 			width: '100%',
+			click: () => {
+				this.dialogService.setDialog(
+					new Dialog({
+						title: 'Notes',
+						form: new MBForm({
+							formGroup: this.formNotes,
+							groups: [
+								new MBFormGroup({
+									controls: [
+										new MBFormControl({
+											formControl:
+												this.formNotes.controls
+													.notesControl,
+											control: new Textarea({}),
+										}),
+									],
+								}),
+							],
+						}),
+					})
+				);
+			},
 		});
 
 		// Binder
