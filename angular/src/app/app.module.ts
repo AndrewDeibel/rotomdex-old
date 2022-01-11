@@ -232,6 +232,7 @@ import {
 	faHashtag,
 	faBookOpen,
 	faInbox,
+	faExchange,
 } from '@fortawesome/pro-duotone-svg-icons';
 import { CardItemListComponent } from './pages/cards/card-item/card-item-list/card-item-list.component';
 
@@ -487,7 +488,8 @@ export class AppModule {
 			faHashtag,
 			faBookOpen,
 			faInbox,
-			faBalanceScale
+			faBalanceScale,
+			faExchange
 		);
 		faConfig.defaultPrefix = 'fad';
 	}

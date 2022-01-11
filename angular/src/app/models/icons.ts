@@ -12,7 +12,7 @@ export enum Icons {
 	search = 'search',
 	list = 'list',
 	archive = 'archive',
-	deck = 'folders',
+	deck = 'layer-group',
 	stats = 'chart-line',
 	user = 'user',
 	settings = 'cog',
@@ -137,4 +137,5 @@ export enum Icons {
 	binder = 'book-open',
 	inbox = 'inbox',
 	balanceScale = 'balance-scale',
+	exchange = 'exchange',
 }

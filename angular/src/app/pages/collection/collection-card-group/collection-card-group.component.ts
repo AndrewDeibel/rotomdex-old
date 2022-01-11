@@ -57,18 +57,18 @@ export class CollectionCardGroupComponent implements OnInit {
 				}),
 				new SelectOption({
 					text: 'Deck',
-					icon: Icons.inbox,
+					icon: Icons.deck,
 				}),
 				new SelectOption({
 					text: 'Trades',
-					icon: Icons.balanceScale,
+					icon: Icons.exchange,
 				}),
 				new SelectOption({
 					text: 'Box',
 					icon: Icons.archive,
 				}),
 				new SelectOption({
-					text: 'Folder',
+					text: 'Group',
 					icon: Icons.folder,
 				}),
 			],
