@@ -10,7 +10,7 @@ import {
 } from '../../../services/pokemon.service';
 import { Title } from '@angular/platform-browser';
 import { AppSettings } from '@app/app';
-import { Icons, Symbols } from '@app/models';
+import { Icons, Size, Symbols } from '@app/models';
 import { Dialog } from '@app/controls/dialog/dialog';
 import { ProgressBar } from '@app/controls/progress-bar/progress-bar';
 
@@ -60,6 +60,7 @@ export class PokemonComponent implements OnInit {
 					this.buttonDex = new Button({
 						symbol: Symbols.pokeball,
 						text: 'Pokédex',
+						size: Size.small,
 						click: () => {
 							this.dialogService.setDialog(
 								new Dialog({

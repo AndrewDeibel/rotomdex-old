@@ -19,8 +19,12 @@
 	box-shadow: $shadow-sheen;
 
 	&.small {
-		padding: 7px 12px;
+		padding: 2px 8px;
 		font-size: 12px;
+		line-height: 1;
+		.symbol + .text {
+			margin-left: 4px;
+		}
 	}
 	.text {
 		flex: 1;
@@ -46,6 +50,7 @@
 
 	// Symbol
 	.symbol {
+		display: flex;
 		img {
 			height: 16px;
 			filter: invert(1);
