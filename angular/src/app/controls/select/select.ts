@@ -3,22 +3,35 @@ export class Select {
 	value: string;
 	values: string[] = [];
 	options: SelectOption[] = [];
+	optionsVisible: SelectOption[] = [];
 	optionGroups: SelectOptionGroup[] = [];
+	optionGroupsVisible: SelectOptionGroup[] = [];
 	classes: string;
 	dark: boolean;
 	multiple: boolean;
 	advancedSelect: boolean = false;
 	placeholder: string = 'Select option';
 	open: boolean;
+	searchValue: string;
 	change: (value: string) => void;
 	_change: (value: string) => void;
 
 	getSelectedOptions = () => this.options.filter((option) => option.selected);
 	getUnselectedOptions = () =>
-		this.options.filter((option) => !option.selected);
+		this.options.filter(
+			(option) =>
+				!option.selected &&
+				(!this.searchValue ||
+					this.searchValue.length <= 0 ||
+					option.text
+						.toLocaleLowerCase()
+						.includes(this.searchValue.toLocaleLowerCase()))
+		);
 
 	public constructor(init?: Partial<Select>) {
 		Object.assign(this, init);
+		this.optionGroupsVisible = this.optionGroups;
+		//this.optionsVisible = this.options;
 	}
 }
 export class SelectOption {

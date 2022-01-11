@@ -1,7 +1,9 @@
+import { Textbox } from './../textbox/textbox';
 import { SelectOption } from '@app/controls';
 import { Component, OnInit, Input, forwardRef } from '@angular/core';
 import { Select } from './select';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
+import { Icons, Size } from '@app/models';
 
 @Component({
 	selector: 'mb-select',
@@ -48,6 +50,16 @@ export class SelectComponent implements ControlValueAccessor {
 	}
 
 	@Input() select: Select;
+
+	textboxSearch: Textbox = new Textbox({
+		placeholder: 'Search...',
+		type: 'search',
+		icon: Icons.search,
+		size: Size.small,
+		keyup: (_value) => {
+			this.select.searchValue = _value;
+		},
+	});
 
 	click() {
 		this.select.open = true;

@@ -1,9 +1,10 @@
+import { Size } from './../../models/size';
 import { Icons } from '@app/models/icons';
 
 export class Textbox {
-    value: string = "";
+	value: string = '';
 	label: string;
-	type: string = "text";
+	type: string = 'text';
 	valid: boolean;
 	min: number;
 	max: number;
@@ -18,20 +19,23 @@ export class Textbox {
 	colorPicker: boolean;
 	autoComplete: boolean;
 	dark: boolean;
+	size: Size;
 
-	keydownEnter:(value: string) => void;
-	_keydownEnter:(value: string) => void;
-	clickIcon:(value: string) => void;
-	_clickIcon:(value: string) => void;
-	change:(value: string) => void;
-	_change:(value: string) => void;
+	keyup: (value: string) => void;
+	keydown: (value: string) => void;
+	keydownEnter: (value: string) => void;
+	_keydownEnter: (value: string) => void;
+	clickIcon: (value: string) => void;
+	_clickIcon: (value: string) => void;
+	change: (value: string) => void;
+	_change: (value: string) => void;
 
-	clickClear:() => void;
+	clickClear: () => void;
 	clear = () => {
-		this.value = "";
-	}
+		this.value = '';
+	};
 
-    public constructor(init?:Partial<Textbox>) {
-        Object.assign(this, init);
+	public constructor(init?: Partial<Textbox>) {
+		Object.assign(this, init);
 	}
 }
