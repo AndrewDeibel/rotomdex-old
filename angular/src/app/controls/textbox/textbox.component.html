@@ -20,6 +20,8 @@
 		(keyup)="_keyup()"
 		(keydown)="_keydown()"
 		(keydown.enter)="_keydownEnter()"
+		[readOnly]="textbox.readOnly"
+		[value]="value"
 		(change)="_change()"
 		[min]="textbox.min"
 		[max]="textbox.max"

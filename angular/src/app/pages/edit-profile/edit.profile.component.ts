@@ -1,6 +1,6 @@
 import { LoaderService } from './../../controls/loader/loader.service';
 import { Button, ButtonType } from '@app/controls/button';
-import { Textbox, Toggle } from '@app/controls';
+import { Textbox, Toggle, Select } from '@app/controls';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '@app/services/auth.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -16,10 +16,12 @@ export class EditProfileComponent implements OnInit {
 	form: FormGroup;
 	textboxUsername: Textbox;
 	textboxEmail: Textbox;
-	textboxPassword: Textbox;
 	togglePublic: Toggle;
 	buttonSubmit: Button;
 	buttonCancel: Button;
+	selectUserIcon: Select;
+	selectFavoritePokemon: Select;
+	buttonChangePassword: Button;
 
 	constructor(
 		private formBuilder: FormBuilder,
@@ -34,20 +36,39 @@ export class EditProfileComponent implements OnInit {
 
 	ngOnInit(): void {
 		this.form = this.formBuilder.group({
-			emailControl: ['', Validators.required],
-			usernameControl: ['', Validators.required],
-			passwordControl: ['', Validators.required],
+			emailControl: [''],
+			usernameControl: [''],
+			userIconControl: [''],
+			favoritePokemonControl: [''],
+			publicControl: [''],
 		});
 		this.textboxEmail = new Textbox({
 			label: 'Email',
 			type: 'email',
+			readOnly: true,
+			value: this.authenticationService.currentUserValue.email,
 		});
 		this.textboxUsername = new Textbox({
 			label: 'Username',
+			readOnly: true,
+			value: this.authenticationService.currentUserValue.username,
 		});
-		this.textboxPassword = new Textbox({
-			label: 'Password',
-			type: 'password',
+		this.selectUserIcon = new Select({
+			advancedSelect: true,
+			multiple: false,
+			options: [],
+			label: 'Icon',
+		});
+		this.selectFavoritePokemon = new Select({
+			advancedSelect: true,
+			multiple: false,
+			options: [],
+			label: 'Favorite Pokemon',
+		});
+		this.togglePublic = new Toggle({
+			label: 'Visibility',
+			text: 'Private',
+			textChecked: 'Public',
 		});
 		this.buttonSubmit = new Button({
 			text: 'Save Profile',
@@ -56,6 +77,9 @@ export class EditProfileComponent implements OnInit {
 		this.buttonCancel = new Button({
 			text: 'Cancel',
 			classes: 'secondary',
+		});
+		this.buttonChangePassword = new Button({
+			text: 'Change Password',
 		});
 	}
 

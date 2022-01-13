@@ -15,6 +15,7 @@ export class Textbox {
 	classes: string;
 	wrapperClasses: string;
 	disabled: boolean;
+	readOnly: boolean;
 	clearable: boolean;
 	colorPicker: boolean;
 	autoComplete: boolean;
