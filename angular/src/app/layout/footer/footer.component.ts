@@ -40,7 +40,7 @@ export class FooterComponent implements OnInit {
 				new MenuItem({
 					icon: Icons.archive,
 					text: 'Collection',
-					route: '/collection/dashboard',
+					route: '/collection',
 				}),
 			],
 		});
@@ -59,10 +59,6 @@ export class FooterComponent implements OnInit {
 					text: 'YouTube',
 					symbol: Symbols.youtube,
 				}),
-				// new MenuItem({
-				// 	text: 'Twitter',
-				// 	symbol: Symbols.twitter,
-				// }),
 				new MenuItem({
 					text: 'Facebook',
 					symbol: Symbols.facebook,

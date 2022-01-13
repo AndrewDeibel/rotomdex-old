@@ -45,6 +45,10 @@ select {
 	&:active {
 		outline: 0 !important;
 	}
+	&.small {
+		height: 28px;
+		padding: 0 12px;
+	}
 }
 .select-advanced {
 	min-height: 40px;

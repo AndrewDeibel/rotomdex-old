@@ -1,17 +1,14 @@
-import {
-	Condition,
-	ConditionGraded,
-	GradingCompany,
-	PrintVersion,
-} from '@app/models';
-
+import { Condition } from './../../../models/condition';
 export class CardCollectionItem {
 	id: string;
-	condition: Condition;
-	conditionGraded: ConditionGraded;
-	gradingCompany: GradingCompany;
-	printVersion: PrintVersion;
+	card_id: number;
+	card_group_id?: number;
+	condition: string = Condition.Mint;
+	graded_by: string;
+	printing: string;
 	notes: string;
+	date_obtained: Date;
+	purchase_price: Number;
 
 	constructor(init?: Partial<CardCollectionItem>) {
 		Object.assign(this, init);

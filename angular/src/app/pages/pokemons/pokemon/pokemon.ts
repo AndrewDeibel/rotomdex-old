@@ -75,6 +75,7 @@ export class PokemonVariant {
 	types: string[] = [];
 	previous_pokemon: string;
 	next_pokemon: string;
+	other_variants: PokemonVariant[] = [];
 
 	route: string;
 
@@ -88,6 +89,11 @@ export class PokemonVariant {
 
 		// Init sprites
 		this.sprites = new PokemonSprites(init.sprites);
+
+		if (init.other_variants)
+			this.other_variants = init.other_variants.map(
+				(variant) => new PokemonVariant(variant)
+			);
 	}
 }
 

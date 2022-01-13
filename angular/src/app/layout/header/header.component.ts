@@ -100,7 +100,7 @@ export class HeaderComponent implements OnInit {
 			new MenuItem({
 				icon: Icons.archive,
 				text: 'Collection',
-				route: 'collection/dashboard',
+				route: 'collection',
 				click: () => {
 					this.menu.clearActive();
 				},

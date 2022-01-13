@@ -40,22 +40,14 @@ export class ProfileComponent implements OnInit {
 									this.menu.clearActive();
 								},
 							}),
-							// new MenuItem({
-							// 	text: "Settings",
-							// 	icon: Icons.settings,
-							// 	route: "settings",
-							// 	click: () => {
-							// 		this.menu.clearActive();
-							// 	}
-							// }),
-							// new MenuItem({
-							// 	text: "Become a Donor",
+							// ...( [new MenuItem({
+							// 	text: "Admin",
 							// 	icon: Icons.donate,
 							// 	route: "patreon",
 							// 	click: () => {
 							// 		this.menu.clearActive();
 							// 	}
-							// }),
+							// })]),
 							new MenuItem({
 								text: 'Sign Out',
 								icon: Icons.signOut,

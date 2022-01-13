@@ -1,4 +1,4 @@
-import { CardCollectionService } from './card-collection.service';
+import { AddUserCard, CardCollectionService } from './card-collection.service';
 import { Component, Input, OnInit } from '@angular/core';
 import { GUID } from '@app/helpers';
 import { Condition, Icons, PrintVersion } from '@app/models';
@@ -13,7 +13,7 @@ import { CardCollectionItem } from './card-collection-item';
 	styleUrls: ['./card-collection.component.scss'],
 })
 export class CardCollectionComponent implements OnInit {
-	@Input() slug: string;
+	@Input() card_id: number;
 	collection: CardCollectionItem[] = [];
 	buttonAdd: Button;
 	checkboxWishList: Checkbox;
@@ -24,6 +24,7 @@ export class CardCollectionComponent implements OnInit {
 
 	ngOnInit(): void {
 		this.setupControls();
+		this.setupSubscriptions();
 	}
 
 	setupControls() {
@@ -38,8 +39,6 @@ export class CardCollectionComponent implements OnInit {
 				},
 			}),
 		});
-
-		this.addItem();
 
 		// Button add
 		this.buttonAdd = new Button({
@@ -63,23 +62,29 @@ export class CardCollectionComponent implements OnInit {
 		});
 	}
 
-	addItem() {
-		this.collection.push(
-			new CardCollectionItem({
-				condition: Condition.Mint,
-				printVersion: PrintVersion.Unlimited,
-				id: GUID(),
-			})
-		);
+	setupSubscriptions() {
+		this.cardCollectionService
+			.addUserCardObservable()
+			.subscribe((addedCard) => {
+				if (addedCard) {
+					this.collection.push(addedCard);
+				}
+			});
+	}
+
+	addItem(
+		userCard: CardCollectionItem = new CardCollectionItem({
+			card_id: this.card_id,
+		})
+	) {
+		this.cardCollectionService.addUserCard(userCard);
 	}
 
 	deleteItem(itemToDelete) {
-		this.collection = this.collection.filter((item) => {
-			return item.id !== itemToDelete.id;
-		});
+		// this.collection = this.collection.filter((item) => {
+		// 	return item.id !== itemToDelete.id;
+		// });
 	}
 
-	updateItem(itemToUpdate) {
-		alert(JSON.stringify(itemToUpdate));
-	}
+	updateItem(userCard: CardCollectionItem) {}
 }

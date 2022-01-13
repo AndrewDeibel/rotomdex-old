@@ -15,10 +15,17 @@
 					[textbox]="textboxName"
 				></mb-textbox>
 			</div>
+			<div class="relative z-3">
+				<mb-select
+					[formControl]="form.controls.selectType"
+					[select]="selectType"
+				>
+				</mb-select>
+			</div>
 			<div class="relative z-2">
 				<mb-select
-					[formControl]="form.controls.typeControl"
-					[select]="selectType"
+					[formControl]="form.controls.selectIcon"
+					[select]="selectIcon"
 				>
 				</mb-select>
 			</div>

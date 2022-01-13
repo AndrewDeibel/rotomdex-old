@@ -1,13 +1,18 @@
 <div *ngIf="pokemonVariant" class="pokemon-details">
-	<div class="flex justify-center hero {{pokemonVariant.types[0]}}">
-
+	<div class="flex justify-center hero {{ pokemonVariant.types[0] }}">
 		<!-- Prev -->
-		<a class="prev-pokemon" [routerLink]="'/pokemon/' + pokemonVariant.previous_pokemon">
+		<a
+			class="prev-pokemon"
+			[routerLink]="'/pokemon/' + pokemonVariant.previous_pokemon"
+		>
 			<fa-icon icon="arrow-left"></fa-icon>
 		</a>
 
 		<!-- Next -->
-		<a class="next-pokemon" [routerLink]="'/pokemon/' + pokemonVariant.next_pokemon">
+		<a
+			class="next-pokemon"
+			[routerLink]="'/pokemon/' + pokemonVariant.next_pokemon"
+		>
 			<fa-icon icon="arrow-right"></fa-icon>
 		</a>
 
@@ -15,52 +20,71 @@
 		<img
 			*ngIf="pokemonVariant.sprites.official"
 			class="art"
-			src="{{pokemonVariant.sprites.official}}" />
+			src="{{ pokemonVariant.sprites.official }}"
+		/>
 
 		<!-- No sprite -->
 		<div
 			class="pokemon-image-placeholder"
-			*ngIf="!pokemonVariant.sprites.official">
+			*ngIf="!pokemonVariant.sprites.official"
+		>
 			<fa-icon icon="question"></fa-icon>
 		</div>
 
 		<!-- Pokeball -->
-		<img class="pokeball" src="/assets/pokeball.png" />
+		<img
+			class="bg-type"
+			src="https://duiker101.github.io/pokemon-type-svg-icons/icons/{{
+				pokemonVariant.types[0].toLowerCase()
+			}}.svg"
+		/>
 
-		<progress-bar
-			[progressBar]="progressBar">
-		</progress-bar>
+		<progress-bar [progressBar]="progressBar"> </progress-bar>
+
+		<mb-select [select]="selectVariants"></mb-select>
 
 		<!-- Evolutions -->
 		<div
 			*ngIf="pokemonVariant.pokemon.evolution_chain.length > 1"
-			class="pokemon-evolution-chain">
+			class="pokemon-evolution-chain"
+		>
 			<div class="flex padded-2">
 				<div
 					class="pokemon-evolution-wrapper"
-					*ngFor="let evolution of pokemonVariant.pokemon.evolution_chain">
-					<a class="pokemon-evolution round-small" [routerLink]="'/pokemon/' + evolution.slug">
+					*ngFor="
+						let evolution of pokemonVariant.pokemon.evolution_chain
+					"
+				>
+					<a
+						class="pokemon-evolution round-small"
+						[routerLink]="'/pokemon/' + evolution.slug"
+					>
 						<img [src]="evolution.sprite" />
-						<div class="evolution-name">{{evolution.name}}</div>
+						<div class="evolution-name">{{ evolution.name }}</div>
 						<fa-icon icon="arrow-right"></fa-icon>
 					</a>
 				</div>
 			</div>
 		</div>
-
 	</div>
 	<div class="pokemon-info">
 		<div class="max">
-			<div class="flex padded flex-center medium-flex-start medium-vertical">
+			<div
+				class="flex padded flex-center medium-flex-start medium-vertical"
+			>
 				<div class="box flex flex-center padded">
 					<div>
 						<h1>
-							{{pokemonVariant.name}}
+							{{ pokemonVariant.name }}
 							<span class="dex-number">
-								#{{pokemonVariant.pokemon.national_dex_number}}
+								#{{
+									pokemonVariant.pokemon.national_dex_number
+								}}
 								-
 								<span class="pokemon-region">
-									{{pokemonVariant.pokemon.generation.region}}
+									{{
+										pokemonVariant.pokemon.generation.region
+									}}
 								</span>
 							</span>
 						</h1>
@@ -75,10 +99,14 @@
 						</div>
 					</div>
 					<div class="pokemon-height">
-						<mb-tag [tag]="{text: ((pokemonVariant.height/10) + ' m')}"></mb-tag>
+						<mb-tag
+							[tag]="{ text: pokemonVariant.height / 10 + ' m' }"
+						></mb-tag>
 					</div>
 					<div class="pokemon-weight">
-						<mb-tag [tag]="{text: ((pokemonVariant.weight/10) + ' kg')}"></mb-tag>
+						<mb-tag
+							[tag]="{ text: pokemonVariant.weight / 10 + ' kg' }"
+						></mb-tag>
 					</div>
 					<div class="pokemon-dex" *ngIf="buttonDex">
 						<mb-button [button]="buttonDex"></mb-button>
@@ -89,16 +117,18 @@
 	</div>
 	<div>
 		<div class="pokemon-cards">
-			<mb-items
-				[items]="items"
-				(outputGetItems)="getCards()">
-			</mb-items>
+			<mb-items [items]="items" (outputGetItems)="getCards()"> </mb-items>
 		</div>
 	</div>
 </div>
 
 <div>
 	<ng-template #dialogDex>
-		<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Neque blanditiis asperiores aperiam quasi! Aperiam ipsum fugiat corporis accusantium cupiditate, modi sequi deleniti optio? Assumenda culpa incidunt pariatur! Nam, laboriosam tempora?</p>
+		<p>
+			Lorem ipsum dolor sit amet consectetur, adipisicing elit. Neque
+			blanditiis asperiores aperiam quasi! Aperiam ipsum fugiat corporis
+			accusantium cupiditate, modi sequi deleniti optio? Assumenda culpa
+			incidunt pariatur! Nam, laboriosam tempora?
+		</p>
 	</ng-template>
 </div>

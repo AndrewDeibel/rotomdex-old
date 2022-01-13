@@ -98,12 +98,12 @@
 			left: 0;
 		}
 
-		.pokeball {
+		.bg-type {
 			position: absolute;
 			left: 50%;
 			top: 50%;
 			transform: translate(-50%, -50%);
-			width: 400px;
+			width: 180px;
 			opacity: 0.15;
 			z-index: 1;
 		}

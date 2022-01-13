@@ -1,3 +1,4 @@
+import { Size } from './../../models/size';
 export class Select {
 	label: string;
 	value: string;
@@ -13,6 +14,7 @@ export class Select {
 	placeholder: string = 'Select option';
 	open: boolean;
 	searchValue: string;
+	size: Size;
 	change: (value: string) => void;
 	_change: (value: string) => void;
 

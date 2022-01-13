@@ -22,6 +22,7 @@ export class CollectionCardGroupComponent implements OnInit {
 	form: FormGroup;
 	textboxName: Textbox;
 	selectType: Select;
+	selectIcon: Select;
 	textareaDescription: Textarea;
 	togglePublic: Toggle;
 	buttonSave: Button;
@@ -39,7 +40,8 @@ export class CollectionCardGroupComponent implements OnInit {
 	ngOnInit() {
 		this.form = this.formBuilder.group({
 			nameControl: ['', Validators.required],
-			typeControl: ['', Validators.required],
+			selectType: ['', Validators.required],
+			selectIcon: ['', Validators.required],
 			descriptionControl: [''],
 			publicControl: [''],
 		});
@@ -49,7 +51,35 @@ export class CollectionCardGroupComponent implements OnInit {
 		this.selectType = new Select({
 			label: 'Type',
 			advancedSelect: true,
-			placeholder: 'Select type',
+			multiple: true,
+			placeholder: 'Select icon...',
+			options: [
+				new SelectOption({
+					text: 'Binder',
+					icon: Icons.binder,
+				}),
+				new SelectOption({
+					text: 'Deck',
+					icon: Icons.deck,
+				}),
+				new SelectOption({
+					text: 'Trades',
+					icon: Icons.exchange,
+				}),
+				new SelectOption({
+					text: 'Box',
+					icon: Icons.archive,
+				}),
+				new SelectOption({
+					text: 'Group',
+					icon: Icons.folder,
+				}),
+			],
+		});
+		this.selectIcon = new Select({
+			label: 'Icon',
+			advancedSelect: true,
+			placeholder: 'Select icon...',
 			options: [
 				new SelectOption({
 					text: 'Binder',

@@ -20,12 +20,7 @@
 						<div class="card-image link">
 							<img
 								src="{{ card.image }}"
-								class="
-									img-card-image
-									border-radius-card
-									shadow
-									transition
-								"
+								class="img-card-image border-radius-card shadow transition"
 								(click)="createDialogCardImage()"
 							/>
 							<img
@@ -51,11 +46,7 @@
 										<h2>{{ card.name }}</h2>
 									</div>
 									<div
-										class="
-											flex
-											padded
-											flex-center flex-nowrap
-										"
+										class="flex padded flex-center flex-nowrap"
 										*ngIf="card.hp"
 									>
 										<div class="card-hp bold h2">
@@ -63,11 +54,7 @@
 											>{{ card.hp }}
 										</div>
 										<div
-											class="
-												card-energies
-												flex flex-nowrap
-												padded
-											"
+											class="card-energies flex flex-nowrap padded"
 										>
 											<div
 												*ngFor="let type of card.types"
@@ -84,9 +71,7 @@
 													"
 												>
 													<div
-														class="
-															card-energy-inner
-														"
+														class="card-energy-inner"
 													>
 														<img
 															[src]="
@@ -147,11 +132,7 @@
 							</div>
 
 							<div
-								class="
-									card-rarity
-									flex flex-center
-									padded-small
-								"
+								class="card-rarity flex flex-center padded-small"
 								*ngIf="tagRarity"
 							>
 								<!-- Rarity -->
@@ -199,7 +180,7 @@
 	<div class="relative z-1">
 		<div>
 			<!-- Collection -->
-			<mb-card-collection *ngIf="card" [slug]="card.slug">
+			<mb-card-collection *ngIf="card" [card_id]="card.id">
 			</mb-card-collection>
 		</div>
 		<div *ngIf="showRelated">

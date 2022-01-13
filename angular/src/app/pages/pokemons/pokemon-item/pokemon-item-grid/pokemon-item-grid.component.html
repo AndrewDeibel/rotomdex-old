@@ -1,32 +1,34 @@
 <a
 	*ngIf="pokemonVariant"
-	class="item-grid-pokemon {{size}}"
-	[routerLink]="pokemonVariant.route ? pokemonVariant.route : []">
-
-	<figure class="pokemon-image-wrapper {{pokemonVariant.types[0]}}">
-
+	class="item-grid-pokemon {{ size }}"
+	[routerLink]="pokemonVariant.route ? pokemonVariant.route : []"
+>
+	<figure class="pokemon-image-wrapper {{ pokemonVariant.types[0] }}">
 		<div class="pokemon-number">
-			#{{pokemonVariant.pokemon.national_dex_number}}
+			#{{ pokemonVariant.pokemon.national_dex_number }}
 		</div>
 
 		<img
 			class="pokemon-image"
 			*ngIf="getSprite(pokemonVariant)"
-			src="{{getSprite(pokemonVariant)}}" />
+			src="{{ getSprite(pokemonVariant) }}"
+		/>
 
 		<div
 			class="pokemon-image-placeholder"
-			*ngIf="getSprite(pokemonVariant).length == 0">
+			*ngIf="getSprite(pokemonVariant).length == 0"
+		>
 			<fa-icon icon="question"></fa-icon>
 		</div>
 
 		<img
-			class="pokeball"
-			src="/assets/pokeball.png" />
+			class="bg-type"
+			src="https://duiker101.github.io/pokemon-type-svg-icons/icons/{{
+				pokemonVariant.types[0].toLowerCase()
+			}}.svg"
+		/>
 
-		<div
-			class="pokemon-types"
-			*ngIf="pokemonVariant.types">
+		<div class="pokemon-types" *ngIf="pokemonVariant.types">
 			<div class="flex padded-small">
 				<div *ngFor="let type of pokemonVariant.types">
 					<mb-type-tag [type]="type"></mb-type-tag>
@@ -36,18 +38,17 @@
 
 		<progress-bar
 			class="z-3 relative padding padding-top-none"
-			[progressBar]="progressBar">
+			[progressBar]="progressBar"
+		>
 		</progress-bar>
-
 	</figure>
 
 	<figcaption class="pokemon-info">
 		<div class="pokemon-name">
-			{{pokemonVariant.name}}
+			{{ pokemonVariant.name }}
 		</div>
 		<div class="pokemon-region subheading">
-			{{pokemonVariant.pokemon.generation.region}}
+			{{ pokemonVariant.pokemon.generation.region }}
 		</div>
 	</figcaption>
-
 </a>

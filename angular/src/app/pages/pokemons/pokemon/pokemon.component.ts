@@ -1,3 +1,8 @@
+import {
+	Select,
+	SelectOptionGroup,
+	SelectOption,
+} from './../../../controls/select/select';
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Button, DialogService, LoaderService } from '@app/controls';
@@ -25,6 +30,7 @@ export class PokemonComponent implements OnInit {
 	slug: string;
 	buttonDex: Button;
 	progressBar: ProgressBar;
+	selectVariants: Select;
 
 	constructor(
 		private titleService: Title,
@@ -59,7 +65,7 @@ export class PokemonComponent implements OnInit {
 					// Dex button
 					this.buttonDex = new Button({
 						symbol: Symbols.pokeball,
-						text: 'Pokédex',
+						text: 'Pokédex Entry',
 						size: Size.small,
 						click: () => {
 							this.dialogService.setDialog(
@@ -72,6 +78,27 @@ export class PokemonComponent implements OnInit {
 							);
 						},
 					});
+
+					// Variants
+					this.selectVariants.optionGroups = [
+						new SelectOptionGroup({
+							label: 'Variants',
+							options: [
+								new SelectOption({
+									text: this.pokemonVariant.name,
+									value: this.pokemonVariant.route,
+								}),
+								...this.pokemonVariant.other_variants.map(
+									(variant) =>
+										new SelectOption({
+											text: variant.name,
+											value: variant.route,
+										})
+								),
+							],
+						}),
+					];
+					this.selectVariants.value = this.pokemonVariant.route;
 				}
 			});
 
@@ -111,6 +138,14 @@ export class PokemonComponent implements OnInit {
 		this.items.footer.selectPageSize.value =
 			this.items.footer.pageSize.toString();
 		this.items.noResultsImage = Symbols.cards;
+
+		// Variants
+		this.selectVariants = new Select({
+			classes: 'small',
+			change: (value) => {
+				this.router.navigate([value]);
+			},
+		});
 	}
 
 	getCards() {

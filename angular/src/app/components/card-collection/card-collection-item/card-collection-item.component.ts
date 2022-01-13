@@ -64,7 +64,6 @@ export class CardCollectionItemComponent implements OnInit {
 				}),
 			],
 			change: () => {
-				debugger;
 				this.updated.emit(
 					new CardCollectionItem({
 						...this.item,

@@ -1,5 +1,4 @@
-@import "settings",
-		"custom";
+@import "settings", "custom";
 
 :host {
 	display: block;
@@ -13,7 +12,7 @@
 	height: 548px;
 	justify-content: flex-start;
 	&:after {
-		content: '';
+		content: "";
 		box-shadow: $shadow-inset-large;
 		top: 0;
 		left: 0;
@@ -64,16 +63,17 @@
 			margin-top: -$spacing * 2;
 		}
 	}
-	.pokeball {
+	.bg-type {
 		position: absolute;
 		left: 50%;
 		top: 50%;
 		transform: translate(-50%, -50%);
-		width: 1000px;
-		opacity: .1;
+		width: 500px;
+		opacity: 0.1;
 		z-index: 1;
 	}
-	.prev-pokemon, .next-pokemon {
+	.prev-pokemon,
+	.next-pokemon {
 		position: absolute;
 		top: 50%;
 		transform: translateY(-50%);
@@ -108,7 +108,7 @@
 
 .dex-number {
 	font-size: 60%;
-	opacity: .75;
+	opacity: 0.75;
 	text-transform: capitalize;
 }
 
@@ -172,11 +172,19 @@
 
 progress-bar {
 	position: absolute;
-	bottom: 160px;
+	bottom: 140px;
 	left: 50%;
 	transform: translateX(-50%);
 	width: 200px;
 	&.noEvolutionChain {
-
 	}
+}
+
+mb-select {
+	position: absolute;
+	bottom: 157px;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 200px;
+	z-index: 2;
 }
