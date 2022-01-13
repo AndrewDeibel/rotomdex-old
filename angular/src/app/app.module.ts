@@ -77,6 +77,7 @@ import {
 	CollectionComponent,
 	CollectionDashboardComponent,
 	CollectionCardGroupComponent,
+	EditProfileComponent,
 } from './pages';
 
 // Page
@@ -295,6 +296,7 @@ import { CardItemListComponent } from './pages/cards/card-item/card-item-list/ca
 		SignUpComponent,
 		ForgotComponent,
 		ResetComponent,
+		EditProfileComponent,
 		// Scanner
 		ScannerComponent,
 		ScannerListsComponent,

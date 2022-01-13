@@ -42,6 +42,7 @@ export class PokemonsComponent implements OnInit {
 			if (res) {
 				this.loaderService.clearItemLoading('getPokemon');
 				this.items.footer.totalPages = res.total_pages;
+				this.items.footer.totalItems = res.total_results;
 				var group = new ItemGroup();
 				res.pokemon_variants.forEach((pokemon_variant) => {
 					group.items.push(new PokemonVariant(pokemon_variant));

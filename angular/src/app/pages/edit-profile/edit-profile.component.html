@@ -1,0 +1,29 @@
+<form class="padding-large" [formGroup]="form" (ngSubmit)="submit()">
+	<div class="flex vertical padded flex-center">
+		<div>
+			<h1>Edit Profile</h1>
+		</div>
+		<div>
+			<mb-textbox
+				[formControl]="form.controls.emailControl"
+				[textbox]="textboxEmail"
+			></mb-textbox>
+		</div>
+		<div>
+			<mb-textbox
+				[formControl]="form.controls.usernameControl"
+				[textbox]="textboxUsername"
+			></mb-textbox>
+		</div>
+		<div>
+			<mb-textbox
+				[formControl]="form.controls.passwordControl"
+				[textbox]="textboxPassword"
+			></mb-textbox>
+		</div>
+		<div class="flex padded">
+			<mb-button [button]="buttonCancel"></mb-button>
+			<mb-button [button]="buttonSubmit"></mb-button>
+		</div>
+	</div>
+</form>

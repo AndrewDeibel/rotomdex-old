@@ -1,3 +1,4 @@
+import { EditProfileComponent } from './../pages/edit-profile/edit.profile.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from './auth.guard';
@@ -107,6 +108,16 @@ const routes: Routes = [
 	{
 		path: 'reset/:token',
 		component: ResetComponent,
+	},
+
+	// Edit profile
+	{
+		path: 'profile',
+		component: EditProfileComponent,
+	},
+	{
+		path: 'profile/edit',
+		component: EditProfileComponent,
 	},
 
 	// Expansions

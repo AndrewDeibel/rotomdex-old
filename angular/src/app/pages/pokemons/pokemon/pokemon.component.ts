@@ -109,6 +109,7 @@ export class PokemonComponent implements OnInit {
 				if (res) {
 					this.loaderService.clearItemLoading('getPokemonCards');
 					this.items.footer.totalPages = res.total_pages;
+					this.items.footer.totalItems = res.total_results;
 					this.items.filter.textboxSearch.placeholder = `Search ${this.pokemonVariant.name} cards...`;
 					if (res.cards.length) {
 						this.items.itemGroups = [

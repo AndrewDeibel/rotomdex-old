@@ -50,6 +50,7 @@ export class CollectionComponent implements OnInit {
 			if (res) {
 				this.loaderService.clearItemLoading('getCollectionCards');
 				this.items.footer.totalPages = res.total_pages;
+				this.items.footer.totalItems = res.total_results;
 				if (res.cards && res.cards.length) {
 					this.items.itemGroups = [
 						new ItemGroup({

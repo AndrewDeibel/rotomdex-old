@@ -74,6 +74,7 @@ export class CardsComponent implements OnInit {
 			this.loaderService.clearItemLoading('getCards');
 			this.loaderService.clearItemLoading('getFilteredCards');
 			this.items.footer.totalPages = res.total_pages;
+			this.items.footer.totalItems = res.total_results;
 			if (res.cards && res.cards.length) {
 				this.items.itemGroups = [
 					new ItemGroup({
