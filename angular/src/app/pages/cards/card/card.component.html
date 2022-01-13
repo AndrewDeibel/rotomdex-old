@@ -178,9 +178,9 @@
 	</article>
 
 	<div class="relative z-1">
-		<div>
+		<div *ngIf="userCards">
 			<!-- Collection -->
-			<mb-card-collection *ngIf="card" [card_id]="card.id">
+			<mb-card-collection [card_id]="card.id" [userCards]="userCards">
 			</mb-card-collection>
 		</div>
 		<div *ngIf="showRelated">

@@ -13,7 +13,7 @@
 <div class="padding-y padding-x-2 padding-bottom-4">
 	<div class="max">
 		<div class="flex padded vertical">
-			<div class="width-12 subheading" *ngIf="collection.length">
+			<div class="width-12 subheading" *ngIf="userCards.length">
 				<div class="flex">
 					<div class="box">
 						<div class="flex">
@@ -47,17 +47,14 @@
 			</div>
 			<mb-card-collection-item
 				class="box"
-				*ngFor="let collectionItem of collection"
-				[item]="collectionItem"
-				(deleted)="deleteItem(collectionItem)"
-				(updated)="updateItem(collectionItem)"
+				*ngFor="let userCard of userCards"
+				[item]="userCard"
+				(deleted)="deleteItem(userCard)"
+				(updated)="updateItem(userCard)"
 			>
 			</mb-card-collection-item>
-			<mb-empty
-				*ngIf="collection.length === 0"
-				[empty]="empty"
-			></mb-empty>
-			<div class="width-12" *ngIf="collection.length">
+			<mb-empty *ngIf="userCards.length === 0" [empty]="empty"></mb-empty>
+			<div class="width-12" *ngIf="userCards.length">
 				<div class="border-top padding-top">
 					<div class="flex padded flex-center">
 						<div class="box"></div>

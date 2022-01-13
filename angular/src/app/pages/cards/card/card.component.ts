@@ -1,10 +1,9 @@
+import { CardCollectionItem } from './../../../components/card-collection/card-collection-item/card-collection-item';
+import { UserCardsService } from './../../../components/card-collection/card-collection.service';
 import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
-import { Size } from '@app/models/size';
-import { Menu, MenuItem } from '@app/controls/menu';
 import { Card, SetSortByCards } from './card';
 import { ActivatedRoute } from '@angular/router';
 import { CardService } from '../../../services/card.service';
-import { AuthenticationService } from '@app/services/auth.service';
 import '@app/helpers/string.extensions';
 import { Icons, Symbols } from '@app/models/icons';
 import {
@@ -18,7 +17,6 @@ import { CardsService } from '../../../services/cards.service';
 import { ItemGroup, Items } from '@app/layout/main';
 import {
 	ExpansionService,
-	GetExpansion,
 	GetExpansionCards,
 } from '@app/services/expansion.service';
 import { GetPokemonVariantCards, PokemonService } from '@app/pages/pokemons';
@@ -33,6 +31,7 @@ import { AppSettings } from '@app/app';
 })
 export class CardComponent implements OnInit {
 	@Input() card: Card;
+	userCards: CardCollectionItem[] = [];
 	relatedCards: Items = new Items();
 	expansionCards: Items = new Items();
 	cardImageHover: boolean = false;
@@ -47,11 +46,11 @@ export class CardComponent implements OnInit {
 		private titleService: Title,
 		private loaderService: LoaderService,
 		private cardService: CardService,
-		private cardsService: CardsService,
 		private route: ActivatedRoute,
 		private expansionService: ExpansionService,
 		private dialogService: DialogService,
-		private pokemonService: PokemonService
+		private pokemonService: PokemonService,
+		private userCardsService: UserCardsService
 	) {}
 
 	ngOnInit(): void {
@@ -114,7 +113,6 @@ export class CardComponent implements OnInit {
 		// Response get card
 		this.cardService.getCardObservable().subscribe((card) => {
 			if (card) {
-				this.loaderService.clearItemLoading('getCard');
 				this.titleService.setTitle(AppSettings.titlePrefix + card.name);
 
 				// Data
@@ -174,6 +172,15 @@ export class CardComponent implements OnInit {
 			}
 		});
 
+		// Response get user cards
+		this.userCardsService
+			.getCardUserCardsObservable()
+			.subscribe((userCards) => {
+				if (userCards) {
+					this.userCards = userCards;
+				}
+			});
+
 		// Response get related cards
 		this.pokemonService
 			.getPokemonVariantCardsObservable()
@@ -202,11 +209,13 @@ export class CardComponent implements OnInit {
 	}
 
 	handleRoute() {
-		// ID param
+		// Param - card slug
 		this.route.params.subscribe((params) => {
-			// Request card
-			this.loaderService.addItemLoading('getCard');
-			this.cardService.getCard(params['slug']);
+			const slug = params['slug'];
+			// Get card
+			this.cardService.getCard(slug);
+			// Get user cards
+			this.userCardsService.getCardUserCards(slug);
 		});
 	}
 

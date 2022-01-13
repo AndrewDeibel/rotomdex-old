@@ -31,6 +31,7 @@ export class APIGetPaged {
 	subtype: string;
 	rarity: string;
 	user_id: number;
+	slug: string;
 
 	url: string;
 
@@ -91,11 +92,18 @@ export class APIGetPaged {
 			query = query.set('user_id', this.user_id.toString());
 		else query = query.delete('user_id');
 
+		// Slug
+		if (this.slug && this.slug.length) query = query.set('slug', this.slug);
+		else query = query.delete('slug');
+
 		// Include ? and query string if provided
-		let queryString = query.toString();
-		this.url = `${environment.api}${folder}${
-			queryString.length ? '?' + queryString : ''
-		}`;
+		this.url = buildUrl(folder, query.toString());
 		return this.url;
 	};
 }
+
+export const buildUrl = (folder, queryString = '') => {
+	return `${environment.api}${folder}${
+		queryString.length ? '?' + queryString : ''
+	}`;
+};

@@ -9,7 +9,7 @@ import {
 	ConditionGraded,
 	GradingCompany,
 	Icons,
-	PrintVersion,
+	Printings,
 } from '@app/models';
 import { CardCollectionItem } from './card-collection-item';
 import {
@@ -32,7 +32,7 @@ export class CardCollectionItemComponent implements OnInit {
 	@Output() updated: EventEmitter<CardCollectionItem> = new EventEmitter();
 	selectCondition: Select;
 	selectGradingCompany: Select;
-	selectPrintVerion: Select;
+	selectPrinting: Select;
 	selectBinder: Select;
 	buttonNotes: Button;
 	buttonAdd: Button;
@@ -49,9 +49,11 @@ export class CardCollectionItemComponent implements OnInit {
 	}
 
 	buildControls() {
+		// Notes
 		this.formNotes = this.formBuilder.group({
 			notesControl: [''],
 		});
+
 		// Condition
 		this.selectCondition = new Select({
 			classes: 'square-right',
@@ -63,11 +65,11 @@ export class CardCollectionItemComponent implements OnInit {
 					label: 'Condition Graded',
 				}),
 			],
-			change: () => {
+			change: (value) => {
 				this.updated.emit(
 					new CardCollectionItem({
 						...this.item,
-						condition: Condition[this.selectCondition.value],
+						condition: Condition[value],
 					})
 				);
 			},
@@ -102,23 +104,33 @@ export class CardCollectionItemComponent implements OnInit {
 			this.selectGradingCompany.optionGroups[0].options.push(
 				new SelectOption({
 					text: GradingCompany[gradingCompany],
+					value: GradingCompany[gradingCompany],
 				})
 			);
 		}
 
 		// Printing
-		this.selectPrintVerion = new Select({
+		this.selectPrinting = new Select({
 			classes: 'square',
 			optionGroups: [
 				new SelectOptionGroup({
 					label: 'Printing',
 				}),
 			],
+			change: (value) => {
+				this.updated.emit(
+					new CardCollectionItem({
+						...this.item,
+						printing: Printings[value],
+					})
+				);
+			},
 		});
-		for (let printVersion in PrintVersion) {
-			this.selectPrintVerion.optionGroups[0].options.push(
+		for (let printVersion in Printings) {
+			this.selectPrinting.optionGroups[0].options.push(
 				new SelectOption({
-					text: PrintVersion[printVersion],
+					text: Printings[printVersion],
+					value: Printings[printVersion],
 				})
 			);
 		}

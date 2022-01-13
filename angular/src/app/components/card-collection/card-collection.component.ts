@@ -1,7 +1,7 @@
-import { AddUserCard, CardCollectionService } from './card-collection.service';
+import { AddUserCard, UserCardsService } from './card-collection.service';
 import { Component, Input, OnInit } from '@angular/core';
 import { GUID } from '@app/helpers';
-import { Condition, Icons, PrintVersion } from '@app/models';
+import { Condition, Icons, Printings } from '@app/models';
 import { Button } from '../../controls/button';
 import { Checkbox } from '../../controls/checkbox';
 import { Empty } from '../../controls/empty';
@@ -14,13 +14,13 @@ import { CardCollectionItem } from './card-collection-item';
 })
 export class CardCollectionComponent implements OnInit {
 	@Input() card_id: number;
-	collection: CardCollectionItem[] = [];
+	@Input() userCards: CardCollectionItem[] = [];
 	buttonAdd: Button;
 	checkboxWishList: Checkbox;
 	buttonViewAll: Button;
 	empty: Empty;
 
-	constructor(private cardCollectionService: CardCollectionService) {}
+	constructor(private cardCollectionService: UserCardsService) {}
 
 	ngOnInit(): void {
 		this.setupControls();
@@ -67,7 +67,7 @@ export class CardCollectionComponent implements OnInit {
 			.addUserCardObservable()
 			.subscribe((addedCard) => {
 				if (addedCard) {
-					this.collection.push(addedCard);
+					this.userCards.push(addedCard);
 				}
 			});
 	}
@@ -80,11 +80,23 @@ export class CardCollectionComponent implements OnInit {
 		this.cardCollectionService.addUserCard(userCard);
 	}
 
-	deleteItem(itemToDelete) {
-		// this.collection = this.collection.filter((item) => {
-		// 	return item.id !== itemToDelete.id;
-		// });
+	deleteItem(userCard: CardCollectionItem) {
+		this.cardCollectionService
+			.removeUserCard(userCard.id)
+			.subscribe((res) => {
+				if (res.success)
+					this.userCards = this.userCards.filter(
+						(_userCard) => _userCard.id !== userCard.id
+					);
+			});
 	}
 
-	updateItem(userCard: CardCollectionItem) {}
+	updateItem(userCard: CardCollectionItem) {
+		this.cardCollectionService.updateUserCard(userCard).subscribe((res) => {
+			if (res.success)
+				this.userCards = this.userCards.map((_userCard) =>
+					_userCard.id === userCard.id ? userCard : _userCard
+				);
+		});
+	}
 }

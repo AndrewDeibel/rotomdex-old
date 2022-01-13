@@ -1,5 +1,5 @@
 import { AuthenticationService } from './../../services/auth.service';
-import { CardCollectionService } from './../../components/card-collection/card-collection.service';
+import { UserCardsService } from './../../components/card-collection/card-collection.service';
 import { Items } from './../../layout/main/items/items';
 import { LoaderService } from './../../controls/loader/loader.service';
 import { ActivatedRoute } from '@angular/router';
@@ -25,7 +25,7 @@ export class CollectionComponent implements OnInit {
 
 	constructor(
 		private loaderService: LoaderService,
-		private cardCollectionService: CardCollectionService,
+		private cardCollectionService: UserCardsService,
 		private authenticationService: AuthenticationService
 	) {}
 

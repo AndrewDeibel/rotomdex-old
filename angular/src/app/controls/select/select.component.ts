@@ -71,12 +71,8 @@ export class SelectComponent implements ControlValueAccessor {
 	}
 
 	change() {
-		if (this.select.change) {
-			this.select.change(this.select.value);
-		}
-		if (this.select._change) {
-			this.select._change(this.select.value);
-		}
+		if (this.select.change) this.select.change(this.select.value);
+		if (this.select._change) this.select._change(this.select.value);
 	}
 
 	selectOption(option: SelectOption) {

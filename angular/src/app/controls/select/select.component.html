@@ -9,7 +9,11 @@
 		(change)="change()"
 		class="{{ select.classes ? select.classes : '' }}"
 	>
-		<option *ngFor="let option of select.options" [ngValue]="option.value">
+		<option
+			*ngFor="let option of select.options"
+			[ngValue]="option.value"
+			[value]="option.value"
+		>
 			{{ option.text }}
 		</option>
 		<optgroup
@@ -19,6 +23,7 @@
 			<option
 				*ngFor="let option of optionGroup.options"
 				[ngValue]="option.value"
+				[value]="option.value"
 			>
 				{{ option.text }}
 			</option>
