@@ -1,5 +1,5 @@
-import { Size } from './../../models/size';
 import { Icons } from '@app/models/icons';
+import { Size } from './../../models/size';
 
 export class Textbox {
 	value: string = '';
@@ -10,7 +10,7 @@ export class Textbox {
 	max: number;
 	integer: boolean;
 	icon?: Icons;
-	placeholder?: string;
+	placeholder: string;
 	width: number;
 	classes: string;
 	wrapperClasses: string;
@@ -25,11 +25,8 @@ export class Textbox {
 	keyup: (value: string) => void;
 	keydown: (value: string) => void;
 	keydownEnter: (value: string) => void;
-	_keydownEnter: (value: string) => void;
 	clickIcon: (value: string) => void;
-	_clickIcon: (value: string) => void;
 	change: (value: string) => void;
-	_change: (value: string) => void;
 
 	clickClear: () => void;
 	clear = () => {

@@ -1,9 +1,4 @@
-import { MBForm } from './../../../controls/form/form';
-import { DialogService } from './../../../controls/dialog/dialog.service';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Button } from '@app/controls/button';
-import { Select, SelectOption, SelectOptionGroup } from '@app/controls/select';
-import { Textbox } from '@app/controls/textbox';
 import {
 	Condition,
 	ConditionGraded,
@@ -11,7 +6,6 @@ import {
 	Icons,
 	Printings,
 } from '@app/models';
-import { CardCollectionItem } from './card-collection-item';
 import {
 	Dialog,
 	FormComponent,
@@ -19,7 +13,14 @@ import {
 	MBFormGroup,
 	Textarea,
 } from '@app/controls';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { Select, SelectOption, SelectOptionGroup } from '@app/controls/select';
+
+import { Button } from '@app/controls/button';
+import { CardCollectionItem } from './card-collection-item';
+import { DialogService } from './../../../controls/dialog/dialog.service';
+import { MBForm } from './../../../controls/form/form';
+import { Textbox } from '@app/controls/textbox';
 
 @Component({
 	selector: 'mb-card-collection-item',
@@ -56,6 +57,7 @@ export class CardCollectionItemComponent implements OnInit {
 
 		// Condition
 		this.selectCondition = new Select({
+			value: this.item.condition,
 			classes: 'square-right',
 			optionGroups: [
 				new SelectOptionGroup({
@@ -79,6 +81,7 @@ export class CardCollectionItemComponent implements OnInit {
 				new SelectOption({
 					text: Condition[condition],
 					value: Condition[condition],
+					selected: Condition[condition] === this.item.condition,
 				})
 			);
 		}
@@ -87,9 +90,13 @@ export class CardCollectionItemComponent implements OnInit {
 				new SelectOption({
 					text: ConditionGraded[conditionGraded],
 					value: ConditionGraded[conditionGraded],
+					selected:
+						ConditionGraded[conditionGraded] ===
+						this.item.condition,
 				})
 			);
 		}
+		this.selectCondition.value = this.item.condition;
 
 		// Grading company
 		this.selectGradingCompany = new Select({

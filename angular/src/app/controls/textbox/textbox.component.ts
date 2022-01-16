@@ -1,14 +1,15 @@
 import {
 	Component,
-	OnInit,
-	Input,
-	forwardRef,
-	Output,
 	EventEmitter,
+	Input,
+	OnInit,
+	Output,
+	forwardRef,
 } from '@angular/core';
-import { Textbox } from './textbox';
-import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+
 import { Alert } from '../alert';
+import { Textbox } from './textbox';
 
 @Component({
 	selector: 'mb-textbox',
@@ -24,11 +25,6 @@ import { Alert } from '../alert';
 	],
 })
 export class TextboxComponent implements ControlValueAccessor {
-	click = (e: MouseEvent) => {
-		e.preventDefault();
-		e.stopPropagation();
-	};
-
 	onChange: any = () => {};
 	onTouched: any = () => {};
 	registerOnChange(fn) {
@@ -52,41 +48,46 @@ export class TextboxComponent implements ControlValueAccessor {
 
 	@Input() textbox: Textbox;
 	@Input() alert: Alert;
-	@Output() keydownEnter: EventEmitter<string> = new EventEmitter();
-	@Output() clickIcon: EventEmitter<string> = new EventEmitter();
-	@Output() clickClear: EventEmitter<string> = new EventEmitter();
+	@Output() outputKeydownEnter: EventEmitter<string> = new EventEmitter();
+	@Output() outputClickIcon: EventEmitter<string> = new EventEmitter();
+	@Output() outputClickClear: EventEmitter<string> = new EventEmitter();
 
 	constructor() {}
 
-	_keyup() {
+	click = (e: MouseEvent) => {
+		e.preventDefault();
+		e.stopPropagation();
+	};
+
+	keyup() {
 		if (this.textbox.keyup) this.textbox.keyup(this.value);
 	}
 
-	_keydown() {
+	keydown() {
 		if (this.textbox.keydown) this.textbox.keydown(this.value);
 	}
 
-	_keydownEnter() {
-		this.keydownEnter.emit(this.value);
+	keydownEnter() {
+		this.outputKeydownEnter.emit(this.value);
 		if (this.textbox.keydownEnter) this.textbox.keydownEnter(this.value);
 	}
 
-	_clickIcon() {
-		this.clickIcon.emit(this.value);
+	clickIcon() {
+		this.outputClickIcon.emit(this.value);
 		if (this.textbox.clickIcon) this.textbox.clickIcon(this.value);
 	}
 
-	_clickClear() {
+	clickClear() {
 		this.textbox.clear();
-		this.clickClear.emit(this.value);
+		this.outputClickClear.emit(this.value);
 		if (this.textbox.clickClear) this.textbox.clickClear();
 	}
 
-	_setPreviousValue() {
+	setPreviousValue() {
 		this.value = this.previousValue;
 	}
 
-	_validate() {
+	validate() {
 		this.textbox.valid = true;
 
 		// If max, check it
@@ -122,22 +123,22 @@ export class TextboxComponent implements ControlValueAccessor {
 		return this.textbox.valid;
 	}
 
-	_change() {
+	change() {
 		// If valid
-		if (this._validate()) {
+		if (this.validate()) {
 			if (this.textbox.change) {
 				this.textbox.change(this.value);
 			}
 		} else {
-			this._setPreviousValue();
+			this.setPreviousValue();
 		}
 
 		// Set previous value after change
 		this.previousValue = this.value;
 	}
 
-	_colorPickerChange(value: string) {
+	colorPickerChange(value: string) {
 		this.textbox.value = value;
-		this._change();
+		this.change();
 	}
 }

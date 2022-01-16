@@ -1,4 +1,5 @@
 import { Size } from './../../models/size';
+
 export class Select {
 	label: string;
 	value: string;
@@ -16,7 +17,6 @@ export class Select {
 	searchValue: string;
 	size: Size;
 	change: (value: string) => void;
-	_change: (value: string) => void;
 
 	getSelectedOptions = () => this.options.filter((option) => option.selected);
 	getUnselectedOptions = () =>

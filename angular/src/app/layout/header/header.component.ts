@@ -5,11 +5,12 @@ import {
 	OnInit,
 	ViewEncapsulation,
 } from '@angular/core';
-import { User } from '@app/models/user';
-import { Menu, MenuItem } from '@app/controls/menu';
-import { AuthenticationService } from '@app/services/auth.service';
 import { Icons, Symbols } from '@app/models/icons';
+import { Menu, MenuItem } from '@app/controls/menu';
+
+import { AuthenticationService } from '@app/services/auth.service';
 import { Location } from '@angular/common';
+import { User } from '@app/models/user';
 
 @Component({
 	selector: 'mb-header',

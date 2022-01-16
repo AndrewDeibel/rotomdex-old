@@ -17,12 +17,12 @@
 		placeholder="{{ textbox.placeholder ? textbox.placeholder : null }}"
 		type="{{ textbox.type }}"
 		class="textbox {{ textbox.classes }}"
-		(keyup)="_keyup()"
-		(keydown)="_keydown()"
-		(keydown.enter)="_keydownEnter()"
+		(keyup)="keyup()"
+		(keydown)="keydown()"
+		(keydown.enter)="keydownEnter()"
 		[readOnly]="textbox.readOnly"
 		[value]="value"
-		(change)="_change()"
+		(change)="change()"
 		[min]="textbox.min"
 		[max]="textbox.max"
 		[autocomplete]="textbox.autoComplete"
@@ -37,23 +37,23 @@
 		placeholder="{{ textbox.placeholder ? textbox.placeholder : null }}"
 		type="{{ textbox.type }}"
 		class="textbox {{ textbox.classes }}"
-		(keyup)="_keyup()"
-		(keydown)="_keydown()"
-		(keydown.enter)="_keydownEnter()"
-		(change)="_change()"
+		(keyup)="keyup()"
+		(keydown)="keydown()"
+		(keydown.enter)="keydownEnter()"
+		(change)="change()"
 		[min]="textbox.min"
 		[max]="textbox.max"
 		[autocomplete]="textbox.autoComplete"
 		[disabled]="textbox.disabled ? textbox.disabled : null"
 		[(ngModel)]="value"
 		[(colorPicker)]="textbox.value"
-		(colorPickerChange)="_colorPickerChange($event)"
+		(colorPickerChange)="colorPickerChange($event)"
 		[cpOutputFormat]="'hex'"
 	/>
 
 	<!-- Icon -->
 	<fa-icon
-		(click)="_clickIcon()"
+		(click)="clickIcon()"
 		*ngIf="textbox.icon && (!textbox.clearable || !textbox.value.length)"
 		[icon]="textbox.icon"
 	>
@@ -61,7 +61,7 @@
 
 	<!-- Clear -->
 	<fa-icon
-		(click)="_clickClear()"
+		(click)="clickClear()"
 		*ngIf="textbox.clearable && textbox.value.length"
 		icon="times"
 	>

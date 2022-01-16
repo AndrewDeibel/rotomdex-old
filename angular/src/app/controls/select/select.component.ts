@@ -1,9 +1,10 @@
-import { Textbox } from './../textbox/textbox';
-import { SelectOption } from '@app/controls';
-import { Component, OnInit, Input, forwardRef } from '@angular/core';
-import { Select } from './select';
-import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
+import { Component, Input, OnInit, forwardRef } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Icons, Size } from '@app/models';
+
+import { Select } from './select';
+import { SelectOption } from '@app/controls';
+import { Textbox } from './../textbox/textbox';
 
 @Component({
 	selector: 'mb-select',
@@ -72,7 +73,6 @@ export class SelectComponent implements ControlValueAccessor {
 
 	change() {
 		if (this.select.change) this.select.change(this.select.value);
-		if (this.select._change) this.select._change(this.select.value);
 	}
 
 	selectOption(option: SelectOption) {

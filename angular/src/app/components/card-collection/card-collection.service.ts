@@ -1,15 +1,16 @@
-import { CardCollectionItem } from './card-collection-item/card-collection-item';
-import { Condition } from './../../models/condition';
-import { environment } from './../../../environments/environment';
-import { Card } from './../../pages/cards/card/card';
 import { APIResponse, buildUrl } from './../../models/api';
 import { CardResults, GetCards } from './../../services/cards.service';
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
-import { map } from 'rxjs/operators';
+
 import { AuthenticationService } from '@app/services/auth.service';
+import { BehaviorSubject } from 'rxjs';
+import { Card } from './../../pages/cards/card/card';
+import { CardCollectionItem } from './card-collection-item/card-collection-item';
+import { Condition } from './../../models/condition';
+import { HttpClient } from '@angular/common/http';
 import { HttpParams } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { environment } from './../../../environments/environment';
+import { map } from 'rxjs/operators';
 
 export class UpdateUserCard {
 	user_card_id: number;
@@ -73,9 +74,7 @@ export class UserCardsService {
 		var url = buildUrl('user-cards/' + slug);
 		this.http.get<APIResponse>(url).subscribe((res) => {
 			this.getCardUserCardsSubject.next(
-				res.data.map((userCard) => {
-					new CardCollectionItem(userCard);
-				})
+				res.data.map((userCard) => new CardCollectionItem(userCard))
 			);
 		});
 	}

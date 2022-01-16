@@ -1,17 +1,15 @@
 export class Textarea {
-    value: string = "";
+	value: string;
 	label: string;
-	placeholder?: string;
+	placeholder: string;
 	width: number;
-	classes: string = "";
+	classes: string;
 	disabled: boolean;
-	
-	keydownEnter:(value: string) => void;
-	_keydownEnter:(value: string) => void;
-	change:(value: string) => void;
-	_change:(value: string) => void;
 
-    public constructor(init?:Partial<Textarea>) {
-        Object.assign(this, init);
+	keydownEnter: (value: string) => void;
+	change: (value: string) => void;
+
+	public constructor(init?: Partial<Textarea>) {
+		Object.assign(this, init);
 	}
 }
